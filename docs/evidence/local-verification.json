@@ -1,5 +1,8 @@
 {
   "scope": "CPU float64 no-RoPE core only; no model/GPU/guarantee validation",
+  "profile": "full",
+  "package_installations_checked": true,
+  "hosted_ci_status": "not_assessed",
   "python": "3.12.14",
   "platform": "macOS-27.0-arm64-arm-64bit",
   "dependencies": {

@@ -18,6 +18,20 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = "src/open_hierarchical_memory/"
 CASES = [
     (
+        "teacher tensors accidentally receive gradients",
+        "training.py",
+        "frozen_queries = queries.detach()\n    frozen_keys = keys.detach()",
+        "frozen_queries = queries\n    frozen_keys = keys",
+        "test_training.py::test_only_references_receive_gradients_and_gradient_matches_finite_difference",
+    ),
+    (
+        "reversed pooled KL objective",
+        "training.py",
+        "teacher_log.exp() * (teacher_log - predicted_log)",
+        "predicted_log.exp() * (predicted_log - teacher_log)",
+        "test_training.py::test_training_loss_matches_literal_independent_partition",
+    ),
+    (
         "lost inherited merge bias",
         "summaries.py",
         "+ (weights * biases).sum(dim=0)",
@@ -94,7 +108,8 @@ def main() -> int:
             (work / PACKAGE / filename).write_text(changed)
             environment = os.environ.copy()
             environment["PYTHONPATH"] = str(work / "src")
-            command = [sys.executable, "-m", "pytest", "-q", f"tests/test_core.py::{test}"]
+            target = test if "::" in test else f"test_core.py::{test}"
+            command = [sys.executable, "-m", "pytest", "-q", f"tests/{target}"]
             run = subprocess.run(
                 command,
                 cwd=work,
@@ -118,7 +133,7 @@ def main() -> int:
             )
             print(f"{'DETECTED' if killed else 'NOT DETECTED'}: {name}", flush=True)
     result = {
-        "scope": "eight targeted semantic mutations; not exhaustive mutation coverage",
+        "scope": "ten targeted semantic mutations; not exhaustive mutation coverage",
         "all_detected": all(record["detected"] for record in records),
         "records": records,
     }

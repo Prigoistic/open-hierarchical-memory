@@ -24,3 +24,5 @@ See [progress](PROGRESS.md), the [engineering plan](docs/ENGINEERING_PLAN.md), a
 
 This project is independent and is not affiliated with Zyphra. The paper's authors retain credit for ZHA. No code has been copied from their implementation.
 
+
+The real-model layer pilot is specified in [GPT2_PILOT.md](docs/GPT2_PILOT.md). Research dependencies are optional: `uv sync --locked --extra research`. Its native capture, frozen-teacher objective and corpus-isolation tests are distinct from the synthetic example.

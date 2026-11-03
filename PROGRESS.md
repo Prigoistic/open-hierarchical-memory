@@ -13,7 +13,7 @@ Build a useful, readable independent ZHA research reference, then real model-lay
 - [x] M1 local verification: independent scalar oracle, high-precision output oracle, generated cases, isolation/ownership/boundary tests and targeted semantic mutation checks.
 - [x] M1 installed-release-artifact evidence: wheel and source distribution in fresh offline environments.
 - [ ] M1 hosted CI evidence: GitHub reports startup failure before jobs/logs; static workflow validation passes.
-- [ ] M2: pinned real model-layer capture and held-out reference fitting.
+- [ ] M2: implementation and protocol prepared; native capture/objective/split tests pass; three-seed pretrained-model pilot pending.
 - [ ] M3: persistence, trace inspector and scoped reference release.
 - [ ] M4: numerically conservative bound/checker, if sound and useful.
 - [ ] M5: audited positional adapter and closed-loop model conversion.
@@ -22,7 +22,7 @@ An adapter must move earlier if required by the selected real-model fixture. No 
 
 ## Current evidence
 
-Local suite: 52 pytest cases, including 60 generated routing configurations and 16 high-precision fixtures checking both execution modes. Eight targeted semantic mutations are detected. Ruff, formatting and strict mypy check the package. See [the verification report](docs/evidence/local-verification.json) and [mutation evidence](docs/evidence/mutations.json) after running the verification command.
+Local suite with research extras: 70 pytest cases, including 60 generated routing configurations, 16 high-precision fixtures, native-model capture, fitting and data-isolation checks. Ten targeted semantic mutations are detected. Ruff, formatting and strict mypy check the package. See [the verification report](docs/evidence/local-verification.json) and [mutation evidence](docs/evidence/mutations.json) after running the verification command.
 
 Hosted verification has not passed. The corrected workflow passes official actionlint 1.7.12 (checksum-verified distribution). The user confirmed an account-side restriction prevents hosted jobs from starting. Development can continue using the local core profile below. See [the run](https://github.com/Prigoistic/open-hierarchical-memory/actions/runs/41708001430) and [separate workflow evidence](docs/evidence/workflow-validation.json). Local success does not establish hosted CI success.
 
@@ -47,7 +47,8 @@ The numerical domain is CPU float64 with finite, moderate test inputs. Proposed 
 | --- | --- |
 | V01–03, V05–11 | Implemented for the documented no-RoPE in-memory support contract; local oracle/regression evidence |
 | V12–14 | Input/ownership/budget/fallback cases covered; disk corruption, cancellation and mutable-cache recovery are unavailable, not passed |
-| V04, V15–21 | Not implemented; positional, persistence, training, bounds and inspector gates remain open |
+| V04, V15, V18–21 | RoPE, index persistence, bounds and inspector gates remain open |
+| V16–17 | Reference-gradient exclusion, independent pooled-KL oracle and fitting-selection tests pass; pretrained-model pilot pending |
 | V22 | Wheel and source distribution installed and exercised from fresh local environments; no package registry release |
 
 ## Review decisions
@@ -61,7 +62,7 @@ The numerical domain is CPU float64 with finite, moderate test inputs. Proposed 
 
 ## Next work
 
-Finish hosted CI evidence, then select and estimate a suitable public real-model fixture. M2 requires captured activations plus positional metadata and training/evaluation separation. It cannot be replaced by polishing synthetic output or calling it an experiment from the paper.
+Run the committed GPT-2 layer pilot using local verification. Hosted-CI availability is not a dependency of this experiment. See docs/GPT2_PILOT.md for the prespecified protocol, model revision, corpus split and interpretation limits.
 
 ## Findings corrected during implementation
 

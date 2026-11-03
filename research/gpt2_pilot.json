@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "experiment": "gpt2-layer5-reference-fitting-pilot-v1",
+  "model_id": "openai-community/gpt2",
+  "model_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+  "model_license": "MIT",
+  "layer": 5,
+  "context_tokens": 256,
+  "window_offsets": [4096, 12288],
+  "query_positions": [63, 127, 191, 255],
+  "chunk_size": 4,
+  "depth": 2,
+  "reference_count": 8,
+  "seeds": [7, 23, 101],
+  "steps": 100,
+  "learning_rate": 0.01,
+  "gradient_norm_limit": 1.0,
+  "validation_every_steps": 10,
+  "routing_thresholds": [0.73, 0.9, 0.95],
+  "cpu_threads": 4,
+  "text_character_limit": 200000,
+  "splits": {
+    "train": [11, 84, 1342, 1661],
+    "validation": [98, 2701],
+    "test": [74, 2600]
+  },
+  "selection_rule": "Lowest validation pooled KL; test is evaluated only after checkpoint selection. Initial checkpoint remains eligible. No test-based retuning.",
+  "scope": "One-layer teacher-forced CPU pilot, not full-model conversion or a long-context benchmark reproduction."
+}

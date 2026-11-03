@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "model_id": "openai-community/gpt2",
+  "model_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+  "model_weights_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707",
+  "documents": [
+    {
+      "book_id": 11,
+      "split": "train",
+      "source": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+      "raw_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "body_sha256": "65c5ebedfb6fe332d89574aae63286cf89f625a901be9f0ba31d7f981b020e53",
+      "bytes": 174311
+    },
+    {
+      "book_id": 84,
+      "split": "train",
+      "source": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+      "raw_sha256": "2b97b7f8aad508649481d8dd4f6b54f9b965ddb3ba634e9151c815f537b49e42",
+      "body_sha256": "8e0c6ed6579d5ea0d1844d0e20a3ec6fadbed48e54ef93291dfadceb2f1f8069",
+      "bytes": 448885
+    },
+    {
+      "book_id": 1342,
+      "split": "train",
+      "source": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+      "raw_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "body_sha256": "3a14b9791ab72e7eaf8f1280086d314c92a87d6ff5c2636fef8b7f0a4ca10645",
+      "bytes": 772386
+    },
+    {
+      "book_id": 1661,
+      "split": "train",
+      "source": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+      "raw_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+      "body_sha256": "2b7238758a350af441475489c7db10b8d8e9686a3897b1acebd7e81723960f80",
+      "bytes": 607606
+    },
+    {
+      "book_id": 98,
+      "split": "validation",
+      "source": "https://www.gutenberg.org/ebooks/98.txt.utf-8",
+      "raw_sha256": "d54c2b80d40a40b982cd88852c6180bb944d95acdb028af3d0e01a1750681784",
+      "body_sha256": "232652bd7cd0d32bad0b6d18000087133bfb8f8252d02094b9baa07b95106370",
+      "bytes": 807197
+    },
+    {
+      "book_id": 2701,
+      "split": "validation",
+      "source": "https://www.gutenberg.org/ebooks/2701.txt.utf-8",
+      "raw_sha256": "b5e88b71a1cda068e9ab1d94344c9d932338ba6da1a66def97a1aecd9cfcc87d",
+      "body_sha256": "a2735e75d3a1a856ed2292fa20e8b1f3fe81ef1666b3a5819ca996022717d20e",
+      "bytes": 1276315
+    },
+    {
+      "book_id": 74,
+      "split": "test",
+      "source": "https://www.gutenberg.org/ebooks/74.txt.utf-8",
+      "raw_sha256": "74d77384b123a6360db9ab58463cff8b38df8525fbdc6000c81ee388e1f3cf10",
+      "body_sha256": "4fb765a22979c0e342d1e5e4f507581552b54cea849babdabeb365624ec36cff",
+      "bytes": 434357
+    },
+    {
+      "book_id": 2600,
+      "split": "test",
+      "source": "https://www.gutenberg.org/ebooks/2600.txt.utf-8",
+      "raw_sha256": "2d5bb2ad5f422765e714617e21fa31bbaf8958aa79682c86fca6660fcc5d1b2b",
+      "body_sha256": "0a9e7565b60fe802fb24e034b70473b245eac1efdc17eaa700223e76f0149c25",
+      "bytes": 3359610
+    }
+  ]
+}
