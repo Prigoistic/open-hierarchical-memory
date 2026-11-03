@@ -1,0 +1,5 @@
+{
+  "matplotlib_version": "3.10.1",
+  "source_report_sha256": "7449d597dafd280410f0ac4df0ffb73cda647877726c3f8003cf9a1a228164ea",
+  "right_panel_aggregation": "mean of three seeds at each fixed threshold; no confidence intervals"
+}

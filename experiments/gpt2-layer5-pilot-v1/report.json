@@ -1,0 +1,3340 @@
+{
+  "schema_version": 1,
+  "scope": "One-layer teacher-forced CPU pilot, not full-model conversion or a long-context benchmark reproduction.",
+  "config": {
+    "schema_version": 1,
+    "experiment": "gpt2-layer5-reference-fitting-pilot-v1",
+    "model_id": "openai-community/gpt2",
+    "model_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "model_license": "MIT",
+    "layer": 5,
+    "context_tokens": 256,
+    "window_offsets": [
+      4096,
+      12288
+    ],
+    "query_positions": [
+      63,
+      127,
+      191,
+      255
+    ],
+    "chunk_size": 4,
+    "depth": 2,
+    "reference_count": 8,
+    "seeds": [
+      7,
+      23,
+      101
+    ],
+    "steps": 100,
+    "learning_rate": 0.01,
+    "gradient_norm_limit": 1.0,
+    "validation_every_steps": 10,
+    "routing_thresholds": [
+      0.73,
+      0.9,
+      0.95
+    ],
+    "cpu_threads": 4,
+    "text_character_limit": 200000,
+    "splits": {
+      "train": [
+        11,
+        84,
+        1342,
+        1661
+      ],
+      "validation": [
+        98,
+        2701
+      ],
+      "test": [
+        74,
+        2600
+      ]
+    },
+    "selection_rule": "Lowest validation pooled KL; test is evaluated only after checkpoint selection. Initial checkpoint remains eligible. No test-based retuning.",
+    "scope": "One-layer teacher-forced CPU pilot, not full-model conversion or a long-context benchmark reproduction."
+  },
+  "config_sha256": "b853614dee9e6042d66022ab42de5c53be375dafd539f26612c9c5faa8a17b39",
+  "manifest": {
+    "schema_version": 1,
+    "model_id": "openai-community/gpt2",
+    "model_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "model_weights_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707",
+    "documents": [
+      {
+        "book_id": 11,
+        "split": "train",
+        "source": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+        "raw_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+        "body_sha256": "65c5ebedfb6fe332d89574aae63286cf89f625a901be9f0ba31d7f981b020e53",
+        "bytes": 174311
+      },
+      {
+        "book_id": 84,
+        "split": "train",
+        "source": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+        "raw_sha256": "2b97b7f8aad508649481d8dd4f6b54f9b965ddb3ba634e9151c815f537b49e42",
+        "body_sha256": "8e0c6ed6579d5ea0d1844d0e20a3ec6fadbed48e54ef93291dfadceb2f1f8069",
+        "bytes": 448885
+      },
+      {
+        "book_id": 1342,
+        "split": "train",
+        "source": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+        "raw_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+        "body_sha256": "3a14b9791ab72e7eaf8f1280086d314c92a87d6ff5c2636fef8b7f0a4ca10645",
+        "bytes": 772386
+      },
+      {
+        "book_id": 1661,
+        "split": "train",
+        "source": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+        "raw_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+        "body_sha256": "2b7238758a350af441475489c7db10b8d8e9686a3897b1acebd7e81723960f80",
+        "bytes": 607606
+      },
+      {
+        "book_id": 98,
+        "split": "validation",
+        "source": "https://www.gutenberg.org/ebooks/98.txt.utf-8",
+        "raw_sha256": "d54c2b80d40a40b982cd88852c6180bb944d95acdb028af3d0e01a1750681784",
+        "body_sha256": "232652bd7cd0d32bad0b6d18000087133bfb8f8252d02094b9baa07b95106370",
+        "bytes": 807197
+      },
+      {
+        "book_id": 2701,
+        "split": "validation",
+        "source": "https://www.gutenberg.org/ebooks/2701.txt.utf-8",
+        "raw_sha256": "b5e88b71a1cda068e9ab1d94344c9d932338ba6da1a66def97a1aecd9cfcc87d",
+        "body_sha256": "a2735e75d3a1a856ed2292fa20e8b1f3fe81ef1666b3a5819ca996022717d20e",
+        "bytes": 1276315
+      },
+      {
+        "book_id": 74,
+        "split": "test",
+        "source": "https://www.gutenberg.org/ebooks/74.txt.utf-8",
+        "raw_sha256": "74d77384b123a6360db9ab58463cff8b38df8525fbdc6000c81ee388e1f3cf10",
+        "body_sha256": "4fb765a22979c0e342d1e5e4f507581552b54cea849babdabeb365624ec36cff",
+        "bytes": 434357
+      },
+      {
+        "book_id": 2600,
+        "split": "test",
+        "source": "https://www.gutenberg.org/ebooks/2600.txt.utf-8",
+        "raw_sha256": "2d5bb2ad5f422765e714617e21fa31bbaf8958aa79682c86fca6660fcc5d1b2b",
+        "body_sha256": "0a9e7565b60fe802fb24e034b70473b245eac1efdc17eaa700223e76f0149c25",
+        "bytes": 3359610
+      }
+    ]
+  },
+  "git_revision": "421e2bce01e6c6b515fa5017ec90c2314f39bf6e",
+  "working_tree_dirty_at_start": true,
+  "source_tree_dirty_at_start": false,
+  "source_sha256": {
+    "pyproject.toml": "1b75814f885c177f989146de2fa33aa78af7ae1f802de32880221d11241bcee2",
+    "research/__init__.py": "d797a955db23834bc76beab053b937cb91836c0a3ccda4c806a86630a255a18a",
+    "research/fitting.py": "338d191d06c748482c88a7a50d1aa6ea00bd60537139efab5af5fb20fe7a80a1",
+    "research/gpt2_capture.py": "ebbacb477f0c71a45a89050a8bcdae2985293404b89c8ac83f162f5179d7f64d",
+    "research/metrics.py": "f964d92649d3a1b67d47a3e549d7f8374e688d0dc3a57b04aa5822d574705aa9",
+    "research/prepare_gpt2.py": "72fed9b8a478e4368e19ee14f35a539e5a3a35e85680f2e1db134d2d258bfb72",
+    "research/protocol.py": "7b939a46bc40df6afb27703f445a982b240eb13c8b07f7408ed8abd78a496d15",
+    "research/run_gpt2_pilot.py": "2b3d478256d21fb9360bb7f77a509f4a6df66af3e89aa91c57ffb35183cd8142",
+    "src/open_hierarchical_memory/__init__.py": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+    "src/open_hierarchical_memory/attention.py": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+    "src/open_hierarchical_memory/contracts.py": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+    "src/open_hierarchical_memory/routing.py": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+    "src/open_hierarchical_memory/summaries.py": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+    "src/open_hierarchical_memory/training.py": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e",
+    "src/open_hierarchical_memory/tree.py": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+    "uv.lock": "8a40bb78ea4e46077d7a76929e2f9cc351c6273e2f6c21dbb6fffea1068d4773"
+  },
+  "dependencies": {
+    "torch": "2.15.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.2",
+    "safetensors": "0.8.0",
+    "numpy": "2.5.4"
+  },
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "python": "3.12.14",
+  "cpu_threads": 4,
+  "elapsed_seconds": 9.440609333018074,
+  "teacher_dtype": "float32",
+  "model_loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "checkpoint_reload_verified": true,
+  "captured_dtype": "float64 (explicit conversion)",
+  "position_convention": "GPT-2 learned absolute embeddings, no rotary reference re-anchoring required",
+  "backbone_parameters": 124439808,
+  "trainable_parameters_per_run": 6144,
+  "frozen_backbone_sha256_before": "3e69d9f2669a741730cd6a1568f4fe4325fdc8f31631f9bdd9eac7c47f8739c6",
+  "frozen_backbone_sha256_after": "3e69d9f2669a741730cd6a1568f4fe4325fdc8f31631f9bdd9eac7c47f8739c6",
+  "backbone_unchanged": true,
+  "capture_checks": [
+    {
+      "document_id": "gutenberg:11",
+      "split": "train",
+      "offset": 4096,
+      "token_ids_sha256": "fd63f54f6465fc5ed395718fd1196386a79fc4ac97243b8eedfd912c253fe1aa",
+      "native_weight_max_abs_error": 1.1099974176476124e-06,
+      "native_output_max_abs_error": 4.251034996904934e-06
+    },
+    {
+      "document_id": "gutenberg:11",
+      "split": "train",
+      "offset": 12288,
+      "token_ids_sha256": "73c4b10fabf8ebe52a81e09905ceb05edca5cd64446812ce38b4c55256900620",
+      "native_weight_max_abs_error": 8.633464780860578e-07,
+      "native_output_max_abs_error": 3.864185130986186e-06
+    },
+    {
+      "document_id": "gutenberg:84",
+      "split": "train",
+      "offset": 4096,
+      "token_ids_sha256": "899607273ea606a00932f4fe977a259cd08bc1ccb2eb007d80b94eef3f05ff5b",
+      "native_weight_max_abs_error": 8.36988417796114e-07,
+      "native_output_max_abs_error": 3.7830078536416067e-06
+    },
+    {
+      "document_id": "gutenberg:84",
+      "split": "train",
+      "offset": 12288,
+      "token_ids_sha256": "4d1a6688ae67431ebd297b5f28f6d15bf4bbf1a2776d9eea0aee4725da2af692",
+      "native_weight_max_abs_error": 9.33076764353391e-07,
+      "native_output_max_abs_error": 3.8631206020767195e-06
+    },
+    {
+      "document_id": "gutenberg:1342",
+      "split": "train",
+      "offset": 4096,
+      "token_ids_sha256": "293c0f4d03a46e7c075ca43702c3cd44a94849e91fa7a7fe9e3fdd9c4abde174",
+      "native_weight_max_abs_error": 9.413533733626522e-07,
+      "native_output_max_abs_error": 3.738514271933724e-06
+    },
+    {
+      "document_id": "gutenberg:1342",
+      "split": "train",
+      "offset": 12288,
+      "token_ids_sha256": "a3969c7e345f6fef71407b9fad53405ab1274718958254f07708814d8f504c43",
+      "native_weight_max_abs_error": 8.263676365416472e-07,
+      "native_output_max_abs_error": 3.273264916003882e-06
+    },
+    {
+      "document_id": "gutenberg:1661",
+      "split": "train",
+      "offset": 4096,
+      "token_ids_sha256": "c72e4605ab00260606f00d46207bc84951ac2657a5ef08f69366964cbedf0656",
+      "native_weight_max_abs_error": 7.816019549355957e-07,
+      "native_output_max_abs_error": 4.330118434481278e-06
+    },
+    {
+      "document_id": "gutenberg:1661",
+      "split": "train",
+      "offset": 12288,
+      "token_ids_sha256": "021127cac2d5b2cc8766cd4b3683e3a90b2806a13643ebe1289e0815c0dd23ae",
+      "native_weight_max_abs_error": 8.654890181203356e-07,
+      "native_output_max_abs_error": 3.383501189446747e-06
+    },
+    {
+      "document_id": "gutenberg:98",
+      "split": "validation",
+      "offset": 4096,
+      "token_ids_sha256": "af88490ecd730dbaf5448b6eb64e842d87c8f46ab0a2b2e9aca478e04b51350c",
+      "native_weight_max_abs_error": 9.54655343721189e-07,
+      "native_output_max_abs_error": 3.4907595560795812e-06
+    },
+    {
+      "document_id": "gutenberg:98",
+      "split": "validation",
+      "offset": 12288,
+      "token_ids_sha256": "8fafd92eaebd1d4be17c575cf18125292e7cd1ad32e0fc9ce5d585d089f58d4c",
+      "native_weight_max_abs_error": 6.482387829853664e-07,
+      "native_output_max_abs_error": 3.2663508768848715e-06
+    },
+    {
+      "document_id": "gutenberg:2701",
+      "split": "validation",
+      "offset": 4096,
+      "token_ids_sha256": "8754ab80e82265da3a55d1ad49fca4a2bbd8931cb8852777002fa90f6984ec69",
+      "native_weight_max_abs_error": 8.984942422296527e-07,
+      "native_output_max_abs_error": 4.091872061184887e-06
+    },
+    {
+      "document_id": "gutenberg:2701",
+      "split": "validation",
+      "offset": 12288,
+      "token_ids_sha256": "000d7d32b285b8304d4490e836ab2601ed84920cdb23e10df8ce918cbaa62bd7",
+      "native_weight_max_abs_error": 7.173396935344911e-07,
+      "native_output_max_abs_error": 3.858144351109871e-06
+    },
+    {
+      "document_id": "gutenberg:74",
+      "split": "test",
+      "offset": 4096,
+      "token_ids_sha256": "6a1d0b6fc4b38efd2b5f84f018f9e20661bc7b6ba48cfd7b2ee5e4bdef08f2b2",
+      "native_weight_max_abs_error": 7.647172639013711e-07,
+      "native_output_max_abs_error": 3.4310985546071038e-06
+    },
+    {
+      "document_id": "gutenberg:74",
+      "split": "test",
+      "offset": 12288,
+      "token_ids_sha256": "1c902f479b17561da0675efa9e9f304f7b3d1f07d5819ea3acbfc47ee1c80d9c",
+      "native_weight_max_abs_error": 7.690213434941029e-07,
+      "native_output_max_abs_error": 3.943031669173536e-06
+    },
+    {
+      "document_id": "gutenberg:2600",
+      "split": "test",
+      "offset": 4096,
+      "token_ids_sha256": "0aa410505aab2c2ccda3f81e07b718a55489555dbd677d58927d0113f5032fe6",
+      "native_weight_max_abs_error": 9.329453407591615e-07,
+      "native_output_max_abs_error": 4.010548069199871e-06
+    },
+    {
+      "document_id": "gutenberg:2600",
+      "split": "test",
+      "offset": 12288,
+      "token_ids_sha256": "b978292091e29b18504366dc51e606b04a1c39345ed41c22d86135fe0277398b",
+      "native_weight_max_abs_error": 7.616382640129871e-07,
+      "native_output_max_abs_error": 3.4557678074698117e-06
+    }
+  ],
+  "sample_counts": {
+    "train": 8,
+    "validation": 4,
+    "test": 4
+  },
+  "unique_training_tokens": 2048,
+  "fitting": [
+    {
+      "seed": 7,
+      "selected_step": 100,
+      "history": [
+        {
+          "step": 0,
+          "train_kl": 0.0739795500143448,
+          "validation_kl": 0.1325660492902601
+        },
+        {
+          "step": 10,
+          "train_kl": 0.06779080772432758,
+          "validation_kl": 0.13215526147972165
+        },
+        {
+          "step": 20,
+          "train_kl": 0.06198756914541598,
+          "validation_kl": 0.13192726965519638
+        },
+        {
+          "step": 30,
+          "train_kl": 0.05648254841023899,
+          "validation_kl": 0.13119390016115917
+        },
+        {
+          "step": 40,
+          "train_kl": 0.05150168246986646,
+          "validation_kl": 0.13017292797646043
+        },
+        {
+          "step": 50,
+          "train_kl": 0.04714433562461354,
+          "validation_kl": 0.1281037154300006
+        },
+        {
+          "step": 60,
+          "train_kl": 0.041922806569863934,
+          "validation_kl": 0.1259849541298375
+        },
+        {
+          "step": 70,
+          "train_kl": 0.03771464965391794,
+          "validation_kl": 0.12473258470273321
+        },
+        {
+          "step": 80,
+          "train_kl": 0.03400967363829991,
+          "validation_kl": 0.12365718782595474
+        },
+        {
+          "step": 90,
+          "train_kl": 0.031271382241298,
+          "validation_kl": 0.12284846139583294
+        },
+        {
+          "step": 100,
+          "train_kl": 0.02883583190941893,
+          "validation_kl": 0.12263719942969627
+        }
+      ],
+      "checkpoint_sha256": "214b2df4324712b1afea02419219e3f663c46168927ebfebab01fb610bd8e8c3"
+    },
+    {
+      "seed": 23,
+      "selected_step": 100,
+      "history": [
+        {
+          "step": 0,
+          "train_kl": 0.06867716771213461,
+          "validation_kl": 0.14185526824120534
+        },
+        {
+          "step": 10,
+          "train_kl": 0.06374353540613285,
+          "validation_kl": 0.1401935308017303
+        },
+        {
+          "step": 20,
+          "train_kl": 0.05845690447285973,
+          "validation_kl": 0.13722560294148384
+        },
+        {
+          "step": 30,
+          "train_kl": 0.05385810285724414,
+          "validation_kl": 0.1348984211378414
+        },
+        {
+          "step": 40,
+          "train_kl": 0.04900644077216483,
+          "validation_kl": 0.13207328328579807
+        },
+        {
+          "step": 50,
+          "train_kl": 0.04441136577503557,
+          "validation_kl": 0.12925700800688214
+        },
+        {
+          "step": 60,
+          "train_kl": 0.04034386268702948,
+          "validation_kl": 0.126706881899613
+        },
+        {
+          "step": 70,
+          "train_kl": 0.03646179895478809,
+          "validation_kl": 0.12413143203381008
+        },
+        {
+          "step": 80,
+          "train_kl": 0.03290108565374249,
+          "validation_kl": 0.12167376987202476
+        },
+        {
+          "step": 90,
+          "train_kl": 0.03030170473469909,
+          "validation_kl": 0.11974582041508051
+        },
+        {
+          "step": 100,
+          "train_kl": 0.02785877719029508,
+          "validation_kl": 0.11769271879232313
+        }
+      ],
+      "checkpoint_sha256": "45b9a88c68a32f287cd95f585888585dadc122e1bf8043ea161e17f16095fe2a"
+    },
+    {
+      "seed": 101,
+      "selected_step": 100,
+      "history": [
+        {
+          "step": 0,
+          "train_kl": 0.08167953935770747,
+          "validation_kl": 0.14228050876363735
+        },
+        {
+          "step": 10,
+          "train_kl": 0.07398810762164769,
+          "validation_kl": 0.1408251499668774
+        },
+        {
+          "step": 20,
+          "train_kl": 0.0671859101787482,
+          "validation_kl": 0.13991133677218687
+        },
+        {
+          "step": 30,
+          "train_kl": 0.060529751133435276,
+          "validation_kl": 0.13877199904585527
+        },
+        {
+          "step": 40,
+          "train_kl": 0.05528671017108766,
+          "validation_kl": 0.13738761970456712
+        },
+        {
+          "step": 50,
+          "train_kl": 0.050610867384889194,
+          "validation_kl": 0.13582087701608792
+        },
+        {
+          "step": 60,
+          "train_kl": 0.04691794891474608,
+          "validation_kl": 0.13457648519051582
+        },
+        {
+          "step": 70,
+          "train_kl": 0.043051520877588186,
+          "validation_kl": 0.13314163388170003
+        },
+        {
+          "step": 80,
+          "train_kl": 0.03989548170438926,
+          "validation_kl": 0.131480764892272
+        },
+        {
+          "step": 90,
+          "train_kl": 0.03667878161698127,
+          "validation_kl": 0.12958187636686644
+        },
+        {
+          "step": 100,
+          "train_kl": 0.03283116909413106,
+          "validation_kl": 0.12645337595398987
+        }
+      ],
+      "checkpoint_sha256": "2a5b11332661a6f017613560d8bf395c0551f4318f04807c77f905acdc59eaa5"
+    }
+  ],
+  "test_results": [
+    {
+      "seed": 7,
+      "variant": "initial_query_samples",
+      "p": 0.73,
+      "test_pooled_kl": 0.11107897185012074,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9124832286537652,
+          "median": 0.9399877069107792,
+          "p95": 0.9986813993071711
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.8011567439776094,
+          "median": 0.8315458849160444,
+          "p95": 0.9926924617763744
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.25646046385855253,
+          "median": 0.14615295656366722,
+          "p95": 0.7489497719083275
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.16324869791666666,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.791666666666668,
+          "median": 22.0,
+          "p95": 46
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9208641813979273,
+            "median": 0.9482009295980396,
+            "p95": 0.999091384295205
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8107988557726776,
+            "median": 0.8135266852224723,
+            "p95": 0.9926924617763744
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.21493175174677567,
+            "median": 0.1344830240946457,
+            "p95": 0.7402208220204047
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.16010199652777776,
+            "median": 0.125,
+            "p95": 0.40625
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.416666666666668,
+            "median": 22.0,
+            "p95": 46
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.904102275909603,
+            "median": 0.9357540334093961,
+            "p95": 0.9986813993071711
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.7915146321825411,
+            "median": 0.8336932443947038,
+            "p95": 0.9933409160665373
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.29798917597032937,
+            "median": 0.16548884391246974,
+            "p95": 0.7658203903376173
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.16639539930555555,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 23.166666666666668,
+            "median": 22.0,
+            "p95": 46
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "variant": "initial_query_samples",
+      "p": 0.9,
+      "test_pooled_kl": 0.11107897185012074,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9687648870225242,
+          "median": 0.9800532823557627,
+          "p95": 0.9993938826766285
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9234497813633239,
+          "median": 0.9412866944490779,
+          "p95": 0.9963642972954873
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.08905266044992606,
+          "median": 0.05406205281957303,
+          "p95": 0.2733123343861658
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2944064670138889,
+          "median": 0.25,
+          "p95": 0.75
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.541666666666668,
+          "median": 22.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9701045913713066,
+            "median": 0.9809683499107844,
+            "p95": 0.9995979976484299
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9258308708212134,
+            "median": 0.9404572002962879,
+            "p95": 0.9960252076522905
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.07780061279222629,
+            "median": 0.04945163174563627,
+            "p95": 0.26188457931718095
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2884114583333333,
+            "median": 0.25,
+            "p95": 0.6875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.333333333333332,
+            "median": 22.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.967425182673742,
+            "median": 0.9796227536044657,
+            "p95": 0.9990126363588533
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9210686919054342,
+            "median": 0.9421539566314892,
+            "p95": 0.9966634157700832
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.10030470810762586,
+            "median": 0.058040652473050736,
+            "p95": 0.2821995698709596
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3004014756944445,
+            "median": 0.25,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.75,
+            "median": 22.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "variant": "initial_query_samples",
+      "p": 0.95,
+      "test_pooled_kl": 0.11107897185012074,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9846491239022964,
+          "median": 0.9906219896552275,
+          "p95": 0.9996702888615953
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9622959769280381,
+          "median": 0.972235656861472,
+          "p95": 0.9978909138159782
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.04517773497895177,
+          "median": 0.026446680533027914,
+          "p95": 0.1451512942611509
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.3838161892361111,
+          "median": 0.34895833333333337,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.604166666666668,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9850567234479545,
+            "median": 0.9906219896552275,
+            "p95": 0.9997482799871046
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.960980783240911,
+            "median": 0.9705760488037796,
+            "p95": 0.9978909138159782
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.04069541867674385,
+            "median": 0.026536173184408735,
+            "p95": 0.1386949052742397
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3827039930555556,
+            "median": 0.375,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.416666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9842415243566381,
+            "median": 0.9905552649863996,
+            "p95": 0.9995569150907548
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9636111706151652,
+            "median": 0.9724682347057226,
+            "p95": 0.998406583762285
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.04966005128115968,
+            "median": 0.025759473452084868,
+            "p95": 0.1710240214267375
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3849283854166667,
+            "median": 0.3125,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.791666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "variant": "random_gaussian",
+      "p": 0.73,
+      "test_pooled_kl": 0.10610957255170901,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9172368867037141,
+          "median": 0.9435148153371837,
+          "p95": 0.9986813993071711
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.8079082961384042,
+          "median": 0.8370378764181752,
+          "p95": 0.9940340778143055
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.22932758397756722,
+          "median": 0.13830832682478184,
+          "p95": 0.6706386360043015
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.16346571180555555,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.645833333333332,
+          "median": 22.0,
+          "p95": 46
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9254242942312745,
+            "median": 0.9548139727234097,
+            "p95": 0.9986992066601394
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8184857469157373,
+            "median": 0.8291606620933261,
+            "p95": 0.9941827693591465
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.1902685392729688,
+            "median": 0.12438255493845199,
+            "p95": 0.6146041718047133
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.1633029513888889,
+            "median": 0.125,
+            "p95": 0.40625
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.166666666666668,
+            "median": 20.0,
+            "p95": 42
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9090494791761539,
+            "median": 0.9345893667110561,
+            "p95": 0.9986813993071711
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.7973308453610709,
+            "median": 0.8389142027091814,
+            "p95": 0.9940340778143055
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.2683866286821656,
+            "median": 0.15684162118083994,
+            "p95": 0.7620774787552754
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.16362847222222224,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 23.125,
+            "median": 22.0,
+            "p95": 46
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "variant": "random_gaussian",
+      "p": 0.9,
+      "test_pooled_kl": 0.10610957255170901,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9704052605063113,
+          "median": 0.9798608189575821,
+          "p95": 0.9994071056290701
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9263455583758403,
+          "median": 0.9418493229283095,
+          "p95": 0.9967064941865309
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.07993864498971949,
+          "median": 0.05505205376587364,
+          "p95": 0.23798290507558448
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2955186631944445,
+          "median": 0.25,
+          "p95": 0.75
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.541666666666668,
+          "median": 26.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9715491628820231,
+            "median": 0.9814818111735806,
+            "p95": 0.9994750520691644
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9271369973009014,
+            "median": 0.9418493229283095,
+            "p95": 0.9974227384872042
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.07274892374498045,
+            "median": 0.05040024071188026,
+            "p95": 0.26227321868190623
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2960611979166667,
+            "median": 0.25,
+            "p95": 0.6875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.333333333333332,
+            "median": 24.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9692613581305994,
+            "median": 0.9790359321106704,
+            "p95": 0.9990707471165663
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9255541194507791,
+            "median": 0.9421539566314892,
+            "p95": 0.9966634157700832
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.08712836623445853,
+            "median": 0.059084068257684565,
+            "p95": 0.23798290507558448
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2949761284722222,
+            "median": 0.234375,
+            "p95": 0.8125
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.75,
+            "median": 26.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "variant": "random_gaussian",
+      "p": 0.95,
+      "test_pooled_kl": 0.10610957255170901,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9853227218994252,
+          "median": 0.9903353011879112,
+          "p95": 0.9996571648211006
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9635513210372003,
+          "median": 0.9723419098845905,
+          "p95": 0.9980981811024752
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.04078227809126319,
+          "median": 0.02825398121752918,
+          "p95": 0.13836390873631688
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.3822157118055556,
+          "median": 0.328125,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.5,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9855675031679615,
+            "median": 0.9906219896552275,
+            "p95": 0.9996773131499735
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9613336859360951,
+            "median": 0.9714488345631921,
+            "p95": 0.9981454756836403
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.03905349513778036,
+            "median": 0.027335422990624837,
+            "p95": 0.13782350361254514
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3868272569444444,
+            "median": 0.36458333333333337,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.458333333333332,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9850779406308888,
+            "median": 0.9894960862999389,
+            "p95": 0.9994718566139082
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9657689561383055,
+            "median": 0.9733987005739992,
+            "p95": 0.9980981811024752
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.04251106104474602,
+            "median": 0.030035283007723963,
+            "p95": 0.17293462626383746
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3776041666666667,
+            "median": 0.3125,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.541666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "variant": "trained",
+      "p": 0.73,
+      "test_pooled_kl": 0.09389303339413982,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9204204570884057,
+          "median": 0.9420488043636885,
+          "p95": 0.9986813993071711
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.809694952654943,
+          "median": 0.8503263540521575,
+          "p95": 0.9933409160665373
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.21368631285841522,
+          "median": 0.14458511553371894,
+          "p95": 0.714303014073624
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.16259765625,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.75,
+          "median": 22.0,
+          "p95": 46
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9230741632934493,
+            "median": 0.9526375977924342,
+            "p95": 0.999091384295205
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8151700697649158,
+            "median": 0.8348814476447033,
+            "p95": 0.9926924617763744
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.19926164870351418,
+            "median": 0.13386731287233383,
+            "p95": 0.6146041718047133
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.1614040798611111,
+            "median": 0.140625,
+            "p95": 0.40625
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.25,
+            "median": 22.0,
+            "p95": 46
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.917766750883362,
+            "median": 0.9357540334093961,
+            "p95": 0.9986813993071711
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8042198355449702,
+            "median": 0.8599078523822177,
+            "p95": 0.9936445734302891
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.22811097701331626,
+            "median": 0.16548884391246974,
+            "p95": 0.7583187427844611
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.1637912326388889,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 23.25,
+            "median": 22.0,
+            "p95": 46
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "variant": "trained",
+      "p": 0.9,
+      "test_pooled_kl": 0.09389303339413982,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9702170654430365,
+          "median": 0.9806431460883775,
+          "p95": 0.9993754996535841
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9295463155481074,
+          "median": 0.9412866944490779,
+          "p95": 0.9963642972954873
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.08137855181228633,
+          "median": 0.05229195149870541,
+          "p95": 0.25969264058598424
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2939724392361111,
+          "median": 0.25,
+          "p95": 0.75
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.5,
+          "median": 22.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9710119264898945,
+            "median": 0.9824889192137118,
+            "p95": 0.9993938826766285
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9265923542430419,
+            "median": 0.9422544726509599,
+            "p95": 0.9962795693329245
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.07430673719307244,
+            "median": 0.047095758810782415,
+            "p95": 0.25969264058598424
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.29248046875,
+            "median": 0.25,
+            "p95": 0.6875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.291666666666668,
+            "median": 22.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9694222043961784,
+            "median": 0.9798608189575821,
+            "p95": 0.9991871479007793
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9325002768531729,
+            "median": 0.9404450864046271,
+            "p95": 0.9968353566534233
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.08845036643150021,
+            "median": 0.05623638372483316,
+            "p95": 0.2733123343861658
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2954644097222222,
+            "median": 0.25,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.708333333333332,
+            "median": 22.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "variant": "trained",
+      "p": 0.95,
+      "test_pooled_kl": 0.09389303339413982,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9847633335089339,
+          "median": 0.9901080852661268,
+          "p95": 0.9996702888615953
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9624719994884803,
+          "median": 0.9725335789243845,
+          "p95": 0.9978909138159782
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.044669522584826586,
+          "median": 0.026984161876201652,
+          "p95": 0.13604627854628235
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.3818630642361111,
+          "median": 0.328125,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.458333333333332,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.984882675964244,
+            "median": 0.9904630358912588,
+            "p95": 0.9997347186774546
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.960154839833857,
+            "median": 0.9705760488037796,
+            "p95": 0.9978909138159782
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.04119218667692619,
+            "median": 0.027439862399738703,
+            "p95": 0.1451512942611509
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3821614583333333,
+            "median": 0.375,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.25,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9846439910536238,
+            "median": 0.9894635636718849,
+            "p95": 0.9995569150907548
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9647891591431036,
+            "median": 0.9736287321377963,
+            "p95": 0.998406583762285
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.048146858492726985,
+            "median": 0.026473675935404492,
+            "p95": 0.1312000708498034
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3815646701388889,
+            "median": 0.3125,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.666666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "initial_query_samples",
+      "p": 0.73,
+      "test_pooled_kl": 0.07899898589401838,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9162943592168872,
+          "median": 0.9420488043636885,
+          "p95": 0.9983132144192988
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.8085994021719327,
+          "median": 0.8336932443947038,
+          "p95": 0.9936445734302891
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.22542626966382642,
+          "median": 0.14525381267422457,
+          "p95": 0.6563370786901549
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.1621365017361111,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.541666666666668,
+          "median": 22.0,
+          "p95": 46
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9225647955658326,
+            "median": 0.9526375977924342,
+            "p95": 0.9983132144192988
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8137220273119395,
+            "median": 0.8135266852224723,
+            "p95": 0.9941996098400729
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.2003352363543042,
+            "median": 0.13123771250995264,
+            "p95": 0.6563370786901549
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.15999348958333334,
+            "median": 0.125,
+            "p95": 0.40625
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.25,
+            "median": 22.0,
+            "p95": 46
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9100239228679419,
+            "median": 0.9352856341978522,
+            "p95": 0.9986813993071711
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8034767770319259,
+            "median": 0.8389142027091814,
+            "p95": 0.9936445734302891
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.2505173029733487,
+            "median": 0.1698837701870638,
+            "p95": 0.660637299055841
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.1642795138888889,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.833333333333332,
+            "median": 22.0,
+            "p95": 46
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "initial_query_samples",
+      "p": 0.9,
+      "test_pooled_kl": 0.07899898589401838,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.969094971368417,
+          "median": 0.9799840051375879,
+          "p95": 0.9993022955203702
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9229130114620299,
+          "median": 0.9414975226930735,
+          "p95": 0.9964492556042777
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.0851390872068618,
+          "median": 0.05451658288907687,
+          "p95": 0.2618327719300123
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2926974826388889,
+          "median": 0.25,
+          "p95": 0.75
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.3125,
+          "median": 22.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9696223110238673,
+            "median": 0.9807156212240109,
+            "p95": 0.9993938826766285
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9200939166842295,
+            "median": 0.9404572002962879,
+            "p95": 0.9963642972954873
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.08092640856000498,
+            "median": 0.05199689774985149,
+            "p95": 0.2618327719300123
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2931857638888889,
+            "median": 0.25,
+            "p95": 0.6875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.125,
+            "median": 22.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.968567631712967,
+            "median": 0.9787900013715092,
+            "p95": 0.9991164261117776
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9257321062398303,
+            "median": 0.9423647848754848,
+            "p95": 0.9968353566534233
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.08935176585371862,
+            "median": 0.05655843996938563,
+            "p95": 0.2764267002631671
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2922092013888889,
+            "median": 0.1875,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.5,
+            "median": 24.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "initial_query_samples",
+      "p": 0.95,
+      "test_pooled_kl": 0.07899898589401838,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9846554329801228,
+          "median": 0.9894635636718849,
+          "p95": 0.9996526160017399
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9589381060019263,
+          "median": 0.9724673398091184,
+          "p95": 0.9981454756836403
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.04468694137318679,
+          "median": 0.029981731910596006,
+          "p95": 0.135133263691207
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.37773980034722227,
+          "median": 0.3125,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.333333333333332,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9850396010669327,
+            "median": 0.9904361378317383,
+            "p95": 0.999722140372242
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9588685782600347,
+            "median": 0.9705760488037796,
+            "p95": 0.9981454756836403
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.040779475039505374,
+            "median": 0.027789793857967978,
+            "p95": 0.13604627854628235
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3814561631944444,
+            "median": 0.359375,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.208333333333332,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9842712648933128,
+            "median": 0.9891826448374774,
+            "p95": 0.9995569150907548
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.959007633743818,
+            "median": 0.9736078597658384,
+            "p95": 0.998406583762285
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.0485944077068682,
+            "median": 0.03235923790187277,
+            "p95": 0.1312000708498034
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3740234375,
+            "median": 0.3125,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.458333333333332,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "random_gaussian",
+      "p": 0.73,
+      "test_pooled_kl": 0.09743762672305697,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9191699127311401,
+          "median": 0.9438858194843589,
+          "p95": 0.9986146235244405
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.809151950422098,
+          "median": 0.8438546034479681,
+          "p95": 0.9926924617763744
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.21754624029095285,
+          "median": 0.14088314039727706,
+          "p95": 0.660637299055841
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.1625705295138889,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.625,
+          "median": 22.0,
+          "p95": 42
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.924399733826268,
+            "median": 0.9548139727234097,
+            "p95": 0.9986146235244405
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8126230215475672,
+            "median": 0.8154248835781333,
+            "p95": 0.9924400151167408
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.19124753406126235,
+            "median": 0.13123771250995264,
+            "p95": 0.6194321680607938
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.1598849826388889,
+            "median": 0.125,
+            "p95": 0.40625
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.083333333333332,
+            "median": 22.0,
+            "p95": 42
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9139400916360122,
+            "median": 0.9374975210362457,
+            "p95": 0.9986813993071711
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.805680879296629,
+            "median": 0.8609132564568074,
+            "p95": 0.9940340778143055
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.24384494652064337,
+            "median": 0.14596183491988182,
+            "p95": 0.6631751333901851
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.1652560763888889,
+            "median": 0.125,
+            "p95": 0.5
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 23.166666666666668,
+            "median": 22.0,
+            "p95": 46
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "random_gaussian",
+      "p": 0.9,
+      "test_pooled_kl": 0.09743762672305697,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9674481870339768,
+          "median": 0.9805846135718461,
+          "p95": 0.9993472388823987
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9257597175009816,
+          "median": 0.9412866944490779,
+          "p95": 0.9964492556042777
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.09369131929101093,
+          "median": 0.05358621031734799,
+          "p95": 0.2559806682170592
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2919650607638889,
+          "median": 0.25,
+          "p95": 0.75
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.270833333333332,
+          "median": 22.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9705114942755778,
+            "median": 0.981449675320047,
+            "p95": 0.9993503170794616
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.923948168362461,
+            "median": 0.9399511085665146,
+            "p95": 0.9963642972954873
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.07742920194295763,
+            "median": 0.05199689774985149,
+            "p95": 0.28039003598662576
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2911241319444445,
+            "median": 0.25,
+            "p95": 0.6875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 27.875,
+            "median": 22.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9643848797923759,
+            "median": 0.9798608189575821,
+            "p95": 0.9993280147004134
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9275712666395024,
+            "median": 0.9421539566314892,
+            "p95": 0.9966634157700832
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.10995343663906425,
+            "median": 0.054744104040709965,
+            "p95": 0.25466735296336457
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2928059895833333,
+            "median": 0.22395833333333331,
+            "p95": 0.8125
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.666666666666668,
+            "median": 22.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "random_gaussian",
+      "p": 0.95,
+      "test_pooled_kl": 0.09743762672305697,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9856188344732812,
+          "median": 0.9896838084207942,
+          "p95": 0.999570543093727
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9638586649584591,
+          "median": 0.9720707045113544,
+          "p95": 0.9978909138159782
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.04030286734734093,
+          "median": 0.028621859955762677,
+          "p95": 0.13250905824644008
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.38018120659722227,
+          "median": 0.3125,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.375,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9853262236613496,
+            "median": 0.9905123468081236,
+            "p95": 0.9997347186774546
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9600454005416256,
+            "median": 0.9696261691231189,
+            "p95": 0.9978909138159782
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.040945826237226625,
+            "median": 0.02827540224320499,
+            "p95": 0.15013557698452978
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3841145833333333,
+            "median": 0.359375,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.041666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9859114452852129,
+            "median": 0.989254697602334,
+            "p95": 0.9994718566139082
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9676719293752926,
+            "median": 0.9727016683471681,
+            "p95": 0.9983848965488537
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.03965990845745524,
+            "median": 0.030464161739487336,
+            "p95": 0.12346229341102435
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3762478298611111,
+            "median": 0.3125,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.708333333333332,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "trained",
+      "p": 0.73,
+      "test_pooled_kl": 0.07185073387062252,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9204539594063599,
+          "median": 0.9407958355533976,
+          "p95": 0.9986813993071711
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.8097397923407975,
+          "median": 0.8316033246234573,
+          "p95": 0.9936445734302891
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.2109410463735685,
+          "median": 0.14368597164427632,
+          "p95": 0.653679365723901
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.1611056857638889,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.541666666666668,
+          "median": 22.0,
+          "p95": 46
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9230176996405195,
+            "median": 0.9536869721001567,
+            "p95": 0.9986992066601394
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8133803742236134,
+            "median": 0.8135266852224723,
+            "p95": 0.9926924617763744
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.19983727251989006,
+            "median": 0.12695793504300762,
+            "p95": 0.7154857160560213
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.15983072916666666,
+            "median": 0.125,
+            "p95": 0.40625
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.458333333333332,
+            "median": 22.0,
+            "p95": 46
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9178902191722003,
+            "median": 0.9345063593506685,
+            "p95": 0.9986813993071711
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8060992104579817,
+            "median": 0.8339508078070038,
+            "p95": 0.9940340778143055
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.22204482022724695,
+            "median": 0.16548884391246974,
+            "p95": 0.653679365723901
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.1623806423611111,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.625,
+            "median": 22.0,
+            "p95": 46
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "trained",
+      "p": 0.9,
+      "test_pooled_kl": 0.07185073387062252,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9694180104106214,
+          "median": 0.9800279815478942,
+          "p95": 0.999375301679165
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9247216943654003,
+          "median": 0.943121734833371,
+          "p95": 0.9963642972954873
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.08386688684853798,
+          "median": 0.05358621031734799,
+          "p95": 0.26064071490590573
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2923990885416667,
+          "median": 0.21875,
+          "p95": 0.8125
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.229166666666668,
+          "median": 22.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9701040953854072,
+            "median": 0.9811279407686533,
+            "p95": 0.9994750520691644
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9235303421020303,
+            "median": 0.9455698075339016,
+            "p95": 0.9961083691221021
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.07958021935539043,
+            "median": 0.04402354856084641,
+            "p95": 0.2618327719300123
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2957899305555555,
+            "median": 0.25,
+            "p95": 0.6875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.25,
+            "median": 22.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9687319254358354,
+            "median": 0.9778283862570399,
+            "p95": 0.9991164261117776
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9259130466287703,
+            "median": 0.9408758607517254,
+            "p95": 0.9966634157700832
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.08815355434168552,
+            "median": 0.05655843996938563,
+            "p95": 0.2372258854679274
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2890082465277778,
+            "median": 0.1875,
+            "p95": 0.8125
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.208333333333332,
+            "median": 22.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 23,
+      "variant": "trained",
+      "p": 0.95,
+      "test_pooled_kl": 0.07185073387062252,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9846624244430653,
+          "median": 0.9894635636718849,
+          "p95": 0.9996117815471355
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9593245634520989,
+          "median": 0.9721010332174155,
+          "p95": 0.9980099961005522
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.044853211398695525,
+          "median": 0.02779828069399213,
+          "p95": 0.14374328947911388
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.37714301215277773,
+          "median": 0.3125,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.3125,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9851616690595985,
+            "median": 0.9904630358912588,
+            "p95": 0.9996773131499735
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9592809809688262,
+            "median": 0.9714488345631921,
+            "p95": 0.9980099961005522
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.0404134874883582,
+            "median": 0.026892036926237532,
+            "p95": 0.1451512942611509
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3826497395833333,
+            "median": 0.359375,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.208333333333332,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9841631798265321,
+            "median": 0.9891826448374774,
+            "p95": 0.9995569150907548
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9593681459353718,
+            "median": 0.9730486621235676,
+            "p95": 0.998406583762285
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.04929293530903286,
+            "median": 0.032095446903421185,
+            "p95": 0.14374328947911388
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.37163628472222227,
+            "median": 0.3046875,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.416666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "initial_query_samples",
+      "p": 0.73,
+      "test_pooled_kl": 0.09633996155202147,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9152592225086758,
+          "median": 0.9431871292674423,
+          "p95": 0.9986442228242712
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.8050962645641179,
+          "median": 0.837214423668462,
+          "p95": 0.9933409160665373
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.2366990530396356,
+          "median": 0.1399806521340382,
+          "p95": 0.7143420907546576
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.16151258680555555,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.604166666666668,
+          "median": 22.0,
+          "p95": 46
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.923410028505991,
+            "median": 0.9548139727234097,
+            "p95": 0.9990222524641285
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8188013082146685,
+            "median": 0.8226870737228198,
+            "p95": 0.9926924617763744
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.19613087541099325,
+            "median": 0.1257645286433961,
+            "p95": 0.6146041718047133
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.1604275173611111,
+            "median": 0.125,
+            "p95": 0.40625
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.291666666666668,
+            "median": 22.0,
+            "p95": 46
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9071084165113605,
+            "median": 0.9352856341978522,
+            "p95": 0.9980252357536363
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.7913912209135673,
+            "median": 0.8448184146995642,
+            "p95": 0.9940340778143055
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.27726723066827796,
+            "median": 0.16548884391246974,
+            "p95": 0.7658203903376173
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.16259765625,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.916666666666668,
+            "median": 22.0,
+            "p95": 46
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "initial_query_samples",
+      "p": 0.9,
+      "test_pooled_kl": 0.09633996155202147,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.969600083294177,
+          "median": 0.9800691238483082,
+          "p95": 0.9993938826766285
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.924438551973834,
+          "median": 0.9411111781981286,
+          "p95": 0.9963642972954873
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.0844697189329935,
+          "median": 0.053209504901834286,
+          "p95": 0.2517900360591588
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2945692274305555,
+          "median": 0.25,
+          "p95": 0.75
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.4375,
+          "median": 24.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9713173035472029,
+            "median": 0.9820680850166734,
+            "p95": 0.9994912275921833
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9272207275872401,
+            "median": 0.9455698075339016,
+            "p95": 0.9963642972954873
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.07331316427757255,
+            "median": 0.045356462057969414,
+            "p95": 0.2517900360591588
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2943793402777778,
+            "median": 0.25,
+            "p95": 0.75
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.291666666666668,
+            "median": 24.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.967882863041151,
+            "median": 0.977611459275171,
+            "p95": 0.9991871479007793
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9216563763604277,
+            "median": 0.9398895484022658,
+            "p95": 0.9968353566534233
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.09562627358841443,
+            "median": 0.058040652473050736,
+            "p95": 0.27559018171451055
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2947591145833333,
+            "median": 0.21354166666666669,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.583333333333332,
+            "median": 24.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "initial_query_samples",
+      "p": 0.95,
+      "test_pooled_kl": 0.09633996155202147,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9840091470159856,
+          "median": 0.9896838084207942,
+          "p95": 0.9996702888615953
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9578219843185836,
+          "median": 0.9724673398091184,
+          "p95": 0.9978909138159782
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.048653364921071945,
+          "median": 0.026879722467087787,
+          "p95": 0.17076513889530157
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.3800455729166667,
+          "median": 0.3125,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.395833333333332,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9851959581406206,
+            "median": 0.9906219896552275,
+            "p95": 0.9997347186774546
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9610767708140228,
+            "median": 0.9714488345631921,
+            "p95": 0.9978909138159782
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.04037051546996323,
+            "median": 0.026221640310385118,
+            "p95": 0.13604627854628235
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3812391493055556,
+            "median": 0.375,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.125,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9828223358913509,
+            "median": 0.9891826448374774,
+            "p95": 0.9995569150907548
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9545671978231444,
+            "median": 0.9726765521903796,
+            "p95": 0.998406583762285
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.05693621437218066,
+            "median": 0.02944020409726225,
+            "p95": 0.17479081893945206
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.37885199652777773,
+            "median": 0.3125,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.666666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "random_gaussian",
+      "p": 0.73,
+      "test_pooled_kl": 0.09598379416237669,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.919382536066744,
+          "median": 0.9414207052650161,
+          "p95": 0.9981774954729867
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.8091178287579912,
+          "median": 0.8305918038869492,
+          "p95": 0.9936445734302891
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.2197993639708865,
+          "median": 0.14525381267422457,
+          "p95": 0.6742122290401401
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.16259765625,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.6875,
+          "median": 22.0,
+          "p95": 42
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9209664397700399,
+            "median": 0.9503845647840858,
+            "p95": 0.9981774954729867
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8048348713611507,
+            "median": 0.8081810270612901,
+            "p95": 0.9905265274976051
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.21447238815898192,
+            "median": 0.13386731287233383,
+            "p95": 0.6964948360878601
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.15961371527777776,
+            "median": 0.125,
+            "p95": 0.40625
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.25,
+            "median": 20.0,
+            "p95": 46
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.917798632363448,
+            "median": 0.9365672586045162,
+            "p95": 0.9986813993071711
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8134007861548317,
+            "median": 0.8448184146995642,
+            "p95": 0.9944347205370142
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.22512633978279115,
+            "median": 0.1624303420731392,
+            "p95": 0.6742122290401401
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.16558159722222224,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 23.125,
+            "median": 22.0,
+            "p95": 42
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "random_gaussian",
+      "p": 0.9,
+      "test_pooled_kl": 0.09598379416237669,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9683033229870953,
+          "median": 0.9786568655958973,
+          "p95": 0.9992590938994445
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9226075248453576,
+          "median": 0.9373240243690066,
+          "p95": 0.9962437267906473
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.09009005981093471,
+          "median": 0.056632362410662315,
+          "p95": 0.2761662907587248
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2932942708333333,
+          "median": 0.25,
+          "p95": 0.8125
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.520833333333332,
+          "median": 22.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.969087146100602,
+            "median": 0.9802188024385108,
+            "p95": 0.9993022955203702
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9166065189141509,
+            "median": 0.9389814341338689,
+            "p95": 0.9961083691221021
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.08973748712686476,
+            "median": 0.053209504901834286,
+            "p95": 0.29782580568806855
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2951931423611111,
+            "median": 0.25,
+            "p95": 0.75
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.333333333333332,
+            "median": 22.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9675194998735887,
+            "median": 0.9760212075340022,
+            "p95": 0.9991164261117776
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9286085307765641,
+            "median": 0.9370498105944645,
+            "p95": 0.9964492556042777
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.09044263249500466,
+            "median": 0.059132774119758494,
+            "p95": 0.26717390102074834
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2913953993055555,
+            "median": 0.23958333333333331,
+            "p95": 0.8125
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.708333333333332,
+            "median": 24.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "random_gaussian",
+      "p": 0.95,
+      "test_pooled_kl": 0.09598379416237669,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9849212274944147,
+          "median": 0.9894635636718849,
+          "p95": 0.9996526160017399
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.962975529277196,
+          "median": 0.9721010332174155,
+          "p95": 0.9980153562231084
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.04642389586964746,
+          "median": 0.029037586822677746,
+          "p95": 0.13251426035746988
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.38359917534722227,
+          "median": 0.3125,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.645833333333332,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9838543822848158,
+            "median": 0.9903695551464862,
+            "p95": 0.9997347186774546
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.957333904768102,
+            "median": 0.9705760488037796,
+            "p95": 0.9980153562231084
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.05310507581119375,
+            "median": 0.027646432747858357,
+            "p95": 0.13981645252416672
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3885091145833333,
+            "median": 0.375,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.5,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9859880727040137,
+            "median": 0.989023546915068,
+            "p95": 0.9994729562772219
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.96861715378629,
+            "median": 0.9726765521903796,
+            "p95": 0.9981046521595807
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.03974271592810118,
+            "median": 0.031140766577339777,
+            "p95": 0.12234245953459806
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3786892361111111,
+            "median": 0.3125,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.791666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "trained",
+      "p": 0.73,
+      "test_pooled_kl": 0.08385382302386012,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9208981248405136,
+          "median": 0.9420488043636885,
+          "p95": 0.9982404548289409
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.8172985814110517,
+          "median": 0.8392928784052938,
+          "p95": 0.9936445734302891
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.20875884319918125,
+          "median": 0.1396230689913509,
+          "p95": 0.6901498030970818
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.16349283854166666,
+          "median": 0.125,
+          "p95": 0.4375
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 22.625,
+          "median": 22.0,
+          "p95": 46
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9223887199830614,
+            "median": 0.9503845647840858,
+            "p95": 0.9982675481455008
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8150452320874478,
+            "median": 0.8226870737228198,
+            "p95": 0.9926924617763744
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.20718071285810555,
+            "median": 0.13123771250995264,
+            "p95": 0.7122490954316659
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.15950520833333334,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.291666666666668,
+            "median": 22.0,
+            "p95": 46
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9194075296979657,
+            "median": 0.9382219885854735,
+            "p95": 0.9980252357536363
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.8195519307346556,
+            "median": 0.8512124154874698,
+            "p95": 0.9940340778143055
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.21033697354025693,
+            "median": 0.15413970221143117,
+            "p95": 0.6901498030970818
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.16748046875,
+            "median": 0.125,
+            "p95": 0.4375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 22.958333333333332,
+            "median": 22.0,
+            "p95": 46
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "trained",
+      "p": 0.9,
+      "test_pooled_kl": 0.08385382302386012,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9706190802010183,
+          "median": 0.9800438230404397,
+          "p95": 0.9993754996535841
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9269394939479662,
+          "median": 0.9436139764616892,
+          "p95": 0.9963642972954873
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.07918733777793588,
+          "median": 0.05199689774985149,
+          "p95": 0.2372258854679274
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.2944878472222222,
+          "median": 0.25,
+          "p95": 0.8125
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 28.479166666666668,
+          "median": 26.0,
+          "p95": 62
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9714502569012401,
+            "median": 0.9819179891525097,
+            "p95": 0.9994750520691644
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.928004454030154,
+            "median": 0.9483068004510853,
+            "p95": 0.9961083691221021
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.0731023523812569,
+            "median": 0.045356462057969414,
+            "p95": 0.2517900360591588
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.2955186631944445,
+            "median": 0.25,
+            "p95": 0.75
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.375,
+            "median": 24.0,
+            "p95": 62
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9697879035007965,
+            "median": 0.9775425209187932,
+            "p95": 0.999375301679165
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9258745338657784,
+            "median": 0.9421539566314892,
+            "p95": 0.9968353566534233
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.08527232317461486,
+            "median": 0.057592123202847095,
+            "p95": 0.2372258854679274
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.29345703125,
+            "median": 0.1953125,
+            "p95": 0.8125
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 28.583333333333332,
+            "median": 26.0,
+            "p95": 62
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "variant": "trained",
+      "p": 0.95,
+      "test_pooled_kl": 0.08385382302386012,
+      "metrics": {
+        "retained_mass": {
+          "count": 192,
+          "mean": 0.9849674995240019,
+          "median": 0.9892849681111424,
+          "p95": 0.9996702888615953
+        },
+        "retained_non_sink_mass": {
+          "count": 192,
+          "mean": 0.9592162817490446,
+          "median": 0.9720707045113544,
+          "p95": 0.9978909138159782
+        },
+        "attention_l2_error": {
+          "count": 192,
+          "mean": 0.04421820975542453,
+          "median": 0.028621859955762677,
+          "p95": 0.13604627854628235
+        },
+        "selected_key_fraction": {
+          "count": 192,
+          "mean": 0.3782823350694444,
+          "median": 0.3125,
+          "p95": 0.875
+        },
+        "scored_summary_nodes": {
+          "count": 192,
+          "mean": 31.291666666666668,
+          "median": 26.0,
+          "p95": 70
+        }
+      },
+      "per_document": {
+        "gutenberg:2600": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9852188574417619,
+            "median": 0.9906219896552275,
+            "p95": 0.9997347186774546
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9603176176746565,
+            "median": 0.9705760488037796,
+            "p95": 0.9978909138159782
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.040388361147875154,
+            "median": 0.026871235631063636,
+            "p95": 0.13604627854628235
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3818359375,
+            "median": 0.375,
+            "p95": 0.875
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.166666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        },
+        "gutenberg:74": {
+          "retained_mass": {
+            "count": 96,
+            "mean": 0.9847161416062417,
+            "median": 0.9889520500093224,
+            "p95": 0.9995569150907548
+          },
+          "retained_non_sink_mass": {
+            "count": 96,
+            "mean": 0.9581149458234326,
+            "median": 0.9726765521903796,
+            "p95": 0.998406583762285
+          },
+          "attention_l2_error": {
+            "count": 96,
+            "mean": 0.0480480583629739,
+            "median": 0.03199911557437379,
+            "p95": 0.14048807508268446
+          },
+          "selected_key_fraction": {
+            "count": 96,
+            "mean": 0.3747287326388889,
+            "median": 0.3125,
+            "p95": 0.9375
+          },
+          "scored_summary_nodes": {
+            "count": 96,
+            "mean": 31.416666666666668,
+            "median": 26.0,
+            "p95": 70
+          }
+        }
+      }
+    }
+  ],
+  "dense_equivalence": [
+    {
+      "seed": 7,
+      "max_l2_error": 3.572775023345808e-15,
+      "queries_checked": 192
+    },
+    {
+      "seed": 23,
+      "max_l2_error": 3.572775023345808e-15,
+      "queries_checked": 192
+    },
+    {
+      "seed": 101,
+      "max_l2_error": 3.572775023345808e-15,
+      "queries_checked": 192
+    }
+  ],
+  "query_metrics_sha256": "a334a1ed490581572a5300c79f53297e9b2913b858497ab7cff8cbb321c72711",
+  "limitations": [
+    "One layer of one small pretrained model; no full-model conversion or generation quality evaluation.",
+    "Only two held-out books; no statistical significance or broad generalization claim.",
+    "Held out from router fitting, not necessarily from GPT-2 pretraining.",
+    "Same routing thresholds do not imply matched sparsity; report actual selected fractions.",
+    "All dense comparisons are offline work, not free runtime telemetry or certified error bounds.",
+    "No GPU, kernel-speed or paper benchmark reproduction claim."
+  ]
+}

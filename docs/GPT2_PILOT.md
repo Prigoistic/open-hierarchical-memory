@@ -2,6 +2,8 @@
 
 This experiment tests model-activation capture, reference-query fitting and held-out routing evaluation. It is a small teacher-forced layer experiment. It does not reproduce the ZHA paper's model sizes, training budget, long-context benchmarks, kernels or generation quality.
 
+The first run is complete: see the [measured results, limitations and artifacts](../experiments/gpt2-layer5-pilot-v1/SUMMARY.md).
+
 ## Protocol fixed before training
 
 The committed `research/gpt2_pilot.json` is the protocol. The runner requires the experiment source/protocol tree to be committed and records its revision plus source hashes. It refuses to overwrite a completed report or publish a final report if experiment source changes during execution.
@@ -56,3 +58,22 @@ Raw texts, model weights and full activation caches are not committed. The small
 The regular tests check the pooled objective against a scalar oracle, reference gradients against finite differences, backbone-gradient exclusion, future-token isolation, holdout separation, deterministic fitting and initial-checkpoint eligibility. Optional adapter tests use a small random GPT-2 solely to check capture mechanics; the pilot itself loads the real pretrained checkpoint. Research dependencies are optional, so an environment without them explicitly skips those adapter tests.
 
 The independent semantic-mutation checks include accidentally differentiating the teacher and reversing KL direction. They establish that the corresponding regression tests discriminate these faults; they are not a proof of all possible training correctness properties.
+
+
+## Post-run audit and plot
+
+After the pilot has produced its local trace caches, audit the source/config identities, all raw-record aggregates and eight real queries using the independent scalar oracle:
+
+```sh
+uv run --locked --extra research python -m scripts.audit_gpt2_pilot
+```
+
+This writes `experiments/gpt2-layer5-pilot-v1/audit.json`. It does not fit references or select checkpoints. The eight literal queries require the matching ignored trace cache from the recorded run; do not replace it with a different capture and call that an audit of the original.
+
+Render the measured summary figure from the saved report with a separate, pinned plotting environment (not a change to the experiment lockfile):
+
+```sh
+uv run --isolated --no-project --python 3.12 --with matplotlib==3.10.1 python scripts/plot_gpt2_pilot.py
+```
+
+The plot records its matplotlib version and source-report hash in `plot-metadata.json`. Its right panel averages seed-level means, connects the three fixed thresholds, and shows no confidence intervals. Neither the plot nor the audit was used to choose training settings. Follow the run's source commit for a numerical reproduction; new experiments must use a distinct output directory rather than replacing the retained report.

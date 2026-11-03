@@ -13,33 +13,33 @@ Build a useful, readable independent ZHA research reference, then real model-lay
 - [x] M1 local verification: independent scalar oracle, high-precision output oracle, generated cases, isolation/ownership/boundary tests and targeted semantic mutation checks.
 - [x] M1 installed-release-artifact evidence: wheel and source distribution in fresh offline environments.
 - [ ] M1 hosted CI evidence: GitHub reports startup failure before jobs/logs; static workflow validation passes.
-- [ ] M2: implementation and protocol prepared; native capture/objective/split tests pass; three-seed pretrained-model pilot pending.
+- [x] M2: reference-only fitting, native pretrained GPT-2 capture, three-seed held-out layer pilot, checkpoint reloads and post-run scalar-oracle audit. See [measured results](experiments/gpt2-layer5-pilot-v1/SUMMARY.md).
 - [ ] M3: persistence, trace inspector and scoped reference release.
 - [ ] M4: numerically conservative bound/checker, if sound and useful.
 - [ ] M5: audited positional adapter and closed-loop model conversion.
 
-An adapter must move earlier if required by the selected real-model fixture. No unverified model checkpoint, GPU feature or checked-mass API has been added to make the checklist look complete.
+An adapter must move earlier if required by the selected real-model fixture. The completed GPT-2 adapter uses learned absolute positions; it does not close the RoPE gate. Only the measured routing-reference checkpoints are included; no converted model, GPU feature or checked-mass API is claimed.
 
 ## Current evidence
 
-Local suite with research extras: 70 pytest cases, including 60 generated routing configurations, 16 high-precision fixtures, native-model capture, fitting and data-isolation checks. Ten targeted semantic mutations are detected. Ruff, formatting and strict mypy check the package. See [the verification report](docs/evidence/local-verification.json) and [mutation evidence](docs/evidence/mutations.json) after running the verification command.
+Local suite with research extras: 70 passing pytest cases, including 60 generated routing configurations, 16 high-precision fixtures, native-model capture, fitting and data-isolation checks. Ten targeted semantic mutations are detected. Ruff, formatting and strict mypy check the package. See [the verification report](docs/evidence/local-verification.json) and [mutation evidence](docs/evidence/mutations.json) from the completed full verification. Without the optional research dependencies, GPT-2 adapter tests are explicitly skipped. The new post-run audit independently checks eight real queries and recomputes all 27 raw-record aggregates; it does not replace the regular tests.
 
 Hosted verification has not passed. The corrected workflow passes official actionlint 1.7.12 (checksum-verified distribution). The user confirmed an account-side restriction prevents hosted jobs from starting. Development can continue using the local core profile below. See [the run](https://github.com/Prigoistic/open-hierarchical-memory/actions/runs/41708001430) and [separate workflow evidence](docs/evidence/workflow-validation.json). Local success does not establish hosted CI success.
 
 ```sh
-uv sync --locked
-uv run --locked python scripts/verify.py
+uv sync --locked --extra research
+uv run --locked --extra research python scripts/verify.py
 ```
 
 For normal code changes when hosted compute is unavailable:
 
 ```sh
-uv run --locked python scripts/verify.py --profile core
+uv run --locked --extra research python scripts/verify.py --profile core
 ```
 
 The core profile writes `docs/evidence/core-verification.json`, preserving the full-profile report. It includes numerical tests and semantic mutations but explicitly excludes package-installation checks. Full verification is still required for release or packaging changes. No self-hosted runner, public repository exposure or account-setting changes are needed for this local workflow.
 
-The numerical domain is CPU float64 with finite, moderate test inputs. Proposed core tolerance remains `atol=1e-10, rtol=1e-9`; passing cases do not constitute a universal numerical proof. Approximate routing can have substantial error. No accuracy, speedup, production-readiness, firstness or semantic-correctness guarantee is claimed.
+The numerical domain is CPU float64 with finite, moderate test inputs. Proposed core tolerance remains `atol=1e-10, rtol=1e-9`; passing cases do not constitute a universal numerical proof. Approximate routing can have substantial error. The scoped accuracy measurements in the pilot are offline observations, not universal guarantees. No speedup, production-readiness, firstness or semantic-correctness guarantee is claimed.
 
 ## Engineering gate coverage
 
@@ -48,7 +48,7 @@ The numerical domain is CPU float64 with finite, moderate test inputs. Proposed 
 | V01–03, V05–11 | Implemented for the documented no-RoPE in-memory support contract; local oracle/regression evidence |
 | V12–14 | Input/ownership/budget/fallback cases covered; disk corruption, cancellation and mutable-cache recovery are unavailable, not passed |
 | V04, V15, V18–21 | RoPE, index persistence, bounds and inspector gates remain open |
-| V16–17 | Reference-gradient exclusion, independent pooled-KL oracle and fitting-selection tests pass; pretrained-model pilot pending |
+| V16–17 | Reference-gradient exclusion, pooled-KL oracle, fitting selection, frozen native captures and three-seed held-out pilot pass for the documented GPT-2 layer scope; whole-model conversion remains open |
 | V22 | Wheel and source distribution installed and exercised from fresh local environments; no package registry release |
 
 ## Review decisions
@@ -62,7 +62,9 @@ The numerical domain is CPU float64 with finite, moderate test inputs. Proposed 
 
 ## Next work
 
-Run the committed GPT-2 layer pilot using local verification. Hosted-CI availability is not a dependency of this experiment. See docs/GPT2_PILOT.md for the prespecified protocol, model revision, corpus split and interpretation limits.
+M3: persist immutable snapshots with corruption/version checks and build a trace inspector that shows selected IDs, summaries, offline error and failures clearly. Before broader quality claims, preregister a larger layer/context evaluation; the first pilot is small and higher-threshold gains are mixed. RoPE and closed-loop sparse generation require separate evidence. Hosted-CI availability is not a dependency of local development.
+
+The completed M2 run is bound to preregistration commit `421e2bce01e6c6b515fa5017ec90c2314f39bf6e`. All three seeds lower held-out pooled KL; at threshold 0.73, mean output L2 error falls 11.9% versus sampled-query initialization. Backbone hashes stay identical; native capture and saved-checkpoint reload checks pass. All 5,184 query records, 27 configuration aggregates, small reference checkpoints and a measured plot are saved under `experiments/gpt2-layer5-pilot-v1/`. These are one-layer, 256-token, two-test-book observations, not paper benchmark reproduction.
 
 ## Findings corrected during implementation
 

@@ -1,0 +1,75 @@
+{
+  "source_commit_verified": "421e2bce01e6c6b515fa5017ec90c2314f39bf6e",
+  "protocol_verified": true,
+  "corpus_manifest_verified": true,
+  "backbone_parameters_unchanged": true,
+  "raw_query_records_verified": 5184,
+  "configuration_aggregates_verified": 27,
+  "literal_real_query_checks": [
+    {
+      "book_id": 74,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 20,
+      "retained_mass": 0.7663123483001901,
+      "attention_l2_error": 0.4123178099928009
+    },
+    {
+      "book_id": 74,
+      "head": 0,
+      "p": 0.95,
+      "selected_keys": 92,
+      "retained_mass": 0.9660606107894396,
+      "attention_l2_error": 0.07967553468442853
+    },
+    {
+      "book_id": 74,
+      "head": 11,
+      "p": 0.73,
+      "selected_keys": 32,
+      "retained_mass": 0.906592734994223,
+      "attention_l2_error": 0.145841842565849
+    },
+    {
+      "book_id": 74,
+      "head": 11,
+      "p": 0.95,
+      "selected_keys": 148,
+      "retained_mass": 0.9836636822629157,
+      "attention_l2_error": 0.02483997716503397
+    },
+    {
+      "book_id": 2600,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 36,
+      "retained_mass": 0.8960807507450143,
+      "attention_l2_error": 0.22281762127800658
+    },
+    {
+      "book_id": 2600,
+      "head": 0,
+      "p": 0.95,
+      "selected_keys": 124,
+      "retained_mass": 0.980955087102339,
+      "attention_l2_error": 0.039857784395507904
+    },
+    {
+      "book_id": 2600,
+      "head": 11,
+      "p": 0.73,
+      "selected_keys": 60,
+      "retained_mass": 0.886010426641723,
+      "attention_l2_error": 0.2039342396532528
+    },
+    {
+      "book_id": 2600,
+      "head": 11,
+      "p": 0.95,
+      "selected_keys": 180,
+      "retained_mass": 0.9769349583423939,
+      "attention_l2_error": 0.04324910080487967
+    }
+  ],
+  "scope": "Post-run identity/aggregation audit and eight independent real-query checks; not exhaustive proof or a new training run."
+}
