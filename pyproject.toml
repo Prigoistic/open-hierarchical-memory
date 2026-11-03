@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "open-hierarchical-memory"
+version = "0.1.0.dev0"
+description = "Independent hierarchical sparse-attention research reference"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.12,<3.14"
+dependencies = ["torch>=2.7,<3", "numpy>=1.26,<3"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "hypothesis>=6,<7", "ruff>=0.11,<1", "mypy>=1.15,<2", "build>=1.2,<2", "hatchling==1.27.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/open_hierarchical_memory"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/open_hierarchical_memory"]
+

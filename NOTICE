@@ -1,0 +1,11 @@
+Open Hierarchical Memory
+Copyright 2026 Priyam Ghosh
+
+Independent implementation of the no-positional-encoding summary and routing
+construction described in "Subquadratic Attention with a Hierarchical
+Tree-Structured Indexer" by Leon Lufkin, Cutter Dawes, Alexander Speicher,
+Kamesh Krishnamurthy, Tomas Figliolia and Beren Millidge (Zyphra, 2026).
+Paper: https://arxiv.org/abs/2610.42112
+
+No affiliation with Zyphra is implied. No upstream implementation was copied.
+

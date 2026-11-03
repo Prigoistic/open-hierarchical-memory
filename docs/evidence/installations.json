@@ -1,0 +1,17 @@
+{
+  "records": [
+    {
+      "installed_import": true,
+      "dense_equivalent_smoke": true,
+      "sparse_path_exercised": true,
+      "distribution": "open_hierarchical_memory-0.1.0.dev0-py3-none-any.whl"
+    },
+    {
+      "installed_import": true,
+      "dense_equivalent_smoke": true,
+      "sparse_path_exercised": true,
+      "distribution": "open_hierarchical_memory-0.1.0.dev0.tar.gz"
+    }
+  ],
+  "scope": "two clean offline installs on the local CPU platform"
+}
