@@ -1,5 +1,6 @@
 """One command for the supported local/CI checks; stop on the first failure."""
 
+import argparse
 import importlib.metadata
 import json
 import platform
@@ -11,6 +12,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--profile",
+        choices=("full", "core"),
+        default="full",
+        help="full includes clean package installations; core runs everyday numerical/code checks",
+    )
+    arguments = parser.parse_args()
     commands = [
         [sys.executable, "-m", "pytest", "-q"],
         [sys.executable, "-m", "ruff", "check", "."],
@@ -18,8 +27,9 @@ def main() -> int:
         [sys.executable, "-m", "mypy"],
         [sys.executable, "scripts/check_mutations.py"],
         [sys.executable, "examples/synthetic.py"],
-        [sys.executable, "scripts/check_package.py"],
     ]
+    if arguments.profile == "full":
+        commands.append([sys.executable, "scripts/check_package.py"])
     checks = []
     for command in commands:
         # Avoid embedding the machine-specific Python path in committed evidence.
@@ -31,6 +41,11 @@ def main() -> int:
             break
     result = {
         "scope": "CPU float64 no-RoPE core only; no model/GPU/guarantee validation",
+        "profile": arguments.profile,
+        "package_installations_checked": arguments.profile == "full"
+        and len(checks) == len(commands)
+        and checks[-1]["exit_code"] == 0,
+        "hosted_ci_status": "not_assessed",
         "python": platform.python_version(),
         "platform": platform.platform(),
         "dependencies": {
@@ -41,7 +56,10 @@ def main() -> int:
         and all(check["exit_code"] == 0 for check in checks),
         "checks": checks,
     }
-    (ROOT / "docs/evidence/local-verification.json").write_text(json.dumps(result, indent=2) + "\n")
+    filename = (
+        "local-verification.json" if arguments.profile == "full" else "core-verification.json"
+    )
+    (ROOT / "docs/evidence" / filename).write_text(json.dumps(result, indent=2) + "\n")
     return 0 if result["all_passed"] else 1
 
 

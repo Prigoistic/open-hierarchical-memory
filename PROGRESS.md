@@ -24,12 +24,20 @@ An adapter must move earlier if required by the selected real-model fixture. No 
 
 Local suite: 52 pytest cases, including 60 generated routing configurations and 16 high-precision fixtures checking both execution modes. Eight targeted semantic mutations are detected. Ruff, formatting and strict mypy check the package. See [the verification report](docs/evidence/local-verification.json) and [mutation evidence](docs/evidence/mutations.json) after running the verification command.
 
-Hosted verification has not passed. The corrected workflow passes official actionlint 1.7.12 (checksum-verified distribution). GitHub reports `startup_failure` before creating any jobs or logs. Its API does not expose the detailed reason; the signed-in run page is needed. See [the run](https://github.com/Prigoistic/open-hierarchical-memory/actions/runs/41707258825) and [separate workflow evidence](docs/evidence/workflow-validation.json). Do not recast this as a passing automated test run or assume a billing/runner cause without evidence.
+Hosted verification has not passed. The corrected workflow passes official actionlint 1.7.12 (checksum-verified distribution). The user confirmed an account-side restriction prevents hosted jobs from starting. Development can continue using the local core profile below. See [the run](https://github.com/Prigoistic/open-hierarchical-memory/actions/runs/41708001430) and [separate workflow evidence](docs/evidence/workflow-validation.json). Local success does not establish hosted CI success.
 
 ```sh
 uv sync --locked
 uv run --locked python scripts/verify.py
 ```
+
+For normal code changes when hosted compute is unavailable:
+
+```sh
+uv run --locked python scripts/verify.py --profile core
+```
+
+The core profile writes `docs/evidence/core-verification.json`, preserving the full-profile report. It includes numerical tests and semantic mutations but explicitly excludes package-installation checks. Full verification is still required for release or packaging changes. No self-hosted runner, public repository exposure or account-setting changes are needed for this local workflow.
 
 The numerical domain is CPU float64 with finite, moderate test inputs. Proposed core tolerance remains `atol=1e-10, rtol=1e-9`; passing cases do not constitute a universal numerical proof. Approximate routing can have substantial error. No accuracy, speedup, production-readiness, firstness or semantic-correctness guarantee is claimed.
 

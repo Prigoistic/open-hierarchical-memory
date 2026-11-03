@@ -1,0 +1,43 @@
+{
+  "scope": "CPU float64 no-RoPE core only; no model/GPU/guarantee validation",
+  "profile": "core",
+  "package_installations_checked": false,
+  "hosted_ci_status": "not_assessed",
+  "python": "3.12.14",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "dependencies": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "pytest": "9.2.0",
+    "hypothesis": "6.170.14",
+    "ruff": "0.17.3",
+    "mypy": "1.20.2"
+  },
+  "all_passed": true,
+  "checks": [
+    {
+      "command": "python -m pytest -q",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m ruff check .",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m ruff format --check .",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m mypy",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/check_mutations.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python examples/synthetic.py",
+      "exit_code": 0
+    }
+  ]
+}
