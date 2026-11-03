@@ -12,7 +12,7 @@ Build a useful, readable independent ZHA research reference, then real model-lay
 - [x] M1 implementation: owned CPU float64 snapshots, affine summaries, recursive tree, causal/head-local router, selected attention and explicit budget failures/fallback.
 - [x] M1 local verification: independent scalar oracle, high-precision output oracle, generated cases, isolation/ownership/boundary tests and targeted semantic mutation checks.
 - [x] M1 installed-release-artifact evidence: wheel and source distribution in fresh offline environments.
-- [ ] M1 hosted CI evidence.
+- [ ] M1 hosted CI evidence: GitHub reports startup failure before jobs/logs; static workflow validation passes.
 - [ ] M2: pinned real model-layer capture and held-out reference fitting.
 - [ ] M3: persistence, trace inspector and scoped reference release.
 - [ ] M4: numerically conservative bound/checker, if sound and useful.
@@ -23,6 +23,8 @@ An adapter must move earlier if required by the selected real-model fixture. No 
 ## Current evidence
 
 Local suite: 52 pytest cases, including 60 generated routing configurations and 16 high-precision fixtures checking both execution modes. Eight targeted semantic mutations are detected. Ruff, formatting and strict mypy check the package. See [the verification report](docs/evidence/local-verification.json) and [mutation evidence](docs/evidence/mutations.json) after running the verification command.
+
+Hosted verification has not passed. The corrected workflow passes official actionlint 1.7.12 (checksum-verified distribution). GitHub reports `startup_failure` before creating any jobs or logs. Its API does not expose the detailed reason; the signed-in run page is needed. See [the run](https://github.com/Prigoistic/open-hierarchical-memory/actions/runs/41707258825) and [separate workflow evidence](docs/evidence/workflow-validation.json). Do not recast this as a passing automated test run or assume a billing/runner cause without evidence.
 
 ```sh
 uv sync --locked

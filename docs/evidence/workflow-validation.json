@@ -1,0 +1,12 @@
+{
+  "validator": "actionlint 1.7.12",
+  "official_release": "https://github.com/rhysd/actionlint/releases/tag/v1.7.12",
+  "archive_checksum_verified": true,
+  "workflow_sha256": "5692d58ac718c5ba32cb0d8bbfd271a827ba6041f0b423fe1d9328a42a7251b7",
+  "static_validation_exit_code": 0,
+  "hosted_run": "https://github.com/Prigoistic/open-hierarchical-memory/actions/runs/41707258825",
+  "hosted_conclusion": "startup_failure",
+  "jobs_created": 0,
+  "hosted_error_detail": "Not exposed by API; signed-in run page needed",
+  "runtime_ci_passed": false
+}
