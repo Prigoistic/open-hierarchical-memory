@@ -39,3 +39,8 @@ The [preregistered cost-quality study](experiments/gpt2-cost-quality-v1/SUMMARY.
 ## Execution and training diagnosis
 
 A separate [batched CPU research prototype](experiments/batched-execution-v2/SUMMARY.md) preserves selected IDs and output tolerance across 96,768 real query/head cases. It improves on the slow reference but remains slower than native dense SDPA; all layouts, construction/storage costs and corrected resource preflight are documented. The supported numerical core is unchanged. A [fixed-data duration study](experiments/training-duration-diagnostic-v1/SUMMARY.md) diagnoses train/validation behavior only and makes no new held-out quality claim.
+
+
+## Experimental forgetting and recovery
+
+A separate [lifecycle prototype](docs/MEMORY_LIFECYCLE.md) preserves immutable original records in SQLite, limits a hot set, and compares usage decay, bounded recovery and recent-cue replay against simpler policies. A local JSON-lines interface accepts your own records. This lane currently uses lexical retrieval; it does not add semantic embeddings, ZHA-backed persistent memory or an LLM assistant. Original storage grows, and session-use metadata resets on restart. The fixed diagnostic is not a public benchmark or novelty claim.

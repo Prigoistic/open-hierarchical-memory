@@ -1,10 +1,10 @@
 # Implementation progress
 
-Last updated: 4 November 2026. This file is the current status; the dated planning documents describe earlier requirements, not completed capabilities.
+Last updated: 5 November 2026. This file is the current status; the dated planning documents describe earlier requirements, not completed capabilities.
 
 ## Goal
 
-Build a useful, readable independent ZHA research reference, then real model-layer experiments and a trace inspector. Keep paper approximation separate from any new guarantee. Publish only claims backed by evidence. Avoid expanding into a generic memory product before the core is verified.
+Build a useful, readable independent ZHA research reference, then real model-layer experiments and a trace inspector. Keep paper approximation separate from any new guarantee. Publish only claims backed by evidence. Following the user's 5 November direction, add a separate bounded forgetting/recovery research lane while preserving the verified attention core. The lifecycle prototype does not imply a persistent semantic-memory product or converted model.
 
 ## Milestones
 
@@ -17,6 +17,8 @@ Build a useful, readable independent ZHA research reference, then real model-lay
 - [x] M2b: seven geometries, three contexts, three seeds, four fresh held-out books; 63 fits, 567 test configurations, 189 native-SDPA timing comparisons, preserved raw measurements and independent audit. See [results](experiments/gpt2-cost-quality-v1/SUMMARY.md).
 - [x] M2c: component profile, separately tested batched CPU prototype, resource-preflight review and corrected fresh-process timings; all original numerical core bytes preserved.
 - [x] M2d: fixed-data training-duration diagnosis on train/validation only, with exact 100-step reproduction and audited raw validation records.
+- [x] L0: separate append-only SQLite archive, bounded hot set, correction chains, usage decay, coverage replay and local JSON-lines interface; 58 lifecycle behavior cases and five targeted semantic faults.
+- [ ] L1: fixed lifecycle diagnostic across seven policies, three seeds and two hot capacities, followed by raw-trace/archive audit.
 - [ ] M3: persistence, trace inspector and scoped reference release (deferred behind useful execution/quality evidence).
 - [ ] M4: numerically conservative bound/checker, if sound and useful.
 - [ ] M5: audited positional adapter and closed-loop model conversion.
@@ -25,7 +27,7 @@ An adapter must move earlier if required by the selected real-model fixture. The
 
 ## Current evidence
 
-Local suite with research extras: 116 passing pytest cases, including 60 generated routing configurations, 16 high-precision fixtures, native-model capture, fitting and data-isolation checks. Ten targeted core mutations and six additional batched-backend mutations are detected. Ruff, formatting and strict mypy check the package. The current [core verification](docs/evidence/core-verification.json) covers 116 tests plus code checks; the earlier [full verification](docs/evidence/local-verification.json) separately records fresh wheel/source installation checks. See also [mutation evidence](docs/evidence/mutations.json). Without optional research dependencies, GPT-2 adapter tests are explicitly skipped. The original pilot audit checks eight real queries and 27 aggregates; the cost-quality study audit checks 24 real queries, 567 test/63 validation aggregates and 254,016 raw records. These audits do not replace regular tests.
+Local suite with research extras: 174 passing pytest cases, including 60 generated routing configurations, 16 high-precision fixtures, native-model capture, fitting and data-isolation checks. Ten targeted core mutations and six additional batched-backend mutations are detected. Ruff, formatting and strict mypy check the package. The current [core verification](docs/evidence/core-verification.json) covers 174 tests plus code checks; the earlier [full verification](docs/evidence/local-verification.json) separately records fresh wheel/source installation checks. See also [mutation evidence](docs/evidence/mutations.json). Without optional research dependencies, GPT-2 adapter tests are explicitly skipped. The original pilot audit checks eight real queries and 27 aggregates; the cost-quality study audit checks 24 real queries, 567 test/63 validation aggregates and 254,016 raw records. These audits do not replace regular tests.
 
 Hosted verification has not passed. The corrected workflow passes official actionlint 1.7.12 (checksum-verified distribution). The user confirmed an account-side restriction prevents hosted jobs from starting. Development can continue using the local core profile below. See [the run](https://github.com/Prigoistic/open-hierarchical-memory/actions/runs/41708001430) and [separate workflow evidence](docs/evidence/workflow-validation.json). Local success does not establish hosted CI success.
 
@@ -87,3 +89,11 @@ The completed M2 run is bound to preregistration commit `421e2bce01e6c6b515fa501
 - A flattened requirements export could not reuse all cached wheels during fresh offline installation. The installation check now populates each fresh environment directly from `uv.lock` without installing the editable project, then installs the built artifact. An isolated Python import verifies that the source checkout is not masking a packaging failure.
 - The actual random-reference example retains about 45–48% of dense attention mass at its chosen routing setting. This is reported as imperfect untrained behavior, not hidden by choosing a favorable example or represented as model quality.
 - The first hosted run rejected a runner-only context used in a job-level environment field. The workflow now uses a literal workspace cache path, following GitHub's context availability rules. Hosted verification remains pending until an actual run passes.
+
+## Separate lifecycle lane: source freeze
+
+The restored forgetting/recovery direction is scoped in [the lifecycle contract](docs/MEMORY_LIFECYCLE.md). The new experimental `research/memory_lifecycle.py` uses a shared lexical scorer to isolate retention, not the ZHA router. Original records are immutable and survive reopening; only the hot set is bounded. Session-use metadata is not persistent. Corrections use explicit keys; semantic contradiction detection, replay-based model training, hierarchy maintenance and a real assistant remain open.
+
+The fixed diagnostic protocol and source are committed before execution. Seven policies include full-memory, FIFO/LRU/LFU, decayed access, scheduled query probing and coverage replay. Replay must pay its row reads, comparisons and latency; it is not presumed superior. The authored stream is a mechanism diagnostic, not a sealed quality evaluation.
+
+Verified before execution: `UV_CACHE_DIR=/private/tmp/ohm-m2-uv-cache uv run --locked --offline --extra research python scripts/verify.py --profile core` passes 174 tests, Ruff, formatting, strict typing of seven installed-core and four lifecycle modules, all ten core semantic faults and all five lifecycle faults. The first verification stopped on an unused audit variable; it was removed and the complete command rerun successfully. No package or workflow changes require fresh wheel/hosted checks. Hosted CI remains blocked by the existing billing restriction.

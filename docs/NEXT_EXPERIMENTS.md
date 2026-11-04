@@ -85,3 +85,8 @@ While reading the paper, focus on III-A/III-C for invariant-preserving execution
 ## Execution update
 
 Component profiling, the first independently tested batched prototype and corrected v2 timings are complete; see [execution results](../experiments/batched-execution-v2/SUMMARY.md). A fixed-data duration diagnosis is also complete; see [validation-only results](../experiments/training-duration-diagnostic-v1/SUMMARY.md). These close the first diagnostic/engineering steps, not the practical SDPA-speed, long-context or whole-model gates. Future work should use these results rather than repeat the initial plan as if unexecuted.
+
+
+## Scope update: 5 November 2026
+
+The user restored the broader forgetting/recovery direction and authorized implementation. This supersedes the blanket forgetting deferral for the separately scoped [lifecycle diagnostic](MEMORY_LIFECYCLE.md). Keep the attention core and its unclosed performance/model gates unchanged. First test durable originals, bounded hot retention, explicit correction versions and charged coverage replay against simple policies and a scheduled-query-probe ablation. The lexical lifecycle fixture cannot establish ZHA, semantic-memory or assistant performance.

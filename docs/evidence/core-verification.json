@@ -1,5 +1,5 @@
 {
-  "scope": "CPU float64 no-RoPE core only; no model/GPU/guarantee validation",
+  "scope": "CPU float64 no-RoPE core and separate lifecycle behavior; no model/GPU/guarantee validation",
   "profile": "core",
   "package_installations_checked": false,
   "hosted_ci_status": "not_assessed",
@@ -29,6 +29,14 @@
     },
     {
       "command": "python -m mypy",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m mypy --strict research/memory_lifecycle.py research/lifecycle_fixture.py research/run_memory_lifecycle.py research/memory_console.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/check_lifecycle_mutations.py",
       "exit_code": 0
     },
     {
