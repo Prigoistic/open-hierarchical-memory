@@ -226,3 +226,34 @@ def test_batched_rejects_invalid_inputs_and_nonfinite_queries():
     queries[0, 0, 0, 0] = float("nan")
     with pytest.raises(NumericalError):
         batch.attend(queries, visible_counts=visible, mode=ExecutionMode.PAPER_APPROXIMATE)
+
+
+@pytest.mark.parametrize(
+    "limit,helper",
+    [("max_scored_nodes", "_expand_candidates"), ("max_attention_pairs", "_leaf_ids")],
+)
+def test_batched_budget_rejection_precedes_python_id_materialization(monkeypatch, limit, helper):
+    _, batch, _, _, _, queries, visible = make()
+    monkeypatch.setattr("research.batched_execution.QueryBudget", lambda: QueryBudget(**{limit: 1}))
+
+    def expanded(*args, **kwargs):
+        pytest.fail("ID expansion occurred before work-budget rejection")
+
+    monkeypatch.setattr(batch, helper, expanded)
+    with pytest.raises(ResourceLimitError):
+        batch.attend(queries, visible_counts=visible, mode=ExecutionMode.PAPER_APPROXIMATE)
+
+
+def test_batched_row_limit_precedes_metadata_expansion_and_rejects_invalid_limits(monkeypatch):
+    _, batch, keys, values, refs, queries, visible = make()
+    for limit in (False, 0, -1, 1.5):
+        with pytest.raises(InputError):
+            BatchedHierarchicalIndex(keys, values, refs, max_query_rows=limit)
+    limited = BatchedHierarchicalIndex(keys, values, refs, max_query_rows=1)
+
+    def expanded(*args, **kwargs):
+        pytest.fail("rows expanded before rejection")
+
+    monkeypatch.setattr(limited, "_expand_candidates", expanded)
+    with pytest.raises(ResourceLimitError, match="row limit"):
+        limited.attend(queries, visible_counts=visible, mode=ExecutionMode.PAPER_APPROXIMATE)

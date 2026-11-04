@@ -3,6 +3,7 @@
 This is post-run analysis of fixed records, not fitting or new test selection.
 """
 
+import argparse
 import hashlib
 import json
 import math
@@ -12,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PROFILE = ROOT / "experiments/execution-profile-v1"
-RUN = ROOT / "experiments/batched-execution-v1"
+DEFAULT_RUN = ROOT / "experiments/batched-execution-v2"
 
 
 def sha(path):
@@ -20,8 +21,12 @@ def sha(path):
 
 
 def main():
-    processes = [json.loads((RUN / f"process-{i}.json").read_text()) for i in range(3)]
-    parity = json.loads((RUN / "parity.json").read_text())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run-dir", type=Path, default=DEFAULT_RUN)
+    args = parser.parse_args()
+    run = args.run_dir.resolve()
+    processes = [json.loads((run / f"process-{i}.json").read_text()) for i in range(3)]
+    parity = json.loads((run / "parity.json").read_text())
     if (
         not parity["selected_ids_equal"]
         or not parity["physical_scored_nodes_and_keys_equal"]
@@ -169,14 +174,14 @@ def main():
         ),
         "trained_points_compared": len(frontiers),
     }
-    (RUN / "learning-diagnostic.json").write_text(json.dumps(diagnostic, indent=2) + "\n")
+    (run / "learning-diagnostic.json").write_text(json.dumps(diagnostic, indent=2) + "\n")
     result = {
         "aggregation": "Arithmetic mean of seed/process medians; p95/p99 pool 450 observed batches per engine/case. No confidence intervals. Three fresh processes, three frozen-reference seeds. Ratios below one are slower.",
-        "input_hashes": {f"process-{i}.json": sha(RUN / f"process-{i}.json") for i in range(3)},
-        "parity_sha256": sha(RUN / "parity.json"),
+        "input_hashes": {f"process-{i}.json": sha(run / f"process-{i}.json") for i in range(3)},
+        "parity_sha256": sha(run / "parity.json"),
         "rows": aggregate,
     }
-    (RUN / "aggregate.json").write_text(json.dumps(result, indent=2) + "\n")
+    (run / "aggregate.json").write_text(json.dumps(result, indent=2) + "\n")
     text = """# Profile-driven batched execution experiment
 
 Completed 4 November 2026. This experiment profiles the existing reference and tests a separate batched research implementation without changing any numerical core source file or fitting any model parameters. It uses existing GPT-2 development traces, not a new model-quality holdout.
@@ -192,7 +197,7 @@ The [implementation and fixed comparison protocol](../../docs/EXECUTION_BACKEND.
 """
     text += f"""- All 252 trained geometry/context/seed/threshold combinations (including p=1) pass selected-ID and output checks across {parity["query_head_cases"]:,} query/head cases. Selected IDs and logical scoring counts match exactly; maximum absolute output difference is {parity["maximum_output_abs_difference"]:.3e}, within the unchanged `atol=1e-10, rtol=1e-9` tolerance.
 - Scored summary slots and selected-key slots match the reference's logical work. No full-tree or full-prefix scoring is hidden behind a sparse mask. Padding affects ordering/softmax and is reported below.
-- 111 local tests pass, including sixty generated batched configurations checked against the independent scalar oracle. Six deliberately broken batched variants are detected, in addition to the ten original core mutations. Batch/GQA isolation, causality, ownership, budgets, p=1, dispatch and scratch limits are covered.
+- The local behavior suite passes, including sixty generated batched configurations checked against the independent scalar oracle. Six deliberately broken batched variants are detected, in addition to the ten original core mutations. Batch/GQA isolation, causality, ownership, budgets, p=1, dispatch and scratch limits are covered.
 - The original core remains byte-identical to the profiled reference. Instrumented profiling separately checks exact output/route parity before reporting components. These self-checks and independent numerical algorithms are not an external review or a universal correctness proof.
 
 ## Measured query latency
@@ -236,7 +241,7 @@ One use includes full construction. The 128-use scenario amortizes the same stat
 
 This remains one layer and contexts within GPT-2's native 1,024 positions. It changes execution, not the learned model or routing quality. No GPU, long-context language, whole-model generation, conservative-error or production-readiness result is implied. Profile any remaining gap before another optimization; preserve unfavorable layouts, build costs and memory. Incremental updates and new precision/backends require independent gates.
 """
-    (RUN / "SUMMARY.md").write_text("\n".join(line.rstrip() for line in text.splitlines()) + "\n")
+    (run / "SUMMARY.md").write_text("\n".join(line.rstrip() for line in text.splitlines()) + "\n")
     profiles = [json.loads((PROFILE / f"process-{i}.json").read_text()) for i in range(3)]
     text = """# Reference execution profile
 

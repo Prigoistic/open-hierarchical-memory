@@ -45,10 +45,20 @@ class ExecutionResult:
 
 class BatchedHierarchicalIndex:
     def __init__(
-        self, keys, values, references, *, config=None, max_stage_tensor_bytes=256 * 1024 * 1024
+        self,
+        keys,
+        values,
+        references,
+        *,
+        config=None,
+        max_stage_tensor_bytes=256 * 1024 * 1024,
+        max_query_rows=4096,
     ):
         if type(max_stage_tensor_bytes) is not int or max_stage_tensor_bytes < 1:
             raise InputError("max_stage_tensor_bytes must be a positive integer")
+        if type(max_query_rows) is not int or max_query_rows < 1:
+            raise InputError("max_query_rows must be a positive integer")
+        self._max_rows = max_query_rows
         self._reference = HierarchicalIndex(keys, values, references, config=config)
         info = self._reference.info
         extra = info.owned_tensor_bytes - sum(
@@ -103,6 +113,29 @@ class BatchedHierarchicalIndex:
         if size > self._stage_limit:
             raise ResourceLimitError("batched stage tensor estimate exceeds declared limit")
 
+    def _expand_candidates(self, parents, bounds, chunk):
+        return [
+            sorted(
+                {
+                    child
+                    for parent_id in selected
+                    for child in range(parent_id * chunk, (parent_id + 1) * chunk)
+                }
+                | set(range(parented, full))
+            )
+            for selected, (parented, full) in zip(parents, bounds, strict=True)
+        ]
+
+    def _leaf_ids(self, visible, leaves, chunk):
+        selected = []
+        for count, nodes in zip(visible, leaves, strict=True):
+            local_start = 1 + (count - 1) // chunk * chunk
+            ids = {0, *range(local_start, count)}
+            for leaf in nodes:
+                ids.update(range(1 + leaf * chunk, 1 + (leaf + 1) * chunk))
+            selected.append(sorted(ids))
+        return selected
+
     @torch.no_grad()
     def attend(
         self,
@@ -155,6 +188,11 @@ class BatchedHierarchicalIndex:
         output_bytes = rows * info.value_dim * 8
         if output_bytes > limits.max_output_tensor_bytes:
             raise ResourceLimitError("output tensor budget exceeded")
+        if rows > self._max_rows:
+            raise ResourceLimitError("batched query row limit exceeded")
+        self._check_stage(
+            output_bytes + queries.numel() * 8 + visible_counts.numel() * 8 + rows * 64
+        )
         queries = queries.detach().clone(memory_format=torch.contiguous_format)
         visible_counts = visible_counts.clone()
         require_finite("owned queries", queries)
@@ -169,37 +207,31 @@ class BatchedHierarchicalIndex:
         per_row_nodes = [0] * rows
         scored = ordering_slots = 0
         for level in range(depth, 0, -1):
-            candidates = []
+            bounds, counts = [], []
             for row in range(rows):
                 full = (visible[row] - 1) // chunk**level
                 parented = (
                     ((visible[row] - 1) // chunk ** (level + 1)) * chunk if level < depth else 0
                 )
-                ids = sorted(
-                    {
-                        child
-                        for parent_id in parent[row]
-                        for child in range(parent_id * chunk, (parent_id + 1) * chunk)
-                    }
-                    | set(range(parented, full))
-                )
-                candidates.append(ids)
-                per_row_nodes[row] += len(ids)
-            counts = [len(ids) for ids in candidates]
-            maximum = max(counts)
-            total = sum(counts)
+                bounds.append((parented, full))
+                counts.append(len(parent[row]) * chunk + full - parented)
+            maximum, total = max(counts), sum(counts)
             scored += total
             if scored > limits.max_scored_nodes:
                 raise ResourceLimitError("route node budget exceeded")
             if not total:
                 parent = [[] for _ in range(rows)]
                 continue
-            # Check a conservative stage-tensor estimate; this is not a process-RSS limit.
             self._check_stage(
                 total * (2 * info.reference_count * dim + dim + 6 * info.reference_count + 16) * 8
                 + rows * maximum * 64
                 + output_bytes
             )
+            # Reject excess work before Python ID expansion or tensor gathering.
+            candidates = self._expand_candidates(parent, bounds, chunk)
+            if any(len(ids) != count for ids, count in zip(candidates, counts, strict=True)):
+                raise AssertionError("candidate preflight count mismatch")
+            per_row_nodes = [old + count for old, count in zip(per_row_nodes, counts, strict=True)]
             owners = torch.tensor(
                 [row for row, ids in enumerate(candidates) for _ in ids], dtype=torch.int64
             )
@@ -245,20 +277,19 @@ class BatchedHierarchicalIndex:
             del dense_scores, empty, order, ordered
             if p != 1:
                 del probabilities, cumulative, stop
-        selected = []
-        for row in range(rows):
-            local_start = 1 + (visible[row] - 1) // chunk * chunk
-            ids = {0, *range(local_start, visible[row])}
-            for leaf in leaves[row]:
-                ids.update(range(1 + leaf * chunk, 1 + (leaf + 1) * chunk))
-            selected.append(sorted(ids))
-        key_slots = sum(len(ids) for ids in selected)
+        key_counts = [
+            1 + (count - (1 + (count - 1) // chunk * chunk)) + chunk * len(nodes)
+            for count, nodes in zip(visible, leaves, strict=True)
+        ]
+        key_slots, width = sum(key_counts), max(key_counts)
         if key_slots > limits.max_attention_pairs:
             raise ResourceLimitError("attention pair budget exceeded; no result returned")
-        width = max(len(ids) for ids in selected)
         self._check_stage(
             key_slots * (3 * dim + 3 * info.value_dim + 16) * 8 + rows * width * 32 + output_bytes
         )
+        selected = self._leaf_ids(visible, leaves, chunk)
+        if any(len(ids) != count for ids, count in zip(selected, key_counts, strict=True)):
+            raise AssertionError("leaf preflight count mismatch")
         owners = torch.tensor(
             [row for row, ids in enumerate(selected) for _ in ids], dtype=torch.int64
         )

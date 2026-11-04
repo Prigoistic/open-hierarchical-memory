@@ -1,6 +1,6 @@
 # Execution profile and batched research backend
 
-4 November 2026. Status at implementation commit: the reference profile is complete; the experimental batched backend passes synthetic/oracle tests; complete real-trace parity and timing are the next gates. Later measured artifacts, if present, are separate evidence rather than implied by this document.
+4 November 2026. The reference profile and first batched experiment are complete. The first timings are retained under `experiments/batched-execution-v1/`. A resource-preflight revision is now being verified/re-measured as v2; the original numerical core remains unchanged.
 
 ## Reference profile
 
@@ -35,7 +35,7 @@ The research result wraps the standard `AttentionResult` in `ExecutionResult`, w
 
 ## Behavior evidence and remaining checks
 
-Twenty-eight targeted backend tests include sixty generated configurations against the independent scalar oracle; GQA/head and batch isolation, causal-prefix mutation, uniform ties, p=1 underflow, ownership, output aliases, default budgets, custom-budget/reference dispatch, stage limits and extra storage. Six isolated semantic faults must be detected. The original ten core fault checks remain separate.
+Thirty-one targeted backend tests include sixty generated configurations against the independent scalar oracle; GQA/head and batch isolation, causal-prefix mutation, uniform ties, p=1 underflow, ownership, output aliases, default budgets, custom-budget/reference dispatch, stage limits and extra storage. Six isolated semantic faults must be detected. The original ten core fault checks remain separate.
 
 Before timing, compare every trained context/geometry/seed from the original study, at all three thresholds plus p=1. Every selected ID must match, outputs must pass the existing tolerance, and physical node/key counts must equal logical reference work. Preserve failures as regressions; do not loosen the gate to obtain a timing result.
 
@@ -59,3 +59,7 @@ uv run --locked --extra research python -m research.benchmark_batched --process 
 ```
 
 Use process IDs 0/1/2 in separate sequential processes; do not run timing workers concurrently. Existing reports are protected against overwrite. There is no GPU, new model-quality or actual growing-cache result here. Faster than the slow reference is an engineering result; native-SDPA speed and build-inclusive cost must be reported separately. Training effectiveness remains a separate experiment track.
+
+## Resource preflight revision (v2)
+
+Final review of v1 found candidate/leaf Python lists could be expanded before rejecting excessive batched work. V2 computes exact candidate/leaf counts and checks work/stage budgets before expansion. It also caps the fast path at 4,096 query/head rows by default, with an explicit configurable positive `max_query_rows`; rejection occurs before row metadata expansion. Regression tests inject failing expansion callbacks and verify that budget errors precede those callbacks. These limits are not a hard RSS guarantee. The algorithm, references, precision and timed cohort are unchanged. V1 measurements remain historical evidence; v2 must pass full real-trace parity and new fresh-process timings before they describe current code.

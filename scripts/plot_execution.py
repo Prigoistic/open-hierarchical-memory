@@ -1,5 +1,6 @@
 """Scientific figure for measured execution gains, including dense comparison."""
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -10,11 +11,15 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[1]
-RUN = ROOT / "experiments/batched-execution-v1"
+DEFAULT_RUN = ROOT / "experiments/batched-execution-v2"
 
 
 def main():
-    path = RUN / "aggregate.json"
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run-dir", type=Path, default=DEFAULT_RUN)
+    args = parser.parse_args()
+    run = args.run_dir.resolve()
+    path = run / "aggregate.json"
     report = json.loads(path.read_text())
     plt.rcParams.update(
         {
@@ -146,12 +151,12 @@ def main():
         fontsize=10,
         color="#d9b696",
     )
-    fig.savefig(RUN / "execution-summary.png", dpi=160)
-    fig.savefig(RUN / "execution-summary.svg")
-    svg = RUN / "execution-summary.svg"
+    fig.savefig(run / "execution-summary.png", dpi=160)
+    fig.savefig(run / "execution-summary.svg")
+    svg = run / "execution-summary.svg"
     svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
     plt.close(fig)
-    (RUN / "plot-metadata.json").write_text(
+    (run / "plot-metadata.json").write_text(
         json.dumps(
             {
                 "matplotlib_version": matplotlib.__version__,

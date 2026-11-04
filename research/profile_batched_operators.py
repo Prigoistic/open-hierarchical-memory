@@ -1,5 +1,6 @@
 """Separate post-timing operator diagnosis; these times are not speed claims."""
 
+import argparse
 import json
 from pathlib import Path
 
@@ -17,7 +18,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @torch.no_grad()
 def main():
-    output = ROOT / "experiments/batched-execution-v1/operator-profile.json"
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run-dir", type=Path, default=ROOT / "experiments/batched-execution-v2")
+    args = parser.parse_args()
+    output = args.run_dir.resolve() / "operator-profile.json"
     if output.exists():
         raise FileExistsError("preserve existing operator diagnosis")
     torch.set_num_threads(4)
