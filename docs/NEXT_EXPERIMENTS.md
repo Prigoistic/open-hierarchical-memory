@@ -81,3 +81,7 @@ Defer custom GPU kernels until work/traffic profiles and a resource estimate jus
 If favorable operation counts do not translate into a useful latency region, maintain an honest independent reference and inspector rather than promising acceleration. Before a public release, recheck current official/related implementations and claims; do not assert firstness from an old availability check.
 
 While reading the paper, focus on III-A/III-C for invariant-preserving execution, III-B/Appendix B for the training assumptions, and V/Appendix D for the distinction between counted work, memory traffic and modeled latency. Record questions against these experiments; reading does not require committing to every proposed stage now.
+
+## Execution update
+
+Component profiling, the first independently tested batched prototype and corrected v2 timings are complete; see [execution results](../experiments/batched-execution-v2/SUMMARY.md). A fixed-data duration diagnosis is also complete; see [validation-only results](../experiments/training-duration-diagnostic-v1/SUMMARY.md). These close the first diagnostic/engineering steps, not the practical SDPA-speed, long-context or whole-model gates. Future work should use these results rather than repeat the initial plan as if unexecuted.

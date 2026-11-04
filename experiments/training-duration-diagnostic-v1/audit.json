@@ -1,0 +1,8 @@
+{
+  "raw_records_verified": 8640,
+  "configuration_aggregates_verified": 45,
+  "source_commit_verified": "fe03d77ed0e90a16301aa0938346b3b7f34658c7",
+  "checkpoint_hashes_verified": 9,
+  "test_evaluated": false,
+  "prior_100_step_checkpoints_reproduced_exactly": true
+}

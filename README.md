@@ -34,3 +34,8 @@ The [protocol, optional research setup and reproduction commands](docs/GPT2_PILO
 ## Geometry and context study
 
 The [preregistered cost-quality study](experiments/gpt2-cost-quality-v1/SUMMARY.md) covers seven geometries, three native GPT-2 context lengths and four new test books. Validation-selected settings meet the fixed layer-error budgets and reduce counted vector work. The current CPU reference is still substantially slower than native dense PyTorch SDPA; this is no speedup result. The [protocol](docs/COST_QUALITY.md), complete grid, individual timings, index costs and independent audit are retained.
+
+
+## Execution and training diagnosis
+
+A separate [batched CPU research prototype](experiments/batched-execution-v2/SUMMARY.md) preserves selected IDs and output tolerance across 96,768 real query/head cases. It improves on the slow reference but remains slower than native dense SDPA; all layouts, construction/storage costs and corrected resource preflight are documented. The supported numerical core is unchanged. A [fixed-data duration study](experiments/training-duration-diagnostic-v1/SUMMARY.md) diagnoses train/validation behavior only and makes no new held-out quality claim.

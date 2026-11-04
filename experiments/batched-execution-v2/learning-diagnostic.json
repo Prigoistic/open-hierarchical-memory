@@ -1,0 +1,674 @@
+{
+  "scope": "Exploratory Pareto comparisons of mean errors and counted work on the already inspected original test cohort. Three thresholds only; no interpolation, significance or new generalization claim.",
+  "source_report_sha256": "1a81c83cf1d2f2e46b9ab2ab11e1d673183fec63e1cddbd79ffdf5043eb7b185",
+  "points": [
+    {
+      "context": 256,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.11556116203302064,
+        "mean_vector_work_ratio": 0.7758065682870371
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.04705271509301349,
+        "mean_vector_work_ratio": 1.0477882667824074
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.02325036334484808,
+        "mean_vector_work_ratio": 1.2080711082175926
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.05760711807583777,
+        "mean_vector_work_ratio": 0.4801070601851852
+      },
+      "random_dominators_on_declared_grid": [
+        {
+          "p": 0.73,
+          "mean_relative_error": 0.057268694691611534,
+          "mean_vector_work_ratio": 0.4772858796296296
+        }
+      ]
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.022268915910895373,
+        "mean_vector_work_ratio": 0.6220341435185185
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.008715871187156105,
+        "mean_vector_work_ratio": 0.6963252314814815
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.05578120024578312,
+        "mean_vector_work_ratio": 0.5311234085648149
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.02009814059454812,
+        "mean_vector_work_ratio": 0.6703016493055555
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.008912305832922638,
+        "mean_vector_work_ratio": 0.7428204571759259
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.04931465690839653,
+        "mean_vector_work_ratio": 0.6385091145833334
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.01912118480563527,
+        "mean_vector_work_ratio": 0.7786458333333334
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.0078867709752361,
+        "mean_vector_work_ratio": 0.8513274016203703
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.029182315406097087,
+        "mean_vector_work_ratio": 0.6953125
+      },
+      "random_dominators_on_declared_grid": [
+        {
+          "p": 0.73,
+          "mean_relative_error": 0.027776734454474858,
+          "mean_vector_work_ratio": 0.6946976273148149
+        }
+      ]
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.008889101460604294,
+        "mean_vector_work_ratio": 0.7975260416666666
+      },
+      "random_dominators_on_declared_grid": [
+        {
+          "p": 0.9,
+          "mean_relative_error": 0.008429215782891434,
+          "mean_vector_work_ratio": 0.7964771412037037
+        }
+      ]
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.003028037809378591,
+        "mean_vector_work_ratio": 0.8389033564814814
+      },
+      "random_dominators_on_declared_grid": [
+        {
+          "p": 0.95,
+          "mean_relative_error": 0.0024839508650292374,
+          "mean_vector_work_ratio": 0.8387948495370371
+        }
+      ]
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.027576609349675107,
+        "mean_vector_work_ratio": 0.7176649305555557
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.0075181510081815195,
+        "mean_vector_work_ratio": 0.8179976851851852
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.0020368505573038374,
+        "mean_vector_work_ratio": 0.8620515046296297
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.024329875244070875,
+        "mean_vector_work_ratio": 0.7635995370370371
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.007327979625927721,
+        "mean_vector_work_ratio": 0.8617259837962963
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.0018809689333262405,
+        "mean_vector_work_ratio": 0.9066478587962963
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.12898403193273475,
+        "mean_vector_work_ratio": 0.6113123010706017
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.0525982381779759,
+        "mean_vector_work_ratio": 0.8659215856481483
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.027563670356170206,
+        "mean_vector_work_ratio": 1.026312934027778
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.06817324440746671,
+        "mean_vector_work_ratio": 0.3526566116898148
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.029874631577505542,
+        "mean_vector_work_ratio": 0.4956958912037037
+      },
+      "random_dominators_on_declared_grid": [
+        {
+          "p": 0.9,
+          "mean_relative_error": 0.02887100538444443,
+          "mean_vector_work_ratio": 0.4954698350694444
+        }
+      ]
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.017570159516175087,
+        "mean_vector_work_ratio": 0.5734230324074074
+      },
+      "random_dominators_on_declared_grid": [
+        {
+          "p": 0.95,
+          "mean_relative_error": 0.016228512618355072,
+          "mean_vector_work_ratio": 0.572998046875
+        }
+      ]
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.06084476829697074,
+        "mean_vector_work_ratio": 0.4085828993055556
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.024572966915283375,
+        "mean_vector_work_ratio": 0.5518482349537037
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.013141051189326137,
+        "mean_vector_work_ratio": 0.6300636574074074
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.056619145983789414,
+        "mean_vector_work_ratio": 0.5266203703703703
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.02361074836339767,
+        "mean_vector_work_ratio": 0.6664315682870371
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.010944661980936498,
+        "mean_vector_work_ratio": 0.7452166521990741
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.05079541338425129,
+        "mean_vector_work_ratio": 0.47902199074074076
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.020603827216278056,
+        "mean_vector_work_ratio": 0.6240053530092592
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.010170995435813528,
+        "mean_vector_work_ratio": 0.6878074363425926
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.04703109801477776,
+        "mean_vector_work_ratio": 0.5081561053240741
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.0186725106273144,
+        "mean_vector_work_ratio": 0.6530309606481481
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.010683411942357808,
+        "mean_vector_work_ratio": 0.7213179976851851
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.04455805197226625,
+        "mean_vector_work_ratio": 0.5645616319444445
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.018009328506830884,
+        "mean_vector_work_ratio": 0.7079716435185185
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.010097325259115051,
+        "mean_vector_work_ratio": 0.7761863425925926
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.13607678221398303,
+        "mean_vector_work_ratio": 0.5072903103298612
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.058192267303676125,
+        "mean_vector_work_ratio": 0.7340811270254629
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c4-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.03145717788041888,
+        "mean_vector_work_ratio": 0.8838794849537037
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.07858468079644557,
+        "mean_vector_work_ratio": 0.2524323640046296
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.038400572757566705,
+        "mean_vector_work_ratio": 0.39298954716435186
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r2-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.02224472991715538,
+        "mean_vector_work_ratio": 0.4718921802662037
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.0732721270207309,
+        "mean_vector_work_ratio": 0.3055510344328704
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.03259959439434209,
+        "mean_vector_work_ratio": 0.44859031394675924
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r4-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.017548669908106704,
+        "mean_vector_work_ratio": 0.5279224537037037
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.06761684505226186,
+        "mean_vector_work_ratio": 0.4076831958912037
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.027956576211654732,
+        "mean_vector_work_ratio": 0.5553566261574074
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.01587515758763137,
+        "mean_vector_work_ratio": 0.6361536096643519
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.060842089608031995,
+        "mean_vector_work_ratio": 0.33503327546296297
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.026477932215525555,
+        "mean_vector_work_ratio": 0.46880425347222215
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r2-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.014608502180713299,
+        "mean_vector_work_ratio": 0.5411150896990741
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.053995742021511035,
+        "mean_vector_work_ratio": 0.3677571614583333
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.02341774138084107,
+        "mean_vector_work_ratio": 0.5026312934027778
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r4-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.01202316026813517,
+        "mean_vector_work_ratio": 0.5735857928240741
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.73,
+        "mean_relative_error": 0.04816874629679283,
+        "mean_vector_work_ratio": 0.4268663194444444
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.9,
+        "mean_relative_error": 0.02023220292893642,
+        "mean_vector_work_ratio": 0.561306423611111
+      },
+      "random_dominators_on_declared_grid": []
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r8-d2",
+      "trained_point": {
+        "p": 0.95,
+        "mean_relative_error": 0.010630441550189579,
+        "mean_vector_work_ratio": 0.6342411747685185
+      },
+      "random_dominators_on_declared_grid": []
+    }
+  ],
+  "trained_points_dominated_by_random": 6,
+  "trained_points_compared": 63
+}

@@ -1,6 +1,6 @@
 # Execution profile and batched research backend
 
-4 November 2026. The reference profile and first batched experiment are complete. The first timings are retained under `experiments/batched-execution-v1/`. A resource-preflight revision is now being verified/re-measured as v2; the original numerical core remains unchanged.
+4 November 2026. The reference profile and first batched experiment are complete. The first timings are retained under `experiments/batched-execution-v1/`. The resource-preflight revision is verified and remeasured as [v2](../experiments/batched-execution-v2/SUMMARY.md); the original numerical core remains unchanged.
 
 ## Reference profile
 
@@ -63,3 +63,7 @@ Use process IDs 0/1/2 in separate sequential processes; do not run timing worker
 ## Resource preflight revision (v2)
 
 Final review of v1 found candidate/leaf Python lists could be expanded before rejecting excessive batched work. V2 computes exact candidate/leaf counts and checks work/stage budgets before expansion. It also caps the fast path at 4,096 query/head rows by default, with an explicit configurable positive `max_query_rows`; rejection occurs before row metadata expansion. Regression tests inject failing expansion callbacks and verify that budget errors precede those callbacks. These limits are not a hard RSS guarantee. The algorithm, references, precision and timed cohort are unchanged. V1 measurements remain historical evidence; v2 must pass full real-trace parity and new fresh-process timings before they describe current code.
+
+## Completed comparison
+
+All 252 context/geometry/seed/threshold combinations pass selected-ID and existing-tolerance checks on 96,768 query/head cases. Three fresh processes retain all declared timing layouts. See [v2 results and raw records](../experiments/batched-execution-v2/SUMMARY.md). The current prototype is faster than the reference but remains slower than dense SDPA; extra summary storage, padding, build-inclusive costs and explicit engine dispatch are retained. The post-timing `operator-profile.json` identifies measured operator costs and is diagnostic, not headline latency.

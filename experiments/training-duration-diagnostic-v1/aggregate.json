@@ -1,0 +1,67 @@
+{
+  "scope": "Validation diagnosis at p=.90, pooled errors across three seeds. Validation selects checkpoints; no new holdout or learning-superiority claim.",
+  "rows": [
+    {
+      "maximum_steps": 0,
+      "variant": "initial_query_samples",
+      "mean_selected_validation_kl": null,
+      "selected_steps": [],
+      "validation_mean_relative_error": 0.042826864402321446,
+      "validation_p95_relative_error": 0.1424803463161076,
+      "validation_mean_vector_work_ratio": 0.3942961516203704,
+      "validation_mean_selected_key_fraction": 0.3394730179398148
+    },
+    {
+      "maximum_steps": 0,
+      "variant": "random_gaussian",
+      "mean_selected_validation_kl": null,
+      "selected_steps": [],
+      "validation_mean_relative_error": 0.04079297653630703,
+      "validation_p95_relative_error": 0.10870502359073518,
+      "validation_mean_vector_work_ratio": 0.39892578125,
+      "validation_mean_selected_key_fraction": 0.34357819733796297
+    },
+    {
+      "maximum_steps": 100,
+      "variant": "trained",
+      "mean_selected_validation_kl": 0.3714768854310879,
+      "selected_steps": [
+        100,
+        100,
+        100
+      ],
+      "validation_mean_relative_error": 0.04125697245646083,
+      "validation_p95_relative_error": 0.1369240522832024,
+      "validation_mean_vector_work_ratio": 0.3984103732638889,
+      "validation_mean_selected_key_fraction": 0.3434968171296296
+    },
+    {
+      "maximum_steps": 300,
+      "variant": "trained",
+      "mean_selected_validation_kl": 0.312028413580836,
+      "selected_steps": [
+        300,
+        300,
+        300
+      ],
+      "validation_mean_relative_error": 0.03912694781640031,
+      "validation_p95_relative_error": 0.10347064091538805,
+      "validation_mean_vector_work_ratio": 0.4015570746527778,
+      "validation_mean_selected_key_fraction": 0.3466887297453704
+    },
+    {
+      "maximum_steps": 1000,
+      "variant": "trained",
+      "mean_selected_validation_kl": 0.30806338974011777,
+      "selected_steps": [
+        580,
+        810,
+        450
+      ],
+      "validation_mean_relative_error": 0.03821121693140576,
+      "validation_p95_relative_error": 0.10475062735865505,
+      "validation_mean_vector_work_ratio": 0.4010054976851852,
+      "validation_mean_selected_key_fraction": 0.3462547019675926
+    }
+  ]
+}

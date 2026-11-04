@@ -1,0 +1,33 @@
+{
+  "context": 1024,
+  "geometry": "c16-r2-d2",
+  "chunk_size": 16,
+  "depth": 2,
+  "references": 2,
+  "seeds": [
+    7,
+    23,
+    101
+  ],
+  "durations": [
+    100,
+    300,
+    1000
+  ],
+  "learning_rate": 0.01,
+  "gradient_limit": 1.0,
+  "validation_every": 10,
+  "positions": [
+    255,
+    511,
+    767,
+    1023
+  ],
+  "thresholds": [
+    0.73,
+    0.9,
+    0.95
+  ],
+  "cpu_threads": 4,
+  "scope": "Fixed-data duration diagnosis on existing training/validation data. No test evaluation, new holdout or inference-quality claim."
+}

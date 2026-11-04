@@ -1,6 +1,6 @@
 # Fixed-data duration diagnosis
 
-Protocol prepared before execution on 4 November 2026. This is a training/validation diagnosis, not a new held-out model-quality experiment. It is separate from execution optimization.
+Completed on 4 November 2026; protocol prepared before execution. See [audited results](../experiments/training-duration-diagnostic-v1/SUMMARY.md). This is a training/validation diagnosis, not a new held-out model-quality experiment. It is separate from execution optimization.
 
 The original cost-quality study found that, at the validation-selected C16/R2/depth2, p=.90 setting, random references have lower test output error than fitted references at nearly equal counted work. All nine chosen fits select the final step of their 100-step budget while validation KL continues to improve. These observations motivate a duration check; they do not establish undertraining or prove learning is unnecessary.
 

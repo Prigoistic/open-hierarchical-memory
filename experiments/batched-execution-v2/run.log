@@ -1,0 +1,144 @@
+Parity context=256 geometry=c4-r8-d2 seed=7
+Parity context=256 geometry=c4-r8-d2 seed=23
+Parity context=256 geometry=c4-r8-d2 seed=101
+Parity context=256 geometry=c16-r2-d2 seed=7
+Parity context=256 geometry=c16-r2-d2 seed=23
+Parity context=256 geometry=c16-r2-d2 seed=101
+Parity context=256 geometry=c16-r4-d2 seed=7
+Parity context=256 geometry=c16-r4-d2 seed=23
+Parity context=256 geometry=c16-r4-d2 seed=101
+Parity context=256 geometry=c16-r8-d2 seed=7
+Parity context=256 geometry=c16-r8-d2 seed=23
+Parity context=256 geometry=c16-r8-d2 seed=101
+Parity context=256 geometry=c32-r2-d2 seed=7
+Parity context=256 geometry=c32-r2-d2 seed=23
+Parity context=256 geometry=c32-r2-d2 seed=101
+Parity context=256 geometry=c32-r4-d2 seed=7
+Parity context=256 geometry=c32-r4-d2 seed=23
+Parity context=256 geometry=c32-r4-d2 seed=101
+Parity context=256 geometry=c32-r8-d2 seed=7
+Parity context=256 geometry=c32-r8-d2 seed=23
+Parity context=256 geometry=c32-r8-d2 seed=101
+Parity context=512 geometry=c4-r8-d2 seed=7
+Parity context=512 geometry=c4-r8-d2 seed=23
+Parity context=512 geometry=c4-r8-d2 seed=101
+Parity context=512 geometry=c16-r2-d2 seed=7
+Parity context=512 geometry=c16-r2-d2 seed=23
+Parity context=512 geometry=c16-r2-d2 seed=101
+Parity context=512 geometry=c16-r4-d2 seed=7
+Parity context=512 geometry=c16-r4-d2 seed=23
+Parity context=512 geometry=c16-r4-d2 seed=101
+Parity context=512 geometry=c16-r8-d2 seed=7
+Parity context=512 geometry=c16-r8-d2 seed=23
+Parity context=512 geometry=c16-r8-d2 seed=101
+Parity context=512 geometry=c32-r2-d2 seed=7
+Parity context=512 geometry=c32-r2-d2 seed=23
+Parity context=512 geometry=c32-r2-d2 seed=101
+Parity context=512 geometry=c32-r4-d2 seed=7
+Parity context=512 geometry=c32-r4-d2 seed=23
+Parity context=512 geometry=c32-r4-d2 seed=101
+Parity context=512 geometry=c32-r8-d2 seed=7
+Parity context=512 geometry=c32-r8-d2 seed=23
+Parity context=512 geometry=c32-r8-d2 seed=101
+Parity context=1024 geometry=c4-r8-d2 seed=7
+Parity context=1024 geometry=c4-r8-d2 seed=23
+Parity context=1024 geometry=c4-r8-d2 seed=101
+Parity context=1024 geometry=c16-r2-d2 seed=7
+Parity context=1024 geometry=c16-r2-d2 seed=23
+Parity context=1024 geometry=c16-r2-d2 seed=101
+Parity context=1024 geometry=c16-r4-d2 seed=7
+Parity context=1024 geometry=c16-r4-d2 seed=23
+Parity context=1024 geometry=c16-r4-d2 seed=101
+Parity context=1024 geometry=c16-r8-d2 seed=7
+Parity context=1024 geometry=c16-r8-d2 seed=23
+Parity context=1024 geometry=c16-r8-d2 seed=101
+Parity context=1024 geometry=c32-r2-d2 seed=7
+Parity context=1024 geometry=c32-r2-d2 seed=23
+Parity context=1024 geometry=c32-r2-d2 seed=101
+Parity context=1024 geometry=c32-r4-d2 seed=7
+Parity context=1024 geometry=c32-r4-d2 seed=23
+Parity context=1024 geometry=c32-r4-d2 seed=101
+Parity context=1024 geometry=c32-r8-d2 seed=7
+Parity context=1024 geometry=c32-r8-d2 seed=23
+Parity context=1024 geometry=c32-r8-d2 seed=101
+Timed process=0 context=256 seed=7 layout=separate_four_queries
+Timed process=0 context=256 seed=7 layout=stacked_four_queries
+Timed process=0 context=256 seed=7 layout=separate_last_query
+Timed process=0 context=256 seed=23 layout=separate_four_queries
+Timed process=0 context=256 seed=23 layout=stacked_four_queries
+Timed process=0 context=256 seed=23 layout=separate_last_query
+Timed process=0 context=256 seed=101 layout=separate_four_queries
+Timed process=0 context=256 seed=101 layout=stacked_four_queries
+Timed process=0 context=256 seed=101 layout=separate_last_query
+Timed process=0 context=512 seed=7 layout=separate_four_queries
+Timed process=0 context=512 seed=7 layout=stacked_four_queries
+Timed process=0 context=512 seed=7 layout=separate_last_query
+Timed process=0 context=512 seed=23 layout=separate_four_queries
+Timed process=0 context=512 seed=23 layout=stacked_four_queries
+Timed process=0 context=512 seed=23 layout=separate_last_query
+Timed process=0 context=512 seed=101 layout=separate_four_queries
+Timed process=0 context=512 seed=101 layout=stacked_four_queries
+Timed process=0 context=512 seed=101 layout=separate_last_query
+Timed process=0 context=1024 seed=7 layout=separate_four_queries
+Timed process=0 context=1024 seed=7 layout=stacked_four_queries
+Timed process=0 context=1024 seed=7 layout=separate_last_query
+Timed process=0 context=1024 seed=23 layout=separate_four_queries
+Timed process=0 context=1024 seed=23 layout=stacked_four_queries
+Timed process=0 context=1024 seed=23 layout=separate_last_query
+Timed process=0 context=1024 seed=101 layout=separate_four_queries
+Timed process=0 context=1024 seed=101 layout=stacked_four_queries
+Timed process=0 context=1024 seed=101 layout=separate_last_query
+Timed process=1 context=256 seed=7 layout=separate_four_queries
+Timed process=1 context=256 seed=7 layout=stacked_four_queries
+Timed process=1 context=256 seed=7 layout=separate_last_query
+Timed process=1 context=256 seed=23 layout=separate_four_queries
+Timed process=1 context=256 seed=23 layout=stacked_four_queries
+Timed process=1 context=256 seed=23 layout=separate_last_query
+Timed process=1 context=256 seed=101 layout=separate_four_queries
+Timed process=1 context=256 seed=101 layout=stacked_four_queries
+Timed process=1 context=256 seed=101 layout=separate_last_query
+Timed process=1 context=512 seed=7 layout=separate_four_queries
+Timed process=1 context=512 seed=7 layout=stacked_four_queries
+Timed process=1 context=512 seed=7 layout=separate_last_query
+Timed process=1 context=512 seed=23 layout=separate_four_queries
+Timed process=1 context=512 seed=23 layout=stacked_four_queries
+Timed process=1 context=512 seed=23 layout=separate_last_query
+Timed process=1 context=512 seed=101 layout=separate_four_queries
+Timed process=1 context=512 seed=101 layout=stacked_four_queries
+Timed process=1 context=512 seed=101 layout=separate_last_query
+Timed process=1 context=1024 seed=7 layout=separate_four_queries
+Timed process=1 context=1024 seed=7 layout=stacked_four_queries
+Timed process=1 context=1024 seed=7 layout=separate_last_query
+Timed process=1 context=1024 seed=23 layout=separate_four_queries
+Timed process=1 context=1024 seed=23 layout=stacked_four_queries
+Timed process=1 context=1024 seed=23 layout=separate_last_query
+Timed process=1 context=1024 seed=101 layout=separate_four_queries
+Timed process=1 context=1024 seed=101 layout=stacked_four_queries
+Timed process=1 context=1024 seed=101 layout=separate_last_query
+Timed process=2 context=256 seed=7 layout=separate_four_queries
+Timed process=2 context=256 seed=7 layout=stacked_four_queries
+Timed process=2 context=256 seed=7 layout=separate_last_query
+Timed process=2 context=256 seed=23 layout=separate_four_queries
+Timed process=2 context=256 seed=23 layout=stacked_four_queries
+Timed process=2 context=256 seed=23 layout=separate_last_query
+Timed process=2 context=256 seed=101 layout=separate_four_queries
+Timed process=2 context=256 seed=101 layout=stacked_four_queries
+Timed process=2 context=256 seed=101 layout=separate_last_query
+Timed process=2 context=512 seed=7 layout=separate_four_queries
+Timed process=2 context=512 seed=7 layout=stacked_four_queries
+Timed process=2 context=512 seed=7 layout=separate_last_query
+Timed process=2 context=512 seed=23 layout=separate_four_queries
+Timed process=2 context=512 seed=23 layout=stacked_four_queries
+Timed process=2 context=512 seed=23 layout=separate_last_query
+Timed process=2 context=512 seed=101 layout=separate_four_queries
+Timed process=2 context=512 seed=101 layout=stacked_four_queries
+Timed process=2 context=512 seed=101 layout=separate_last_query
+Timed process=2 context=1024 seed=7 layout=separate_four_queries
+Timed process=2 context=1024 seed=7 layout=stacked_four_queries
+Timed process=2 context=1024 seed=7 layout=separate_last_query
+Timed process=2 context=1024 seed=23 layout=separate_four_queries
+Timed process=2 context=1024 seed=23 layout=stacked_four_queries
+Timed process=2 context=1024 seed=23 layout=separate_last_query
+Timed process=2 context=1024 seed=101 layout=separate_four_queries
+Timed process=2 context=1024 seed=101 layout=stacked_four_queries
+Timed process=2 context=1024 seed=101 layout=separate_last_query
