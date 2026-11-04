@@ -18,7 +18,7 @@ Build a useful, readable independent ZHA research reference, then real model-lay
 - [x] M2c: component profile, separately tested batched CPU prototype, resource-preflight review and corrected fresh-process timings; all original numerical core bytes preserved.
 - [x] M2d: fixed-data training-duration diagnosis on train/validation only, with exact 100-step reproduction and audited raw validation records.
 - [x] L0: separate append-only SQLite archive, bounded hot set, correction chains, usage decay, coverage replay and local JSON-lines interface; 58 lifecycle behavior cases and five targeted semantic faults.
-- [ ] L1: fixed lifecycle diagnostic across seven policies, three seeds and two hot capacities, followed by raw-trace/archive audit.
+- [x] L1: fixed lexical lifecycle diagnostic across seven policies, three seed permutations and two hot capacities, plus raw-trace/read-only-archive audit. Delayed rare-fact recovery remains poor; no assistant-quality claim.
 - [ ] M3: persistence, trace inspector and scoped reference release (deferred behind useful execution/quality evidence).
 - [ ] M4: numerically conservative bound/checker, if sound and useful.
 - [ ] M5: audited positional adapter and closed-loop model conversion.
@@ -97,3 +97,11 @@ The restored forgetting/recovery direction is scoped in [the lifecycle contract]
 The fixed diagnostic protocol and source are committed before execution. Seven policies include full-memory, FIFO/LRU/LFU, decayed access, scheduled query probing and coverage replay. Replay must pay its row reads, comparisons and latency; it is not presumed superior. The authored stream is a mechanism diagnostic, not a sealed quality evaluation.
 
 Verified before execution: `UV_CACHE_DIR=/private/tmp/ohm-m2-uv-cache uv run --locked --offline --extra research python scripts/verify.py --profile core` passes 174 tests, Ruff, formatting, strict typing of seven installed-core and four lifecycle modules, all ten core semantic faults and all five lifecycle faults. The first verification stopped on an unused audit variable; it was removed and the complete command rerun successfully. No package or workflow changes require fresh wheel/hosted checks. Hosted CI remains blocked by the existing billing restriction.
+
+## Lifecycle diagnostic outcome
+
+The [v1 result](experiments/memory-lifecycle-v1/SUMMARY.md) is bound to source freeze `dda4d4b`. All 42 runs preserve 80 originals each and their 8/16 hot limits. The separate audit verifies 5,376 queries and 3,360 original-record instances. At capacity 16, replay retrieves 90/128 current records overall, query-time probing 46/128 and decay alone 32/128. Replay uses about 59.3% more comparisons than probing and has higher descriptive p50/p95 query latency. Crucially it retrieves only 4/24 delayed rare queries, versus 0/24 for the two non-replay bounded comparators. Capacity-8 replay also misses all delayed queries. The aggregate improvement is not reliable cold recovery.
+
+All three permutations have identical aggregate hit counts; this authored diagnostic is now development data, not three independent real datasets. There is no ZHA speed, semantic-memory or assistant-quality result. Next: stronger query-aware recovery/cue specificity under matched budgets and new stream structures, then a separately validated hierarchical semantic adapter. Do not ship the current controller behind a claimed reliable assistant. Controller metadata persistence, consolidation and associative dynamics remain open. The original numerical core and package are unchanged.
+
+Reproduction and audit commands are in `docs/MEMORY_LIFECYCLE.md`. Final source verification passes 174 tests, Ruff/formatting, strict typing and all ten core/five lifecycle faults. Three copied-evidence faults are detected, and an actual local CLI subprocess correction/restart flow passes. No paid compute, new service, public release or workflow change was made.

@@ -1,0 +1,26 @@
+{
+  "all_detected": true,
+  "scope": "Audit fault checks on temporary copies, plus separate subprocess CLI round trip",
+  "audit_faults": [
+    {
+      "fault": "wrong correctness label",
+      "detected": true,
+      "expected_failure": "correctness label"
+    },
+    {
+      "fault": "wrong scan accounting",
+      "detected": true,
+      "expected_failure": "physical-row accounting"
+    },
+    {
+      "fault": "changed source identity",
+      "detected": true,
+      "expected_failure": "changed source"
+    }
+  ],
+  "cli_subprocess_round_trip": {
+    "passed": true,
+    "originals_after_restart": 2,
+    "controller_state_persistent": false
+  }
+}

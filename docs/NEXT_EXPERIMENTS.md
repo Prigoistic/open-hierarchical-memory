@@ -90,3 +90,5 @@ Component profiling, the first independently tested batched prototype and correc
 ## Scope update: 5 November 2026
 
 The user restored the broader forgetting/recovery direction and authorized implementation. This supersedes the blanket forgetting deferral for the separately scoped [lifecycle diagnostic](MEMORY_LIFECYCLE.md). Keep the attention core and its unclosed performance/model gates unchanged. First test durable originals, bounded hot retention, explicit correction versions and charged coverage replay against simple policies and a scheduled-query-probe ablation. The lexical lifecycle fixture cannot establish ZHA, semantic-memory or assistant performance.
+
+The completed [lifecycle v1 diagnostic](../experiments/memory-lifecycle-v1/SUMMARY.md) improves aggregate hits with replay but mostly misses delayed rare facts. Do not optimize its headline aggregate or count seed permutations as new cohorts. Compare query-aware cold recovery and unconditional bounded probes under matched work, with newly prespecified stream structures, before a semantic/hierarchical adapter or assistant integration. Preserve the failed phases and all archive/maintenance costs.

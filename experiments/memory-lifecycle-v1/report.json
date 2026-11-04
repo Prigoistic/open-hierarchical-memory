@@ -1,0 +1,2838 @@
+{
+  "schema": "ohm-memory-lifecycle-result-v1",
+  "source_commit": "dda4d4bf275e8d60643ebffcf8068c3f911b6625",
+  "source_tree_clean_at_start": true,
+  "source_sha256": {
+    "research/memory_lifecycle.py": "9c7a1b3590367fc4ee4306cc9ef35b3d60dde31da670dc6eeacdc31d9769425f",
+    "research/memory_console.py": "092ca3fe60a09720b1ff786590718fcd50c0492a0045b83c238255ee22a74e04",
+    "research/lifecycle_fixture.py": "0d395628330ffc224ad5518981e3170351f5566ad52a7af7598e809efe0fbc89",
+    "research/run_memory_lifecycle.py": "8275a3effa4899a587abca0d647007b69ead400d11930402e2bf486de6247fbf",
+    "research/memory_lifecycle_protocol.json": "42d45586890592bb689e2c904a4a38a257a8a1caef0ddfde2995f240b49b63e5",
+    "tests/test_memory_lifecycle.py": "e2e356e8c55eff5815a03fe8c7da9bb2d0763ff2f59fadd12c6f6b1dc9c90299",
+    "scripts/audit_memory_lifecycle.py": "81567952e9af5cb53ffcf817a0bb1cc83003e5582e1a08cbbbc7732a00abafd4",
+    "scripts/check_lifecycle_mutations.py": "122e329a757ca330d464ab9c98c26fc7d383c0e45a20807eb68060803d7557a1"
+  },
+  "protocol": {
+    "schema": "ohm-memory-lifecycle-protocol-v1",
+    "scope": "Authored diagnostic session stream, lexical retrieval, experimental lifecycle only",
+    "seeds": [
+      7,
+      23,
+      101
+    ],
+    "capacities": [
+      8,
+      16
+    ],
+    "policies": [
+      "full",
+      "fifo",
+      "lru",
+      "lfu",
+      "decay",
+      "decay_probe",
+      "decay_replay"
+    ],
+    "recovery_rows": 4,
+    "maintenance_rows": 8,
+    "maintenance_every": 4,
+    "history_queries": 8,
+    "half_life": 24.0,
+    "threshold": 0.45,
+    "max_records": 10000,
+    "max_text_chars": 4096,
+    "top_k": 1,
+    "tuning": "None; results are diagnostic, not a sealed generalization evaluation"
+  },
+  "fixture_sha256": {
+    "7": "1ad9df777dd4a473483dd788247e85538b53e9822445d8be5b45e41f3f53c869",
+    "23": "32c93540d77b01fd7e6c529811617ca086dcfb35421a59a0a2e002c22bb49d33",
+    "101": "32fdd74fdc56f0b350fc7e736d5dff4b7d7a0a67fb8cc69a1d7b6863a5f5f5f7"
+  },
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "runs": [
+    {
+      "queries": 128,
+      "correct": 128,
+      "hot_correct": 128,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 7168,
+        "archive_text_bytes": 0,
+        "current_head_checks": 7168,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 7168,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 24,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 48,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.247708,
+        "p95_ms": 0.30475,
+        "max_ms": 0.435833
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "full",
+      "capacity": 8,
+      "peak_hot_records": 72,
+      "peak_hot_utf8_payload_bytes": 5376,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.654375,
+      "reopen_validation_ms": 1.236083,
+      "ingest_latency": {
+        "median_ms": 0.222125,
+        "p95_ms": 0.294125,
+        "max_ms": 0.373333
+      },
+      "ingest_total_ms": 18.313955,
+      "seed": 7,
+      "run_id": "seed-7-capacity-8-full"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 11,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 497,
+        "current_head_checks": 1032,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1032,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.046459,
+        "p95_ms": 0.057458,
+        "max_ms": 0.109333
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "fifo",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 648,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.482292,
+      "reopen_validation_ms": 1.18925,
+      "ingest_latency": {
+        "median_ms": 0.208958,
+        "p95_ms": 0.284833,
+        "max_ms": 0.30325
+      },
+      "ingest_total_ms": 17.565838,
+      "seed": 7,
+      "run_id": "seed-7-capacity-8-fifo"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 11,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 497,
+        "current_head_checks": 1032,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1032,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.050041,
+        "p95_ms": 0.125583,
+        "max_ms": 0.215708
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lru",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 648,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.45225,
+      "reopen_validation_ms": 1.200542,
+      "ingest_latency": {
+        "median_ms": 0.2245,
+        "p95_ms": 0.361459,
+        "max_ms": 0.429791
+      },
+      "ingest_total_ms": 19.995455,
+      "seed": 7,
+      "run_id": "seed-7-capacity-8-lru"
+    },
+    {
+      "queries": 128,
+      "correct": 26,
+      "hot_correct": 26,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 0,
+        "current_head_checks": 1024,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1024,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 18,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.048333,
+        "p95_ms": 0.058708,
+        "max_ms": 0.06825
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lfu",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 629,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.473208,
+      "reopen_validation_ms": 1.163375,
+      "ingest_latency": {
+        "median_ms": 0.207084,
+        "p95_ms": 0.23925,
+        "max_ms": 0.431875
+      },
+      "ingest_total_ms": 17.195121,
+      "seed": 7,
+      "run_id": "seed-7-capacity-8-lfu"
+    },
+    {
+      "queries": 128,
+      "correct": 23,
+      "hot_correct": 23,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 0,
+        "current_head_checks": 1024,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1024,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 15,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.047625,
+        "p95_ms": 0.055084,
+        "max_ms": 0.064667
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 629,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.449709,
+      "reopen_validation_ms": 1.121583,
+      "ingest_latency": {
+        "median_ms": 0.218041,
+        "p95_ms": 0.4005,
+        "max_ms": 0.460667
+      },
+      "ingest_total_ms": 19.517584,
+      "seed": 7,
+      "run_id": "seed-7-capacity-8-decay"
+    },
+    {
+      "queries": 128,
+      "correct": 40,
+      "hot_correct": 37,
+      "archive_correct": 3,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 18341,
+        "current_head_checks": 1280,
+        "evictions": 3,
+        "promotions": 3,
+        "recovery_rows": 256,
+        "recovery_scores": 205,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1229,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 6,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 8,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 18,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.090167,
+        "p95_ms": 0.212,
+        "max_ms": 0.237084
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay_probe",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 610,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.458333,
+      "reopen_validation_ms": 1.18375,
+      "ingest_latency": {
+        "median_ms": 0.212375,
+        "p95_ms": 0.354458,
+        "max_ms": 0.461916
+      },
+      "ingest_total_ms": 19.194867,
+      "seed": 7,
+      "run_id": "seed-7-capacity-8-decay_probe"
+    },
+    {
+      "queries": 128,
+      "correct": 58,
+      "hot_correct": 58,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 18341,
+        "current_head_checks": 1280,
+        "evictions": 96,
+        "promotions": 96,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 256,
+        "replay_scores": 1704
+      },
+      "comparisons": 2728,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 15,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 16,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 19,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.050792,
+        "p95_ms": 0.175917,
+        "max_ms": 0.192
+      },
+      "maintenance_total_ms": 3.395834,
+      "policy": "decay_replay",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 571,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.481917,
+      "reopen_validation_ms": 1.166459,
+      "ingest_latency": {
+        "median_ms": 0.206375,
+        "p95_ms": 0.260875,
+        "max_ms": 0.413333
+      },
+      "ingest_total_ms": 17.385749,
+      "seed": 7,
+      "run_id": "seed-7-capacity-8-decay_replay"
+    },
+    {
+      "queries": 128,
+      "correct": 128,
+      "hot_correct": 128,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 7168,
+        "archive_text_bytes": 0,
+        "current_head_checks": 7168,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 7168,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 24,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 48,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.24575,
+        "p95_ms": 0.307916,
+        "max_ms": 0.4435
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "full",
+      "capacity": 16,
+      "peak_hot_records": 72,
+      "peak_hot_utf8_payload_bytes": 5376,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.44925,
+      "reopen_validation_ms": 1.157666,
+      "ingest_latency": {
+        "median_ms": 0.223792,
+        "p95_ms": 0.463459,
+        "max_ms": 1.241
+      },
+      "ingest_total_ms": 22.694961,
+      "seed": 7,
+      "run_id": "seed-7-capacity-16-full"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 11,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 497,
+        "current_head_checks": 2056,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2056,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.075792,
+        "p95_ms": 0.159542,
+        "max_ms": 0.194208
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "fifo",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1296,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.63325,
+      "reopen_validation_ms": 1.287042,
+      "ingest_latency": {
+        "median_ms": 0.243042,
+        "p95_ms": 0.453458,
+        "max_ms": 0.5425
+      },
+      "ingest_total_ms": 21.022581,
+      "seed": 7,
+      "run_id": "seed-7-capacity-16-fifo"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 11,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 497,
+        "current_head_checks": 2056,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2056,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.07375,
+        "p95_ms": 0.094,
+        "max_ms": 0.129459
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lru",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1296,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.438875,
+      "reopen_validation_ms": 1.220375,
+      "ingest_latency": {
+        "median_ms": 0.230542,
+        "p95_ms": 0.456,
+        "max_ms": 1.303541
+      },
+      "ingest_total_ms": 22.543667,
+      "seed": 7,
+      "run_id": "seed-7-capacity-16-lru"
+    },
+    {
+      "queries": 128,
+      "correct": 32,
+      "hot_correct": 32,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 0,
+        "current_head_checks": 2048,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2048,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.076875,
+        "p95_ms": 0.091167,
+        "max_ms": 0.143791
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lfu",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1277,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.469,
+      "reopen_validation_ms": 1.220291,
+      "ingest_latency": {
+        "median_ms": 0.208583,
+        "p95_ms": 0.400459,
+        "max_ms": 0.4975
+      },
+      "ingest_total_ms": 20.335243,
+      "seed": 7,
+      "run_id": "seed-7-capacity-16-lfu"
+    },
+    {
+      "queries": 128,
+      "correct": 32,
+      "hot_correct": 32,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 0,
+        "current_head_checks": 2048,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2048,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.076875,
+        "p95_ms": 0.159417,
+        "max_ms": 0.193417
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1277,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.448083,
+      "reopen_validation_ms": 1.190541,
+      "ingest_latency": {
+        "median_ms": 0.27725,
+        "p95_ms": 0.415833,
+        "max_ms": 1.587083
+      },
+      "ingest_total_ms": 23.685166,
+      "seed": 7,
+      "run_id": "seed-7-capacity-16-decay"
+    },
+    {
+      "queries": 128,
+      "correct": 46,
+      "hot_correct": 43,
+      "archive_correct": 3,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 18341,
+        "current_head_checks": 2304,
+        "evictions": 3,
+        "promotions": 3,
+        "recovery_rows": 256,
+        "recovery_scores": 165,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2213,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 6,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 8,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.080959,
+        "p95_ms": 0.162209,
+        "max_ms": 0.191042
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay_probe",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1258,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.582417,
+      "reopen_validation_ms": 1.210292,
+      "ingest_latency": {
+        "median_ms": 0.209083,
+        "p95_ms": 0.371458,
+        "max_ms": 0.552459
+      },
+      "ingest_total_ms": 19.143874,
+      "seed": 7,
+      "run_id": "seed-7-capacity-16-decay_probe"
+    },
+    {
+      "queries": 128,
+      "correct": 90,
+      "hot_correct": 90,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 18341,
+        "current_head_checks": 2304,
+        "evictions": 82,
+        "promotions": 82,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 256,
+        "replay_scores": 1488
+      },
+      "comparisons": 3536,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 4,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 20,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 34,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.141959,
+        "p95_ms": 0.299042,
+        "max_ms": 0.37275
+      },
+      "maintenance_total_ms": 3.970373,
+      "policy": "decay_replay",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1200,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "ecbb61ccc8b7ac36b113f2303072f9ff1458e8743d7f49399e8536f442d5ce5a",
+      "startup_ms": 0.443625,
+      "reopen_validation_ms": 1.2245,
+      "ingest_latency": {
+        "median_ms": 0.224209,
+        "p95_ms": 0.390542,
+        "max_ms": 0.549125
+      },
+      "ingest_total_ms": 20.683914,
+      "seed": 7,
+      "run_id": "seed-7-capacity-16-decay_replay"
+    },
+    {
+      "queries": 128,
+      "correct": 128,
+      "hot_correct": 128,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 7168,
+        "archive_text_bytes": 0,
+        "current_head_checks": 7168,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 7168,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 24,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 48,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.2515,
+        "p95_ms": 0.397125,
+        "max_ms": 0.412125
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "full",
+      "capacity": 8,
+      "peak_hot_records": 72,
+      "peak_hot_utf8_payload_bytes": 5376,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.639917,
+      "reopen_validation_ms": 1.219333,
+      "ingest_latency": {
+        "median_ms": 0.211291,
+        "p95_ms": 0.36625,
+        "max_ms": 0.439917
+      },
+      "ingest_total_ms": 19.000874,
+      "seed": 23,
+      "run_id": "seed-23-capacity-8-full"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 10,
+      "archive_correct": 1,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 496,
+        "current_head_checks": 1032,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1032,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.046666,
+        "p95_ms": 0.056834,
+        "max_ms": 0.1015
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "fifo",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 648,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.540583,
+      "reopen_validation_ms": 1.2235,
+      "ingest_latency": {
+        "median_ms": 0.203041,
+        "p95_ms": 0.36525,
+        "max_ms": 0.502417
+      },
+      "ingest_total_ms": 17.973955,
+      "seed": 23,
+      "run_id": "seed-23-capacity-8-fifo"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 10,
+      "archive_correct": 1,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 496,
+        "current_head_checks": 1032,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1032,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.050167,
+        "p95_ms": 0.10925,
+        "max_ms": 0.156875
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lru",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 648,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.409208,
+      "reopen_validation_ms": 1.58325,
+      "ingest_latency": {
+        "median_ms": 0.204708,
+        "p95_ms": 0.364167,
+        "max_ms": 0.492666
+      },
+      "ingest_total_ms": 18.443089,
+      "seed": 23,
+      "run_id": "seed-23-capacity-8-lru"
+    },
+    {
+      "queries": 128,
+      "correct": 26,
+      "hot_correct": 26,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 0,
+        "current_head_checks": 1024,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1024,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 18,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.047917,
+        "p95_ms": 0.053083,
+        "max_ms": 0.062958
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lfu",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 631,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.520458,
+      "reopen_validation_ms": 1.160625,
+      "ingest_latency": {
+        "median_ms": 0.201958,
+        "p95_ms": 0.281959,
+        "max_ms": 0.376417
+      },
+      "ingest_total_ms": 17.025338,
+      "seed": 23,
+      "run_id": "seed-23-capacity-8-lfu"
+    },
+    {
+      "queries": 128,
+      "correct": 23,
+      "hot_correct": 23,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 0,
+        "current_head_checks": 1024,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1024,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 15,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.047875,
+        "p95_ms": 0.081292,
+        "max_ms": 0.095958
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 631,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.400792,
+      "reopen_validation_ms": 1.170875,
+      "ingest_latency": {
+        "median_ms": 0.2085,
+        "p95_ms": 0.375042,
+        "max_ms": 0.467542
+      },
+      "ingest_total_ms": 19.109917,
+      "seed": 23,
+      "run_id": "seed-23-capacity-8-decay"
+    },
+    {
+      "queries": 128,
+      "correct": 40,
+      "hot_correct": 37,
+      "archive_correct": 3,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 18347,
+        "current_head_checks": 1280,
+        "evictions": 3,
+        "promotions": 3,
+        "recovery_rows": 256,
+        "recovery_scores": 205,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1229,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 6,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 8,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 18,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.054334,
+        "p95_ms": 0.178166,
+        "max_ms": 0.217083
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay_probe",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 612,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.600458,
+      "reopen_validation_ms": 1.168334,
+      "ingest_latency": {
+        "median_ms": 0.215833,
+        "p95_ms": 0.336167,
+        "max_ms": 0.384209
+      },
+      "ingest_total_ms": 19.619419,
+      "seed": 23,
+      "run_id": "seed-23-capacity-8-decay_probe"
+    },
+    {
+      "queries": 128,
+      "correct": 58,
+      "hot_correct": 58,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 18347,
+        "current_head_checks": 1280,
+        "evictions": 96,
+        "promotions": 96,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 256,
+        "replay_scores": 1704
+      },
+      "comparisons": 2728,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 15,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 16,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 19,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.055417,
+        "p95_ms": 0.178334,
+        "max_ms": 0.284208
+      },
+      "maintenance_total_ms": 3.661667,
+      "policy": "decay_replay",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 576,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.426083,
+      "reopen_validation_ms": 1.230208,
+      "ingest_latency": {
+        "median_ms": 0.205542,
+        "p95_ms": 0.283625,
+        "max_ms": 0.3295
+      },
+      "ingest_total_ms": 17.315833,
+      "seed": 23,
+      "run_id": "seed-23-capacity-8-decay_replay"
+    },
+    {
+      "queries": 128,
+      "correct": 128,
+      "hot_correct": 128,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 7168,
+        "archive_text_bytes": 0,
+        "current_head_checks": 7168,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 7168,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 24,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 48,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.283584,
+        "p95_ms": 0.383875,
+        "max_ms": 0.424833
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "full",
+      "capacity": 16,
+      "peak_hot_records": 72,
+      "peak_hot_utf8_payload_bytes": 5376,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.430958,
+      "reopen_validation_ms": 1.251334,
+      "ingest_latency": {
+        "median_ms": 0.20125,
+        "p95_ms": 0.231583,
+        "max_ms": 0.238375
+      },
+      "ingest_total_ms": 16.322918,
+      "seed": 23,
+      "run_id": "seed-23-capacity-16-full"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 10,
+      "archive_correct": 1,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 496,
+        "current_head_checks": 2056,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2056,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.07975,
+        "p95_ms": 0.137167,
+        "max_ms": 0.183916
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "fifo",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1296,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.470209,
+      "reopen_validation_ms": 1.372542,
+      "ingest_latency": {
+        "median_ms": 0.219958,
+        "p95_ms": 0.33025,
+        "max_ms": 0.747292
+      },
+      "ingest_total_ms": 20.394586,
+      "seed": 23,
+      "run_id": "seed-23-capacity-16-fifo"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 10,
+      "archive_correct": 1,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 496,
+        "current_head_checks": 2056,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2056,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.080334,
+        "p95_ms": 0.132958,
+        "max_ms": 0.189833
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lru",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1296,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.470042,
+      "reopen_validation_ms": 1.253375,
+      "ingest_latency": {
+        "median_ms": 0.22925,
+        "p95_ms": 0.405583,
+        "max_ms": 0.469333
+      },
+      "ingest_total_ms": 20.510617,
+      "seed": 23,
+      "run_id": "seed-23-capacity-16-lru"
+    },
+    {
+      "queries": 128,
+      "correct": 32,
+      "hot_correct": 32,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 0,
+        "current_head_checks": 2048,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2048,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.077458,
+        "p95_ms": 0.086,
+        "max_ms": 0.092333
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lfu",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1279,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.453042,
+      "reopen_validation_ms": 1.287584,
+      "ingest_latency": {
+        "median_ms": 0.219291,
+        "p95_ms": 0.418042,
+        "max_ms": 1.311166
+      },
+      "ingest_total_ms": 23.565917,
+      "seed": 23,
+      "run_id": "seed-23-capacity-16-lfu"
+    },
+    {
+      "queries": 128,
+      "correct": 32,
+      "hot_correct": 32,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 0,
+        "current_head_checks": 2048,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2048,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.078125,
+        "p95_ms": 0.088417,
+        "max_ms": 0.166833
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1279,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.618583,
+      "reopen_validation_ms": 1.276084,
+      "ingest_latency": {
+        "median_ms": 0.212542,
+        "p95_ms": 0.426959,
+        "max_ms": 0.463167
+      },
+      "ingest_total_ms": 21.041874,
+      "seed": 23,
+      "run_id": "seed-23-capacity-16-decay"
+    },
+    {
+      "queries": 128,
+      "correct": 46,
+      "hot_correct": 43,
+      "archive_correct": 3,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 18347,
+        "current_head_checks": 2304,
+        "evictions": 3,
+        "promotions": 3,
+        "recovery_rows": 256,
+        "recovery_scores": 165,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2213,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 6,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 8,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.086583,
+        "p95_ms": 0.176125,
+        "max_ms": 0.256417
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay_probe",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1260,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.411291,
+      "reopen_validation_ms": 1.259208,
+      "ingest_latency": {
+        "median_ms": 0.275125,
+        "p95_ms": 0.472875,
+        "max_ms": 0.509167
+      },
+      "ingest_total_ms": 23.443415,
+      "seed": 23,
+      "run_id": "seed-23-capacity-16-decay_probe"
+    },
+    {
+      "queries": 128,
+      "correct": 90,
+      "hot_correct": 90,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 18347,
+        "current_head_checks": 2304,
+        "evictions": 80,
+        "promotions": 80,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 256,
+        "replay_scores": 1472
+      },
+      "comparisons": 3520,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 4,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 20,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 34,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.141,
+        "p95_ms": 0.320875,
+        "max_ms": 0.39975
+      },
+      "maintenance_total_ms": 4.314374,
+      "policy": "decay_replay",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1205,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "4805a77154be373c264edbafc203a453c1d6ef6d9f03486cf1e6324bc94f9a52",
+      "startup_ms": 0.523916,
+      "reopen_validation_ms": 1.213041,
+      "ingest_latency": {
+        "median_ms": 0.239167,
+        "p95_ms": 0.468584,
+        "max_ms": 0.685625
+      },
+      "ingest_total_ms": 22.591707,
+      "seed": 23,
+      "run_id": "seed-23-capacity-16-decay_replay"
+    },
+    {
+      "queries": 128,
+      "correct": 128,
+      "hot_correct": 128,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 7168,
+        "archive_text_bytes": 0,
+        "current_head_checks": 7168,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 7168,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 24,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 48,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.256833,
+        "p95_ms": 0.382833,
+        "max_ms": 0.427625
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "full",
+      "capacity": 8,
+      "peak_hot_records": 72,
+      "peak_hot_utf8_payload_bytes": 5376,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.445416,
+      "reopen_validation_ms": 1.280666,
+      "ingest_latency": {
+        "median_ms": 0.206334,
+        "p95_ms": 0.367584,
+        "max_ms": 0.442125
+      },
+      "ingest_total_ms": 18.081288,
+      "seed": 101,
+      "run_id": "seed-101-capacity-8-full"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 11,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 496,
+        "current_head_checks": 1032,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1032,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.047292,
+        "p95_ms": 0.084167,
+        "max_ms": 0.112584
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "fifo",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 648,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.498334,
+      "reopen_validation_ms": 1.250041,
+      "ingest_latency": {
+        "median_ms": 0.204375,
+        "p95_ms": 0.312542,
+        "max_ms": 0.467709
+      },
+      "ingest_total_ms": 17.705668,
+      "seed": 101,
+      "run_id": "seed-101-capacity-8-fifo"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 11,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 496,
+        "current_head_checks": 1032,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1032,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.053833,
+        "p95_ms": 0.109958,
+        "max_ms": 0.179542
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lru",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 648,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.430959,
+      "reopen_validation_ms": 1.2845,
+      "ingest_latency": {
+        "median_ms": 0.204917,
+        "p95_ms": 0.311083,
+        "max_ms": 0.637042
+      },
+      "ingest_total_ms": 18.611583,
+      "seed": 101,
+      "run_id": "seed-101-capacity-8-lru"
+    },
+    {
+      "queries": 128,
+      "correct": 26,
+      "hot_correct": 26,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 0,
+        "current_head_checks": 1024,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1024,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 18,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.049459,
+        "p95_ms": 0.084291,
+        "max_ms": 0.10375
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lfu",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 629,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.428417,
+      "reopen_validation_ms": 1.214292,
+      "ingest_latency": {
+        "median_ms": 0.205916,
+        "p95_ms": 0.292708,
+        "max_ms": 0.409292
+      },
+      "ingest_total_ms": 17.831749,
+      "seed": 101,
+      "run_id": "seed-101-capacity-8-lfu"
+    },
+    {
+      "queries": 128,
+      "correct": 23,
+      "hot_correct": 23,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 0,
+        "current_head_checks": 1024,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1024,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 15,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.048083,
+        "p95_ms": 0.0855,
+        "max_ms": 0.097209
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 629,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.43125,
+      "reopen_validation_ms": 1.737167,
+      "ingest_latency": {
+        "median_ms": 0.203042,
+        "p95_ms": 0.226083,
+        "max_ms": 0.390292
+      },
+      "ingest_total_ms": 16.573003,
+      "seed": 101,
+      "run_id": "seed-101-capacity-8-decay"
+    },
+    {
+      "queries": 128,
+      "correct": 40,
+      "hot_correct": 37,
+      "archive_correct": 3,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 18347,
+        "current_head_checks": 1280,
+        "evictions": 3,
+        "promotions": 3,
+        "recovery_rows": 256,
+        "recovery_scores": 205,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 1229,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 6,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 8,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 18,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.071792,
+        "p95_ms": 0.185,
+        "max_ms": 0.210083
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay_probe",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 609,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.489875,
+      "reopen_validation_ms": 1.212625,
+      "ingest_latency": {
+        "median_ms": 0.209542,
+        "p95_ms": 0.319083,
+        "max_ms": 0.42425
+      },
+      "ingest_total_ms": 19.057414,
+      "seed": 101,
+      "run_id": "seed-101-capacity-8-decay_probe"
+    },
+    {
+      "queries": 128,
+      "correct": 58,
+      "hot_correct": 58,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 1024,
+        "archive_text_bytes": 18347,
+        "current_head_checks": 1280,
+        "evictions": 96,
+        "promotions": 96,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 256,
+        "replay_scores": 1704
+      },
+      "comparisons": 2728,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 15,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 16,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 19,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.05325,
+        "p95_ms": 0.172041,
+        "max_ms": 0.185416
+      },
+      "maintenance_total_ms": 3.456667,
+      "policy": "decay_replay",
+      "capacity": 8,
+      "peak_hot_records": 8,
+      "peak_hot_utf8_payload_bytes": 570,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.457667,
+      "reopen_validation_ms": 1.194209,
+      "ingest_latency": {
+        "median_ms": 0.21225,
+        "p95_ms": 0.311,
+        "max_ms": 0.541042
+      },
+      "ingest_total_ms": 18.316084,
+      "seed": 101,
+      "run_id": "seed-101-capacity-8-decay_replay"
+    },
+    {
+      "queries": 128,
+      "correct": 128,
+      "hot_correct": 128,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 7168,
+        "archive_text_bytes": 0,
+        "current_head_checks": 7168,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 7168,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 24,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 48,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.245416,
+        "p95_ms": 0.403042,
+        "max_ms": 0.481542
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "full",
+      "capacity": 16,
+      "peak_hot_records": 72,
+      "peak_hot_utf8_payload_bytes": 5376,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.432583,
+      "reopen_validation_ms": 1.263583,
+      "ingest_latency": {
+        "median_ms": 0.216667,
+        "p95_ms": 0.382542,
+        "max_ms": 0.577208
+      },
+      "ingest_total_ms": 18.844413,
+      "seed": 101,
+      "run_id": "seed-101-capacity-16-full"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 11,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 496,
+        "current_head_checks": 2056,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2056,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.084125,
+        "p95_ms": 0.157167,
+        "max_ms": 0.232042
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "fifo",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1296,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.511959,
+      "reopen_validation_ms": 1.305042,
+      "ingest_latency": {
+        "median_ms": 0.229833,
+        "p95_ms": 0.373083,
+        "max_ms": 4.702292
+      },
+      "ingest_total_ms": 24.249544,
+      "seed": 101,
+      "run_id": "seed-101-capacity-16-fifo"
+    },
+    {
+      "queries": 128,
+      "correct": 11,
+      "hot_correct": 11,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 496,
+        "current_head_checks": 2056,
+        "evictions": 2,
+        "promotions": 2,
+        "recovery_rows": 8,
+        "recovery_scores": 8,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2056,
+      "archive_rows": 8,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 3,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.079666,
+        "p95_ms": 0.139166,
+        "max_ms": 0.230959
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lru",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1296,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.477042,
+      "reopen_validation_ms": 1.297459,
+      "ingest_latency": {
+        "median_ms": 0.209083,
+        "p95_ms": 0.304584,
+        "max_ms": 0.646792
+      },
+      "ingest_total_ms": 18.172418,
+      "seed": 101,
+      "run_id": "seed-101-capacity-16-lru"
+    },
+    {
+      "queries": 128,
+      "correct": 32,
+      "hot_correct": 32,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 0,
+        "current_head_checks": 2048,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2048,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.087834,
+        "p95_ms": 0.173084,
+        "max_ms": 0.25025
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "lfu",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1277,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.441875,
+      "reopen_validation_ms": 1.766708,
+      "ingest_latency": {
+        "median_ms": 0.198083,
+        "p95_ms": 0.241417,
+        "max_ms": 0.357417
+      },
+      "ingest_total_ms": 16.514618,
+      "seed": 101,
+      "run_id": "seed-101-capacity-16-lfu"
+    },
+    {
+      "queries": 128,
+      "correct": 32,
+      "hot_correct": 32,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 0,
+        "current_head_checks": 2048,
+        "evictions": 0,
+        "promotions": 0,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2048,
+      "archive_rows": 0,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 0,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.080208,
+        "p95_ms": 0.088792,
+        "max_ms": 0.156041
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1277,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.430875,
+      "reopen_validation_ms": 1.282916,
+      "ingest_latency": {
+        "median_ms": 0.200083,
+        "p95_ms": 0.276667,
+        "max_ms": 0.456584
+      },
+      "ingest_total_ms": 17.120464,
+      "seed": 101,
+      "run_id": "seed-101-capacity-16-decay"
+    },
+    {
+      "queries": 128,
+      "correct": 46,
+      "hot_correct": 43,
+      "archive_correct": 3,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 18347,
+        "current_head_checks": 2304,
+        "evictions": 3,
+        "promotions": 3,
+        "recovery_rows": 256,
+        "recovery_scores": 165,
+        "replay_rows": 0,
+        "replay_scores": 0
+      },
+      "comparisons": 2213,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 0,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 6,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 8,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 24,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.084042,
+        "p95_ms": 0.171875,
+        "max_ms": 0.283791
+      },
+      "maintenance_total_ms": 0.0,
+      "policy": "decay_probe",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1257,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.428083,
+      "reopen_validation_ms": 1.245208,
+      "ingest_latency": {
+        "median_ms": 0.203792,
+        "p95_ms": 0.297042,
+        "max_ms": 0.367916
+      },
+      "ingest_total_ms": 17.237079,
+      "seed": 101,
+      "run_id": "seed-101-capacity-16-decay_probe"
+    },
+    {
+      "queries": 128,
+      "correct": 90,
+      "hot_correct": 90,
+      "archive_correct": 0,
+      "superseded_answers": 0,
+      "work": {
+        "active_scores": 2048,
+        "archive_text_bytes": 18347,
+        "current_head_checks": 2304,
+        "evictions": 80,
+        "promotions": 80,
+        "recovery_rows": 0,
+        "recovery_scores": 0,
+        "replay_rows": 256,
+        "replay_scores": 1472
+      },
+      "comparisons": 3520,
+      "archive_rows": 256,
+      "phase": {
+        "delayed_revisit": {
+          "correct": 4,
+          "queries": 24
+        },
+        "early_repetition": {
+          "correct": 20,
+          "queries": 24
+        },
+        "immediate_correction": {
+          "correct": 8,
+          "queries": 8
+        },
+        "interleaved_repetition": {
+          "correct": 24,
+          "queries": 24
+        },
+        "late_revisit": {
+          "correct": 34,
+          "queries": 48
+        }
+      },
+      "query_latency": {
+        "median_ms": 0.099792,
+        "p95_ms": 0.2865,
+        "max_ms": 0.413875
+      },
+      "maintenance_total_ms": 4.048335,
+      "policy": "decay_replay",
+      "capacity": 16,
+      "peak_hot_records": 16,
+      "peak_hot_utf8_payload_bytes": 1198,
+      "archive_records": 80,
+      "archive_file_bytes": 45056,
+      "originals_reopen_verified": 80,
+      "archive_manifest_sha256": "a0a5c9cdcc145e01b55a8f86c23bad609d76647ba4a2290120230b72d4f93869",
+      "startup_ms": 0.432333,
+      "reopen_validation_ms": 1.2115,
+      "ingest_latency": {
+        "median_ms": 0.21175,
+        "p95_ms": 0.324292,
+        "max_ms": 0.46425
+      },
+      "ingest_total_ms": 19.256498,
+      "seed": 101,
+      "run_id": "seed-101-capacity-16-decay_replay"
+    }
+  ],
+  "limitations": [
+    "Authored diagnostic fixture, not held-out real-assistant quality",
+    "Shared lexical scorer, not ZHA or semantic embeddings",
+    "No hyperparameter tuning, no novelty or speed claim",
+    "Single process, one lifecycle pass per setting; timing is descriptive",
+    "Hot state is bounded; archive, SQLite index and metadata are not compressed away",
+    "Controller state is not persistent across restarts",
+    "No answerability, mathematical attention-error or factual-correctness certificate"
+  ]
+}

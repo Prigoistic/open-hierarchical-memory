@@ -1,0 +1,9 @@
+{
+  "all_passed": true,
+  "scope": "Separate trace/SQLite self-audit, not external validation or generalization evidence",
+  "runs": 42,
+  "queries": 5376,
+  "original_records": 3360,
+  "report_sha256": "75ed26dc4caf267920b229757638ccec9c8a1b7e9670b0b2f1d53d2e27ef487e",
+  "source_commit": "dda4d4bf275e8d60643ebffcf8068c3f911b6625"
+}
