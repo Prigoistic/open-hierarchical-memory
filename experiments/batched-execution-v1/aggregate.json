@@ -1,0 +1,371 @@
+{
+  "aggregation": "Arithmetic mean of seed/process medians; p95/p99 pool 450 observed batches per engine/case. No confidence intervals. Three fresh processes, three frozen-reference seeds. Ratios below one are slower.",
+  "input_hashes": {
+    "process-0.json": "361f17ce005b68aa4b7b57665cc93d710105071748cf4eabfc8c941f19b98760",
+    "process-1.json": "08aa85faf33839d11c37cc348a58148b5d96a327ea38b2bade46cc6e5632d08e",
+    "process-2.json": "21be1463ac921348c9d0a79310808fefe9e4cc6d0849d5b9f3701b5f6608976e"
+  },
+  "parity_sha256": "41515941b1f57a089fe98266d599c224b2a52e6de5de2eac7c01538efe972602",
+  "rows": [
+    {
+      "context": 256,
+      "layout": "separate_four_queries",
+      "query_head_cases_per_batch": 384,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 22.011412,
+          "pooled_p95_ms": 22.465125,
+          "pooled_p99_ms": 22.825417,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 9.635048611111111,
+          "pooled_p95_ms": 10.364708,
+          "pooled_p99_ms": 10.905791,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 0.6639004444444444,
+          "pooled_p95_ms": 0.790834,
+          "pooled_p99_ms": 1.048291,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 2.2845148881362674,
+      "sdpa_over_batched_speed_ratio": 0.06890473221679819,
+      "reference_build_ms": 19.347106333333333,
+      "batched_build_ms": 19.559161888888887,
+      "one_use_speed_ratio_vs_sdpa": 0.0227408254264812,
+      "static128_speed_ratio_vs_sdpa": 0.06782900585069508,
+      "reference_owned_tensor_bytes": 26761728,
+      "batched_owned_tensor_bytes": 28259328,
+      "ordering_padding_ratio": 1.6666666666666667,
+      "attention_softmax_padding_ratio": 2.4998641787045415,
+      "process_speed_ratios": [
+        2.2950258825659846,
+        2.2894550562129212,
+        2.2691784566598585
+      ]
+    },
+    {
+      "context": 256,
+      "layout": "stacked_four_queries",
+      "query_head_cases_per_batch": 384,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 21.797349611111112,
+          "pooled_p95_ms": 22.229917,
+          "pooled_p99_ms": 22.492291,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 8.228064888888888,
+          "pooled_p95_ms": 8.790625,
+          "pooled_p99_ms": 9.535708,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 0.5341921666666667,
+          "pooled_p95_ms": 0.626708,
+          "pooled_p99_ms": 0.693417,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 2.6491465375468874,
+      "sdpa_over_batched_speed_ratio": 0.06492318350430555,
+      "reference_build_ms": 18.925777555555555,
+      "batched_build_ms": 19.142902666666668,
+      "one_use_speed_ratio_vs_sdpa": 0.019516743994614116,
+      "static128_speed_ratio_vs_sdpa": 0.06376420059220297,
+      "reference_owned_tensor_bytes": 26675712,
+      "batched_owned_tensor_bytes": 28173312,
+      "ordering_padding_ratio": 1.6666666666666667,
+      "attention_softmax_padding_ratio": 2.7721266140089966,
+      "process_speed_ratios": [
+        2.656250104095349,
+        2.6305909530951186,
+        2.66092909716487
+      ]
+    },
+    {
+      "context": 256,
+      "layout": "separate_last_query",
+      "query_head_cases_per_batch": 96,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 6.407687722222223,
+          "pooled_p95_ms": 6.652167,
+          "pooled_p99_ms": 6.834666,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 4.590511444444444,
+          "pooled_p95_ms": 4.950334,
+          "pooled_p99_ms": 5.506541,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 0.48191900000000004,
+          "pooled_p95_ms": 0.541625,
+          "pooled_p99_ms": 0.684291,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 1.3958548627467147,
+      "sdpa_over_batched_speed_ratio": 0.10498154853381989,
+      "reference_build_ms": 19.37079177777778,
+      "batched_build_ms": 19.56966688888889,
+      "one_use_speed_ratio_vs_sdpa": 0.01994683124234665,
+      "static128_speed_ratio_vs_sdpa": 0.10159781046300584,
+      "reference_owned_tensor_bytes": 26761728,
+      "batched_owned_tensor_bytes": 28259328,
+      "ordering_padding_ratio": 1.0,
+      "attention_softmax_padding_ratio": 1.855393257089804,
+      "process_speed_ratios": [
+        1.3989428484785273,
+        1.400294019589093,
+        1.3883317009602836
+      ]
+    },
+    {
+      "context": 512,
+      "layout": "separate_four_queries",
+      "query_head_cases_per_batch": 384,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 30.72099327777778,
+          "pooled_p95_ms": 31.388083,
+          "pooled_p99_ms": 31.89475,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 15.71501161111111,
+          "pooled_p95_ms": 16.956333,
+          "pooled_p99_ms": 17.420292,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 1.1255347777777776,
+          "pooled_p95_ms": 1.323458,
+          "pooled_p99_ms": 1.552542,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 1.954881996781782,
+      "sdpa_over_batched_speed_ratio": 0.07162163195488712,
+      "reference_build_ms": 40.16552766666667,
+      "batched_build_ms": 40.70684277777778,
+      "one_use_speed_ratio_vs_sdpa": 0.01994856053507217,
+      "static128_speed_ratio_vs_sdpa": 0.07020098568942205,
+      "reference_owned_tensor_bytes": 53624832,
+      "batched_owned_tensor_bytes": 56819712,
+      "ordering_padding_ratio": 1.641025641025641,
+      "attention_softmax_padding_ratio": 2.864714450866826,
+      "process_speed_ratios": [
+        1.9495539893326288,
+        1.9505866534703504,
+        1.9646096779999955
+      ]
+    },
+    {
+      "context": 512,
+      "layout": "stacked_four_queries",
+      "query_head_cases_per_batch": 384,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 30.483828666666668,
+          "pooled_p95_ms": 30.976292,
+          "pooled_p99_ms": 31.554458,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 13.514657555555555,
+          "pooled_p95_ms": 14.633458,
+          "pooled_p99_ms": 19.741292,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 1.0087846666666667,
+          "pooled_p95_ms": 1.145875,
+          "pooled_p99_ms": 1.402583,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 2.255612363195654,
+      "sdpa_over_batched_speed_ratio": 0.07464374606014187,
+      "reference_build_ms": 40.38967133333333,
+      "batched_build_ms": 40.87409266666666,
+      "one_use_speed_ratio_vs_sdpa": 0.01854767139426742,
+      "static128_speed_ratio_vs_sdpa": 0.07292075018503058,
+      "reference_owned_tensor_bytes": 53538816,
+      "batched_owned_tensor_bytes": 56733696,
+      "ordering_padding_ratio": 1.641025641025641,
+      "attention_softmax_padding_ratio": 3.279865520195929,
+      "process_speed_ratios": [
+        2.249163614678409,
+        2.2688236157889934,
+        2.2489035148670347
+      ]
+    },
+    {
+      "context": 512,
+      "layout": "separate_last_query",
+      "query_head_cases_per_batch": 96,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 10.323330944444443,
+          "pooled_p95_ms": 10.729416,
+          "pooled_p99_ms": 11.291417,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 6.9405418333333335,
+          "pooled_p95_ms": 7.760584,
+          "pooled_p99_ms": 8.715125,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 0.8336341111111111,
+          "pooled_p95_ms": 0.960709,
+          "pooled_p99_ms": 1.095041,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 1.4873955365940728,
+      "sdpa_over_batched_speed_ratio": 0.12011081139334358,
+      "reference_build_ms": 40.25928711111111,
+      "batched_build_ms": 40.83128255555555,
+      "one_use_speed_ratio_vs_sdpa": 0.017450330226555125,
+      "static128_speed_ratio_vs_sdpa": 0.11483297071533269,
+      "reference_owned_tensor_bytes": 53624832,
+      "batched_owned_tensor_bytes": 56819712,
+      "ordering_padding_ratio": 1.0,
+      "attention_softmax_padding_ratio": 2.043235784583096,
+      "process_speed_ratios": [
+        1.4780036723437926,
+        1.4930685486310626,
+        1.4912361858086345
+      ]
+    },
+    {
+      "context": 1024,
+      "layout": "separate_four_queries",
+      "query_head_cases_per_batch": 384,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 41.11749527777778,
+          "pooled_p95_ms": 42.524625,
+          "pooled_p99_ms": 53.184084,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 22.792428166666667,
+          "pooled_p95_ms": 24.779208,
+          "pooled_p99_ms": 30.9665,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 2.1375507777777774,
+          "pooled_p95_ms": 2.423833,
+          "pooled_p99_ms": 3.06475,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 1.8039980197419705,
+      "sdpa_over_batched_speed_ratio": 0.09378337236152354,
+      "reference_build_ms": 82.22674055555555,
+      "batched_build_ms": 82.69760188888888,
+      "one_use_speed_ratio_vs_sdpa": 0.0202630597095484,
+      "static128_speed_ratio_vs_sdpa": 0.09119826301331015,
+      "reference_owned_tensor_bytes": 107351040,
+      "batched_owned_tensor_bytes": 113940480,
+      "ordering_padding_ratio": 1.9767409839735817,
+      "attention_softmax_padding_ratio": 3.2827041734389715,
+      "process_speed_ratios": [
+        1.7965656350879713,
+        1.8062700123822164,
+        1.8091711231698622
+      ]
+    },
+    {
+      "context": 1024,
+      "layout": "stacked_four_queries",
+      "query_head_cases_per_batch": 384,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 40.73781711111111,
+          "pooled_p95_ms": 42.03375,
+          "pooled_p99_ms": 44.009458,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 20.860999888888887,
+          "pooled_p95_ms": 22.409917,
+          "pooled_p99_ms": 25.123041,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 1.9664143333333333,
+          "pooled_p95_ms": 2.166834,
+          "pooled_p99_ms": 2.416208,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 1.9528218842860516,
+      "sdpa_over_batched_speed_ratio": 0.09426270762700578,
+      "reference_build_ms": 81.787352,
+      "batched_build_ms": 82.64587955555555,
+      "one_use_speed_ratio_vs_sdpa": 0.018997909548502744,
+      "static128_speed_ratio_vs_sdpa": 0.09143276286341814,
+      "reference_owned_tensor_bytes": 107265024,
+      "batched_owned_tensor_bytes": 113854464,
+      "ordering_padding_ratio": 1.9767409839735817,
+      "attention_softmax_padding_ratio": 3.919000171381044,
+      "process_speed_ratios": [
+        1.9431069047166964,
+        1.9602945310633348,
+        1.9550757849844407
+      ]
+    },
+    {
+      "context": 1024,
+      "layout": "separate_last_query",
+      "query_head_cases_per_batch": 96,
+      "timing": {
+        "reference": {
+          "mean_seed_process_median_ms": 13.541372722222222,
+          "pooled_p95_ms": 14.363708,
+          "pooled_p99_ms": 26.000541,
+          "measured_batches": 450
+        },
+        "batched": {
+          "mean_seed_process_median_ms": 9.92348838888889,
+          "pooled_p95_ms": 10.916542,
+          "pooled_p99_ms": 16.868917,
+          "measured_batches": 450
+        },
+        "sdpa": {
+          "mean_seed_process_median_ms": 1.5978125555555556,
+          "pooled_p95_ms": 1.719542,
+          "pooled_p99_ms": 2.23975,
+          "measured_batches": 450
+        }
+      },
+      "reference_over_batched_speed_ratio": 1.3645778774109514,
+      "sdpa_over_batched_speed_ratio": 0.16101319343957624,
+      "reference_build_ms": 82.06354622222221,
+      "batched_build_ms": 82.58644911111111,
+      "one_use_speed_ratio_vs_sdpa": 0.017271793698439758,
+      "static128_speed_ratio_vs_sdpa": 0.15118352380718975,
+      "reference_owned_tensor_bytes": 107351040,
+      "batched_owned_tensor_bytes": 113940480,
+      "ordering_padding_ratio": 1.42649750359993,
+      "attention_softmax_padding_ratio": 2.2459160327147667,
+      "process_speed_ratios": [
+        1.3535082245130765,
+        1.3651816046598442,
+        1.3750350775726066
+      ]
+    }
+  ]
+}
