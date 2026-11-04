@@ -29,3 +29,8 @@ This project is independent and is not affiliated with Zyphra. The paper's autho
 The [frozen GPT-2 pilot](experiments/gpt2-layer5-pilot-v1/SUMMARY.md) fits only 6,144 routing-reference parameters per seed. Held-out pooled KL improves in all three seeds. At threshold 0.73, mean attention-output L2 error is 11.9% lower than the untrained sampled-query initialization at nearly equal selected-key fractions. The random-reference baseline is close, and higher-threshold results are mixed. This covers one layer, 256-token contexts and two test books; it establishes no whole-model quality or speed claim.
 
 The [protocol, optional research setup and reproduction commands](docs/GPT2_PILOT.md) distinguish native-capture checks from real pretrained-model measurements. Research dependencies are optional: `uv sync --locked --extra research`. Include `--extra research` in subsequent `uv run --locked` commands to retain them; without the extra, optional GPT-2 adapter tests are skipped explicitly.
+
+
+## Geometry and context study
+
+The [preregistered cost-quality study](experiments/gpt2-cost-quality-v1/SUMMARY.md) covers seven geometries, three native GPT-2 context lengths and four new test books. Validation-selected settings meet the fixed layer-error budgets and reduce counted vector work. The current CPU reference is still substantially slower than native dense PyTorch SDPA; this is no speedup result. The [protocol](docs/COST_QUALITY.md), complete grid, individual timings, index costs and independent audit are retained.

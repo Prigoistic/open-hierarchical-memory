@@ -1,0 +1,299 @@
+{
+  "source_revision": "dc8b5c75f7b8bfe3fba8d03c94bb4df0ed2b91c0",
+  "selections": [
+    {
+      "context": 256,
+      "geometry": "c16-r2-d2",
+      "p": 0.9,
+      "validation_metrics": {
+        "retained_mass": {
+          "count": 576,
+          "mean": 0.9799888826673675,
+          "median": 0.9982146368587902,
+          "p95": 1.0
+        },
+        "retained_non_sink_mass": {
+          "count": 576,
+          "mean": 0.9562470008540667,
+          "median": 0.9933315278703012,
+          "p95": 1.0
+        },
+        "attention_l2_error": {
+          "count": 576,
+          "mean": 0.08860315329082219,
+          "median": 0.005004339023533073,
+          "p95": 0.20151510118050506
+        },
+        "relative_l2_error": {
+          "count": 576,
+          "mean": 0.028110952854908153,
+          "median": 0.0026395031587469297,
+          "p95": 0.07812198475133418
+        },
+        "selected_key_fraction": {
+          "count": 576,
+          "mean": 0.5719401041666666,
+          "median": 0.625,
+          "p95": 1.0
+        },
+        "selected_keys": {
+          "count": 576,
+          "mean": 82.22222222222223,
+          "median": 64.0,
+          "p95": 192
+        },
+        "scored_summary_nodes": {
+          "count": 576,
+          "mean": 9.0,
+          "median": 9.0,
+          "p95": 15
+        },
+        "qk_score_ratio": {
+          "count": 576,
+          "mean": 0.6806640625,
+          "median": 0.73828125,
+          "p95": 1.09375
+        },
+        "qk_plus_av_vector_work_ratio": {
+          "count": 576,
+          "mean": 0.6263020833333334,
+          "median": 0.681640625,
+          "p95": 1.046875
+        },
+        "oracle_topk_retained_mass": {
+          "count": 576,
+          "mean": 0.9969395789869238,
+          "median": 0.9996335828143039,
+          "p95": 1.0
+        },
+        "same_k_mass_gap": {
+          "count": 576,
+          "mean": 0.01695069631955618,
+          "median": 0.0010248703795687764,
+          "p95": 0.05043041585417973
+        }
+      },
+      "eligible_pairs": 17
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r2-d2",
+      "p": 0.9,
+      "validation_metrics": {
+        "retained_mass": {
+          "count": 576,
+          "mean": 0.9714596697679294,
+          "median": 0.9943924488681107,
+          "p95": 0.9998794935391474
+        },
+        "retained_non_sink_mass": {
+          "count": 576,
+          "mean": 0.9401160069590124,
+          "median": 0.9795284135292445,
+          "p95": 0.9997039426696243
+        },
+        "attention_l2_error": {
+          "count": 576,
+          "mean": 0.10859974973934432,
+          "median": 0.016440707104756085,
+          "p95": 0.37057788213103654
+        },
+        "relative_l2_error": {
+          "count": 576,
+          "mean": 0.03702096507807742,
+          "median": 0.007774348336946081,
+          "p95": 0.1303472957524133
+        },
+        "selected_key_fraction": {
+          "count": 576,
+          "mean": 0.4275535300925926,
+          "median": 0.375,
+          "p95": 0.875
+        },
+        "selected_keys": {
+          "count": 576,
+          "mean": 126.27777777777777,
+          "median": 80.0,
+          "p95": 352
+        },
+        "scored_summary_nodes": {
+          "count": 576,
+          "mean": 19.5,
+          "median": 19.5,
+          "p95": 32
+        },
+        "qk_score_ratio": {
+          "count": 576,
+          "mean": 0.5466941550925926,
+          "median": 0.484375,
+          "p95": 0.984375
+        },
+        "qk_plus_av_vector_work_ratio": {
+          "count": 576,
+          "mean": 0.48712384259259256,
+          "median": 0.4296875,
+          "p95": 0.9296875
+        },
+        "oracle_topk_retained_mass": {
+          "count": 576,
+          "mean": 0.9956245459461734,
+          "median": 0.9989307031193682,
+          "p95": 0.9999885985181974
+        },
+        "same_k_mass_gap": {
+          "count": 576,
+          "mean": 0.024164876178243963,
+          "median": 0.002380232579897612,
+          "p95": 0.09594519610628882
+        }
+      },
+      "eligible_pairs": 13
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r2-d2",
+      "p": 0.9,
+      "validation_metrics": {
+        "retained_mass": {
+          "count": 576,
+          "mean": 0.959456472816984,
+          "median": 0.9920251354281922,
+          "p95": 0.9997690088354355
+        },
+        "retained_non_sink_mass": {
+          "count": 576,
+          "mean": 0.9294245426290791,
+          "median": 0.9674079052814458,
+          "p95": 0.9993286575588988
+        },
+        "attention_l2_error": {
+          "count": 576,
+          "mean": 0.12010518704756065,
+          "median": 0.025671242688973903,
+          "p95": 0.44790528795367857
+        },
+        "relative_l2_error": {
+          "count": 576,
+          "mean": 0.04125697245646083,
+          "median": 0.01348536493260472,
+          "p95": 0.1369240522832024
+        },
+        "selected_key_fraction": {
+          "count": 576,
+          "mean": 0.3434968171296296,
+          "median": 0.25,
+          "p95": 0.8125
+        },
+        "selected_keys": {
+          "count": 576,
+          "mean": 201.86111111111111,
+          "median": 128.0,
+          "p95": 576
+        },
+        "scored_summary_nodes": {
+          "count": 576,
+          "mean": 33.638888888888886,
+          "median": 32.5,
+          "p95": 66
+        },
+        "qk_score_ratio": {
+          "count": 576,
+          "mean": 0.45332392939814814,
+          "median": 0.3671875,
+          "p95": 0.9296875
+        },
+        "qk_plus_av_vector_work_ratio": {
+          "count": 576,
+          "mean": 0.3984103732638889,
+          "median": 0.3125,
+          "p95": 0.87109375
+        },
+        "oracle_topk_retained_mass": {
+          "count": 576,
+          "mean": 0.9936942254054952,
+          "median": 0.9984639851151426,
+          "p95": 0.9999747107620885
+        },
+        "same_k_mass_gap": {
+          "count": 576,
+          "mean": 0.03423775258851122,
+          "median": 0.005618436500390733,
+          "p95": 0.16469639013839898
+        }
+      },
+      "eligible_pairs": 13
+    }
+  ],
+  "rule": {
+    "max_mean_relative_l2": 0.05,
+    "max_p95_relative_l2": 0.2,
+    "relative_l2_denominator_floor": 1e-12,
+    "rule": "Per context, among trained geometry/threshold pairs meeting both validation error limits pooled across all three seeds, choose lowest mean qk_plus_av_vector_work_ratio; ties by geometry ID then threshold. No qualifying pair means no selection. These are layer diagnostics, not semantic quality guarantees."
+  },
+  "test_capture_started": false,
+  "checkpoint_hashes": {
+    "references/t256-c4-r8-d2-s7.safetensors": "597e6e041f7f8ffc73791c3ba114e2a1bd9a5de34b8caad4bbf1277ce15dd2e4",
+    "references/t256-c4-r8-d2-s23.safetensors": "07061dd37e5c9f5a1c728de2541e6741b1642017b4d016c5eebb1ae01cd09452",
+    "references/t256-c4-r8-d2-s101.safetensors": "3d3e7fe08baaffe363a6f6497c88f08f38d4ca802706908b1ed87ef6b4257a0e",
+    "references/t256-c16-r2-d2-s7.safetensors": "cdc4c578cd93932995cb7634eb1722c1d7536a0eeb649aac0019f281ae65e319",
+    "references/t256-c16-r2-d2-s23.safetensors": "62d861209913ea8588de3116cc6a043671c835b32c10d0762488aaddf58df1d5",
+    "references/t256-c16-r2-d2-s101.safetensors": "d3015046b2745bbdf7b00993e0875db0b320cdceab89b8be70e337350b73687c",
+    "references/t256-c16-r4-d2-s7.safetensors": "94ef0f5de730fa5d4507c89a6e17641647c77c8c45daec1b34c2d6eee8b25a1d",
+    "references/t256-c16-r4-d2-s23.safetensors": "8ae6658737d7b0238c47ae7921d3a61e8d512eabaafa386f31655b51d04479c7",
+    "references/t256-c16-r4-d2-s101.safetensors": "8c0e24c5c8021f908b6c19963cbaab431b65cdfb859f94dd23c44b111816f0e9",
+    "references/t256-c16-r8-d2-s7.safetensors": "d36ef72b55122819528b3e4e4e21d14656a1c64ac8e36f11fa0c1f990becbc1c",
+    "references/t256-c16-r8-d2-s23.safetensors": "c70cf52e94e1d2b85b22561323b782df9195c121211b582acea44461d913b365",
+    "references/t256-c16-r8-d2-s101.safetensors": "06c6e5bab0a897d2ca2c93087d0634e3897234950acd5cbbbeefd20aa2f23a30",
+    "references/t256-c32-r2-d2-s7.safetensors": "ab23ff38d60c942914634d09d11760c6153ba27d9ca40074a0e3c634fc269ee9",
+    "references/t256-c32-r2-d2-s23.safetensors": "741d548aafecc637180ea1eabe20e6da9e62ddecfbd2999bfa3d581304a33d4d",
+    "references/t256-c32-r2-d2-s101.safetensors": "7af1ae900aa7ce8c9d14e7bfa8f9e6e353838115be6b425bbd3fb6c1f48b86af",
+    "references/t256-c32-r4-d2-s7.safetensors": "c693eccdf256d7e66dd3378c7cdbd4e1ae44b0120502768dcc141a9ff767cdc7",
+    "references/t256-c32-r4-d2-s23.safetensors": "690ae40889c47d97b3e678fc87a280289b1b86cc53edd01bbc38d30fdef2f16a",
+    "references/t256-c32-r4-d2-s101.safetensors": "586438b71245ecc424a79f27a52983033141d754f5e492774883db4c1e9f7ca6",
+    "references/t256-c32-r8-d2-s7.safetensors": "5b019685d35018a91ab7fdf873cb47d82113317f66fc63fcbf47fd15373c414c",
+    "references/t256-c32-r8-d2-s23.safetensors": "978020abc28cb33a54262216e7ebab17834b8530001bd783e4ae6bc0515eb1ff",
+    "references/t256-c32-r8-d2-s101.safetensors": "3ce79c9ab0ec88b1ff87a71909a39f38ff091218dad7f32a6daf34fc988e4cc5",
+    "references/t512-c4-r8-d2-s7.safetensors": "869b3eaa0ee01e75a38b253a3ce9908385fb524cceb987f7b04cce9f0e9f235a",
+    "references/t512-c4-r8-d2-s23.safetensors": "1c9e959e0ece9ec6806f9988bb967d49991e38c1e004f0973997c9c60623b2b6",
+    "references/t512-c4-r8-d2-s101.safetensors": "4566d4b881ebef1b875d25103610c0a83f7665591cf70b633cb20cca86bd6fec",
+    "references/t512-c16-r2-d2-s7.safetensors": "5689e1a620b352763e63dba9b28f0bf62ff2fa7bebde4def2e530f8231ae1783",
+    "references/t512-c16-r2-d2-s23.safetensors": "c8541ca080c9bb15d5a43c47c9f584f5ef4427b5ab7e5ab4b488b86f10b5085f",
+    "references/t512-c16-r2-d2-s101.safetensors": "2ec73d50eacf0d64053613d6a81c1c480a41d341e163454f96a2b7a225fb6245",
+    "references/t512-c16-r4-d2-s7.safetensors": "6562bfe1983e44101059cc7eeddf31575c7695f9330645a119ca1085bfe5fe79",
+    "references/t512-c16-r4-d2-s23.safetensors": "ac8b584f90c5add636863e6a1b6b16526a37608f83ecb22774d699b56708e28f",
+    "references/t512-c16-r4-d2-s101.safetensors": "865dcee4c7140eeee0068f0c51e212c3f2fa7ba09fa24d18365490535d09803c",
+    "references/t512-c16-r8-d2-s7.safetensors": "dd47e88a09cc04909ed87e39cb5ab5492e693227db36f772003c41d219d571c1",
+    "references/t512-c16-r8-d2-s23.safetensors": "65c0eb3d291167091de026c977736a403ba1a84dec41cc297df8df1fe925b55d",
+    "references/t512-c16-r8-d2-s101.safetensors": "c23099352d64d84c6795a3dd50e5d0694e07ae12c70cc3108aac0fc4f1dd1af1",
+    "references/t512-c32-r2-d2-s7.safetensors": "2afeb475df1fd35f3c5adaf8c288f45d6aadbf823c65e064aef31697ebebcec7",
+    "references/t512-c32-r2-d2-s23.safetensors": "8e643dc9ca1a63e68c33043ec4b96ce83661260a6ba31e9077fe0a5b86d6f522",
+    "references/t512-c32-r2-d2-s101.safetensors": "59043df28814c255af34109e95cbdcae355a9382ad8e92904e4e078cb346b821",
+    "references/t512-c32-r4-d2-s7.safetensors": "12c8e43cc050cad042aeca5f202036693d5318a4d3309fe5938120207c61acb7",
+    "references/t512-c32-r4-d2-s23.safetensors": "22b3014f8ece5679a8c77a757785b8bdfd95cf050a935b3b7c3a020c0d475a75",
+    "references/t512-c32-r4-d2-s101.safetensors": "16e5ee932e0a0dda1d1345b410529de9232be4594beb29ba0998fe561224a726",
+    "references/t512-c32-r8-d2-s7.safetensors": "b7071aed85c0a06080e7b79cf3ff808b86be1a70df0ad786f6f803b3fba99da0",
+    "references/t512-c32-r8-d2-s23.safetensors": "5cf8f909052d6e64470c95186f22a8b41398f762f13622fef3c49397123ecba4",
+    "references/t512-c32-r8-d2-s101.safetensors": "1ed8d34d0857b2f12fbb6d30ffc613987de00d5446a8329cc30cb470fd4ae942",
+    "references/t1024-c4-r8-d2-s7.safetensors": "09f5ad7172979233ae6efd3ab3d354f48cd266ae2c8ac7f4c2c6cfc13973dd09",
+    "references/t1024-c4-r8-d2-s23.safetensors": "a22dae8fcb4323e4673e2114fcdd07311858ebe3f6d379400b9b1d2089cac7e9",
+    "references/t1024-c4-r8-d2-s101.safetensors": "1804fe017b55be0d9bf5d319711e4a938440971c26b7914394141a86960f71eb",
+    "references/t1024-c16-r2-d2-s7.safetensors": "16c3c5361fe2e395bf20dd6b395a43c672488d0880c1db45170261465bbbff72",
+    "references/t1024-c16-r2-d2-s23.safetensors": "36603024a174f454d56d549540a130f2c6c4d36fcb1f768304e65f964f2f5804",
+    "references/t1024-c16-r2-d2-s101.safetensors": "fb762f8aff7f950ab57e023fef56404809225999610c73dbf9d6099a2002aa8e",
+    "references/t1024-c16-r4-d2-s7.safetensors": "74afea3937db23aa72ac5be0b542d0d6967c77482f775d0b9aa252639ee8fa34",
+    "references/t1024-c16-r4-d2-s23.safetensors": "9c32354f2be999b4943d8c27c5a5e93f19a3a2b9944a6b81250f1a48f0287613",
+    "references/t1024-c16-r4-d2-s101.safetensors": "95e7f9990c59dc664b31b7bcb012e96a8bed863fff0f0d8456be61426bc83d37",
+    "references/t1024-c16-r8-d2-s7.safetensors": "0fba6292332d52a9eac7c6c40d86068dc39cd004fa029c87fbafbbf1d54966dd",
+    "references/t1024-c16-r8-d2-s23.safetensors": "7a5a849919e1523f476ea65f85221c077cc9feeb7e5bab61bf45bef424c886c0",
+    "references/t1024-c16-r8-d2-s101.safetensors": "42ba32ec011e9e3e8cfc6cab0c30f9a3148eb617dd4c1d5d35309af297b48041",
+    "references/t1024-c32-r2-d2-s7.safetensors": "98772ad5affc52c576e40833997114fa3446b402819179f018cbd5049ae84a30",
+    "references/t1024-c32-r2-d2-s23.safetensors": "5488bdacaec559429e55b1ede8b9191717e92f8e15a118b19638d9ce93cb25ac",
+    "references/t1024-c32-r2-d2-s101.safetensors": "9919b438b8bef28f7454f34e9796ed266a1b1cdea2b6d2efd410f3e8ef81187a",
+    "references/t1024-c32-r4-d2-s7.safetensors": "2c991c68dedea83e04d28d70f76ba2f4fc572fb96c5f37f3643cd6cfb69f2f31",
+    "references/t1024-c32-r4-d2-s23.safetensors": "1f34165d5fc7522551f50c30fe6d183885a6774b4df874e3074942b907e1af74",
+    "references/t1024-c32-r4-d2-s101.safetensors": "0ddcb743cddc2933b35829a6571b4a92983c787653b7173ab06c2fd0896481bf",
+    "references/t1024-c32-r8-d2-s7.safetensors": "1d4ce6045962adb7fca70d209b24b0e9a9bcd12087ed547981ed10fb54a859c9",
+    "references/t1024-c32-r8-d2-s23.safetensors": "34e634160b09333bb15127c03d72c4ad9f8c8cf4252cf8dccd6f4f349f7027a9",
+    "references/t1024-c32-r8-d2-s101.safetensors": "1ae49f88bb1085a266d6a59631fceccf7a58489b7af41316ffad08d96a2e3b2d"
+  }
+}

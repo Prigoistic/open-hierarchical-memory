@@ -1,0 +1,747 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Captured context=256 train book=11
+Captured context=256 train book=84
+Captured context=256 train book=1342
+Captured context=256 train book=1661
+Captured context=256 validation book=98
+Captured context=256 validation book=2701
+seed=7 step=10 validation_KL=0.132155
+seed=7 step=20 validation_KL=0.131927
+seed=7 step=30 validation_KL=0.131194
+seed=7 step=40 validation_KL=0.130173
+seed=7 step=50 validation_KL=0.128104
+seed=7 step=60 validation_KL=0.125985
+seed=7 step=70 validation_KL=0.124733
+seed=7 step=80 validation_KL=0.123657
+seed=7 step=90 validation_KL=0.122848
+seed=7 step=100 validation_KL=0.122637
+seed=23 step=10 validation_KL=0.140194
+seed=23 step=20 validation_KL=0.137226
+seed=23 step=30 validation_KL=0.134898
+seed=23 step=40 validation_KL=0.132073
+seed=23 step=50 validation_KL=0.129257
+seed=23 step=60 validation_KL=0.126707
+seed=23 step=70 validation_KL=0.124131
+seed=23 step=80 validation_KL=0.121674
+seed=23 step=90 validation_KL=0.119746
+seed=23 step=100 validation_KL=0.117693
+seed=101 step=10 validation_KL=0.140825
+seed=101 step=20 validation_KL=0.139911
+seed=101 step=30 validation_KL=0.138772
+seed=101 step=40 validation_KL=0.137388
+seed=101 step=50 validation_KL=0.135821
+seed=101 step=60 validation_KL=0.134576
+seed=101 step=70 validation_KL=0.133142
+seed=101 step=80 validation_KL=0.131481
+seed=101 step=90 validation_KL=0.129582
+seed=101 step=100 validation_KL=0.126453
+Validated context=256 geometry=c4-r8-d2
+seed=7 step=10 validation_KL=0.179722
+seed=7 step=20 validation_KL=0.17669
+seed=7 step=30 validation_KL=0.172853
+seed=7 step=40 validation_KL=0.169119
+seed=7 step=50 validation_KL=0.165633
+seed=7 step=60 validation_KL=0.16245
+seed=7 step=70 validation_KL=0.159389
+seed=7 step=80 validation_KL=0.157027
+seed=7 step=90 validation_KL=0.154984
+seed=7 step=100 validation_KL=0.153269
+seed=23 step=10 validation_KL=0.162187
+seed=23 step=20 validation_KL=0.159116
+seed=23 step=30 validation_KL=0.156199
+seed=23 step=40 validation_KL=0.153807
+seed=23 step=50 validation_KL=0.151364
+seed=23 step=60 validation_KL=0.149677
+seed=23 step=70 validation_KL=0.14751
+seed=23 step=80 validation_KL=0.146149
+seed=23 step=90 validation_KL=0.144701
+seed=23 step=100 validation_KL=0.144135
+seed=101 step=10 validation_KL=0.167422
+seed=101 step=20 validation_KL=0.165461
+seed=101 step=30 validation_KL=0.162912
+seed=101 step=40 validation_KL=0.160067
+seed=101 step=50 validation_KL=0.15748
+seed=101 step=60 validation_KL=0.155155
+seed=101 step=70 validation_KL=0.152686
+seed=101 step=80 validation_KL=0.150402
+seed=101 step=90 validation_KL=0.148218
+seed=101 step=100 validation_KL=0.146149
+Validated context=256 geometry=c16-r2-d2
+seed=7 step=10 validation_KL=0.144094
+seed=7 step=20 validation_KL=0.143197
+seed=7 step=30 validation_KL=0.142416
+seed=7 step=40 validation_KL=0.141687
+seed=7 step=50 validation_KL=0.140367
+seed=7 step=60 validation_KL=0.1393
+seed=7 step=70 validation_KL=0.138241
+seed=7 step=80 validation_KL=0.137121
+seed=7 step=90 validation_KL=0.136243
+seed=7 step=100 validation_KL=0.135064
+seed=23 step=10 validation_KL=0.12506
+seed=23 step=20 validation_KL=0.123378
+seed=23 step=30 validation_KL=0.121975
+seed=23 step=40 validation_KL=0.120566
+seed=23 step=50 validation_KL=0.119597
+seed=23 step=60 validation_KL=0.118574
+seed=23 step=70 validation_KL=0.117486
+seed=23 step=80 validation_KL=0.116551
+seed=23 step=90 validation_KL=0.115779
+seed=23 step=100 validation_KL=0.115029
+seed=101 step=10 validation_KL=0.104869
+seed=101 step=20 validation_KL=0.103992
+seed=101 step=30 validation_KL=0.103407
+seed=101 step=40 validation_KL=0.102654
+seed=101 step=50 validation_KL=0.102055
+seed=101 step=60 validation_KL=0.101665
+seed=101 step=70 validation_KL=0.101225
+seed=101 step=80 validation_KL=0.101007
+seed=101 step=90 validation_KL=0.100823
+seed=101 step=100 validation_KL=0.100433
+Validated context=256 geometry=c16-r4-d2
+seed=7 step=10 validation_KL=0.0890684
+seed=7 step=20 validation_KL=0.0898303
+seed=7 step=30 validation_KL=0.0902878
+seed=7 step=40 validation_KL=0.090709
+seed=7 step=50 validation_KL=0.0900274
+seed=7 step=60 validation_KL=0.0894587
+seed=7 step=70 validation_KL=0.0889562
+seed=7 step=80 validation_KL=0.0884673
+seed=7 step=90 validation_KL=0.088138
+seed=7 step=100 validation_KL=0.0877454
+seed=23 step=10 validation_KL=0.104648
+seed=23 step=20 validation_KL=0.103197
+seed=23 step=30 validation_KL=0.102121
+seed=23 step=40 validation_KL=0.100857
+seed=23 step=50 validation_KL=0.099713
+seed=23 step=60 validation_KL=0.0985842
+seed=23 step=70 validation_KL=0.0971667
+seed=23 step=80 validation_KL=0.0955922
+seed=23 step=90 validation_KL=0.0944462
+seed=23 step=100 validation_KL=0.0929072
+seed=101 step=10 validation_KL=0.0896707
+seed=101 step=20 validation_KL=0.0895603
+seed=101 step=30 validation_KL=0.089515
+seed=101 step=40 validation_KL=0.0895418
+seed=101 step=50 validation_KL=0.0896154
+seed=101 step=60 validation_KL=0.089609
+seed=101 step=70 validation_KL=0.0896346
+seed=101 step=80 validation_KL=0.0895016
+seed=101 step=90 validation_KL=0.0893833
+seed=101 step=100 validation_KL=0.0886619
+Validated context=256 geometry=c16-r8-d2
+seed=7 step=10 validation_KL=0.182508
+seed=7 step=20 validation_KL=0.179466
+seed=7 step=30 validation_KL=0.175559
+seed=7 step=40 validation_KL=0.17226
+seed=7 step=50 validation_KL=0.168864
+seed=7 step=60 validation_KL=0.165757
+seed=7 step=70 validation_KL=0.162723
+seed=7 step=80 validation_KL=0.160034
+seed=7 step=90 validation_KL=0.157938
+seed=7 step=100 validation_KL=0.155978
+seed=23 step=10 validation_KL=0.156526
+seed=23 step=20 validation_KL=0.155027
+seed=23 step=30 validation_KL=0.153633
+seed=23 step=40 validation_KL=0.152698
+seed=23 step=50 validation_KL=0.15182
+seed=23 step=60 validation_KL=0.151254
+seed=23 step=70 validation_KL=0.150526
+seed=23 step=80 validation_KL=0.150022
+seed=23 step=90 validation_KL=0.149593
+seed=23 step=100 validation_KL=0.149167
+seed=101 step=10 validation_KL=0.175964
+seed=101 step=20 validation_KL=0.171713
+seed=101 step=30 validation_KL=0.166901
+seed=101 step=40 validation_KL=0.162085
+seed=101 step=50 validation_KL=0.157628
+seed=101 step=60 validation_KL=0.153794
+seed=101 step=70 validation_KL=0.15034
+seed=101 step=80 validation_KL=0.147459
+seed=101 step=90 validation_KL=0.144899
+seed=101 step=100 validation_KL=0.142615
+Validated context=256 geometry=c32-r2-d2
+seed=7 step=10 validation_KL=0.144798
+seed=7 step=20 validation_KL=0.14273
+seed=7 step=30 validation_KL=0.140948
+seed=7 step=40 validation_KL=0.139204
+seed=7 step=50 validation_KL=0.137646
+seed=7 step=60 validation_KL=0.136269
+seed=7 step=70 validation_KL=0.135069
+seed=7 step=80 validation_KL=0.134194
+seed=7 step=90 validation_KL=0.133214
+seed=7 step=100 validation_KL=0.132125
+seed=23 step=10 validation_KL=0.12484
+seed=23 step=20 validation_KL=0.124181
+seed=23 step=30 validation_KL=0.123061
+seed=23 step=40 validation_KL=0.122113
+seed=23 step=50 validation_KL=0.12158
+seed=23 step=60 validation_KL=0.121096
+seed=23 step=70 validation_KL=0.120486
+seed=23 step=80 validation_KL=0.120261
+seed=23 step=90 validation_KL=0.119952
+seed=23 step=100 validation_KL=0.119515
+seed=101 step=10 validation_KL=0.119439
+seed=101 step=20 validation_KL=0.119539
+seed=101 step=30 validation_KL=0.119606
+seed=101 step=40 validation_KL=0.119341
+seed=101 step=50 validation_KL=0.118737
+seed=101 step=60 validation_KL=0.118147
+seed=101 step=70 validation_KL=0.117501
+seed=101 step=80 validation_KL=0.116876
+seed=101 step=90 validation_KL=0.11626
+seed=101 step=100 validation_KL=0.115679
+Validated context=256 geometry=c32-r4-d2
+seed=7 step=10 validation_KL=0.0913777
+seed=7 step=20 validation_KL=0.0905717
+seed=7 step=30 validation_KL=0.0897262
+seed=7 step=40 validation_KL=0.0890249
+seed=7 step=50 validation_KL=0.0885738
+seed=7 step=60 validation_KL=0.0881025
+seed=7 step=70 validation_KL=0.0875964
+seed=7 step=80 validation_KL=0.0872205
+seed=7 step=90 validation_KL=0.0870144
+seed=7 step=100 validation_KL=0.0867818
+seed=23 step=10 validation_KL=0.112127
+seed=23 step=20 validation_KL=0.111822
+seed=23 step=30 validation_KL=0.111742
+seed=23 step=40 validation_KL=0.111147
+seed=23 step=50 validation_KL=0.110593
+seed=23 step=60 validation_KL=0.110212
+seed=23 step=70 validation_KL=0.110047
+seed=23 step=80 validation_KL=0.109616
+seed=23 step=90 validation_KL=0.109363
+seed=23 step=100 validation_KL=0.10875
+seed=101 step=10 validation_KL=0.100616
+seed=101 step=20 validation_KL=0.0998345
+seed=101 step=30 validation_KL=0.0991634
+seed=101 step=40 validation_KL=0.0985267
+seed=101 step=50 validation_KL=0.0979843
+seed=101 step=60 validation_KL=0.0974987
+seed=101 step=70 validation_KL=0.0969686
+seed=101 step=80 validation_KL=0.0964743
+seed=101 step=90 validation_KL=0.0959552
+seed=101 step=100 validation_KL=0.095409
+Validated context=256 geometry=c32-r8-d2
+Captured context=512 train book=11
+Captured context=512 train book=84
+Captured context=512 train book=1342
+Captured context=512 train book=1661
+Captured context=512 validation book=98
+Captured context=512 validation book=2701
+seed=7 step=10 validation_KL=0.243291
+seed=7 step=20 validation_KL=0.241912
+seed=7 step=30 validation_KL=0.240382
+seed=7 step=40 validation_KL=0.239201
+seed=7 step=50 validation_KL=0.238121
+seed=7 step=60 validation_KL=0.237204
+seed=7 step=70 validation_KL=0.235912
+seed=7 step=80 validation_KL=0.235264
+seed=7 step=90 validation_KL=0.234575
+seed=7 step=100 validation_KL=0.233878
+seed=23 step=10 validation_KL=0.245745
+seed=23 step=20 validation_KL=0.243939
+seed=23 step=30 validation_KL=0.241601
+seed=23 step=40 validation_KL=0.239448
+seed=23 step=50 validation_KL=0.237984
+seed=23 step=60 validation_KL=0.236506
+seed=23 step=70 validation_KL=0.235288
+seed=23 step=80 validation_KL=0.233858
+seed=23 step=90 validation_KL=0.232607
+seed=23 step=100 validation_KL=0.231301
+seed=101 step=10 validation_KL=0.251778
+seed=101 step=20 validation_KL=0.25132
+seed=101 step=30 validation_KL=0.250106
+seed=101 step=40 validation_KL=0.248732
+seed=101 step=50 validation_KL=0.247361
+seed=101 step=60 validation_KL=0.246091
+seed=101 step=70 validation_KL=0.244401
+seed=101 step=80 validation_KL=0.242993
+seed=101 step=90 validation_KL=0.241031
+seed=101 step=100 validation_KL=0.238751
+Validated context=512 geometry=c4-r8-d2
+seed=7 step=10 validation_KL=0.384212
+seed=7 step=20 validation_KL=0.376101
+seed=7 step=30 validation_KL=0.369146
+seed=7 step=40 validation_KL=0.360862
+seed=7 step=50 validation_KL=0.351884
+seed=7 step=60 validation_KL=0.34422
+seed=7 step=70 validation_KL=0.335439
+seed=7 step=80 validation_KL=0.328283
+seed=7 step=90 validation_KL=0.323247
+seed=7 step=100 validation_KL=0.317636
+seed=23 step=10 validation_KL=0.354066
+seed=23 step=20 validation_KL=0.345248
+seed=23 step=30 validation_KL=0.336126
+seed=23 step=40 validation_KL=0.330066
+seed=23 step=50 validation_KL=0.323186
+seed=23 step=60 validation_KL=0.31818
+seed=23 step=70 validation_KL=0.312163
+seed=23 step=80 validation_KL=0.307641
+seed=23 step=90 validation_KL=0.303604
+seed=23 step=100 validation_KL=0.299342
+seed=101 step=10 validation_KL=0.318749
+seed=101 step=20 validation_KL=0.309464
+seed=101 step=30 validation_KL=0.302533
+seed=101 step=40 validation_KL=0.297222
+seed=101 step=50 validation_KL=0.291695
+seed=101 step=60 validation_KL=0.287083
+seed=101 step=70 validation_KL=0.282962
+seed=101 step=80 validation_KL=0.279635
+seed=101 step=90 validation_KL=0.276895
+seed=101 step=100 validation_KL=0.274776
+Validated context=512 geometry=c16-r2-d2
+seed=7 step=10 validation_KL=0.297512
+seed=7 step=20 validation_KL=0.29169
+seed=7 step=30 validation_KL=0.286018
+seed=7 step=40 validation_KL=0.280992
+seed=7 step=50 validation_KL=0.276225
+seed=7 step=60 validation_KL=0.272328
+seed=7 step=70 validation_KL=0.26826
+seed=7 step=80 validation_KL=0.264015
+seed=7 step=90 validation_KL=0.260508
+seed=7 step=100 validation_KL=0.257842
+seed=23 step=10 validation_KL=0.250676
+seed=23 step=20 validation_KL=0.244563
+seed=23 step=30 validation_KL=0.238437
+seed=23 step=40 validation_KL=0.232865
+seed=23 step=50 validation_KL=0.229532
+seed=23 step=60 validation_KL=0.226408
+seed=23 step=70 validation_KL=0.223615
+seed=23 step=80 validation_KL=0.221575
+seed=23 step=90 validation_KL=0.220128
+seed=23 step=100 validation_KL=0.219241
+seed=101 step=10 validation_KL=0.276239
+seed=101 step=20 validation_KL=0.27073
+seed=101 step=30 validation_KL=0.265292
+seed=101 step=40 validation_KL=0.261499
+seed=101 step=50 validation_KL=0.257403
+seed=101 step=60 validation_KL=0.255291
+seed=101 step=70 validation_KL=0.253285
+seed=101 step=80 validation_KL=0.251488
+seed=101 step=90 validation_KL=0.249874
+seed=101 step=100 validation_KL=0.248335
+Validated context=512 geometry=c16-r4-d2
+seed=7 step=10 validation_KL=0.231789
+seed=7 step=20 validation_KL=0.229394
+seed=7 step=30 validation_KL=0.226927
+seed=7 step=40 validation_KL=0.224818
+seed=7 step=50 validation_KL=0.2233
+seed=7 step=60 validation_KL=0.221773
+seed=7 step=70 validation_KL=0.220366
+seed=7 step=80 validation_KL=0.219507
+seed=7 step=90 validation_KL=0.218828
+seed=7 step=100 validation_KL=0.218159
+seed=23 step=10 validation_KL=0.219562
+seed=23 step=20 validation_KL=0.217453
+seed=23 step=30 validation_KL=0.214686
+seed=23 step=40 validation_KL=0.211985
+seed=23 step=50 validation_KL=0.209629
+seed=23 step=60 validation_KL=0.207408
+seed=23 step=70 validation_KL=0.205487
+seed=23 step=80 validation_KL=0.203262
+seed=23 step=90 validation_KL=0.201415
+seed=23 step=100 validation_KL=0.200537
+seed=101 step=10 validation_KL=0.214411
+seed=101 step=20 validation_KL=0.213721
+seed=101 step=30 validation_KL=0.213055
+seed=101 step=40 validation_KL=0.212169
+seed=101 step=50 validation_KL=0.211005
+seed=101 step=60 validation_KL=0.209951
+seed=101 step=70 validation_KL=0.209016
+seed=101 step=80 validation_KL=0.208406
+seed=101 step=90 validation_KL=0.207883
+seed=101 step=100 validation_KL=0.206949
+Validated context=512 geometry=c16-r8-d2
+seed=7 step=10 validation_KL=0.265826
+seed=7 step=20 validation_KL=0.263267
+seed=7 step=30 validation_KL=0.261656
+seed=7 step=40 validation_KL=0.259973
+seed=7 step=50 validation_KL=0.258401
+seed=7 step=60 validation_KL=0.257197
+seed=7 step=70 validation_KL=0.255323
+seed=7 step=80 validation_KL=0.2537
+seed=7 step=90 validation_KL=0.252564
+seed=7 step=100 validation_KL=0.250969
+seed=23 step=10 validation_KL=0.253375
+seed=23 step=20 validation_KL=0.24832
+seed=23 step=30 validation_KL=0.242934
+seed=23 step=40 validation_KL=0.239383
+seed=23 step=50 validation_KL=0.234104
+seed=23 step=60 validation_KL=0.229902
+seed=23 step=70 validation_KL=0.224908
+seed=23 step=80 validation_KL=0.220893
+seed=23 step=90 validation_KL=0.217631
+seed=23 step=100 validation_KL=0.214238
+seed=101 step=10 validation_KL=0.208375
+seed=101 step=20 validation_KL=0.201384
+seed=101 step=30 validation_KL=0.195613
+seed=101 step=40 validation_KL=0.19049
+seed=101 step=50 validation_KL=0.184986
+seed=101 step=60 validation_KL=0.180104
+seed=101 step=70 validation_KL=0.175551
+seed=101 step=80 validation_KL=0.17206
+seed=101 step=90 validation_KL=0.169257
+seed=101 step=100 validation_KL=0.166651
+Validated context=512 geometry=c32-r2-d2
+seed=7 step=10 validation_KL=0.200924
+seed=7 step=20 validation_KL=0.199316
+seed=7 step=30 validation_KL=0.197816
+seed=7 step=40 validation_KL=0.196581
+seed=7 step=50 validation_KL=0.19516
+seed=7 step=60 validation_KL=0.193957
+seed=7 step=70 validation_KL=0.192204
+seed=7 step=80 validation_KL=0.190281
+seed=7 step=90 validation_KL=0.188625
+seed=7 step=100 validation_KL=0.187597
+seed=23 step=10 validation_KL=0.179243
+seed=23 step=20 validation_KL=0.176946
+seed=23 step=30 validation_KL=0.174661
+seed=23 step=40 validation_KL=0.172598
+seed=23 step=50 validation_KL=0.171579
+seed=23 step=60 validation_KL=0.170372
+seed=23 step=70 validation_KL=0.168315
+seed=23 step=80 validation_KL=0.16672
+seed=23 step=90 validation_KL=0.165179
+seed=23 step=100 validation_KL=0.164093
+seed=101 step=10 validation_KL=0.180066
+seed=101 step=20 validation_KL=0.1774
+seed=101 step=30 validation_KL=0.174669
+seed=101 step=40 validation_KL=0.172838
+seed=101 step=50 validation_KL=0.170042
+seed=101 step=60 validation_KL=0.167786
+seed=101 step=70 validation_KL=0.165765
+seed=101 step=80 validation_KL=0.163656
+seed=101 step=90 validation_KL=0.161692
+seed=101 step=100 validation_KL=0.159937
+Validated context=512 geometry=c32-r4-d2
+seed=7 step=10 validation_KL=0.150746
+seed=7 step=20 validation_KL=0.149107
+seed=7 step=30 validation_KL=0.147079
+seed=7 step=40 validation_KL=0.145391
+seed=7 step=50 validation_KL=0.143734
+seed=7 step=60 validation_KL=0.142057
+seed=7 step=70 validation_KL=0.140024
+seed=7 step=80 validation_KL=0.138424
+seed=7 step=90 validation_KL=0.137258
+seed=7 step=100 validation_KL=0.136375
+seed=23 step=10 validation_KL=0.149796
+seed=23 step=20 validation_KL=0.14853
+seed=23 step=30 validation_KL=0.147318
+seed=23 step=40 validation_KL=0.14593
+seed=23 step=50 validation_KL=0.144784
+seed=23 step=60 validation_KL=0.143702
+seed=23 step=70 validation_KL=0.142847
+seed=23 step=80 validation_KL=0.141821
+seed=23 step=90 validation_KL=0.141002
+seed=23 step=100 validation_KL=0.140323
+seed=101 step=10 validation_KL=0.136094
+seed=101 step=20 validation_KL=0.135792
+seed=101 step=30 validation_KL=0.135317
+seed=101 step=40 validation_KL=0.134796
+seed=101 step=50 validation_KL=0.134286
+seed=101 step=60 validation_KL=0.133641
+seed=101 step=70 validation_KL=0.132952
+seed=101 step=80 validation_KL=0.132576
+seed=101 step=90 validation_KL=0.132234
+seed=101 step=100 validation_KL=0.131781
+Validated context=512 geometry=c32-r8-d2
+Captured context=1024 train book=11
+Captured context=1024 train book=84
+Captured context=1024 train book=1342
+Captured context=1024 train book=1661
+Captured context=1024 validation book=98
+Captured context=1024 validation book=2701
+seed=7 step=10 validation_KL=0.159371
+seed=7 step=20 validation_KL=0.156371
+seed=7 step=30 validation_KL=0.153115
+seed=7 step=40 validation_KL=0.150043
+seed=7 step=50 validation_KL=0.147271
+seed=7 step=60 validation_KL=0.144647
+seed=7 step=70 validation_KL=0.141692
+seed=7 step=80 validation_KL=0.139377
+seed=7 step=90 validation_KL=0.137468
+seed=7 step=100 validation_KL=0.1356
+seed=23 step=10 validation_KL=0.178384
+seed=23 step=20 validation_KL=0.176566
+seed=23 step=30 validation_KL=0.174145
+seed=23 step=40 validation_KL=0.172229
+seed=23 step=50 validation_KL=0.170298
+seed=23 step=60 validation_KL=0.168598
+seed=23 step=70 validation_KL=0.166936
+seed=23 step=80 validation_KL=0.165149
+seed=23 step=90 validation_KL=0.163411
+seed=23 step=100 validation_KL=0.162201
+seed=101 step=10 validation_KL=0.15901
+seed=101 step=20 validation_KL=0.157551
+seed=101 step=30 validation_KL=0.156371
+seed=101 step=40 validation_KL=0.155473
+seed=101 step=50 validation_KL=0.154836
+seed=101 step=60 validation_KL=0.154257
+seed=101 step=70 validation_KL=0.153608
+seed=101 step=80 validation_KL=0.153629
+seed=101 step=90 validation_KL=0.152902
+seed=101 step=100 validation_KL=0.152355
+Validated context=1024 geometry=c4-r8-d2
+seed=7 step=10 validation_KL=0.377658
+seed=7 step=20 validation_KL=0.368282
+seed=7 step=30 validation_KL=0.360281
+seed=7 step=40 validation_KL=0.352954
+seed=7 step=50 validation_KL=0.345709
+seed=7 step=60 validation_KL=0.340667
+seed=7 step=70 validation_KL=0.335324
+seed=7 step=80 validation_KL=0.331596
+seed=7 step=90 validation_KL=0.329011
+seed=7 step=100 validation_KL=0.326285
+seed=23 step=10 validation_KL=0.462352
+seed=23 step=20 validation_KL=0.453159
+seed=23 step=30 validation_KL=0.443942
+seed=23 step=40 validation_KL=0.436247
+seed=23 step=50 validation_KL=0.427674
+seed=23 step=60 validation_KL=0.420386
+seed=23 step=70 validation_KL=0.412352
+seed=23 step=80 validation_KL=0.404778
+seed=23 step=90 validation_KL=0.398094
+seed=23 step=100 validation_KL=0.391935
+seed=101 step=10 validation_KL=0.462457
+seed=101 step=20 validation_KL=0.452874
+seed=101 step=30 validation_KL=0.445083
+seed=101 step=40 validation_KL=0.437672
+seed=101 step=50 validation_KL=0.430332
+seed=101 step=60 validation_KL=0.423426
+seed=101 step=70 validation_KL=0.415678
+seed=101 step=80 validation_KL=0.408837
+seed=101 step=90 validation_KL=0.402639
+seed=101 step=100 validation_KL=0.39621
+Validated context=1024 geometry=c16-r2-d2
+seed=7 step=10 validation_KL=0.257759
+seed=7 step=20 validation_KL=0.25259
+seed=7 step=30 validation_KL=0.247106
+seed=7 step=40 validation_KL=0.242341
+seed=7 step=50 validation_KL=0.237585
+seed=7 step=60 validation_KL=0.234071
+seed=7 step=70 validation_KL=0.231373
+seed=7 step=80 validation_KL=0.229397
+seed=7 step=90 validation_KL=0.228143
+seed=7 step=100 validation_KL=0.227631
+seed=23 step=10 validation_KL=0.303898
+seed=23 step=20 validation_KL=0.301281
+seed=23 step=30 validation_KL=0.298151
+seed=23 step=40 validation_KL=0.29507
+seed=23 step=50 validation_KL=0.292651
+seed=23 step=60 validation_KL=0.290286
+seed=23 step=70 validation_KL=0.287844
+seed=23 step=80 validation_KL=0.285487
+seed=23 step=90 validation_KL=0.283184
+seed=23 step=100 validation_KL=0.280891
+seed=101 step=10 validation_KL=0.281554
+seed=101 step=20 validation_KL=0.273863
+seed=101 step=30 validation_KL=0.266073
+seed=101 step=40 validation_KL=0.258794
+seed=101 step=50 validation_KL=0.251033
+seed=101 step=60 validation_KL=0.245627
+seed=101 step=70 validation_KL=0.241873
+seed=101 step=80 validation_KL=0.23883
+seed=101 step=90 validation_KL=0.235743
+seed=101 step=100 validation_KL=0.233709
+Validated context=1024 geometry=c16-r4-d2
+seed=7 step=10 validation_KL=0.194427
+seed=7 step=20 validation_KL=0.19215
+seed=7 step=30 validation_KL=0.189283
+seed=7 step=40 validation_KL=0.18654
+seed=7 step=50 validation_KL=0.184069
+seed=7 step=60 validation_KL=0.181829
+seed=7 step=70 validation_KL=0.179085
+seed=7 step=80 validation_KL=0.177301
+seed=7 step=90 validation_KL=0.176126
+seed=7 step=100 validation_KL=0.174945
+seed=23 step=10 validation_KL=0.228944
+seed=23 step=20 validation_KL=0.226809
+seed=23 step=30 validation_KL=0.224342
+seed=23 step=40 validation_KL=0.222271
+seed=23 step=50 validation_KL=0.220271
+seed=23 step=60 validation_KL=0.218745
+seed=23 step=70 validation_KL=0.217448
+seed=23 step=80 validation_KL=0.216135
+seed=23 step=90 validation_KL=0.214887
+seed=23 step=100 validation_KL=0.213871
+seed=101 step=10 validation_KL=0.196878
+seed=101 step=20 validation_KL=0.194823
+seed=101 step=30 validation_KL=0.193218
+seed=101 step=40 validation_KL=0.190734
+seed=101 step=50 validation_KL=0.188797
+seed=101 step=60 validation_KL=0.187883
+seed=101 step=70 validation_KL=0.188176
+seed=101 step=80 validation_KL=0.188571
+seed=101 step=90 validation_KL=0.189519
+seed=101 step=100 validation_KL=0.190506
+Validated context=1024 geometry=c16-r8-d2
+seed=7 step=10 validation_KL=0.179335
+seed=7 step=20 validation_KL=0.176075
+seed=7 step=30 validation_KL=0.173322
+seed=7 step=40 validation_KL=0.170582
+seed=7 step=50 validation_KL=0.167739
+seed=7 step=60 validation_KL=0.165788
+seed=7 step=70 validation_KL=0.163383
+seed=7 step=80 validation_KL=0.161975
+seed=7 step=90 validation_KL=0.161244
+seed=7 step=100 validation_KL=0.160152
+seed=23 step=10 validation_KL=0.216851
+seed=23 step=20 validation_KL=0.212575
+seed=23 step=30 validation_KL=0.208008
+seed=23 step=40 validation_KL=0.204342
+seed=23 step=50 validation_KL=0.199887
+seed=23 step=60 validation_KL=0.196199
+seed=23 step=70 validation_KL=0.191865
+seed=23 step=80 validation_KL=0.188175
+seed=23 step=90 validation_KL=0.185271
+seed=23 step=100 validation_KL=0.182627
+seed=101 step=10 validation_KL=0.224904
+seed=101 step=20 validation_KL=0.220949
+seed=101 step=30 validation_KL=0.218116
+seed=101 step=40 validation_KL=0.215455
+seed=101 step=50 validation_KL=0.213186
+seed=101 step=60 validation_KL=0.211108
+seed=101 step=70 validation_KL=0.208747
+seed=101 step=80 validation_KL=0.207101
+seed=101 step=90 validation_KL=0.20557
+seed=101 step=100 validation_KL=0.203669
+Validated context=1024 geometry=c32-r2-d2
+seed=7 step=10 validation_KL=0.10974
+seed=7 step=20 validation_KL=0.107416
+seed=7 step=30 validation_KL=0.104836
+seed=7 step=40 validation_KL=0.102706
+seed=7 step=50 validation_KL=0.100433
+seed=7 step=60 validation_KL=0.0986444
+seed=7 step=70 validation_KL=0.0971865
+seed=7 step=80 validation_KL=0.0959736
+seed=7 step=90 validation_KL=0.095202
+seed=7 step=100 validation_KL=0.0946168
+seed=23 step=10 validation_KL=0.128145
+seed=23 step=20 validation_KL=0.126914
+seed=23 step=30 validation_KL=0.125695
+seed=23 step=40 validation_KL=0.124404
+seed=23 step=50 validation_KL=0.123421
+seed=23 step=60 validation_KL=0.122558
+seed=23 step=70 validation_KL=0.121608
+seed=23 step=80 validation_KL=0.120866
+seed=23 step=90 validation_KL=0.120222
+seed=23 step=100 validation_KL=0.119592
+seed=101 step=10 validation_KL=0.12831
+seed=101 step=20 validation_KL=0.125764
+seed=101 step=30 validation_KL=0.123101
+seed=101 step=40 validation_KL=0.120802
+seed=101 step=50 validation_KL=0.11806
+seed=101 step=60 validation_KL=0.11572
+seed=101 step=70 validation_KL=0.113335
+seed=101 step=80 validation_KL=0.110856
+seed=101 step=90 validation_KL=0.10861
+seed=101 step=100 validation_KL=0.107044
+Validated context=1024 geometry=c32-r4-d2
+seed=7 step=10 validation_KL=0.0843643
+seed=7 step=20 validation_KL=0.083216
+seed=7 step=30 validation_KL=0.082177
+seed=7 step=40 validation_KL=0.0811733
+seed=7 step=50 validation_KL=0.0803381
+seed=7 step=60 validation_KL=0.0794311
+seed=7 step=70 validation_KL=0.0785957
+seed=7 step=80 validation_KL=0.0779058
+seed=7 step=90 validation_KL=0.0773437
+seed=7 step=100 validation_KL=0.0764998
+seed=23 step=10 validation_KL=0.0968542
+seed=23 step=20 validation_KL=0.0958571
+seed=23 step=30 validation_KL=0.0946673
+seed=23 step=40 validation_KL=0.0935201
+seed=23 step=50 validation_KL=0.0922749
+seed=23 step=60 validation_KL=0.0911275
+seed=23 step=70 validation_KL=0.0900556
+seed=23 step=80 validation_KL=0.0891123
+seed=23 step=90 validation_KL=0.0882919
+seed=23 step=100 validation_KL=0.0876238
+seed=101 step=10 validation_KL=0.0752188
+seed=101 step=20 validation_KL=0.074668
+seed=101 step=30 validation_KL=0.0740571
+seed=101 step=40 validation_KL=0.0734427
+seed=101 step=50 validation_KL=0.0729749
+seed=101 step=60 validation_KL=0.0725518
+seed=101 step=70 validation_KL=0.0721165
+seed=101 step=80 validation_KL=0.0718592
+seed=101 step=90 validation_KL=0.0714663
+seed=101 step=100 validation_KL=0.0713094
+Validated context=1024 geometry=c32-r8-d2
+ALL VALIDATION CHOICES FROZEN: [{'context': 256, 'geometry': 'c16-r2-d2', 'p': 0.9, 'validation_metrics': {'retained_mass': {'count': 576, 'mean': 0.9799888826673675, 'median': 0.9982146368587902, 'p95': 1.0}, 'retained_non_sink_mass': {'count': 576, 'mean': 0.9562470008540667, 'median': 0.9933315278703012, 'p95': 1.0}, 'attention_l2_error': {'count': 576, 'mean': 0.08860315329082219, 'median': 0.005004339023533073, 'p95': 0.20151510118050506}, 'relative_l2_error': {'count': 576, 'mean': 0.028110952854908153, 'median': 0.0026395031587469297, 'p95': 0.07812198475133418}, 'selected_key_fraction': {'count': 576, 'mean': 0.5719401041666666, 'median': 0.625, 'p95': 1.0}, 'selected_keys': {'count': 576, 'mean': 82.22222222222223, 'median': 64.0, 'p95': 192}, 'scored_summary_nodes': {'count': 576, 'mean': 9.0, 'median': 9.0, 'p95': 15}, 'qk_score_ratio': {'count': 576, 'mean': 0.6806640625, 'median': 0.73828125, 'p95': 1.09375}, 'qk_plus_av_vector_work_ratio': {'count': 576, 'mean': 0.6263020833333334, 'median': 0.681640625, 'p95': 1.046875}, 'oracle_topk_retained_mass': {'count': 576, 'mean': 0.9969395789869238, 'median': 0.9996335828143039, 'p95': 1.0}, 'same_k_mass_gap': {'count': 576, 'mean': 0.01695069631955618, 'median': 0.0010248703795687764, 'p95': 0.05043041585417973}}, 'eligible_pairs': 17}, {'context': 512, 'geometry': 'c16-r2-d2', 'p': 0.9, 'validation_metrics': {'retained_mass': {'count': 576, 'mean': 0.9714596697679294, 'median': 0.9943924488681107, 'p95': 0.9998794935391474}, 'retained_non_sink_mass': {'count': 576, 'mean': 0.9401160069590124, 'median': 0.9795284135292445, 'p95': 0.9997039426696243}, 'attention_l2_error': {'count': 576, 'mean': 0.10859974973934432, 'median': 0.016440707104756085, 'p95': 0.37057788213103654}, 'relative_l2_error': {'count': 576, 'mean': 0.03702096507807742, 'median': 0.007774348336946081, 'p95': 0.1303472957524133}, 'selected_key_fraction': {'count': 576, 'mean': 0.4275535300925926, 'median': 0.375, 'p95': 0.875}, 'selected_keys': {'count': 576, 'mean': 126.27777777777777, 'median': 80.0, 'p95': 352}, 'scored_summary_nodes': {'count': 576, 'mean': 19.5, 'median': 19.5, 'p95': 32}, 'qk_score_ratio': {'count': 576, 'mean': 0.5466941550925926, 'median': 0.484375, 'p95': 0.984375}, 'qk_plus_av_vector_work_ratio': {'count': 576, 'mean': 0.48712384259259256, 'median': 0.4296875, 'p95': 0.9296875}, 'oracle_topk_retained_mass': {'count': 576, 'mean': 0.9956245459461734, 'median': 0.9989307031193682, 'p95': 0.9999885985181974}, 'same_k_mass_gap': {'count': 576, 'mean': 0.024164876178243963, 'median': 0.002380232579897612, 'p95': 0.09594519610628882}}, 'eligible_pairs': 13}, {'context': 1024, 'geometry': 'c16-r2-d2', 'p': 0.9, 'validation_metrics': {'retained_mass': {'count': 576, 'mean': 0.959456472816984, 'median': 0.9920251354281922, 'p95': 0.9997690088354355}, 'retained_non_sink_mass': {'count': 576, 'mean': 0.9294245426290791, 'median': 0.9674079052814458, 'p95': 0.9993286575588988}, 'attention_l2_error': {'count': 576, 'mean': 0.12010518704756065, 'median': 0.025671242688973903, 'p95': 0.44790528795367857}, 'relative_l2_error': {'count': 576, 'mean': 0.04125697245646083, 'median': 0.01348536493260472, 'p95': 0.1369240522832024}, 'selected_key_fraction': {'count': 576, 'mean': 0.3434968171296296, 'median': 0.25, 'p95': 0.8125}, 'selected_keys': {'count': 576, 'mean': 201.86111111111111, 'median': 128.0, 'p95': 576}, 'scored_summary_nodes': {'count': 576, 'mean': 33.638888888888886, 'median': 32.5, 'p95': 66}, 'qk_score_ratio': {'count': 576, 'mean': 0.45332392939814814, 'median': 0.3671875, 'p95': 0.9296875}, 'qk_plus_av_vector_work_ratio': {'count': 576, 'mean': 0.3984103732638889, 'median': 0.3125, 'p95': 0.87109375}, 'oracle_topk_retained_mass': {'count': 576, 'mean': 0.9936942254054952, 'median': 0.9984639851151426, 'p95': 0.9999747107620885}, 'same_k_mass_gap': {'count': 576, 'mean': 0.03423775258851122, 'median': 0.005618436500390733, 'p95': 0.16469639013839898}}, 'eligible_pairs': 13}]
+Captured context=256 test book=345
+Captured context=256 test book=1260
+Captured context=256 test book=174
+Captured context=256 test book=768
+Tested context=256 geometry=c4-r8-d2 seed=7
+Tested context=256 geometry=c4-r8-d2 seed=23
+Tested context=256 geometry=c4-r8-d2 seed=101
+Tested context=256 geometry=c16-r2-d2 seed=7
+Tested context=256 geometry=c16-r2-d2 seed=23
+Tested context=256 geometry=c16-r2-d2 seed=101
+Tested context=256 geometry=c16-r4-d2 seed=7
+Tested context=256 geometry=c16-r4-d2 seed=23
+Tested context=256 geometry=c16-r4-d2 seed=101
+Tested context=256 geometry=c16-r8-d2 seed=7
+Tested context=256 geometry=c16-r8-d2 seed=23
+Tested context=256 geometry=c16-r8-d2 seed=101
+Tested context=256 geometry=c32-r2-d2 seed=7
+Tested context=256 geometry=c32-r2-d2 seed=23
+Tested context=256 geometry=c32-r2-d2 seed=101
+Tested context=256 geometry=c32-r4-d2 seed=7
+Tested context=256 geometry=c32-r4-d2 seed=23
+Tested context=256 geometry=c32-r4-d2 seed=101
+Tested context=256 geometry=c32-r8-d2 seed=7
+Tested context=256 geometry=c32-r8-d2 seed=23
+Tested context=256 geometry=c32-r8-d2 seed=101
+Captured context=512 test book=345
+Captured context=512 test book=1260
+Captured context=512 test book=174
+Captured context=512 test book=768
+Tested context=512 geometry=c4-r8-d2 seed=7
+Tested context=512 geometry=c4-r8-d2 seed=23
+Tested context=512 geometry=c4-r8-d2 seed=101
+Tested context=512 geometry=c16-r2-d2 seed=7
+Tested context=512 geometry=c16-r2-d2 seed=23
+Tested context=512 geometry=c16-r2-d2 seed=101
+Tested context=512 geometry=c16-r4-d2 seed=7
+Tested context=512 geometry=c16-r4-d2 seed=23
+Tested context=512 geometry=c16-r4-d2 seed=101
+Tested context=512 geometry=c16-r8-d2 seed=7
+Tested context=512 geometry=c16-r8-d2 seed=23
+Tested context=512 geometry=c16-r8-d2 seed=101
+Tested context=512 geometry=c32-r2-d2 seed=7
+Tested context=512 geometry=c32-r2-d2 seed=23
+Tested context=512 geometry=c32-r2-d2 seed=101
+Tested context=512 geometry=c32-r4-d2 seed=7
+Tested context=512 geometry=c32-r4-d2 seed=23
+Tested context=512 geometry=c32-r4-d2 seed=101
+Tested context=512 geometry=c32-r8-d2 seed=7
+Tested context=512 geometry=c32-r8-d2 seed=23
+Tested context=512 geometry=c32-r8-d2 seed=101
+Captured context=1024 test book=345
+Captured context=1024 test book=1260
+Captured context=1024 test book=174
+Captured context=1024 test book=768
+Tested context=1024 geometry=c4-r8-d2 seed=7
+Tested context=1024 geometry=c4-r8-d2 seed=23
+Tested context=1024 geometry=c4-r8-d2 seed=101
+Tested context=1024 geometry=c16-r2-d2 seed=7
+Tested context=1024 geometry=c16-r2-d2 seed=23
+Tested context=1024 geometry=c16-r2-d2 seed=101
+Tested context=1024 geometry=c16-r4-d2 seed=7
+Tested context=1024 geometry=c16-r4-d2 seed=23
+Tested context=1024 geometry=c16-r4-d2 seed=101
+Tested context=1024 geometry=c16-r8-d2 seed=7
+Tested context=1024 geometry=c16-r8-d2 seed=23
+Tested context=1024 geometry=c16-r8-d2 seed=101
+Tested context=1024 geometry=c32-r2-d2 seed=7
+Tested context=1024 geometry=c32-r2-d2 seed=23
+Tested context=1024 geometry=c32-r2-d2 seed=101
+Tested context=1024 geometry=c32-r4-d2 seed=7
+Tested context=1024 geometry=c32-r4-d2 seed=23
+Tested context=1024 geometry=c32-r4-d2 seed=101
+Tested context=1024 geometry=c32-r8-d2 seed=7
+Tested context=1024 geometry=c32-r8-d2 seed=23
+Tested context=1024 geometry=c32-r8-d2 seed=101
+Completed /Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/experiments/gpt2-cost-quality-v1/report.json

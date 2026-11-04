@@ -1,0 +1,62 @@
+{
+  "aggregation": "Pooled query errors across three seeds; timing columns are arithmetic means of three seed medians; speed is ratio of those aggregate times. Static snapshot reuse is a scenario.",
+  "selected": [
+    {
+      "context": 256,
+      "geometry": "c16-r2-d2",
+      "p": 0.9,
+      "validation_mean_relative_error": 0.028110952854908153,
+      "test_mean_relative_error": 0.022268915910895373,
+      "test_p95_relative_error": 0.07939689561123517,
+      "test_layer_budget_passed": true,
+      "test_vector_work_ratio": 0.6220341435185186,
+      "test_selected_key_fraction": 0.5676721643518519,
+      "sdpa_ms": 0.6787360000000001,
+      "query_ms": 22.10449966666667,
+      "build_ms": 19.77868033333333,
+      "query_speed_ratio": 0.030705784353197832,
+      "one_use_speed_ratio": 0.016205455268678268,
+      "reuse128_speed_ratio": 0.03049262642730739,
+      "index_over_raw_kv_tensor_ratio": 1.06341552734375,
+      "active_summary_levels": 1
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r2-d2",
+      "p": 0.9,
+      "validation_mean_relative_error": 0.03702096507807742,
+      "test_mean_relative_error": 0.029874631577505542,
+      "test_p95_relative_error": 0.08755334382365515,
+      "test_layer_budget_passed": true,
+      "test_vector_work_ratio": 0.49569589120370366,
+      "test_selected_key_fraction": 0.4361255787037037,
+      "sdpa_ms": 1.2257363333333335,
+      "query_ms": 30.98154166666667,
+      "build_ms": 41.00091633333333,
+      "query_speed_ratio": 0.039563438983157985,
+      "one_use_speed_ratio": 0.01702826448818035,
+      "reuse128_speed_ratio": 0.03915857656470972,
+      "index_over_raw_kv_tensor_ratio": 1.0654296875,
+      "active_summary_levels": 2
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r2-d2",
+      "p": 0.9,
+      "validation_mean_relative_error": 0.04125697245646083,
+      "test_mean_relative_error": 0.03840057275756671,
+      "test_p95_relative_error": 0.08699641697810137,
+      "test_layer_budget_passed": true,
+      "test_vector_work_ratio": 0.39298954716435186,
+      "test_selected_key_fraction": 0.33830656828703703,
+      "sdpa_ms": 2.4394726666666666,
+      "query_ms": 41.470333333333336,
+      "build_ms": 85.09470866666666,
+      "query_speed_ratio": 0.058824525162566005,
+      "one_use_speed_ratio": 0.01927445863500497,
+      "reuse128_speed_ratio": 0.05789639984649178,
+      "index_over_raw_kv_tensor_ratio": 1.066436767578125,
+      "active_summary_levels": 2
+    }
+  ]
+}

@@ -14,7 +14,7 @@ Build a useful, readable independent ZHA research reference, then real model-lay
 - [x] M1 installed-release-artifact evidence: wheel and source distribution in fresh offline environments.
 - [ ] M1 hosted CI evidence: GitHub reports startup failure before jobs/logs; static workflow validation passes.
 - [x] M2: reference-only fitting, native pretrained GPT-2 capture, three-seed held-out layer pilot, checkpoint reloads and post-run scalar-oracle audit. See [measured results](experiments/gpt2-layer5-pilot-v1/SUMMARY.md).
-- [ ] M2b: preregistered geometry/context cost-quality study; protocol, fresh corpus, implementation and focused tests prepared; numerical run pending.
+- [x] M2b: seven geometries, three contexts, three seeds, four fresh held-out books; 63 fits, 567 test configurations, 189 native-SDPA timing comparisons, preserved raw measurements and independent audit. See [results](experiments/gpt2-cost-quality-v1/SUMMARY.md).
 - [ ] M3: persistence, trace inspector and scoped reference release (deferred behind cost-quality evidence).
 - [ ] M4: numerically conservative bound/checker, if sound and useful.
 - [ ] M5: audited positional adapter and closed-loop model conversion.
@@ -63,7 +63,13 @@ The numerical domain is CPU float64 with finite, moderate test inputs. Proposed 
 
 ## Next work
 
-M2b now takes priority after the short-context CPU diagnostic found the hierarchical reference slower than its loop-based dense path. Run the committed seven-geometry, three-context study with three seeds and four fresh held-out books, comparing against native PyTorch SDPA and reporting construction/storage costs. See [the fixed protocol and measurement definitions](docs/COST_QUALITY.md). Only after a favorable work/quality result should a faster backend become a priority. M3 persistence and inspector work remains deferred; RoPE and closed-loop sparse generation still require separate evidence.
+The cost-quality study is complete. Validation selected C16/R2/depth2 at p=.90 for all contexts. On fresh test books, mean layer-relative errors are 2.23%, 2.99% and 3.84%, with p95 below 9%; all pass the fixed diagnostic budgets. Counted QK+AV vector work falls to .622/.496/.393 of dense. These counts omit sorting, softmax, memory traffic and framework overhead.
+
+The reference remains slower than native dense SDPA: at 1,024 tokens, eight-window batch query times are 41.47ms versus 2.44ms, excluding the additional 85.09ms index build. No measured speed benefit or model-quality claim is supported. At the same selected geometry/threshold, random references have lower mean output error than fitted references, but selected-key costs differ; fitting superiority is not established.
+
+Next: profile the reference execution, then test a separately verified batched/tensor-packed backend against native dense SDPA while preserving the scalar/float64 oracle. Establish real latency and cost-matched quality before adding GPU kernels or a long-context adapter. M3 persistence/inspector work remains deferred. Incremental updates, RoPE and closed-loop generation need their own evidence.
+
+The successful study is bound to commit `dc8b5c7`; the prior serialization-only failure at `bb44d48` is preserved. There are 254,016 raw validation/test records, 63 reference checkpoints, 60 verified native captures and 24 independent scalar checks spanning all geometries/contexts. Protocol, corpus and validation choices were fixed before test evaluation.
 
 The completed M2 run is bound to preregistration commit `421e2bce01e6c6b515fa5017ec90c2314f39bf6e`. All three seeds lower held-out pooled KL; at threshold 0.73, mean output L2 error falls 11.9% versus sampled-query initialization. Backbone hashes stay identical; native capture and saved-checkpoint reload checks pass. All 5,184 query records, 27 configuration aggregates, small reference checkpoints and a measured plot are saved under `experiments/gpt2-layer5-pilot-v1/`. These are one-layer, 256-token, two-test-book observations, not paper benchmark reproduction.
 

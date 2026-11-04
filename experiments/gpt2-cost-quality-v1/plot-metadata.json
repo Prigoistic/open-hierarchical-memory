@@ -1,0 +1,5 @@
+{
+  "matplotlib_version": "3.10.1",
+  "report_sha256": "1a81c83cf1d2f2e46b9ab2ab11e1d673183fec63e1cddbd79ffdf5043eb7b185",
+  "aggregation": "Top: mean seed-level query means. Bottom: ratio of mean seed-median times. No confidence intervals; highlighted settings fixed using validation only."
+}

@@ -1,6 +1,6 @@
 # Preregistered cost-quality study
 
-Status: protocol and implementation prepared on 4 November 2026, before fitting or test evaluation. The completed original pilot remains immutable under `experiments/gpt2-layer5-pilot-v1/`.
+Status: completed on 4 November 2026. The protocol and implementation were committed before fitting or test evaluation. See the [measured results](../experiments/gpt2-cost-quality-v1/SUMMARY.md). The completed original pilot remains immutable under `experiments/gpt2-layer5-pilot-v1/`.
 
 ## Question and scope
 
@@ -58,3 +58,7 @@ First inspect whether validated configurations reduce vector work without exhaus
 ## Preflight failure record
 
 The first run at preregistration commit `bb44d48` stopped on its first training-window capture because safetensors rejected a noncontiguous projection view. No fitting, validation selection or test capture/evaluation occurred. The fix packs trace tensors before serialization and adds a noncontiguous-view round-trip test; numerical formulas, corpus, geometry grid and selection thresholds are unchanged. The failed attempt and log are preserved in `experiments/gpt2-cost-quality-v1-preflight-failed/`. A new committed source revision is required before restarting.
+
+## Post-run artifacts
+
+After the recorded trace cache is available, run `uv run --locked --extra research python -m scripts.audit_cost_quality` to check all raw aggregates, identities, choices and 24 independent scalar routes. Then run `uv run --locked --extra research python -m scripts.summarize_cost_quality` for the descriptive report and grid CSV. Render the figure in an isolated plotting environment with `uv run --isolated --no-project --python 3.12 --with matplotlib==3.10.1 python scripts/plot_cost_quality.py`. These post-run tools do not fit or replace validation choices. Preserve the numerical source commit for reproducing the original run.

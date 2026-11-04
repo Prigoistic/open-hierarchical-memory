@@ -1,0 +1,255 @@
+{
+  "source_commit_verified": "dc8b5c75f7b8bfe3fba8d03c94bb4df0ed2b91c0",
+  "raw_counts": {
+    "validation": 36288,
+    "test": 217728
+  },
+  "checkpoint_hashes_verified": 63,
+  "test_configuration_aggregates_verified": 567,
+  "validation_aggregates_verified": 63,
+  "timing_configurations_verified": 189,
+  "frozen_validation_choices_verified": true,
+  "literal_real_query_checks": [
+    {
+      "context": 256,
+      "geometry": "c16-r2-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 96,
+      "retained_mass": 0.8347586479203649,
+      "output_l2_error": 0.27251363916793886
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r2-d2",
+      "book": 768,
+      "head": 11,
+      "p": 0.9,
+      "selected_keys": 192,
+      "retained_mass": 0.9868741685636302,
+      "output_l2_error": 0.03116917541146471
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r4-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 112,
+      "retained_mass": 0.8993366389875183,
+      "output_l2_error": 0.13431768480260994
+    },
+    {
+      "context": 256,
+      "geometry": "c16-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 112,
+      "retained_mass": 0.8924665412354811,
+      "output_l2_error": 0.16385981692393392
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r2-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 160,
+      "retained_mass": 0.9315307814617153,
+      "output_l2_error": 0.1064340533973398
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r4-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 160,
+      "retained_mass": 0.9373411722010101,
+      "output_l2_error": 0.10789438036775283
+    },
+    {
+      "context": 256,
+      "geometry": "c32-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 128,
+      "retained_mass": 0.8896432512113324,
+      "output_l2_error": 0.16299845613035582
+    },
+    {
+      "context": 256,
+      "geometry": "c4-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 44,
+      "retained_mass": 0.7884122652038364,
+      "output_l2_error": 0.2812581984010985
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r2-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 160,
+      "retained_mass": 0.7611576880789155,
+      "output_l2_error": 0.4331645705310957
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r2-d2",
+      "book": 768,
+      "head": 11,
+      "p": 0.9,
+      "selected_keys": 336,
+      "retained_mass": 0.9527251265760582,
+      "output_l2_error": 0.05858697418379122
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r4-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 144,
+      "retained_mass": 0.7403234721323803,
+      "output_l2_error": 0.4408445143823328
+    },
+    {
+      "context": 512,
+      "geometry": "c16-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 144,
+      "retained_mass": 0.7403234721323803,
+      "output_l2_error": 0.4408445143823328
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r2-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 224,
+      "retained_mass": 0.7808364486701933,
+      "output_l2_error": 0.4632671379357215
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r4-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 224,
+      "retained_mass": 0.7808364486701933,
+      "output_l2_error": 0.4632671379357215
+    },
+    {
+      "context": 512,
+      "geometry": "c32-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 224,
+      "retained_mass": 0.7808364486701933,
+      "output_l2_error": 0.4632671379357215
+    },
+    {
+      "context": 512,
+      "geometry": "c4-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 28,
+      "retained_mass": 0.6317906642852957,
+      "output_l2_error": 0.7763284533353868
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r2-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 384,
+      "retained_mass": 0.5390404450621299,
+      "output_l2_error": 0.9186673681512161
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r2-d2",
+      "book": 768,
+      "head": 11,
+      "p": 0.9,
+      "selected_keys": 304,
+      "retained_mass": 0.9697490619360287,
+      "output_l2_error": 0.0473667969906678
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r4-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 352,
+      "retained_mass": 0.6148881919063224,
+      "output_l2_error": 0.8134329864127665
+    },
+    {
+      "context": 1024,
+      "geometry": "c16-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 112,
+      "retained_mass": 0.5601835237466476,
+      "output_l2_error": 1.039302539164936
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r2-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 448,
+      "retained_mass": 0.7329744792036055,
+      "output_l2_error": 0.575865953021763
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r4-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 448,
+      "retained_mass": 0.7484605399927929,
+      "output_l2_error": 0.41765091827815304
+    },
+    {
+      "context": 1024,
+      "geometry": "c32-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 352,
+      "retained_mass": 0.7510972150814804,
+      "output_l2_error": 0.47126992433157633
+    },
+    {
+      "context": 1024,
+      "geometry": "c4-r8-d2",
+      "book": 345,
+      "head": 0,
+      "p": 0.73,
+      "selected_keys": 20,
+      "retained_mass": 0.4807112501388628,
+      "output_l2_error": 1.38570126238852
+    }
+  ],
+  "scope": "Post-run source/hash/aggregate/selection audit and scoped independent scalar routing; not a proof of all executions or model quality."
+}
