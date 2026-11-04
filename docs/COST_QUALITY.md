@@ -54,3 +54,7 @@ Only preparation downloads public documents; the experiment uses local files. Ra
 ## Decision
 
 First inspect whether validated configurations reduce vector work without exhausting the error budget, then inspect actual SDPA-relative latency with index costs. A speed ratio below one is a slowdown and must be reported. Even a passing layer budget does not close the whole-model gate. A faster backend or long-context adapter follows only if measured work/quality results justify the investment. Inspector and persistence work are deferred behind this experiment.
+
+## Preflight failure record
+
+The first run at preregistration commit `bb44d48` stopped on its first training-window capture because safetensors rejected a noncontiguous projection view. No fitting, validation selection or test capture/evaluation occurred. The fix packs trace tensors before serialization and adds a noncontiguous-view round-trip test; numerical formulas, corpus, geometry grid and selection thresholds are unchanged. The failed attempt and log are preserved in `experiments/gpt2-cost-quality-v1-preflight-failed/`. A new committed source revision is required before restarting.

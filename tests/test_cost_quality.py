@@ -171,3 +171,17 @@ def test_benchmark_reports_build_memory_and_static_amortization_separately():
     assert result["timing"]["static_reuse_16"][
         "estimated_ms_per_batch_including_amortized_build"
     ] == pytest.approx(query_ms + build_ms / 16)
+
+
+def test_captured_noncontiguous_projection_views_roundtrip_without_value_changes(tmp_path):
+    safetensors = pytest.importorskip("safetensors.torch")
+    from research.cost_quality import save_trace
+
+    view = torch.arange(2 * 17 * 3, dtype=torch.float64).reshape(17, 2, 3).transpose(0, 1)
+    assert not view.is_contiguous()
+    sample = TraceExample("projection-view", 0, view, view + 1, view + 2)
+    destination = tmp_path / "trace.safetensors"
+    save_trace(sample, destination)
+    restored = safetensors.load_file(str(destination))
+    for name in ("queries", "keys", "values"):
+        torch.testing.assert_close(restored[name], getattr(sample, name), rtol=0, atol=0)

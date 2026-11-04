@@ -1,0 +1,17 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/research/run_cost_quality.py", line 429, in <module>
+    main()
+  File "/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/research/run_cost_quality.py", line 204, in main
+    training = capture_split(context, "train")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/research/run_cost_quality.py", line 177, in capture_split
+    save_file(
+  File "/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/.venv/lib/python3.12/site-packages/safetensors/torch.py", line 324, in save_file
+    _flatten_as_ptr(tensors, keep_references_alive), filename, metadata=metadata
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/.venv/lib/python3.12/site-packages/safetensors/torch.py", line 576, in _flatten_as_ptr
+    raise ValueError(
+ValueError: You are trying to save a non contiguous tensor: `queries` which is not allowed. It either means you are trying to save tensors which are reference of each other in which case it's recommended to save only the full tensors, and reslice at load time, or simply call `.contiguous()` on your tensor to pack it before saving.

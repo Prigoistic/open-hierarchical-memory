@@ -29,6 +29,7 @@ from .cost_quality import (
     choose_on_validation,
     positions_for,
     quality_records,
+    save_trace,
     validate_study,
 )
 from .fitting import TraceExample, fit_references
@@ -174,10 +175,7 @@ def main() -> None:
                     raise FileExistsError(
                         "trace cache already exists; archive the old run before rerunning"
                     )
-                save_file(
-                    {"queries": sample.queries, "keys": sample.keys, "values": sample.values},
-                    str(destination),
-                )
+                save_trace(sample, destination)
                 captures.append(
                     {
                         "context": context,

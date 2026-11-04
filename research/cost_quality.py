@@ -302,3 +302,13 @@ def benchmark_routes(
         "timing": timing,
         "scope": "CPU float64, no quality oracle or detailed trace in timing. Index construction includes ownership copies and hashing. Reuse is a static-snapshot scenario, not growing-cache decode. Tensor bytes exclude caller storage, Python/scratch allocations and process RSS.",
     }
+
+
+def save_trace(sample: TraceExample, path) -> None:
+    """Pack captured projection views for non-pickle tensor persistence."""
+    from safetensors.torch import save_file
+
+    save_file(
+        {name: getattr(sample, name).contiguous() for name in ("queries", "keys", "values")},
+        str(path),
+    )

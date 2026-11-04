@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "experiment": "gpt2-cost-quality-v1",
+  "paper_version": "2610.42112v1",
+  "model_id": "openai-community/gpt2",
+  "model_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+  "layer": 5,
+  "contexts": [256, 512, 1024],
+  "query_quarters": [1, 2, 3, 4],
+  "window_offsets": [4096, 12288],
+  "text_character_limit": 200000,
+  "splits": {
+    "train": [11, 84, 1342, 1661],
+    "validation": [98, 2701],
+    "test": [345, 1260, 174, 768]
+  },
+  "previous_pilot_documents": [11, 84, 1342, 1661, 98, 2701, 74, 2600],
+  "geometries": [
+    {"id": "c4-r8-d2", "chunk_size": 4, "reference_count": 8, "depth": 2},
+    {"id": "c16-r2-d2", "chunk_size": 16, "reference_count": 2, "depth": 2},
+    {"id": "c16-r4-d2", "chunk_size": 16, "reference_count": 4, "depth": 2},
+    {"id": "c16-r8-d2", "chunk_size": 16, "reference_count": 8, "depth": 2},
+    {"id": "c32-r2-d2", "chunk_size": 32, "reference_count": 2, "depth": 2},
+    {"id": "c32-r4-d2", "chunk_size": 32, "reference_count": 4, "depth": 2},
+    {"id": "c32-r8-d2", "chunk_size": 32, "reference_count": 8, "depth": 2}
+  ],
+  "seeds": [7, 23, 101],
+  "steps": 100,
+  "learning_rate": 0.01,
+  "gradient_norm_limit": 1.0,
+  "validation_every_steps": 10,
+  "routing_thresholds": [0.73, 0.90, 0.95],
+  "selection": {
+    "max_mean_relative_l2": 0.05,
+    "max_p95_relative_l2": 0.20,
+    "relative_l2_denominator_floor": 1e-12,
+    "rule": "Per context, among trained geometry/threshold pairs meeting both validation error limits pooled across all three seeds, choose lowest mean qk_plus_av_vector_work_ratio; ties by geometry ID then threshold. No qualifying pair means no selection. These are layer diagnostics, not semantic quality guarantees."
+  },
+  "timing": {
+    "cpu_threads": 4,
+    "warmup_rounds": 3,
+    "timed_rounds": 7,
+    "build_warmup_rounds": 1,
+    "build_timed_rounds": 3,
+    "order_seed": 831,
+    "static_snapshot_reuse_counts": [1, 16, 128]
+  },
+  "scope": "One frozen GPT-2 layer, CPU float64 reference cost-quality study. No long-context, GPU, incremental decode, whole-model quality, certified error, or speedup claim unless separately measured."
+}
