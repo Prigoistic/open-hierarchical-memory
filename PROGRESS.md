@@ -14,7 +14,8 @@ Build a useful, readable independent ZHA research reference, then real model-lay
 - [x] M1 installed-release-artifact evidence: wheel and source distribution in fresh offline environments.
 - [ ] M1 hosted CI evidence: GitHub reports startup failure before jobs/logs; static workflow validation passes.
 - [x] M2: reference-only fitting, native pretrained GPT-2 capture, three-seed held-out layer pilot, checkpoint reloads and post-run scalar-oracle audit. See [measured results](experiments/gpt2-layer5-pilot-v1/SUMMARY.md).
-- [ ] M3: persistence, trace inspector and scoped reference release.
+- [ ] M2b: preregistered geometry/context cost-quality study; protocol, fresh corpus, implementation and focused tests prepared; numerical run pending.
+- [ ] M3: persistence, trace inspector and scoped reference release (deferred behind cost-quality evidence).
 - [ ] M4: numerically conservative bound/checker, if sound and useful.
 - [ ] M5: audited positional adapter and closed-loop model conversion.
 
@@ -22,7 +23,7 @@ An adapter must move earlier if required by the selected real-model fixture. The
 
 ## Current evidence
 
-Local suite with research extras: 70 passing pytest cases, including 60 generated routing configurations, 16 high-precision fixtures, native-model capture, fitting and data-isolation checks. Ten targeted semantic mutations are detected. Ruff, formatting and strict mypy check the package. See [the verification report](docs/evidence/local-verification.json) and [mutation evidence](docs/evidence/mutations.json) from the completed full verification. Without the optional research dependencies, GPT-2 adapter tests are explicitly skipped. The new post-run audit independently checks eight real queries and recomputes all 27 raw-record aggregates; it does not replace the regular tests.
+Local suite with research extras: 77 passing pytest cases, including 60 generated routing configurations, 16 high-precision fixtures, native-model capture, fitting and data-isolation checks. Ten targeted semantic mutations are detected. Ruff, formatting and strict mypy check the package. See [the verification report](docs/evidence/local-verification.json) and [mutation evidence](docs/evidence/mutations.json) from the completed full verification. Without the optional research dependencies, GPT-2 adapter tests are explicitly skipped. The new post-run audit independently checks eight real queries and recomputes all 27 raw-record aggregates; it does not replace the regular tests.
 
 Hosted verification has not passed. The corrected workflow passes official actionlint 1.7.12 (checksum-verified distribution). The user confirmed an account-side restriction prevents hosted jobs from starting. Development can continue using the local core profile below. See [the run](https://github.com/Prigoistic/open-hierarchical-memory/actions/runs/41708001430) and [separate workflow evidence](docs/evidence/workflow-validation.json). Local success does not establish hosted CI success.
 
@@ -62,7 +63,7 @@ The numerical domain is CPU float64 with finite, moderate test inputs. Proposed 
 
 ## Next work
 
-M3: persist immutable snapshots with corruption/version checks and build a trace inspector that shows selected IDs, summaries, offline error and failures clearly. Before broader quality claims, preregister a larger layer/context evaluation; the first pilot is small and higher-threshold gains are mixed. RoPE and closed-loop sparse generation require separate evidence. Hosted-CI availability is not a dependency of local development.
+M2b now takes priority after the short-context CPU diagnostic found the hierarchical reference slower than its loop-based dense path. Run the committed seven-geometry, three-context study with three seeds and four fresh held-out books, comparing against native PyTorch SDPA and reporting construction/storage costs. See [the fixed protocol and measurement definitions](docs/COST_QUALITY.md). Only after a favorable work/quality result should a faster backend become a priority. M3 persistence and inspector work remains deferred; RoPE and closed-loop sparse generation still require separate evidence.
 
 The completed M2 run is bound to preregistration commit `421e2bce01e6c6b515fa5017ec90c2314f39bf6e`. All three seeds lower held-out pooled KL; at threshold 0.73, mean output L2 error falls 11.9% versus sampled-query initialization. Backbone hashes stay identical; native capture and saved-checkpoint reload checks pass. All 5,184 query records, 27 configuration aggregates, small reference checkpoints and a measured plot are saved under `experiments/gpt2-layer5-pilot-v1/`. These are one-layer, 256-token, two-test-book observations, not paper benchmark reproduction.
 
