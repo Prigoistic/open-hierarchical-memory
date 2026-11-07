@@ -1,0 +1,30 @@
+{
+  "all_passed": true,
+  "scope": "independent scalar selected-attention, Bellman, scheduler, work, frozen-source and graph-ceiling audit",
+  "worlds": {
+    "world-193.json.gz": {
+      "updates_checked": 1024,
+      "routes_checked": 1024,
+      "graph_planner_successes": 16,
+      "canonical_records": 192
+    },
+    "world-271.json.gz": {
+      "updates_checked": 1024,
+      "routes_checked": 1024,
+      "graph_planner_successes": 16,
+      "canonical_records": 192
+    },
+    "world-367.json.gz": {
+      "updates_checked": 1024,
+      "routes_checked": 1024,
+      "graph_planner_successes": 16,
+      "canonical_records": 192
+    },
+    "world-7.json.gz": {
+      "updates_checked": 1024,
+      "routes_checked": 1024,
+      "graph_planner_successes": 16,
+      "canonical_records": 192
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "encoding": "lossless gzip of original raw JSON bytes",
+  "files": {
+    "world-367.json.gz": {
+      "sha256_uncompressed": "623ed8ac3f95390778d3c95f58c17bf73444bf47fe0f581772d0a10ef4d2b941",
+      "uncompressed_bytes": 5814010
+    },
+    "world-193.json.gz": {
+      "sha256_uncompressed": "686a0439836002ada364c20bee7ac689b2ab255e587ab2f158f8906494aca6a0",
+      "uncompressed_bytes": 5815086
+    },
+    "world-271.json.gz": {
+      "sha256_uncompressed": "c6928ca5a88ee96a256b6e7d30200b436fb5790d935d741b955562f6f15030c0",
+      "uncompressed_bytes": 5817254
+    },
+    "world-7.json.gz": {
+      "sha256_uncompressed": "2b753580d6149b8e3d0c506a08ce40278cd9f1d2bed2ab8df8442a20d147ded0",
+      "uncompressed_bytes": 5819149
+    }
+  }
+}

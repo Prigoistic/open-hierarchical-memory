@@ -1,10 +1,10 @@
 {
-  "scope": "CPU float64 no-RoPE core and separate lifecycle behavior; no model/GPU/guarantee validation",
+  "scope": "CPU float64 no-RoPE core, separate lifecycle and symbolic spatial replay behavior; no model/GPU/guarantee validation",
   "profile": "core",
   "package_installations_checked": false,
   "hosted_ci_status": "not_assessed",
   "python": "3.12.14",
-  "platform": "macOS-27.0-arm64-arm-64bit",
+  "platform": "macOS-27.2-arm64-arm-64bit",
   "dependencies": {
     "torch": "2.15.0",
     "numpy": "2.5.4",
@@ -33,6 +33,10 @@
     },
     {
       "command": "python -m mypy --strict research/memory_lifecycle.py research/lifecycle_fixture.py research/run_memory_lifecycle.py research/memory_console.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m mypy --strict research/somna_spatial.py research/run_somna_spatial.py scripts/audit_somna_spatial.py",
       "exit_code": 0
     },
     {

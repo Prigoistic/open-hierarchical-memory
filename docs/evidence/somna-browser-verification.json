@@ -1,0 +1,17 @@
+{
+  "scope": "Root-agent browser QA of Somna v2 recorded inspector, not model validation",
+  "viewports": [
+    "desktop",
+    "390px mobile"
+  ],
+  "checks": [
+    "page and report links render",
+    "next updates8 to16 and frame slider synchronize",
+    "mobile map/archive stack readable without global overflow",
+    "dense reader193/193 selected and zero summary count",
+    "no-update disables playback and next",
+    "no browser errors observed"
+  ],
+  "all_passed": true,
+  "preview": "http://127.0.0.1:8781/inspector.html"
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "development_world": 7,
+  "evaluation_worlds": [
+    193,
+    271,
+    367
+  ],
+  "width": 11,
+  "updates": 256,
+  "gamma": 0.95,
+  "routing_p": 0.8,
+  "chunk_size": 8,
+  "depth": 2,
+  "references": "one untrained basis reference per symbolic state",
+  "decision_tolerance": 1e-10,
+  "claim": "known-map navigation from previously untested starts; no unseen-layout transfer",
+  "budget": "uniform/priority receive same read and update counts; scheduler and routing work differ"
+}

@@ -44,3 +44,8 @@ A separate [batched CPU research prototype](experiments/batched-execution-v2/SUM
 ## Experimental forgetting and recovery
 
 A separate [lifecycle prototype](docs/MEMORY_LIFECYCLE.md) preserves immutable original records in SQLite, limits a hot set, and compares usage decay, bounded recovery and recent-cue replay against simpler policies. A local JSON-lines interface accepts your own records. This lane currently uses lexical retrieval; it does not add semantic embeddings, ZHA-backed persistent memory or an LLM assistant. Original storage grows, and session-use metadata resets on restart. The [fixed diagnostic](experiments/memory-lifecycle-v1/SUMMARY.md) improves overall access with replay but fails most delayed rare-fact queries. It is not a public benchmark, reliable-assistant result or novelty claim.
+
+
+## Somna: spatial replay inspector
+
+Somna is the working name for the separate memory and offline-consolidation research lane. Its first [implemented diagnostic](docs/SOMNA.md) connects actual numerical ZHA reads to frozen observed spatial episodes and persistent tabular value updates. Open the [self-contained inspector](experiments/somna-spatial-v2/inspector.html) for recorded replay, hierarchy selection and policy outcomes. The [fixed known-map comparison](experiments/somna-spatial-v2/SUMMARY.md) finds residual scheduling useful for value propagation, but ZHA adds cost and is unnecessary for this direct-key task. This is a tested integration foundation, not learned visual dreaming, a new algorithm or a speed result. The existing package/API name is unchanged.

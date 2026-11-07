@@ -35,6 +35,15 @@ def main() -> int:
             "research/run_memory_lifecycle.py",
             "research/memory_console.py",
         ],
+        [
+            sys.executable,
+            "-m",
+            "mypy",
+            "--strict",
+            "research/somna_spatial.py",
+            "research/run_somna_spatial.py",
+            "scripts/audit_somna_spatial.py",
+        ],
         [sys.executable, "scripts/check_lifecycle_mutations.py"],
         [sys.executable, "scripts/check_mutations.py"],
         [sys.executable, "examples/synthetic.py"],
@@ -51,7 +60,7 @@ def main() -> int:
         if run.returncode:
             break
     result = {
-        "scope": "CPU float64 no-RoPE core and separate lifecycle behavior; no model/GPU/guarantee validation",
+        "scope": "CPU float64 no-RoPE core, separate lifecycle and symbolic spatial replay behavior; no model/GPU/guarantee validation",
         "profile": arguments.profile,
         "package_installations_checked": arguments.profile == "full"
         and len(checks) == len(commands)

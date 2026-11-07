@@ -1,0 +1,93 @@
+{
+  "evaluation_worlds": [
+    193,
+    271,
+    367
+  ],
+  "development_world_excluded": true,
+  "rows": [
+    {
+      "backend": "dense",
+      "policy": "none",
+      "successes": 1,
+      "trials": 48,
+      "work": {
+        "scheduler_comparisons": 0,
+        "scored_nodes": 0,
+        "summary_dot_products": 0,
+        "attention_pairs": 0
+      },
+      "offline_seconds": 5.266699008643627e-05
+    },
+    {
+      "backend": "dense",
+      "policy": "uniform",
+      "successes": 1,
+      "trials": 48,
+      "work": {
+        "scheduler_comparisons": 0,
+        "scored_nodes": 0,
+        "summary_dot_products": 0,
+        "attention_pairs": 148224
+      },
+      "offline_seconds": 0.05562612500216346
+    },
+    {
+      "backend": "dense",
+      "policy": "priority",
+      "successes": 48,
+      "trials": 48,
+      "work": {
+        "scheduler_comparisons": 147456,
+        "scored_nodes": 0,
+        "summary_dot_products": 0,
+        "attention_pairs": 148224
+      },
+      "offline_seconds": 0.17324466700665653
+    },
+    {
+      "backend": "zha",
+      "policy": "none",
+      "successes": 1,
+      "trials": 48,
+      "work": {
+        "scheduler_comparisons": 0,
+        "scored_nodes": 0,
+        "summary_dot_products": 0,
+        "attention_pairs": 0
+      },
+      "offline_seconds": 9.916600538417697e-05
+    },
+    {
+      "backend": "zha",
+      "policy": "uniform",
+      "successes": 1,
+      "trials": 48,
+      "work": {
+        "scheduler_comparisons": 0,
+        "scored_nodes": 8448,
+        "summary_dot_products": 413952,
+        "attention_pairs": 6912
+      },
+      "offline_seconds": 0.0936764159851009
+    },
+    {
+      "backend": "zha",
+      "policy": "priority",
+      "successes": 48,
+      "trials": 48,
+      "work": {
+        "scheduler_comparisons": 147456,
+        "scored_nodes": 8448,
+        "summary_dot_products": 413952,
+        "attention_pairs": 6912
+      },
+      "offline_seconds": 0.22858437499962747
+    }
+  ],
+  "checkpoint_roundtrips": 24,
+  "fresh_process_checkpoint_verified": true,
+  "environment_calls_during_offline": 0,
+  "graph_planner_ceiling": "all starts reachable; independently checked in audit",
+  "limitation": "same known maps, idealized symbolic encoding, expensive basis references and exhaustive residual scans; not latent dreaming, forgetting, neural consolidation or ZHA speedup"
+}
