@@ -1,0 +1,54 @@
+{
+  "schema": "boxoban-run-v1",
+  "git_head": "621deb9c85815147d3081bb0fcc61d2ece16cc9c",
+  "source_hashes": {
+    "research/boxoban_benchmark.py": "61fb451426b91c7a60288bd98b98b2ca8bd932f25ba0a5c24b9478a402f53128",
+    "research/run_boxoban_benchmark.py": "a681b230a841a9c79df8959dee4b290a236fbb5fb4c96ef3662abd2ecd8e6623",
+    "pyproject.toml": "992cf2cb364282012ff6a9f08dcbd9aa31f0203cd5048cbadcfc5d20d72b2237",
+    "uv.lock": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796"
+  },
+  "data_manifest": {
+    "repository": "https://github.com/google-deepmind/boxoban-levels",
+    "commit": "78011d8c86ad423bfb2e1005012393b4c3c24409",
+    "files": {
+      "LICENSE": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/78011d8c86ad423bfb2e1005012393b4c3c24409/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "bytes": 11357
+      },
+      "README.md": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/78011d8c86ad423bfb2e1005012393b4c3c24409/README.md",
+        "sha256": "d3e231ab2c9d838588d9fdcf00d5a16928c0e8b92f48d488056b411111749d44",
+        "bytes": 2094
+      },
+      "train.txt": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/78011d8c86ad423bfb2e1005012393b4c3c24409/unfiltered/train/000.txt",
+        "sha256": "674dda499261deface252c90077ae67181b5c7704c235baf0dd0bd2d16bf072e",
+        "bytes": 116890
+      },
+      "validation.txt": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/78011d8c86ad423bfb2e1005012393b4c3c24409/unfiltered/valid/000.txt",
+        "sha256": "52cd811af721d69eef71a4e3cfc40cd4f635269a8e26d42ec017aa43af02b8a9",
+        "bytes": 116890
+      },
+      "test.txt": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/78011d8c86ad423bfb2e1005012393b4c3c24409/unfiltered/test/000.txt",
+        "sha256": "272928a4e7c185fdf84daa523b298750b6ff08703cb0c20d3be7eff93acc5256",
+        "bytes": 116890
+      },
+      "hard.txt": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/78011d8c86ad423bfb2e1005012393b4c3c24409/hard/000.txt",
+        "sha256": "c320e8b1f5a26be7a85dff18147a7decae3c5e765c38ff56e30ebf8551d331f4",
+        "bytes": 116890
+      }
+    }
+  },
+  "protocol_sha256": "d2fea7315128e6cc43c861bc58c3e573122c1e1f7313eff1d34fc699ddb3a19d",
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "torch_threads": 1,
+  "cases_sha256": "9f09fbe8dde8751671e996e75e5d0bf6e318349f9d9c10666fdc6bcee4a21a35",
+  "cohorts_sha256": "e11abd3cc6d9a225284d21a559d5a5bc1295eea0803144dbb90e7d438f700222"
+}

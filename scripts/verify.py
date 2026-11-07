@@ -2,6 +2,7 @@
 
 import argparse
 import importlib.metadata
+import importlib.util
 import json
 import platform
 import subprocess
@@ -68,10 +69,39 @@ def main() -> int:
             "--results",
             "experiments/somna-direct-control-v1",
         ],
+        [
+            sys.executable,
+            "-m",
+            "mypy",
+            "--strict",
+            "--explicit-package-bases",
+            "research/boxoban_benchmark.py",
+            "research/run_boxoban_benchmark.py",
+            "research/minigrid_benchmark.py",
+            "research/run_minigrid_benchmark.py",
+            "research/serve_task_benchmark.py",
+            "scripts/audit_complex_tasks.py",
+        ],
+        [
+            sys.executable,
+            "scripts/audit_complex_tasks.py",
+            "--results",
+            "experiments/boxoban-search-v1",
+        ],
         [sys.executable, "scripts/check_lifecycle_mutations.py"],
         [sys.executable, "scripts/check_mutations.py"],
         [sys.executable, "examples/synthetic.py"],
     ]
+    benchmark_extra = importlib.util.find_spec("minigrid") is not None
+    if benchmark_extra:
+        commands.append(
+            [
+                sys.executable,
+                "scripts/audit_complex_tasks.py",
+                "--minigrid",
+                "experiments/minigrid-evaluation-v2",
+            ]
+        )
     if arguments.profile == "full":
         commands.append([sys.executable, "scripts/check_package.py"])
     checks = []
@@ -84,8 +114,9 @@ def main() -> int:
         if run.returncode:
             break
     result = {
-        "scope": "CPU float64 no-RoPE core, separate lifecycle, symbolic spatial replay and continuous learned-memory behavior; no model/GPU/guarantee validation",
+        "scope": "CPU float64 no-RoPE core, separate lifecycle, symbolic spatial replay and continuous learned-memory behavior and official planning-task artifacts; no full-model/GPU/industry/guarantee validation",
         "profile": arguments.profile,
+        "official_minigrid_audit_enabled": benchmark_extra,
         "package_installations_checked": arguments.profile == "full"
         and len(checks) == len(commands)
         and checks[-1]["exit_code"] == 0,

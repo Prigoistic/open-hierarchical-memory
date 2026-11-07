@@ -56,3 +56,17 @@ Somna is the working name for the separate memory and offline-consolidation rese
 The current [live engine and operating guide](docs/SOMNA_LIVE.md) uses ambiguous continuous partial cues, a hierarchy over dormant observations, bounded active memory, reversible retirement, durable corrections and genuinely learned action-conditioned dynamics. Offline jobs expose completed neural updates while they run; predicted rollouts remain separate from observed data. Launch `uv run --locked --extra research python -m research.serve_somna --archive /tmp/somna-live.sqlite --port 8791` and open `http://127.0.0.1:8791/`.
 
 The [corrected-coordinate comparison](experiments/somna-continuous-v4/SUMMARY.md) and [ordinary replay control](experiments/somna-direct-control-v1/report.json) retain both learning gains and unfavorable comparisons. This is an inspectable research prototype, with fixed structured features and synthetic continuous dynamics. It does not establish a new algorithm, biological dreaming, general visual reasoning or a ZHA speed advantage. Earlier symbolic and page-only diagnostics remain dated historical evidence.
+
+## Official maze and puzzle experiments
+
+The [Boxoban comparison](experiments/boxoban-search-v1/SUMMARY.md) runs case-guided classical search on 32 distinct held-out official puzzles, with seven readers and two budgets. The [MiniGrid comparison](experiments/minigrid-evaluation-v2/ANALYSIS.md) runs the same observation-only symbolic controller across four official tasks and seven memory readers. These isolate retrieval inside planning; they do not run a trained LLM/RL policy or the separate Somna dreaming/consolidation experiment.
+
+The result is not a ZHA win: on hard Boxoban at 1,024 expansions, both ZHA settings match dense/exact retrieval at 15/16 versus geometric search's 14/16, with higher CPU latency. On held-out MiniGrid, adaptive ZHA solves 3/12 versus exact 5/12 and full observed memory 12/12. All failures, extra passes and full-candidate fallbacks remain visible. See the [independent review](docs/ZHA_TASK_REVIEW.md) for audit scope and corrected engineering findings.
+
+```sh
+uv sync --locked --extra research --extra benchmarks
+uv run --locked --extra research --extra benchmarks python -m research.serve_task_benchmark --port 8792
+uv run --locked --extra research --extra benchmarks python scripts/verify.py
+```
+
+Open `http://127.0.0.1:8792/` for puzzle solutions, hypothetical search probes and recalled source cases, or `http://127.0.0.1:8792/?task=maze` for the recorded maze observations and reconstructed recall map. This read-only inspector uses checked experimental artifacts. It does not replay a canned demonstration as live model execution. The benchmark extra pins MiniGrid 3.1.0; the official Boxoban source and Apache 2.0 license are retained under `data/boxoban/`.

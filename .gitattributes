@@ -1,0 +1,3 @@
+# Preserve checksummed upstream and frozen-evidence bytes, including whitespace.
+data/boxoban/* -text -whitespace
+experiments/*/source-snapshot/** -text -whitespace

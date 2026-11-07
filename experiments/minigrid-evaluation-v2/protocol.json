@@ -1,0 +1,74 @@
+{
+  "capacity": 96,
+  "controller_history": 16,
+  "development_seeds": [
+    0,
+    1
+  ],
+  "environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "evaluation_seeds": [
+    1001,
+    1002,
+    1003
+  ],
+  "external_step_cap": 4096,
+  "feature_version": "minigrid-observed-semantic-position-v1",
+  "official_versions": {
+    "gymnasium": "1.4.0",
+    "minigrid": "3.1.0"
+  },
+  "policy_input": "only official image/direction/mission plus own egomotion and16-pose history; no environment handle",
+  "readers": [
+    "zha",
+    "zha_adaptive",
+    "exact",
+    "recency",
+    "fifo",
+    "none",
+    "full"
+  ],
+  "routing": {
+    "adaptive_p1": "explicitly charged full-candidate fallback",
+    "adaptive_p_schedule": [
+      0.4,
+      0.6,
+      0.8,
+      0.95,
+      1.0
+    ],
+    "adaptive_stop": "cumulative routed original candidates >= min(capacity, current originals)",
+    "chunk_size": 4,
+    "depth": 3,
+    "fixed_p": 0.4,
+    "references": "eight fixed untrained semantic/spatial references"
+  },
+  "scope": "fixed symbolic observation-aware planner; not RL training or industry validation",
+  "selected_environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "selected_readers": [
+    "zha",
+    "zha_adaptive",
+    "exact",
+    "recency",
+    "fifo",
+    "none",
+    "full"
+  ],
+  "selected_seeds": [
+    1001,
+    1002,
+    1003
+  ],
+  "split": "evaluation",
+  "version": "minigrid-observation-only-v2",
+  "workers": 2
+}

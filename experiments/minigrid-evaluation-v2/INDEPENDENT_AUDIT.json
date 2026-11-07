@@ -1,0 +1,11 @@
+{
+  "all_passed": true,
+  "episodes_checked": 84,
+  "steps_checked": 75520,
+  "facts_checked": 10321,
+  "routes_checked": 89170,
+  "routing_passes_checked": 43066,
+  "full_candidate_fallbacks_checked": 5,
+  "successes": 28,
+  "scope": "official-environment replay plus observation-bound fact/version/query/selection and work audit; policy isolation needs separate information-flow tests"
+}

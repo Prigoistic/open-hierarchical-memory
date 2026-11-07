@@ -1,0 +1,130 @@
+{
+  "scope": "Read-only inspector of independently audited recorded experiments; not a live planner or deployment-quality claim.",
+  "verified_at": "2026-11-07T21:27:51.747245+00:00",
+  "boxoban": {
+    "default": {
+      "reader": "zha-p25",
+      "budget": "1024"
+    },
+    "playback_changes_pixels": true,
+    "solution_end": {
+      "cursor": "18 / 18",
+      "description": "Validated solution \u00b7 18 pushes so far \u00b7 58 primitive moves in the complete route."
+    },
+    "failure": {
+      "outcome": "Outcome\nExpansion limit\nSearch expansions\n1,024\nSolution pushes\n\u2014\nSearch time\n369.4 ms\nTraining cases\n363",
+      "solutionDisabled": true,
+      "search": true,
+      "probes": "1023"
+    },
+    "paired_matching": "Outcome\nExpansion limit\nSearch expansions\n1,024\nSolution pushes\n\u2014\nSearch time\n134.5 ms\nTraining cases\n363",
+    "paired_zha": "Outcome\nSolved\nSearch expansions\n995\nSolution pushes\n20\nSearch time\n353.7 ms\nTraining cases\n363",
+    "source_examples": 4,
+    "mobile": {
+      "viewport": 390,
+      "documentWidth": 375,
+      "overflow": [
+        [
+          "TABLE",
+          ""
+        ],
+        [
+          "THEAD",
+          ""
+        ],
+        [
+          "TR",
+          ""
+        ],
+        [
+          "TH",
+          ""
+        ],
+        [
+          "TH",
+          ""
+        ],
+        [
+          "TH",
+          ""
+        ],
+        [
+          "TH",
+          ""
+        ],
+        [
+          "TH",
+          ""
+        ],
+        [
+          "TBODY",
+          "comparison-body"
+        ],
+        [
+          "TR",
+          ""
+        ]
+      ]
+    },
+    "errors": {
+      "success": true,
+      "data": {
+        "errors": []
+      },
+      "error": null
+    }
+  },
+  "minigrid": {
+    "formal_failure": {
+      "outcome": "Outcome\nEnv timeout\nActions\n120\nReturn\n0.000\nEpisode time\n173.4 ms\nArchived fact versions\n128",
+      "comparators": 7,
+      "title": "MultiRoom-N6-v0 / seed 1001"
+    },
+    "observation_and_recall_are_distinct": true,
+    "replay_counters": "History facts returned\n84\nCurrent visible facts\n34\nHistorical slot limit\n96\nPrefix raw attention pairs\n2,368\nPrefix exact + rerank scores\n1,028\nPrefix summary channel dots\n8,272\nPrefix index rebuilds\n5\nFull-candidate fallbacks\n2",
+    "same_seed_full": "Outcome\nSolved\nActions\n61\nReturn\n0.542\nEpisode time\n38.4 ms\nArchived fact versions\n277",
+    "mobile": {
+      "viewport": 390,
+      "width": 375
+    },
+    "errors": {
+      "success": true,
+      "data": {
+        "errors": []
+      },
+      "error": null
+    }
+  },
+  "deep_link": {
+    "url": "http://127.0.0.1:8792/?task=maze",
+    "seed": 1001,
+    "task": "MiniGrid-MultiRoom-N6-v0",
+    "reader": "zha_adaptive",
+    "step": 17,
+    "cohort_banner": "adaptive 0/3; exact 2/3; full 3/3"
+  },
+  "source_hashes": {
+    "web/task-lab/index.html": "4c4ede0820456631ee7cd9ac3e0f5745639462595dbfc30e87ae86023f552cb7",
+    "web/task-lab/style.css": "1b400151a5b7293795fd72dcebd2a6c61aa73db28bbcb7b445fa76799a5d78f1",
+    "web/task-lab/app.js": "d1db1a08e2313bd8bf870d37ea5abc5579b31400487013d920d05fe40548f63e",
+    "research/serve_task_benchmark.py": "e479ddd4198ee87dc8a3b56b16a5f699d5b76bbdfa6671e794417156173d125e"
+  },
+  "screenshots": {
+    "task-final-desktop.png": {
+      "path": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/research-workstreams/complex-tasks/task-final-desktop.png",
+      "sha256": "39144d53547ade38c6ceafd81d61c66aa836972903de542ca5ae5c827dc096f1"
+    },
+    "task-final-mobile.png": {
+      "path": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/research-workstreams/complex-tasks/task-final-mobile.png",
+      "sha256": "7f5f4d6d950f068b4e80dfe8ae7e4e4761297bff9b74cbb34086d8cc160d6233"
+    },
+    "maze-final-complete.png": {
+      "path": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/research-workstreams/complex-tasks/maze-final-complete.png",
+      "sha256": "100886c61b9c77a9750ccfdd71c250c8442f4da1ffa9570456da9ee93259b706"
+    },
+    "maze-final-mobile.png": {
+      "path": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/research-workstreams/complex-tasks/maze-final-mobile.png",
+      "sha256": "66947b18808cabfb401c0e801be785964e9506043ad4f1877e2b02536052f26b"
+    }
+  }
+}

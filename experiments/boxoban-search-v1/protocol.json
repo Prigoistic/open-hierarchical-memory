@@ -1,0 +1,126 @@
+{
+  "schema": "boxoban-protocol-v1",
+  "task": "Official four-box Boxoban, fully observed push planning",
+  "train_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "test_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "hard_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "case_samples_per_path": 12,
+  "teacher": {
+    "expansion_limit": 20000,
+    "wall_seconds": 5.0,
+    "weight": 1.0
+  },
+  "expansion_limits": [
+    256,
+    1024
+  ],
+  "wall_seconds": 20.0,
+  "weight": 1.5,
+  "configs": [
+    [
+      "matching",
+      "matching",
+      0.8
+    ],
+    [
+      "linear",
+      "linear",
+      0.8
+    ],
+    [
+      "dense",
+      "dense",
+      0.8
+    ],
+    [
+      "top16",
+      "top16",
+      0.8
+    ],
+    [
+      "zha-p25",
+      "zha",
+      0.25
+    ],
+    [
+      "zha-p50",
+      "zha",
+      0.5
+    ],
+    [
+      "random-values",
+      "random_values",
+      0.8
+    ]
+  ],
+  "order_seed": 90211,
+  "selection": "Both ZHA thresholds fixed before held-out execution. No validation selection. Keep every failure.",
+  "scope": "Case-guided classical search diagnostic, not a learned RL/LLM policy or industry deployment validation."
+}

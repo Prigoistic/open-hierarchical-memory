@@ -1,0 +1,290 @@
+[
+  {
+    "level_id": 0,
+    "level_hash": "730d2596e9efbd33619fc909885e9cef6dc5a25eef1e16e85e2a974af4c70855",
+    "success": true,
+    "status": "solved",
+    "pushes": 12,
+    "expanded": 125,
+    "wall_seconds": 0.01606758398702368
+  },
+  {
+    "level_id": 1,
+    "level_hash": "5e6bef9be335ef2f202d6740581a103df581546d61bfe145f79e219362082ff9",
+    "success": true,
+    "status": "solved",
+    "pushes": 16,
+    "expanded": 153,
+    "wall_seconds": 0.023543167000752874
+  },
+  {
+    "level_id": 2,
+    "level_hash": "6411f78f03403839071ad59f11c55be5dc1b33e09a03b42d11c0d7839c49e917",
+    "success": true,
+    "status": "solved",
+    "pushes": 7,
+    "expanded": 96,
+    "wall_seconds": 0.041508916998282075
+  },
+  {
+    "level_id": 3,
+    "level_hash": "f711811519d5d6d3a1b5ffd762d447aed281f062b7bee3e7b136fe8916e07bf6",
+    "success": true,
+    "status": "solved",
+    "pushes": 11,
+    "expanded": 113,
+    "wall_seconds": 0.049972249995335005
+  },
+  {
+    "level_id": 4,
+    "level_hash": "7b7b1a1b6723ff74f3d3fcf6bd2c4e1bd02aae1af9ac52a8e3f0f5a3f195da46",
+    "success": true,
+    "status": "solved",
+    "pushes": 9,
+    "expanded": 154,
+    "wall_seconds": 0.05713129200739786
+  },
+  {
+    "level_id": 5,
+    "level_hash": "7b7e392791f273b6a330caa5c49bc20a179d776fc70c0e80983a43e7e892cf29",
+    "success": true,
+    "status": "solved",
+    "pushes": 12,
+    "expanded": 320,
+    "wall_seconds": 0.1279610419878736
+  },
+  {
+    "level_id": 6,
+    "level_hash": "6d3dff160f53b735c53f9a3d35f7446c77823b890062d592ad6964b92e05f8e4",
+    "success": true,
+    "status": "solved",
+    "pushes": 17,
+    "expanded": 380,
+    "wall_seconds": 0.046704540989594534
+  },
+  {
+    "level_id": 7,
+    "level_hash": "35d1a6c5a718fb004896e2b68933d67dd4fc03ed820657f0e46729fdd4547a5f",
+    "success": true,
+    "status": "solved",
+    "pushes": 14,
+    "expanded": 356,
+    "wall_seconds": 0.06072341698745731
+  },
+  {
+    "level_id": 8,
+    "level_hash": "f3d8cf6626e502a62bcd77f089e3e6a2dd80c3d7f824270e51905d4c53ed6d98",
+    "success": true,
+    "status": "solved",
+    "pushes": 11,
+    "expanded": 138,
+    "wall_seconds": 0.04206449999765027
+  },
+  {
+    "level_id": 9,
+    "level_hash": "0547352f3c92de83169560272c417ebd06007b85c5e7477a7ab78285a885e81b",
+    "success": true,
+    "status": "solved",
+    "pushes": 8,
+    "expanded": 80,
+    "wall_seconds": 0.028349458007141948
+  },
+  {
+    "level_id": 10,
+    "level_hash": "132225adacedfb10f44db5fc75b3c8d896580de8835f59ddaf5b583a24855842",
+    "success": true,
+    "status": "solved",
+    "pushes": 11,
+    "expanded": 812,
+    "wall_seconds": 0.2190682500076946
+  },
+  {
+    "level_id": 11,
+    "level_hash": "423036014361c3fd55d123cd58efd2f0023cf0a832c83d088edf72950e6167a2",
+    "success": true,
+    "status": "solved",
+    "pushes": 11,
+    "expanded": 91,
+    "wall_seconds": 0.017623874999117106
+  },
+  {
+    "level_id": 12,
+    "level_hash": "4beb6a09b5dfb02ddf425a0ead6805f7cbbe10e45060be012618b9fbcbbd6dae",
+    "success": true,
+    "status": "solved",
+    "pushes": 10,
+    "expanded": 159,
+    "wall_seconds": 0.05014929200115148
+  },
+  {
+    "level_id": 13,
+    "level_hash": "81f402a289b55da81b257473ec2af8518d30bb135fd938c79ac65d6f0ff6801b",
+    "success": true,
+    "status": "solved",
+    "pushes": 10,
+    "expanded": 33,
+    "wall_seconds": 0.0037678329972550273
+  },
+  {
+    "level_id": 14,
+    "level_hash": "4dd68f88856dff0bd87601c1f1b4bf4e9d3c5b3488d9b57918a541125ea35ba3",
+    "success": true,
+    "status": "solved",
+    "pushes": 14,
+    "expanded": 944,
+    "wall_seconds": 0.185821124992799
+  },
+  {
+    "level_id": 15,
+    "level_hash": "b220ec802d11cbd57f89b3fd113996f1e3a414c8ff021cae20440d0bb8a5c8be",
+    "success": true,
+    "status": "solved",
+    "pushes": 12,
+    "expanded": 63,
+    "wall_seconds": 0.015476374988793395
+  },
+  {
+    "level_id": 16,
+    "level_hash": "8c7391df462eaf71383a031c2911f68c6887ba8620e87e4245bcc6048d0ba06d",
+    "success": true,
+    "status": "solved",
+    "pushes": 16,
+    "expanded": 836,
+    "wall_seconds": 0.2546135000011418
+  },
+  {
+    "level_id": 17,
+    "level_hash": "dfbadef22f516772add4679e54bdfaa5b945cf234729470eaaf30522273af973",
+    "success": true,
+    "status": "solved",
+    "pushes": 13,
+    "expanded": 1024,
+    "wall_seconds": 0.41766779200406745
+  },
+  {
+    "level_id": 18,
+    "level_hash": "e0e781065ee969fe5500da9849891b0c4e2101a38852d1409f04938226df0824",
+    "success": true,
+    "status": "solved",
+    "pushes": 19,
+    "expanded": 233,
+    "wall_seconds": 0.03967991600802634
+  },
+  {
+    "level_id": 19,
+    "level_hash": "1ce918f8e679d905edabe14d17f2f01b96b1f5fe9163cb03c21339ef8322f044",
+    "success": true,
+    "status": "solved",
+    "pushes": 11,
+    "expanded": 67,
+    "wall_seconds": 0.012849209000705741
+  },
+  {
+    "level_id": 20,
+    "level_hash": "3f21cb49477f10fce97c1051bce113e48665f9253dc6d54689f0599437b5347d",
+    "success": true,
+    "status": "solved",
+    "pushes": 16,
+    "expanded": 189,
+    "wall_seconds": 0.04317545800586231
+  },
+  {
+    "level_id": 21,
+    "level_hash": "7b2338300877d08eb1d8d687d3bae6ff2a7cec37252787f5c619b9f1a9529f31",
+    "success": true,
+    "status": "solved",
+    "pushes": 16,
+    "expanded": 1000,
+    "wall_seconds": 0.27220591699006036
+  },
+  {
+    "level_id": 22,
+    "level_hash": "1e510cfd979de43d19ff85f5e5236a588b1f1e2d0d0e04ca049dd1509772e88d",
+    "success": true,
+    "status": "solved",
+    "pushes": 23,
+    "expanded": 1596,
+    "wall_seconds": 0.2285062500013737
+  },
+  {
+    "level_id": 23,
+    "level_hash": "44bd721fde5aedc1b53c0cfb2fed1a2df54571587c20d1e6856bddceeae2d926",
+    "success": true,
+    "status": "solved",
+    "pushes": 15,
+    "expanded": 270,
+    "wall_seconds": 0.04816895799012855
+  },
+  {
+    "level_id": 24,
+    "level_hash": "d0ee89f94f0e38420f595728e25242beb7371b88000079c776098bfbfcf9e820",
+    "success": true,
+    "status": "solved",
+    "pushes": 6,
+    "expanded": 20,
+    "wall_seconds": 0.0016301660070894286
+  },
+  {
+    "level_id": 25,
+    "level_hash": "6cc53ea681e2f5355894e222bbe3b3badaf7b00a60857226dbc437f5763fcc4d",
+    "success": true,
+    "status": "solved",
+    "pushes": 18,
+    "expanded": 178,
+    "wall_seconds": 0.028889207998872735
+  },
+  {
+    "level_id": 26,
+    "level_hash": "dd6855ffba9853237396cff7496848e83f398dd3451db70093372b63237ee111",
+    "success": true,
+    "status": "solved",
+    "pushes": 18,
+    "expanded": 2361,
+    "wall_seconds": 0.6028009999863571
+  },
+  {
+    "level_id": 27,
+    "level_hash": "aaaa4b95f3810018789c13c406d332c7a2d55a761f45961784b4e0982e8616fb",
+    "success": true,
+    "status": "solved",
+    "pushes": 9,
+    "expanded": 108,
+    "wall_seconds": 0.0341539159999229
+  },
+  {
+    "level_id": 28,
+    "level_hash": "af5fb527cdc946fa07d750f42309046539b16f806c74bef29a9456b968ea5238",
+    "success": true,
+    "status": "solved",
+    "pushes": 13,
+    "expanded": 309,
+    "wall_seconds": 0.06767358300567139
+  },
+  {
+    "level_id": 29,
+    "level_hash": "f31f7d1e8bf39d9767fe45b67d9ea820e48b260f50a5eb6cb7fce5027e3d733d",
+    "success": true,
+    "status": "solved",
+    "pushes": 11,
+    "expanded": 294,
+    "wall_seconds": 0.08143783299601637
+  },
+  {
+    "level_id": 30,
+    "level_hash": "ae328fb5b689cf3a3217e3416e864d146a6d5817d954c02ddc3d70aa52dbaa88",
+    "success": true,
+    "status": "solved",
+    "pushes": 24,
+    "expanded": 1476,
+    "wall_seconds": 0.31512116600060835
+  },
+  {
+    "level_id": 31,
+    "level_hash": "5738554a49287bf512a87dd00c8100a0cbb2915ec2e119cb88cd0a447fb35fc6",
+    "success": true,
+    "status": "solved",
+    "pushes": 8,
+    "expanded": 84,
+    "wall_seconds": 0.030069166008615866
+  }
+]

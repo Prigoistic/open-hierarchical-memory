@@ -1,0 +1,54 @@
+{
+  "checked_after_run": true,
+  "all_match": true,
+  "sources": {
+    "research/minigrid_benchmark.py": {
+      "expected": "3e58dc71124b083d3508c9e0f91c1624d1b9cf020deafaefd929f5323eae3a08",
+      "current": "3e58dc71124b083d3508c9e0f91c1624d1b9cf020deafaefd929f5323eae3a08"
+    },
+    "research/run_minigrid_benchmark.py": {
+      "expected": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b",
+      "current": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b"
+    },
+    "tests/test_minigrid_benchmark.py": {
+      "expected": "d8e2075547c7e5fac18804fc1de57007734cb7a8fa5e7d8a98c1a907bf2ebd5e",
+      "current": "d8e2075547c7e5fac18804fc1de57007734cb7a8fa5e7d8a98c1a907bf2ebd5e"
+    },
+    "docs/MINIGRID_BENCHMARK.md": {
+      "expected": "7e0fc532a4d9d1c973e442a627f42011b74dd3815e99dac25bc5e18cda89a31c",
+      "current": "7e0fc532a4d9d1c973e442a627f42011b74dd3815e99dac25bc5e18cda89a31c"
+    },
+    "uv.lock": {
+      "expected": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796",
+      "current": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796"
+    },
+    "src/open_hierarchical_memory/tree.py": {
+      "expected": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+      "current": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38"
+    },
+    "src/open_hierarchical_memory/attention.py": {
+      "expected": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+      "current": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420"
+    },
+    "src/open_hierarchical_memory/__init__.py": {
+      "expected": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+      "current": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a"
+    },
+    "src/open_hierarchical_memory/routing.py": {
+      "expected": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+      "current": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83"
+    },
+    "src/open_hierarchical_memory/contracts.py": {
+      "expected": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+      "current": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075"
+    },
+    "src/open_hierarchical_memory/summaries.py": {
+      "expected": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+      "current": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0"
+    },
+    "src/open_hierarchical_memory/training.py": {
+      "expected": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e",
+      "current": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e"
+    }
+  }
+}

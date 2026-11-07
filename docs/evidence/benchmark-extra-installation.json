@@ -1,0 +1,7 @@
+{
+  "installed_wheel": true,
+  "no_source_checkout_import": true,
+  "official_environment_reset_step": true,
+  "minigrid": "3.1.0",
+  "gymnasium": "1.4.0"
+}

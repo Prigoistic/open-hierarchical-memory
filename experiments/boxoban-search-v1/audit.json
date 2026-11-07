@@ -1,0 +1,11 @@
+{
+  "all_passed": true,
+  "training_runs": 32,
+  "evaluation_runs": 448,
+  "cases_checked": 363,
+  "solved_evaluations": 399,
+  "legal_pushes_checked": 5852,
+  "scalar_reads_checked": 96517,
+  "priorities_checked": 79961,
+  "scope": "independent replay, legal expansion witnesses, geometry/scalar reads, recalled-priority formula, frozen provenance and event counters; full heap-choice order and hierarchy router are not rederived here"
+}
