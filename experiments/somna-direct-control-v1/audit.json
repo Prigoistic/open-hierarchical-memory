@@ -1,0 +1,17 @@
+{
+  "all_passed": true,
+  "scope": "scalar selected attention, independent functional MLP/SGD replay, observed-source/fork/evaluation integrity",
+  "runs": {
+    "run-23-ordinary.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-ordinary.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    }
+  },
+  "additional_retrieval_reads": 0
+}

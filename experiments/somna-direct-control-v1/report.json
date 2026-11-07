@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "seed": 7,
+      "common_mse": 0.0003853601593625234,
+      "rare_mse": 0.017129455911790752,
+      "work": {
+        "observed_rows_read": 2560,
+        "training_examples": 7680,
+        "gradient_steps": 160,
+        "raw_pairs": 0,
+        "summary_dot_products": 0
+      }
+    },
+    {
+      "seed": 23,
+      "common_mse": 0.0006413541232924252,
+      "rare_mse": 0.016705907378293656,
+      "work": {
+        "observed_rows_read": 2560,
+        "training_examples": 7680,
+        "gradient_steps": 160,
+        "raw_pairs": 0,
+        "summary_dot_products": 0
+      }
+    }
+  ],
+  "note": "same160 gradient steps, sixteen uniformly sampled observed transitions per step, no hierarchy; actual example/read costs differ from retrieval-conditioned replay"
+}

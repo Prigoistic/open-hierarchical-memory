@@ -1,0 +1,107 @@
+{
+  "all_passed": true,
+  "scope": "scalar selected attention, independent functional MLP/SGD replay, observed-source/fork/evaluation integrity",
+  "runs": {
+    "run-23-coverage-dense.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-coverage-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-discarded_coverage-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-discarded_mixture-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-mixture-dense.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-mixture-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-none-zha.json.gz": {
+      "updates": 0,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-priority-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-uniform-dense.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-23-uniform-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-coverage-dense.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-coverage-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-discarded_coverage-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-discarded_mixture-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-mixture-dense.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-mixture-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-none-zha.json.gz": {
+      "updates": 0,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-priority-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-uniform-dense.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    },
+    "run-7-uniform-zha.json.gz": {
+      "updates": 160,
+      "model_evaluation_rows": 384,
+      "observed_sources": 256
+    }
+  },
+  "additional_retrieval_reads": 256
+}

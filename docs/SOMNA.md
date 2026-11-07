@@ -72,3 +72,8 @@ uv run --locked --extra research python scripts/verify.py --profile core
 ```
 
 The runner refuses existing destinations and records source/protocol hashes, frozen source copies, losslessly compressed raw query records and checkpoints. V1 is retained as the initial desktop viewer; v2 reruns the identical numerical protocol with a readable stacked mobile canvas. The audit validates each run against its own preserved source snapshot. The independent auditor imports no production numerical code. It recomputes selected softmax/Bellman updates, scheduling, frame values, graph reachability, final policies and work from raw records. Its numerical agreement is tested over this declared fixture domain, not a general proof. No network is used by the experiment. A Linux CPU run uses the same lock and commands; GPU execution remains a separately validated backend gate.
+
+
+## Current continuation
+
+The subsequent [live continuous-memory engine](SOMNA_LIVE.md) implements ambiguous partial cues, actual dormant-bank hierarchy, reversible retirement, persistent neural training and predicted trajectories. This earlier known-map diagnostic remains historical evidence under its original scope.

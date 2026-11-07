@@ -49,3 +49,10 @@ A separate [lifecycle prototype](docs/MEMORY_LIFECYCLE.md) preserves immutable o
 ## Somna: spatial replay inspector
 
 Somna is the working name for the separate memory and offline-consolidation research lane. Its first [implemented diagnostic](docs/SOMNA.md) connects actual numerical ZHA reads to frozen observed spatial episodes and persistent tabular value updates. Open the [self-contained inspector](experiments/somna-spatial-v2/inspector.html) for recorded replay, hierarchy selection and policy outcomes. The [fixed known-map comparison](experiments/somna-spatial-v2/SUMMARY.md) finds residual scheduling useful for value propagation, but ZHA adds cost and is unnecessary for this direct-key task. This is a tested integration foundation, not learned visual dreaming, a new algorithm or a speed result. The existing package/API name is unchanged.
+
+
+## Somna live memory laboratory
+
+The current [live engine and operating guide](docs/SOMNA_LIVE.md) uses ambiguous continuous partial cues, a hierarchy over dormant observations, bounded active memory, reversible retirement, durable corrections and genuinely learned action-conditioned dynamics. Offline jobs expose completed neural updates while they run; predicted rollouts remain separate from observed data. Launch `uv run --locked --extra research python -m research.serve_somna --archive /tmp/somna-live.sqlite --port 8791` and open `http://127.0.0.1:8791/`.
+
+The [corrected-coordinate comparison](experiments/somna-continuous-v4/SUMMARY.md) and [ordinary replay control](experiments/somna-direct-control-v1/report.json) retain both learning gains and unfavorable comparisons. This is an inspectable research prototype, with fixed structured features and synthetic continuous dynamics. It does not establish a new algorithm, biological dreaming, general visual reasoning or a ZHA speed advantage. Earlier symbolic and page-only diagnostics remain dated historical evidence.

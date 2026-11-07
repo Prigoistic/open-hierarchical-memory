@@ -1,0 +1,25 @@
+{
+  "protocol_hash": "fb21d333be999672690246d60cd32570c8fa351da88a9aca887d61a1dce303bf",
+  "source_hashes": {
+    "research/somna_engine.py": "9339957095005c9f4843de1a7379c4cfe7bd61b88c8234067156856967217b17",
+    "research/somna_world.py": "a1bdc398969c9f6391a87ca3125100a683305f9cf1cc723aae47b0e35786c448",
+    "research/serve_somna.py": "bd558b0ac109409fa0f661656f96351a5eb74cfa35ea1e31276977ee38561c9f",
+    "research/run_somna_continuous.py": "e4654847a6df629300a25ed2db5df2c246298a32b9ac24394d4994b7cc2c3a5a",
+    "research/somna_live_protocol.json": "75cfea965d4785d578ae20f576b8679e816704e21bf513b5f0322447221d6309",
+    "scripts/audit_somna_continuous.py": "a5fddd3b5c345c710da4333c1ca7bfc1805a9ec7ade74c2d9b5175eb66cd9193",
+    "tests/test_somna_engine.py": "d5a655a444e4c8bdad9178af0637ec75716552041ca332c4864ad02ea249224b",
+    "tests/test_somna_http.py": "d29759a393a6745ab42e6f0959af6d46b9c899ae6d9b9582578b91d6dc9960b8",
+    "src/open_hierarchical_memory/tree.py": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+    "src/open_hierarchical_memory/attention.py": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+    "src/open_hierarchical_memory/__init__.py": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+    "src/open_hierarchical_memory/routing.py": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+    "src/open_hierarchical_memory/contracts.py": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+    "src/open_hierarchical_memory/summaries.py": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+    "src/open_hierarchical_memory/training.py": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e"
+  },
+  "python": "3.12.14",
+  "torch": "2.15.0",
+  "dtype": "CPU float64",
+  "threads": 1,
+  "scope": "controlled continuous dynamics; not a learned image encoder or external benchmark"
+}

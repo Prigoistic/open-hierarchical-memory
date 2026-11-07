@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="A live laboratory for partial memory retrieval, reversible forgetting and offline learning."
+    />
+    <title>Somna / Memory in motion</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="#lab" class="skip">Skip to experiment</a>
+    <header>
+      <a class="brand" href="/"
+        ><span>◌</span> somna <small>/ memory in motion</small></a
+      >
+      <div id="connection"><i></i><span>Connecting to memory engine</span></div>
+    </header>
+    <main id="lab">
+      <div class="intro">
+        <div>
+          <p class="eyebrow">Experience → partial recall → offline learning</p>
+          <h1>Remember. Forget. Reconstruct.</h1>
+        </div>
+        <p>
+          Click a position to ask what happens there. Remove part of the cue.
+          Let memories go quiet, then watch the system recover and learn from
+          them.
+        </p>
+      </div>
+      <div id="error" class="error" role="alert" hidden></div>
+      <div class="actions">
+        <button id="cycle" class="primary">Run a memory cycle ↗</button
+        ><button id="collect">Collect 32 observations</button
+        ><button id="fade">Let memories fade</button
+        ><button id="sleep">Learn offline</button>
+        <div class="cycle-status">
+          <i id="phase-light"></i><span id="phase">Ready to explore</span>
+        </div>
+        <button id="reset" class="quiet">Reset</button>
+      </div>
+      <div class="archive-strip" aria-label="Actual memory state">
+        <div><span>Original observations</span><b id="total">—</b></div>
+        <div><span>Active now</span><b id="hot">—</b></div>
+        <div><span>Dormant, recoverable</span><b id="cold">—</b></div>
+        <div><span>Durable model updates</span><b id="updates">—</b></div>
+        <div><span>Memory time</span><b id="tick">—</b></div>
+      </div>
+      <div class="scene-grid">
+        <section class="experience">
+          <div class="panel-top">
+            <div>
+              <span class="eyebrow">01 / Recorded experience</span>
+              <h2>A field of possible memories</h2>
+            </div>
+            <div class="segmented">
+              <button data-projection="layers" class="selected">Layers</button
+              ><button data-projection="plane">Plane</button
+              ><button data-tool="query" class="selected">Query</button
+              ><button data-tool="inspect">Inspect</button>
+            </div>
+          </div>
+          <div class="query-bar">
+            <div class="axis-cues">
+              <span>Known position</span
+              ><label
+                ><input id="know-x" type="checkbox" checked />X
+                coordinate</label
+              ><label
+                ><input id="know-y" type="checkbox" checked />Y
+                coordinate</label
+              >
+            </div>
+            <label for="context"
+              >Context
+              <select id="context">
+                <option value="0">World A</option>
+                <option value="1">World B / rare</option>
+                <option value="">Unknown</option>
+              </select></label
+            ><label for="action"
+              >Action
+              <select id="action">
+                <option value="right">Right →</option>
+                <option value="up">Up ↑</option>
+                <option value="left">Left ←</option>
+                <option value="down">Down ↓</option>
+                <option value="">Unknown</option>
+              </select></label
+            ><button id="query-now">Recall from this cue ↗</button>
+          </div>
+          <canvas
+            id="experience"
+            tabindex="0"
+            aria-label="Observed spatial episodes. Click to query a position. Choose Inspect to select an observation."
+          ></canvas>
+          <div class="legend">
+            <span><i class="world-a"></i>World A</span
+            ><span><i class="world-b"></i>World B</span
+            ><span><i class="selected-evidence"></i>Read evidence</span
+            ><span><i class="dormant"></i>Dormant</span
+            ><span id="query-position">Cue (−0.30, −0.30)</span>
+          </div>
+          <p class="hint" id="query-hint">
+            These are continuous cues, not record identifiers. Nearby
+            observations and contexts can compete for the same query.
+          </p>
+          <p class="hint">
+            Each arrow is an observed action and outcome. World B rotates the
+            action response. The white arrow is the recalled prediction; hiding
+            a cue makes multiple observations compete.
+          </p>
+          <div id="record-card" class="record-card" hidden>
+            <div>
+              <span id="record-title">Observation</span>
+              <p id="record-detail"></p>
+            </div>
+            <button id="restore">Restore to active memory</button
+            ><label
+              >Corrected X
+              <input
+                id="correct-x"
+                type="number"
+                min="-1"
+                max="1"
+                step=".01" /></label
+            ><label
+              >Corrected Y
+              <input
+                id="correct-y"
+                type="number"
+                min="-1"
+                max="1"
+                step=".01" /></label
+            ><button id="correct">Save correction</button>
+          </div>
+        </section>
+        <div class="right-scenes">
+          <section class="routing">
+            <div class="panel-top">
+              <div>
+                <span class="eyebrow">02 / Actual hierarchical read</span>
+                <h2>Follow the evidence</h2>
+              </div>
+              <span class="tag">ZHA</span>
+            </div>
+            <canvas
+              id="tree"
+              aria-label="Current hierarchy candidates, selected branches and original episodes"
+            ></canvas>
+            <div id="routing-detail" class="detail-line">
+              Run a query to inspect the numerical route.
+            </div>
+          </section>
+          <section class="imagination">
+            <div class="panel-top">
+              <div>
+                <span class="eyebrow">03 / Learned prediction</span>
+                <h2>A possible next path</h2>
+              </div>
+              <span class="tag violet">IMAGINED</span>
+            </div>
+            <canvas
+              id="imagination"
+              aria-label="Model predicted state trajectory, separate from observed records"
+            ></canvas>
+            <p id="rollout-status" class="detail-line">
+              Offline learning trains the dynamics model. A rollout appears only
+              when its support checks pass.
+            </p>
+          </section>
+        </div>
+      </div>
+      <section class="sleep-panel">
+        <div class="sleep-title">
+          <div>
+            <p class="eyebrow">Offline work changes persistent parameters</p>
+            <h2>Learning continues from stored experience.</h2>
+          </div>
+          <div class="sleep-controls">
+            <label for="strategy"
+              >Replay strategy
+              <select id="strategy">
+                <option value="mixture">Balanced rare + uniform</option>
+                <option value="coverage">Rare + stale coverage</option>
+                <option value="uniform">Uniform replay</option>
+                <option value="priority">Prediction error priority</option>
+              </select></label
+            ><label for="sleep-steps"
+              >Updates
+              <select id="sleep-steps">
+                <option>80</option>
+                <option selected>160</option>
+                <option>240</option>
+              </select></label
+            ><button id="sleep-secondary">Start learning ↗</button>
+          </div>
+        </div>
+        <div class="sleep-progress"><i id="sleep-progress-bar"></i></div>
+        <div class="sleep-body">
+          <div class="loss-chart">
+            <div class="panel-label">
+              <span>ACTUAL OPTIMIZATION LOSS</span
+              ><span id="sleep-count">No offline job yet</span>
+            </div>
+            <canvas
+              id="loss"
+              aria-label="Actual model training loss through offline updates"
+            ></canvas>
+          </div>
+          <div class="learning-outcome">
+            <span id="learning-status">The model has not been updated.</span>
+            <p id="checkpoint">
+              Temporary retrieval and persistent learned weights are separate
+              states.
+            </p>
+            <div class="learning-metrics">
+              <div><span>Latest loss</span><b id="loss-value">—</b></div>
+              <div><span>Last read</span><b id="selected-count">—</b></div>
+              <div><span>Cold rows examined</span><b id="cold-work">—</b></div>
+            </div>
+          </div>
+        </div>
+        <p class="hint">
+          Offline updates use observed transitions selected by the memory
+          reader. Predicted paths remain labelled as imagined and are never
+          silently stored as observations. Ensemble spread is a heuristic, not
+          calibrated confidence.
+        </p>
+      </section>
+      <div class="bottom-grid">
+        <section class="readout">
+          <p class="eyebrow">Inspect the tradeoff</p>
+          <h3>Less raw attention does not always mean less work.</h3>
+          <div id="query-metrics" class="metric-list">
+            <p>
+              Query the field to compare the hierarchical read with a separately
+              charged dense audit.
+            </p>
+          </div>
+          <label class="check-label"
+            ><input id="audit" type="checkbox" checked /> Run a dense audit on
+            each manual query</label
+          >
+        </section>
+        <section class="readout">
+          <p class="eyebrow">A memory can be inactive without being erased</p>
+          <h3>Original evidence stays recoverable.</h3>
+          <p>
+            Fading retires observations from active computation. Cold pages and
+            periodic coverage can bring evidence back. Corrections append a new
+            version; the old observation remains visible as history.
+          </p>
+          <div class="presets">
+            <button id="rare-query">Ask about a rare context</button
+            ><button id="partial-query">Remove half the cue</button>
+          </div>
+          <p id="persistence" class="small">
+            Archive and learning state persist in the local database.
+          </p>
+        </section>
+      </div>
+      <footer>
+        <span
+          >Controlled spatial experience · live numerical reads · persistent
+          model learning</span
+        ><button id="export">Export current evidence ↓</button>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

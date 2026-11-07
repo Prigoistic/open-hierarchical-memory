@@ -1,0 +1,13 @@
+{
+  "source_hashes": {
+    "research/run_somna_direct_control.py": "07b6f5fd931a2569a6c1cb1d81ebeeff1f577451e1aeb4ae46e1043cf4d8b3f4",
+    "research/somna_engine.py": "be13f13129ac74a29836b7bf33b75a71b2f94efe6a0d1745da91f90cea58c555",
+    "research/somna_world.py": "c6f5243625701caa608952d95185e2a73f33a0be0eb4d7a05e662aade36698cc",
+    "scripts/audit_somna_continuous.py": "75bf2f571d127068eb5383532567fec63573fb4a760e7a1ec57485315126e64b"
+  },
+  "input_hashes": {
+    "/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/experiments/somna-continuous-v4/run-7-none-zha.json.gz": "aa771b040d855076d3513cc1dca3cfcdc8e914a3069d1e4504b6abd663712c66",
+    "/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/experiments/somna-continuous-v4/run-23-none-zha.json.gz": "9273aceb0b07bc466eda5fb5d2957091f741f0bdeb2b700cf3883998745b6f6c"
+  },
+  "scope": "ordinary supervised replay control; same observed inputs and initial weights as v4; unbounded canonical access"
+}

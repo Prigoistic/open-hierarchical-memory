@@ -1,0 +1,85 @@
+{
+  "feature_version": "continuous-half-harmonic-cue-v2",
+  "source_sha256": {
+    "research/somna_world.py": "c6f5243625701caa608952d95185e2a73f33a0be0eb4d7a05e662aade36698cc",
+    "research/somna_engine.py": "be13f13129ac74a29836b7bf33b75a71b2f94efe6a0d1745da91f90cea58c555",
+    "research/serve_somna.py": "87a184934ebcdf54c932bf49aca86f99a8b91f370dcf2f0dbb0f94aa41d75601"
+  },
+  "checks": {
+    "boundary_encoding": {
+      "status": "pass",
+      "before_feature_difference": 1.4695761589768238e-15,
+      "before_prediction_x": [
+        -0.07,
+        -0.07
+      ],
+      "after": [
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "expected_delta": [
+            0.0,
+            -0.014565139279149986
+          ],
+          "prediction": [
+            -0.0007710264858514425,
+            -0.0145651392790156
+          ]
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "expected_delta": [
+            -0.14,
+            -0.014565139279149986
+          ],
+          "prediction": [
+            -0.13922897351285685,
+            -0.014565139279015598
+          ]
+        }
+      ]
+    },
+    "correction_forecast": {
+      "status": "pass",
+      "prior_points": 11,
+      "after_correction_points": 0,
+      "rejected_return_points": 1,
+      "stored_after_rejection_points": 1,
+      "superseded_source_visible": false
+    },
+    "same_configured_path_fresh_process_restart": {
+      "status": "pass",
+      "before": {
+        "seed": 19,
+        "records": 257,
+        "model_hash": "1277ef02101f8372674d8cc5b3bb6f8f96efdb8a8b5fc869122fbdfad7393ca9",
+        "state_hash": "5c4f6c299f998d785b487191eed849e72eaec9ee14626092189226e7cbb04cee",
+        "trained_steps": 24,
+        "active_archive": "/private/tmp/research-review-somna/fix-verification-33697b4cc90444b58bd9f65e4f68d564/restart/memory-reset-1794083860044007000.sqlite",
+        "configured_archive": "/private/tmp/research-review-somna/fix-verification-33697b4cc90444b58bd9f65e4f68d564/restart/memory.sqlite"
+      },
+      "after": {
+        "seed": 19,
+        "records": 257,
+        "model_hash": "1277ef02101f8372674d8cc5b3bb6f8f96efdb8a8b5fc869122fbdfad7393ca9",
+        "state_hash": "5c4f6c299f998d785b487191eed849e72eaec9ee14626092189226e7cbb04cee",
+        "trained_steps": 24,
+        "active_archive": "/private/tmp/research-review-somna/fix-verification-33697b4cc90444b58bd9f65e4f68d564/restart/memory-reset-1794083860044007000.sqlite",
+        "configured_archive": "/private/tmp/research-review-somna/fix-verification-33697b4cc90444b58bd9f65e4f68d564/restart/memory.sqlite"
+      }
+    },
+    "reset_namespace_race": {
+      "status": "pass",
+      "second_controller_rejected_while_pointer_publication_paused": true,
+      "error": "configured session already has an active controller",
+      "reset_completed": true,
+      "same_configured_path_resumes_new_seed": 19
+    }
+  },
+  "all_passed": true
+}

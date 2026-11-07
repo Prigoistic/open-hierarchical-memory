@@ -1,0 +1,127 @@
+{
+  "cold_search": {
+    "cold_status": "approximate",
+    "cold_selected_ids": [
+      13,
+      14,
+      15,
+      16
+    ],
+    "cold_work": {
+      "raw_pairs": 5,
+      "summary_dot_products": 96
+    },
+    "work": {
+      "raw_pairs": 5,
+      "summary_dot_products": 24,
+      "cold_rows": 16,
+      "seconds": 0.0003093750128755346
+    },
+    "recovered": [
+      13,
+      14,
+      15,
+      16,
+      38,
+      39,
+      45,
+      47
+    ]
+  },
+  "partial_query": {
+    "mask": [
+      false,
+      true
+    ],
+    "selected": [
+      5,
+      6,
+      7,
+      8,
+      13,
+      14,
+      15,
+      16
+    ],
+    "backend": "zha"
+  },
+  "inspection": "Current \u00b7 dormant \u00b7 world A \u00b7 0 actual uses \u00b7 salience 0.003",
+  "restore": {
+    "hot_before": 20,
+    "hot_after": 21,
+    "total_unchanged": true,
+    "checksum_unchanged": true
+  },
+  "correction": {
+    "versions_before": 256,
+    "versions_after": 257,
+    "invalidated_model": true,
+    "forecast_points": 0,
+    "old_current": false
+  },
+  "learning": {
+    "trained_steps": 160,
+    "checkpoint_changed": true,
+    "observations": 288,
+    "rollout_points": 11,
+    "rollout_status": "completed",
+    "progress": [
+      "0",
+      "18",
+      "37",
+      "53",
+      "65",
+      "77",
+      "87",
+      "97",
+      "106",
+      "115",
+      "123",
+      "131",
+      "139",
+      "145",
+      "152",
+      "159",
+      "160"
+    ],
+    "observed_sources": 234
+  },
+  "browser_errors": {
+    "success": true,
+    "data": {
+      "errors": []
+    },
+    "error": null
+  },
+  "final_replay_marker_check": {
+    "completed_total_updates": 240,
+    "label": "Replay cue (0.72, -0.58)",
+    "banner_error": "",
+    "description": "Actual latest replay read, not the manual cursor. Both plane and layers use the backend cue."
+  },
+  "final_mobile": {
+    "viewport": 390,
+    "document_width": 375,
+    "global_overflow": false
+  },
+  "verified_at": "2026-11-07T20:51:48.946538+00:00",
+  "scope": "Local CPU research session; actual browser actions and returned numerical state. This does not establish general model quality, biological validity or production security.",
+  "browser": "agent-browser 0.27.0 / Chrome 157.0.8103.38",
+  "source_hashes": {
+    "web/somna-live/index.html": "e6af1dd9695f063e542ce6fe464fdfa7c0e4ee84d35a9d7ab8498a0ae5a5b58e",
+    "web/somna-live/style.css": "03a8e8607523406f6ff92a8132180f10577cda039124cc7dc4310741d8ad3c9e",
+    "web/somna-live/app.js": "e4a6cb363cef9bb16cac8549b4ba9a93108dad807a8b7206aef7264982d2d67a",
+    "research/somna_engine.py": "4233683d3760b68ab25ef6c08b7d8c047c0ebf601f00546c70f10f42f69d9e9d",
+    "research/serve_somna.py": "87a184934ebcdf54c932bf49aca86f99a8b91f370dcf2f0dbb0f94aa41d75601"
+  },
+  "screenshots": {
+    "somna-final-partial.png": {
+      "sha256": "22e722a5bb4fb8b670c53e396e75a5fec88717848956ea41ca32d8967e60c035",
+      "path": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/research-workstreams/somna-final-partial.png"
+    },
+    "somna-final-mobile.png": {
+      "sha256": "099f5635065f185818dbb09df52c248b75d2f536702beb7d12b18f54af6b17eb",
+      "path": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/research-workstreams/somna-final-mobile.png"
+    }
+  }
+}

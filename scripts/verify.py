@@ -44,6 +44,30 @@ def main() -> int:
             "research/run_somna_spatial.py",
             "scripts/audit_somna_spatial.py",
         ],
+        [
+            sys.executable,
+            "-m",
+            "mypy",
+            "--strict",
+            "research/somna_world.py",
+            "research/somna_engine.py",
+            "research/serve_somna.py",
+            "research/run_somna_continuous.py",
+            "research/run_somna_direct_control.py",
+            "scripts/audit_somna_continuous.py",
+        ],
+        [
+            sys.executable,
+            "scripts/audit_somna_continuous.py",
+            "--results",
+            "experiments/somna-continuous-v4",
+        ],
+        [
+            sys.executable,
+            "scripts/audit_somna_continuous.py",
+            "--results",
+            "experiments/somna-direct-control-v1",
+        ],
         [sys.executable, "scripts/check_lifecycle_mutations.py"],
         [sys.executable, "scripts/check_mutations.py"],
         [sys.executable, "examples/synthetic.py"],
@@ -60,7 +84,7 @@ def main() -> int:
         if run.returncode:
             break
     result = {
-        "scope": "CPU float64 no-RoPE core, separate lifecycle and symbolic spatial replay behavior; no model/GPU/guarantee validation",
+        "scope": "CPU float64 no-RoPE core, separate lifecycle, symbolic spatial replay and continuous learned-memory behavior; no model/GPU/guarantee validation",
         "profile": arguments.profile,
         "package_installations_checked": arguments.profile == "full"
         and len(checks) == len(commands)

@@ -1,0 +1,73 @@
+{
+  "version": "somna-continuous-v3",
+  "status": "fixed before running comparison; developmental controlled task, not external benchmark",
+  "training_seeds": [
+    7,
+    23
+  ],
+  "heldout_state_seeds": [
+    1201,
+    1202,
+    1203
+  ],
+  "observations_per_seed": 256,
+  "rare_context_observations": 16,
+  "active_capacity": 48,
+  "archive_page_reads_per_query": 16,
+  "routing": {
+    "chunk_size": 4,
+    "depth": 2,
+    "p": 0.8,
+    "references": 8
+  },
+  "cue": "continuous noisy partial position, optional action and context; no episode/state identifiers",
+  "sleep_strategies": [
+    "none",
+    "uniform",
+    "priority",
+    "coverage",
+    "mixture"
+  ],
+  "sleep_gradient_steps": 160,
+  "controls": [
+    "same frozen observations and parameters",
+    "dense read on same hot bank",
+    "full-current-bank dense audit separately charged",
+    "initial random references vs trained references",
+    "discard updates before evaluation"
+  ],
+  "outcomes": [
+    "heldout action-conditioned successor MSE by common/rare context",
+    "canonical and correction integrity",
+    "active/cold recovery",
+    "selected mass and output discrepancy vs dense",
+    "source-provenance and model checkpoint persistence",
+    "raw read/gradient/scheduler/index/audit work"
+  ],
+  "fairness": "identical gradient/read limits, report variable actual scheduler/reference/recovery work; no equal-compute claim unless actually measured",
+  "rollouts": "learned action-conditioned ensemble only, observed support and disagreement gate, predicted provenance; no simulator during sleep or rollouts",
+  "claim_boundary": "structured synthetic continuous state, no learned image encoder, no human dream or novelty claim",
+  "development_state_seeds": [
+    901,
+    902,
+    903,
+    904
+  ],
+  "development_note": "901 used in initial behavior checks;902/903/904 used in preserved v1/v2 comparisons. V3 uses a new fixed state cohort.",
+  "cold_routing": {
+    "chunk_size": 4,
+    "depth": 3,
+    "p": 0.25,
+    "raw_pair_cap": 128,
+    "scored_node_cap": 512,
+    "reference_channels": 8,
+    "reactivation_cap": 4
+  },
+  "preserved_prior": "v1 used coverage pages without a full dormant hierarchy; preserved as negative baseline",
+  "mixture": {
+    "rare_coverage_fraction": 0.25,
+    "uniform_fraction": 0.75,
+    "schedule": "every fourth read is rare coverage; other reads uniform",
+    "proposal_timing": "added after v2 exposed pure coverage common-context interference; fixed before evaluating v3 states1201/1202/1203"
+  }
+}

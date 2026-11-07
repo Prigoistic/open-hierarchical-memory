@@ -1,0 +1,224 @@
+"""Independent scalar audit of selected reads, observed sources and fork evidence.
+
+Imports no engine, feature encoder, simulator, router or learned-model code.
+"""
+
+from __future__ import annotations
+
+import argparse
+import gzip
+import hashlib
+import json
+import math
+from pathlib import Path
+from typing import Any
+
+import torch
+from torch.nn import functional as functional
+
+
+def digest(value: Any) -> str:
+    normalized = json.loads(json.dumps(value, allow_nan=False))
+    return hashlib.sha256(
+        json.dumps(normalized, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+    ).hexdigest()
+
+
+def encoding(row: dict[str, Any]) -> list[float]:
+    out = []
+    for x, visible in zip(row["position"], row.get("mask", [True, True]), strict=True):
+        out.extend(
+            [
+                3 * fn(f * math.pi * x) if visible else 0.0
+                for f in (1, 2)
+                for fn in (math.cos, math.sin)
+            ]
+        )
+    out.extend([0.0, 0.0] if row.get("action") is None else [4 * v for v in row["action"]])
+    out.extend(
+        [0.0, 0.0] if row.get("context") is None else [6.0 * (row["context"] == c) for c in (0, 1)]
+    )
+    return out
+
+
+def audit_read(read: dict[str, Any], records: dict[int, dict[str, Any]]) -> None:
+    assert set(read["cue"]) == {"position", "action", "context", "mask", "audit"}
+    ids = read["selected_ids"]
+    assert len(ids) == len(set(ids)) and set(ids) <= set(read["index_ids"])
+    assert all(i in records and records[i]["evidence"] == "observed" for i in ids)
+    vector = encoding(read["cue"])
+    scores = [0.0]
+    deltas = [[0.0, 0.0]]
+    for identifier in ids:
+        row = records[identifier]
+        scores.append(
+            sum(a * b for a, b in zip(vector, encoding(row), strict=True)) / math.sqrt(12)
+        )
+        deltas.append([b - a for a, b in zip(row["position"], row["successor"], strict=True)])
+    weights = [math.exp(s - max(scores)) for s in scores]
+    denominator = sum(weights)
+    expected = [
+        sum(w * d[j] for w, d in zip(weights, deltas, strict=True)) / denominator for j in (0, 1)
+    ]
+    assert all(
+        math.isclose(a, b, rel_tol=1e-10, abs_tol=1e-10)
+        for a, b in zip(read["prediction"], expected, strict=True)
+    )
+    ranked = {r["id"]: r["weight"] for r in read["ranked"]}
+    assert set(ranked) == set(ids)
+    for i, w in zip(ids, weights[1:], strict=True):
+        assert math.isclose(ranked[i], w / denominator, rel_tol=1e-10, abs_tol=1e-10)
+    assert read["work"]["raw_pairs"] == len(ids) + 1
+    assert read["work"]["summary_dot_products"] == 8 * sum(
+        len(s["candidates"]) for s in read["route"]
+    )
+
+
+def forward(weights: dict[str, torch.Tensor], inputs: torch.Tensor, member: int) -> torch.Tensor:
+    def layer(value: torch.Tensor, index: int) -> torch.Tensor:
+        return functional.linear(
+            value,
+            weights[f"{member}.layers.{index}.weight"],
+            weights[f"{member}.layers.{index}.bias"],
+        )
+
+    return layer(torch.tanh(layer(torch.tanh(layer(inputs, 0)), 2)), 4)
+
+
+def gradient_audit(run: dict[str, Any], records: dict[int, dict[str, Any]]) -> None:
+    weights = {
+        name: torch.tensor(value, dtype=torch.float64, requires_grad=True)
+        for name, value in run["initial_weights"].items()
+    }
+    for event in run["trace"]:
+        rows = [records[i] for i in event["sources"]]
+        inputs = torch.tensor(
+            [
+                [*r["position"], *r["action"], float(r["context"] == 0), float(r["context"] == 1)]
+                for r in rows
+            ],
+            dtype=torch.float64,
+        )
+        target = torch.tensor(
+            [[b - a for a, b in zip(r["position"], r["successor"], strict=True)] for r in rows],
+            dtype=torch.float64,
+        )
+        losses = []
+        for member in range(3):
+            prediction = forward(weights, inputs, member)
+            loss = (prediction - target).square().mean()
+            losses.append(float(loss.detach()))
+            names = [name for name in weights if name.startswith(f"{member}.")]
+            gradients = torch.autograd.grad(loss, [weights[name] for name in names])
+            norm = torch.linalg.vector_norm(
+                torch.stack([torch.linalg.vector_norm(g) for g in gradients])
+            )
+            coefficient = min(1.0, 5.0 / (float(norm) + 1e-6))
+            with torch.no_grad():
+                for name, gradient in zip(names, gradients, strict=True):
+                    weights[name].add_(gradient, alpha=-0.06 * coefficient)
+        assert math.isclose(sum(losses) / 3, event["loss"], rel_tol=1e-9, abs_tol=1e-10)
+    expected = run.get("discarded_weights", run["final_weights"])
+    for name, value in expected.items():
+        assert torch.allclose(
+            weights[name].detach(), torch.tensor(value, dtype=torch.float64), atol=1e-10, rtol=1e-9
+        ), name
+    if run.get("discarded_weights"):
+        assert run["final_weights"] == run["initial_weights"]
+    final = {
+        name: torch.tensor(value, dtype=torch.float64)
+        for name, value in run["final_weights"].items()
+    }
+    for evaluation in run["evaluations"]:
+        for row in evaluation["rows"]:
+            inputs = torch.tensor(
+                [
+                    [
+                        *row["position"],
+                        *row["action"],
+                        float(row["context"] == 0),
+                        float(row["context"] == 1),
+                    ]
+                ],
+                dtype=torch.float64,
+            )
+            predicted = torch.stack([forward(final, inputs, i)[0] for i in range(3)]).mean(0)
+            assert torch.allclose(
+                predicted,
+                torch.tensor(row["prediction"], dtype=torch.float64),
+                atol=1e-10,
+                rtol=1e-9,
+            )
+
+
+def audit_run(run: dict[str, Any]) -> dict[str, int]:
+    records = {r["id"]: r for r in run["observations"]}
+    assert digest([r["checksum"] for r in records.values()]) == run["archive_hash"]
+    assert run["initial_model_hash"] == digest(run["initial_weights"])
+    updates = 0
+    for event in run["trace"]:
+        audit_read(event["read"], records)
+        assert event["evidence"] == "observed"
+        assert set(event["sources"]) <= set(event["read"]["selected_ids"])
+        assert event["sources"]
+        assert math.isfinite(event["loss"]) and event["loss"] >= 0
+        updates += 1
+    assert updates == run["gradient_steps"]
+    assert run["simulator_calls_after"] == run["simulator_calls_before"]
+    assert run["archive_hash_after"] == run["archive_hash"]
+    assert run["final_model_hash"] == digest(run["final_weights"])
+    for point in run["rollout"][1:]:
+        assert point["evidence"] == "imagined" and point["sources"]
+        assert all(i in records and records[i]["evidence"] == "observed" for i in point["sources"])
+    for evaluation in run["evaluations"]:
+        squared = []
+        for row in evaluation["rows"]:
+            error = (
+                sum((a - b) ** 2 for a, b in zip(row["prediction"], row["target"], strict=True)) / 2
+            )
+            squared.append(error)
+        assert math.isclose(
+            sum(squared) / len(squared), evaluation["mse"], rel_tol=1e-10, abs_tol=1e-10
+        )
+    gradient_audit(run, records)
+    return {
+        "updates": updates,
+        "model_evaluation_rows": sum(len(e["rows"]) for e in run["evaluations"]),
+        "observed_sources": len(records),
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--results", type=Path, required=True)
+    args = parser.parse_args()
+    torch.set_num_threads(1)
+    manifest = json.loads((args.results / "manifest.json").read_text())
+    for name, checksum in manifest["source_hashes"].items():
+        assert (
+            hashlib.sha256((args.results / "source-snapshot" / name).read_bytes()).hexdigest()
+            == checksum
+        ), name
+    checks = {}
+    for path in sorted(args.results.glob("run-*.json.gz")):
+        checks[path.name] = audit_run(json.loads(gzip.decompress(path.read_bytes())))
+    assert checks
+    reads = 0
+    for path in sorted(args.results.glob("retrieval-*.json.gz")):
+        data = json.loads(gzip.decompress(path.read_bytes()))
+        records = {r["id"]: r for r in data["observations"]}
+        for read in data["reads"]:
+            audit_read(read, records)
+            reads += 1
+    report = {
+        "all_passed": True,
+        "scope": "scalar selected attention, independent functional MLP/SGD replay, observed-source/fork/evaluation integrity",
+        "runs": checks,
+        "additional_retrieval_reads": reads,
+    }
+    (args.results / "audit.json").write_text(json.dumps(report, indent=2) + "\n")
+    print(json.dumps(report, indent=2))
+
+
+if __name__ == "__main__":
+    main()
