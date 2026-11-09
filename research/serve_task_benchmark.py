@@ -197,6 +197,8 @@ class TaskHandler(BaseHTTPRequestHandler):
                     "/style.css": ("web/task-lab/style.css", "text/css"),
                     "/app.js": ("web/task-lab/app.js", "text/javascript"),
                     "/routing.js": ("web/task-lab/routing.js", "text/javascript"),
+                    "/spatial.bundle.js": ("web/task-lab/spatial.bundle.js", "text/javascript"),
+                    "/spatial.css": ("web/task-lab/spatial.css", "text/css"),
                     "/geist.ttf": ("web/somna-live/fonts/geist-regular.ttf", "font/ttf"),
                     "/geist-semibold.ttf": ("web/somna-live/fonts/geist-semibold.ttf", "font/ttf"),
                 }

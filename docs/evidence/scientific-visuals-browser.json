@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-09",
+  "scope": "Local graphics integration; no new numerical or retrieval-quality result",
+  "urls": {
+    "live_checked": "http://127.0.0.1:8793/",
+    "live_user": "http://127.0.0.1:8791/",
+    "recorded": "http://127.0.0.1:8792/?task=maze&dataset=progress-evaluation-v2&reader=progress_zha&seed=3002&env=MiniGrid-KeyCorridorS6R3-v0"
+  },
+  "archive_isolation": "All interactive live checks used a separate /private/tmp/somna-visual-check-1109.sqlite namespace. Existing live8791 server was not restarted or reset.",
+  "browser_checks": {
+    "desktop": {
+      "width": 1440,
+      "height": 1080,
+      "live_source_records": 256,
+      "live_geometry_points": 256,
+      "task_step": 51,
+      "task_source_originals": 179,
+      "task_geometry_points": 216,
+      "task_raw_read": 59,
+      "task_returned_facts": 95
+    },
+    "actual_pointer_inspection": {
+      "source_id": 1,
+      "record_title": "Observed #1 / version 1",
+      "hover_id": 1
+    },
+    "partial_query": {
+      "known_mask": [true, false],
+      "cue_stripes": 1,
+      "selected_reads": 12,
+      "source_records": 256,
+      "prediction_arrow_hidden": true,
+      "backend_error": ""
+    },
+    "drag": {
+      "camera_moved": true,
+      "query_requests_before": 1,
+      "query_requests_after": 1
+    },
+    "keyboard_node_inspection": "L3 / node 0: 18 wall, 44 empty, 2 door; recorded score 8.182",
+    "tree_switch": {
+      "tree_visible": true,
+      "webgl_hidden": true,
+      "overlay_hidden": true
+    },
+    "fullscreen": {
+      "opened": true,
+      "canvas_size": [1440, 1080],
+      "restored": true
+    },
+    "mobile390": {
+      "live_horizontal_overflow": false,
+      "task_horizontal_overflow": false,
+      "all_four_task_levels_visible": true
+    },
+    "reduced_motion": {
+      "preference": true,
+      "orbit_disabled": true,
+      "plane_transition_immediate": true
+    },
+    "forced_canvas": {
+      "both_apps": true,
+      "original_canvas_visible": true,
+      "webgl_hidden": true,
+      "orphan_overlays": 0
+    },
+    "automatic_webgl_failure": {
+      "factory_returned_null": true,
+      "canvas_replaced_safely": true,
+      "orphan_overlays": 0
+    },
+    "graph_only": {
+      "description": "This method selects facts without hierarchical routing.",
+      "layers_disabled": true,
+      "webgl_hidden": true
+    },
+    "explicit_graph_fallback": {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 3003,
+      "step": 79,
+      "notice": "Recorded evaluation \u00b7 solved \u00b7 observed graph fallback",
+      "webgl_hidden": true,
+      "overlay_hidden": true,
+      "cue_disabled": true
+    },
+    "clean_session_unhandled_errors": []
+  },
+  "instrumentation_note": "An earlier synthetic pointerdown with an inactive pointer ID caused a browser-test setPointerCapture error. Actual pointer selection and dragging were rechecked with real mouse events; clean-session application checks have no unhandled errors.",
+  "validation": {
+    "pytest": "429 passed",
+    "mapping_tests": "11 passed",
+    "existing_routing_contracts": "all passed",
+    "ruff": "passed",
+    "format": "148 files formatted",
+    "mypy": "7 source files, no issues",
+    "js_syntax": "both apps passed",
+    "pinned_npm_install": "passed with install scripts disabled",
+    "reproducible_build": "identical manifest after fresh npm ci; both app JS and CSS hashes match"
+  },
+  "unchanged_scope": [
+    "numerical core",
+    "live memory engine",
+    "planner and retrieval policies",
+    "experiment reports and recordings"
+  ],
+  "source_sha256": {
+    "web/visuals/src/models.mjs": "ef5e024360c3af3eb5b36c1ea2be676c3a81097e20be778c926743af3cd4421e",
+    "web/visuals/src/scene.mjs": "ce0f22f91a884df98eb5b1e10f029b0228fcafd0edb0e974178c041576676003",
+    "web/visuals/scene.css": "e6394c9567e19c8c94a775c1d2df77d3080562740a2e1968483ad08328699528",
+    "web/visuals/build-manifest.json": "8a3921217527e21209ae3af86b387913716f29cb73398eb5959acc0a81f840fb",
+    "web/visuals/package-lock.json": "8aa6a50720707a22c9be220ad34fa864524e65286470718617a6d8bf7e089f6c",
+    "web/somna-live/app.js": "81cb035144d04fc9a71c75b9c16fb9729b49495eacffd470aaab86772cc7d299",
+    "web/task-lab/app.js": "2c62b5f8e6dc03d3a94243968b8e898afd07dca77f8b55e9a529b82f88801e76",
+    "research/serve_task_benchmark.py": "967eb2e8d8d6fd0c9123225fb07c9eb9647ab26f3594008f291380d85a5705df",
+    "research/somna_engine.py": "4233683d3760b68ab25ef6c08b7d8c047c0ebf601f00546c70f10f42f69d9e9d",
+    "experiments/progress-evaluation-v2/report.json": "1fe578a901e7f9bcfcd3fa03a6a7bd776661e44091c26e1c7700fddf2ad0e6cd"
+  },
+  "screenshots": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/scientific-visuals"
+}

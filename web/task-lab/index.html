@@ -11,6 +11,7 @@
     <meta name="color-scheme" content="dark" />
     <title>Somna / Memory & navigation</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="spatial.css" />
   </head>
   <body>
     <a class="skip" href="#experiment">Skip to experiment</a>
@@ -130,11 +131,14 @@
             ><label>Routing pass<select id="routing-pass"></select></label
             ><span id="cue-context" class="caption-5 muted"></span>
           </div>
+          <div class="spatial-stage">
           <canvas
             id="routing"
             tabindex="0"
             aria-label="Recorded hierarchy routing; select a node to inspect its observed facts"
           ></canvas>
+            <canvas id="routing-spatial" hidden tabindex="0" aria-label="Interactive 3D recorded hierarchy"></canvas>
+          </div>
           <div class="legend caption-5">
             <span><i class="support"></i>Expanded</span
             ><span><i class="dormant"></i>Pruned</span
@@ -209,6 +213,7 @@
       </footer>
     </main>
     <script src="routing.js"></script>
+    <script src="spatial.bundle.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

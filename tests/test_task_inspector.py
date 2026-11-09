@@ -172,3 +172,30 @@ def test_oversized_trace_http_response_explains_recovery(
         server.shutdown()
         server.server_close()
         worker.join()
+
+
+def test_inspector_serves_only_bundled_visual_assets(tmp_path: Path) -> None:
+    fixture(tmp_path)
+    web = tmp_path / "web/task-lab"
+    web.mkdir(parents=True)
+    (web / "spatial.bundle.js").write_bytes(b"bundled visual renderer")
+    (web / "spatial.css").write_bytes(b".spatial-stage{}")
+    server = TaskServer(("127.0.0.1", 0), tmp_path)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    address = f"http://127.0.0.1:{server.server_port}"
+    try:
+        for path, content, mime in [
+            ("/spatial.bundle.js", b"bundled visual renderer", "text/javascript"),
+            ("/spatial.css", b".spatial-stage{}", "text/css"),
+        ]:
+            with urllib.request.urlopen(address + path) as response:
+                assert response.read() == content
+                assert response.headers["Content-Type"] == mime
+                assert response.headers["X-Content-Type-Options"] == "nosniff"
+        with pytest.raises(urllib.error.HTTPError):
+            urllib.request.urlopen(address + "/web/visuals/node_modules/three/package.json")
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join()

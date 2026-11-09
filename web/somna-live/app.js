@@ -20,7 +20,8 @@
     events = [],
     previousHash = null,
     projection = "layers",
-    projectedNodes = [];
+    projectedNodes = [],
+    field3D = null;
   const actions = { right: [1, 0], left: [-1, 0], up: [0, -1], down: [0, 1] };
   function error(e) {
     $("error").hidden = false;
@@ -369,6 +370,16 @@
     );
   }
   function drawExperience() {
+    if (field3D && state) {
+      $("experience").hidden = true;
+      field3D.setVisible(true);
+      field3D.setData(SomnaVisuals.memoryModel(state, selectedId));
+      field3D.setMode(projection);
+      field3D.highlight(selectedId === null ? null : String(selectedId));
+      return;
+    }
+    $("experience").dataset.renderer = "canvas";
+
     if (projection === "layers") {
       drawLayers();
       return;
@@ -828,6 +839,31 @@
     }
     return id;
   }
+  field3D = globalThis.SomnaVisuals?.create({
+    canvas: $("experience-spatial"),
+    onPick: (id) => {
+      if (state?.sleep.busy) return;
+      selectedId = Number(id);
+      renderRecord();
+      drawExperience();
+    },
+    onQuery: (point, id) => {
+      if (state?.sleep.busy) return;
+      if (tool === "inspect") {
+        if (id) {
+          selectedId = Number(id);
+          renderRecord();
+          drawExperience();
+        }
+        return;
+      }
+      const node = state?.nodes.find((n) => String(n.id) === id);
+      const p = node ? [node.x, node.y] : point;
+      if (!p) return;
+      position = p;
+      safe(api("/api/query", cue()));
+    },
+  });
   $("experience").addEventListener("pointerdown", (event) => {
     if (state?.sleep.busy) return;
     if ((tool === "inspect" || event.shiftKey) && projection === "layers") {
@@ -859,7 +895,7 @@
     hoverId = null;
     drawExperience();
   });
-  $("experience").addEventListener("keydown", (event) => {
+  const experienceKey = (event) => {
     if (state?.sleep.busy) return;
     if (event.key === "Enter") {
       event.preventDefault();
@@ -879,7 +915,9 @@
       renderRecord();
       draw();
     }
-  });
+  };
+  $("experience").addEventListener("keydown", experienceKey);
+  $("experience-spatial").addEventListener("keydown", experienceKey);
   document.querySelectorAll("[data-tool]").forEach(
     (button) =>
       (button.onclick = () => {

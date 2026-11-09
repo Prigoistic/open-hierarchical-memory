@@ -41,7 +41,8 @@
     headMap = new Map(),
     routingView = "layers",
     routingHits = [],
-    routingFocus = null;
+    routingFocus = null,
+    routing3D = null;
   const signature = (s) => s.player + "|" + s.boxes.join(",");
   function fail(e) {
     $("error").hidden = false;
@@ -312,7 +313,7 @@
     $("routing-description").textContent = "Loading recorded routing";
     $("routing-inspection").textContent = "";
     canvas($("board"));
-    canvas($("routing"));
+    routingCanvas();
     for (const field of [
       "case-caption",
       "trace-warning",
@@ -830,6 +831,11 @@
     }
     return [...headMap.values()].sort((a, b) => a.id - b.id);
   }
+  function routingCanvas() {
+    routing3D?.setVisible(false);
+    $("routing").hidden = false;
+    return canvas($("routing"));
+  }
   function renderRouting(row) {
     const d = row.decision,
       routes = (d.route || []).map((route) =>
@@ -866,9 +872,9 @@
       : "empty hands";
     $("cue-context").textContent =
       "Position (" + d.pose.slice(0, 2).join(", ") + ") · " + inventory;
-    const { c, w, h } = canvas($("routing"));
     routingHits = [];
     if (!routes.length) {
+      const { c, w, h } = routingCanvas();
       const fallback = d.repair?.fallback_active;
       opts($("cue"), [
         ["none", fallback ? "Graph recovery" : "No hierarchy cue"],
@@ -897,6 +903,39 @@
     const recorded = routes[Number($("routing-pass").value)],
       route = SomnaRouting.resolveSnapshot(run, recorded),
       model = SomnaRouting.routingModel(route, observedHeads(), d.memory_ids);
+    if (routing3D && routingView === "layers" && model.mapped) {
+      $("routing").hidden = true;
+      routing3D.setVisible(true);
+      routingHits = model.levels.flatMap((l) =>
+        l.nodes.map((node) => ({ node })),
+      );
+      const key = [
+        run.environment_id,
+        run.dataset,
+        run.reader,
+        run.seed,
+        cursor,
+        $("cue").value,
+        $("routing-pass").value,
+      ].join(":");
+      routing3D.setData(SomnaVisuals.hierarchyModel(model, key));
+      routing3D.highlight(routingFocus);
+      $("routing-description").textContent =
+        model.rawCount +
+        " originals attended; " +
+        d.memory_ids.length +
+        " facts returned to the planner. Drag to orbit; select a node to inspect.";
+      const selected = routingHits.find((p) => p.node.key === routingFocus);
+      $("routing-inspection").textContent = selected
+        ? SomnaRouting.nodeDescription(selected.node)
+        : "";
+      $("layers").classList.add("selected");
+      $("tree-view").classList.remove("selected");
+      $("layers").setAttribute("aria-pressed", "true");
+      $("tree-view").setAttribute("aria-pressed", "false");
+      return;
+    }
+    const { c, w, h } = routingCanvas();
     const positions = new Map(),
       levels = model.levels;
     levels.forEach((level, j) => {
@@ -1439,6 +1478,11 @@
   function safe(p) {
     p.catch(fail);
   }
+  routing3D = globalThis.SomnaVisuals?.create({
+    canvas: $("routing-spatial"),
+    onPick: (key) =>
+      inspectRouting(routingHits.find((p) => p.node.key === key)),
+  });
   $("suite").onchange = () => {
     fillLevels();
     safe(loadRun());
@@ -1565,6 +1609,7 @@
       );
   };
 
+  $("routing-spatial").onkeydown = (e) => $("routing").onkeydown(e);
   let resizeTimer;
   addEventListener("resize", () => {
     clearTimeout(resizeTimer);

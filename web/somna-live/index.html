@@ -10,6 +10,7 @@
     />
     <title>Somna / Memory in motion</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="spatial.css" />
   </head>
   <body>
     <a href="#lab" class="skip">Skip to experiment</a>
@@ -92,11 +93,14 @@
               </select></label
             ><button id="query-now">Recall from this cue ↗</button>
           </div>
+          <div class="spatial-stage">
           <canvas
             id="experience"
             tabindex="0"
             aria-label="Observed spatial episodes. Click to query a position. Choose Inspect to select an observation."
           ></canvas>
+            <canvas id="experience-spatial" hidden tabindex="0" aria-label="Interactive 3D observed memory field"></canvas>
+          </div>
           <div class="legend">
             <span><i class="world-a"></i>World A</span
             ><span><i class="world-b"></i>World B</span
@@ -270,6 +274,7 @@
         ><button id="export">Export current evidence ↓</button>
       </footer>
     </main>
+    <script src="spatial.bundle.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
