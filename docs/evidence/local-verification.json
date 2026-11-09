@@ -2,6 +2,7 @@
   "scope": "CPU float64 no-RoPE core, separate lifecycle, symbolic spatial replay and continuous learned-memory behavior and official planning-task artifacts; no full-model/GPU/industry/guarantee validation",
   "profile": "full",
   "official_minigrid_audit_enabled": true,
+  "frontend_routing_checks_enabled": true,
   "package_installations_checked": true,
   "hosted_ci_status": "not_assessed",
   "python": "3.12.14",
@@ -53,7 +54,7 @@
       "exit_code": 0
     },
     {
-      "command": "python -m mypy --strict --explicit-package-bases research/boxoban_benchmark.py research/run_boxoban_benchmark.py research/minigrid_benchmark.py research/run_minigrid_benchmark.py research/serve_task_benchmark.py research/dependency_memory.py research/run_dependency_benchmark.py research/diagnose_dependency_failures.py scripts/audit_complex_tasks.py scripts/audit_dependency_memory.py",
+      "command": "python -m mypy --strict --explicit-package-bases research/boxoban_benchmark.py research/run_boxoban_benchmark.py research/minigrid_benchmark.py research/run_minigrid_benchmark.py research/serve_task_benchmark.py research/dependency_memory.py research/run_dependency_benchmark.py research/progress_retrieval.py research/run_progress_benchmark.py research/diagnose_dependency_failures.py scripts/audit_complex_tasks.py scripts/audit_dependency_memory.py scripts/audit_progress_retrieval.py",
       "exit_code": 0
     },
     {
@@ -78,6 +79,14 @@
     },
     {
       "command": "python scripts/audit_dependency_memory.py --results experiments/dependency-evaluation-v1",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/audit_progress_retrieval.py --results experiments/progress-evaluation-v2",
+      "exit_code": 0
+    },
+    {
+      "command": "node scripts/check_task_routing.cjs",
       "exit_code": 0
     },
     {

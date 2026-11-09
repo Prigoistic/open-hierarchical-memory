@@ -1,0 +1,59 @@
+{
+  "all_passed": true,
+  "scope": "before serialization-only reexecution; policy/core/controller/lock exact bytes unchanged",
+  "protected": {
+    "research/progress_retrieval.py": {
+      "frozen": "fc0f936626d32b7c00d951d11468e7676b5d09a711ee3395e82622dd6f47545d",
+      "current": "fc0f936626d32b7c00d951d11468e7676b5d09a711ee3395e82622dd6f47545d"
+    },
+    "research/dependency_memory.py": {
+      "frozen": "d0a517d97f58d219da864a0604bbd68cacc2594af3e321c87d43fb4af0561454",
+      "current": "d0a517d97f58d219da864a0604bbd68cacc2594af3e321c87d43fb4af0561454"
+    },
+    "research/minigrid_benchmark.py": {
+      "frozen": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d",
+      "current": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d"
+    },
+    "research/run_minigrid_benchmark.py": {
+      "frozen": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b",
+      "current": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b"
+    },
+    "uv.lock": {
+      "frozen": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796",
+      "current": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796"
+    },
+    "src/open_hierarchical_memory/tree.py": {
+      "frozen": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+      "current": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38"
+    },
+    "src/open_hierarchical_memory/attention.py": {
+      "frozen": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+      "current": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420"
+    },
+    "src/open_hierarchical_memory/__init__.py": {
+      "frozen": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+      "current": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a"
+    },
+    "src/open_hierarchical_memory/routing.py": {
+      "frozen": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+      "current": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83"
+    },
+    "src/open_hierarchical_memory/contracts.py": {
+      "frozen": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+      "current": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075"
+    },
+    "src/open_hierarchical_memory/summaries.py": {
+      "frozen": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+      "current": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0"
+    },
+    "src/open_hierarchical_memory/training.py": {
+      "frozen": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e",
+      "current": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e"
+    }
+  },
+  "only_active_nonpolicy_changes": [
+    "research/run_progress_benchmark.py",
+    "tests/test_progress_retrieval.py",
+    "docs/PROGRESS_RETRIEVAL.md"
+  ]
+}

@@ -2,7 +2,11 @@
 (() => {
   const $ = (id) => document.getElementById(id),
     labels = {
-      none: "No episodic recall",
+      progress_zha: "ZHA + graph recovery",
+      progress_exact: "Exact + graph recovery",
+      cues_zha: "ZHA cues + widening",
+      cues_exact: "Exact cues + widening",
+      none: "No recall",
       flat_zha_mask: "Flat ZHA + coverage",
       flat_exact_mask: "Flat exact + coverage",
       flat_exact_history_mask: "Exact history + coverage",
@@ -32,12 +36,22 @@
     playing = false,
     timer = null,
     requestId = 0,
-    readMap = new Map();
+    readMap = new Map(),
+    headCursor = -1,
+    headMap = new Map(),
+    routingView = "layers",
+    routingHits = [],
+    routingFocus = null;
   const signature = (s) => s.player + "|" + s.boxes.join(",");
   function fail(e) {
     $("error").hidden = false;
     $("error").textContent = e.message || String(e);
-    $("connection").textContent = "Experiment unavailable";
+    $("connection").textContent = "Run unavailable";
+    $("board-title").textContent = "Run unavailable";
+    $("run-notice").textContent = "Choose another run or retry.";
+    $("routing-description").textContent = "No trace loaded.";
+    $("latest").hidden =
+      !catalog.runs.length || $("cohort").value === latestCohort();
     pause();
   }
   async function json(url) {
@@ -109,58 +123,166 @@
       $("budget").value || "1024",
     );
   }
+  function datasetLabel(name) {
+    if (/(?:progress|repair).*evaluation/.test(name))
+      return "Retrieval repair · evaluation";
+    if (name.startsWith("progress-") && name.includes("development"))
+      return "Repair development " + name.match(/v\d+$/)?.[0];
+    if (name.startsWith("progress-") && name.includes("diagnostic"))
+      return "Exposed seed diagnostic " + name.match(/v\d+$/)?.[0];
+    if (name === "dependency-evaluation-v1")
+      return "Coverage & bundles · previous";
+    if (name === "minigrid-evaluation-v2")
+      return "Original readers · historical";
+    if (name === "boxoban-search-v1") return "Boxoban puzzles";
+    return name
+      .replace("dependency-", "Memory / ")
+      .replace("minigrid-", "MiniGrid / ")
+      .replaceAll("-", " ");
+  }
+  function taskLabel(id) {
+    return id
+      .replace("MiniGrid-", "")
+      .replace("KeyCorridorS6R3-v0", "Key corridor")
+      .replace("DoorKey-16x16-v0", "Door & key")
+      .replace("MultiRoom-N6-v0", "Six rooms")
+      .replace("MemoryS17Random-v0", "Remember the sample");
+  }
+  function latestCohort() {
+    const all = unique(catalog.runs.map((r) => r.dataset));
+    const rank = (n) =>
+      /(?:progress|repair).*evaluation/.test(n)
+        ? 100
+        : n === "dependency-evaluation-v1"
+          ? 80
+          : n === "minigrid-evaluation-v2"
+            ? 60
+            : n === "boxoban-search-v1"
+              ? 40
+              : 0;
+    return all.sort(
+      (a, b) =>
+        rank(b) - rank(a) || b.localeCompare(a, undefined, { numeric: true }),
+    )[0];
+  }
+  function fillSuites(preferred) {
+    const rows = catalog.runs.filter((r) => r.dataset === $("cohort").value);
+    if (preferred === undefined) {
+      const [oldTask, oldSplit] = $("suite").value.split(":");
+      const oldEnv = oldSplit?.split("/")[0];
+      const same = rows.find(
+        (r) =>
+          r.task === oldTask &&
+          (r.environment_id === oldEnv || r.split === oldSplit),
+      );
+      if (same) preferred = same.task + ":" + same.split;
+    }
+    opts(
+      $("suite"),
+      unique(rows.map((r) => r.task + ":" + r.split)).map((value) => [
+        value,
+        value.startsWith("boxoban:")
+          ? value.endsWith("hard")
+            ? "Hard puzzles"
+            : "Test puzzles"
+          : taskLabel(value.split(":")[1].split("/")[0]),
+      ]),
+      preferred,
+    );
+  }
+  function fillCohorts(preferred) {
+    const latest = latestCohort(),
+      cohorts = unique(catalog.runs.map((r) => r.dataset)).filter(
+        (n) =>
+          $("show-development").checked ||
+          n.includes("evaluation") ||
+          n === "boxoban-search-v1",
+      );
+    opts(
+      $("cohort"),
+      cohorts
+        .sort((a, b) =>
+          a === b
+            ? 0
+            : a === latest
+              ? -1
+              : b === latest
+                ? 1
+                : a.localeCompare(b),
+        )
+        .map((n) => [n, datasetLabel(n)]),
+      preferred,
+    );
+  }
   async function reload() {
     pause();
     catalog = await json("/api/catalog");
-    if (!catalog.runs.length)
-      throw Error("No completed benchmark runs are available yet.");
+    if (!catalog.runs.length) throw Error("No completed runs are available.");
     bank = await json("/api/bank");
-    opts(
-      $("suite"),
-      unique(catalog.runs.map((r) => r.task + ":" + r.split)).map((s) => [
-        s,
-        s === "boxoban:hard"
-          ? "Boxoban / official hard set"
-          : s === "boxoban:test"
-            ? "Boxoban / official test set"
-            : s
-                .replace("minigrid:MiniGrid-", "MiniGrid / ")
-                .replace("/minigrid-", " / "),
-      ]),
-      $("suite").value || "boxoban:hard",
+    const params = new URLSearchParams(location.search),
+      first = !run;
+    if (
+      first &&
+      params.get("dataset") &&
+      !params.get("dataset").includes("evaluation") &&
+      params.get("dataset") !== "boxoban-search-v1"
+    )
+      $("show-development").checked = true;
+    fillCohorts(
+      first ? params.get("dataset") || latestCohort() : $("cohort").value,
     );
-    const start = new URLSearchParams(location.search).get("task"),
-      dependencyStart = !run && start === "dependencies",
-      mazeStart = !run && start === "maze";
-    if (dependencyStart) {
-      const cohorts = unique(
-        catalog.runs
-          .filter((r) => r.dataset?.startsWith("dependency-evaluation-"))
-          .map((r) => r.dataset),
-      ).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-      const dataset = cohorts.at(-1);
-      if (dataset)
-        $("suite").value = "minigrid:MiniGrid-KeyCorridorS6R3-v0/" + dataset;
-    }
-    if (mazeStart)
-      $("suite").value =
-        "minigrid:MiniGrid-MultiRoom-N6-v0/minigrid-evaluation-v2";
-    fillLevels(dependencyStart ? "2001" : mazeStart ? "1001" : undefined);
-    fillConfigs(
-      run
-        ? $("config").value
-        : dependencyStart
-          ? "bundle_zha"
-          : mazeStart
-            ? "zha_adaptive"
-            : "zha-p25",
+    const env = params.get("env") || "MiniGrid-KeyCorridorS6R3-v0";
+    fillSuites(
+      first ? "minigrid:" + env + "/" + $("cohort").value : $("suite").value,
     );
-    if (mazeStart || dependencyStart) mode = "search";
+    fillLevels(first ? params.get("seed") || undefined : $("level").value);
+    const available = unique(suiteRows().map((r) => r.config));
+    const preferred = first
+      ? params.get("reader") ||
+        (available.includes("progress_zha")
+          ? "progress_zha"
+          : available.includes("bundle_zha")
+            ? "bundle_zha"
+            : available.includes("zha_adaptive")
+              ? "zha_adaptive"
+              : "zha-p25")
+      : $("config").value;
+    fillConfigs(preferred);
+    if (first)
+      mode = $("suite").value.startsWith("minigrid:") ? "search" : "solution";
     await loadRun();
-    if (mazeStart) {
-      cursor = 17;
-      draw();
+  }
+  function updateRunNotice(row) {
+    const historical = !/(?:progress|repair).*evaluation/.test(run.dataset),
+      status = statusLabel(run);
+    let text =
+      (run.split === "development"
+        ? "Development recording"
+        : run.split === "diagnostic"
+          ? "Exposed seed diagnostic"
+          : historical
+            ? "Historical recording"
+            : "Recorded evaluation") +
+      " · " +
+      status.toLowerCase();
+    if (row?.decision.repair) {
+      const repair = row.decision.repair;
+      text +=
+        " · " +
+        (repair.fallback_active
+          ? "observed graph fallback"
+          : [
+              "base recall",
+              "directional cues",
+              "wider candidate search",
+              "graph fallback",
+            ][repair.stage]);
     }
+    $("run-notice").textContent = text;
+    $("run-notice").dataset.warning = String(
+      !run.success || Boolean(row?.decision.repair?.fallback_active),
+    );
+    $("latest").hidden = run.dataset === latestCohort();
   }
   async function loadRun() {
     pause();
@@ -173,21 +295,81 @@
     if (!row) return;
     const id = ++requestId;
     $("connection").textContent = "Reading checksum-bound trace";
-    const next = await json("/api/run?id=" + encodeURIComponent(row.uid));
+    run = null;
+    setRunControls(true);
+    routingHits = [];
+    $("next-event").hidden = true;
+    headCursor = -1;
+    headMap.clear();
+    $("board-title").textContent = "Loading selected run";
+    $("run-notice").textContent = "Loading selected run";
+    $("run-metrics").replaceChildren();
+    $("cases").replaceChildren();
+    $("read-metrics").replaceChildren();
+    $("comparison-body").replaceChildren();
+    $("read-description").textContent = "";
+    $("step-description").textContent = "";
+    $("routing-description").textContent = "Loading recorded routing";
+    $("routing-inspection").textContent = "";
+    canvas($("board"));
+    canvas($("routing"));
+    for (const field of [
+      "case-caption",
+      "trace-warning",
+      "cohort-status",
+      "routing-inspection",
+    ])
+      $(field).textContent = "";
+    let next;
+    try {
+      next = await json("/api/run?id=" + encodeURIComponent(row.uid));
+    } catch (error) {
+      if (id !== requestId) return;
+      throw error;
+    }
     if (id !== requestId) return;
     run = next;
+    setRunControls(false);
     cursor = 0;
+    headCursor = -1;
+    headMap.clear();
+    routingFocus = null;
     readMap = new Map((run.reads || []).map((r) => [signature(r), r]));
     if (!isMaze() && !run.success && mode === "solution") mode = "search";
     $("error").hidden = true;
-    $("connection").textContent = "Completed experiment · source checked";
+    $("connection").textContent = "Recorded experiment";
     $("board-label").textContent = "BOXOBAN / " + run.split.toUpperCase();
     $("board-title").textContent =
       (run.split === "hard" ? "Hard puzzle #" : "Puzzle #") + run.level_id;
     configureTaskDisplay();
     renderMetrics();
     renderComparison();
+    updateRunNotice();
+    const params = new URLSearchParams({
+      task: isMaze() ? "maze" : "puzzles",
+      dataset: run.dataset,
+      reader: run.reader || run.config,
+      seed: String(run.level_id),
+    });
+    if (isMaze()) params.set("env", run.environment_id);
+    history.replaceState(null, "", "?" + params);
     draw();
+  }
+  function setRunControls(disabled) {
+    for (const id of [
+      "play",
+      "back",
+      "forward",
+      "timeline",
+      "next-event",
+      "cue",
+      "routing-pass",
+      "layers",
+      "tree-view",
+      "solution",
+      "search",
+    ])
+      $(id).disabled = disabled;
   }
   function metric(host, name, value) {
     const d = document.createElement("div"),
@@ -219,7 +401,7 @@
     );
     metric(
       h,
-      isMaze() ? "Archived fact versions" : "Training cases",
+      isMaze() ? "Stored versions" : "Training cases",
       (isMaze() ? run.archive.length : bank.cases.length).toLocaleString(),
     );
     $("solution").disabled = !isMaze() && !run.success;
@@ -234,7 +416,7 @@
   function pause() {
     playing = false;
     clearTimeout(timer);
-    $("play").textContent = "Play trace ↗";
+    $("play").textContent = "Play";
   }
   function tick() {
     if (!playing) return;
@@ -245,7 +427,7 @@
     }
     cursor++;
     draw();
-    timer = setTimeout(tick, mode === "search" ? 65 : 280);
+    timer = setTimeout(tick, Number($("speed").value));
   }
   function play() {
     if (playing) {
@@ -254,7 +436,7 @@
     }
     if (cursor >= frames().length - 1) cursor = 0;
     playing = true;
-    $("play").textContent = "Pause Ⅱ";
+    $("play").textContent = "Pause";
     tick();
   }
   function canvas(el) {
@@ -636,6 +818,241 @@
     }
   }
 
+  function observedHeads() {
+    if (cursor < headCursor) {
+      headCursor = -1;
+      headMap.clear();
+    }
+    while (headCursor < cursor) {
+      headCursor++;
+      for (const f of run.trajectory[headCursor].new_facts)
+        headMap.set(f.x + "," + f.y, f);
+    }
+    return [...headMap.values()].sort((a, b) => a.id - b.id);
+  }
+  function renderRouting(row) {
+    const d = row.decision,
+      routes = (d.route || []).map((route) =>
+        SomnaRouting.resolveEvent(run, route),
+      ),
+      mission = row.observation.mission;
+    const cueIds = unique(routes.map((r) => r.query_index));
+    opts(
+      $("cue"),
+      cueIds.map((i) => [
+        String(i),
+        SomnaRouting.cueLabel(i, mission, d.repair),
+      ]),
+      $("cue").value,
+    );
+    const passes = routes
+      .map((r, i) => [r, i])
+      .filter(([r]) => String(r.query_index) === $("cue").value);
+    opts(
+      $("routing-pass"),
+      passes.map(([r, i]) => [
+        String(i),
+        "Pass " + (r.attempt + 1) + " · p=" + r.p,
+      ]),
+      $("routing-pass").value || String(passes.at(-1)?.[1]),
+    );
+    $("cue").disabled = $("routing-pass").disabled = !routes.length;
+    $("layers").disabled = $("tree-view").disabled = !routes.length;
+    $("routing").setAttribute("aria-disabled", String(!routes.length));
+    const inventory = d.inventory
+      ? (objectNames[d.inventory[0]] || "object") +
+        " / " +
+        ["red", "green", "blue", "purple", "yellow", "grey"][d.inventory[1]]
+      : "empty hands";
+    $("cue-context").textContent =
+      "Position (" + d.pose.slice(0, 2).join(", ") + ") · " + inventory;
+    const { c, w, h } = canvas($("routing"));
+    routingHits = [];
+    if (!routes.length) {
+      const fallback = d.repair?.fallback_active;
+      opts($("cue"), [
+        ["none", fallback ? "Graph recovery" : "No hierarchy cue"],
+      ]);
+      opts($("routing-pass"), [["none", "Not applicable"]]);
+      c.fillStyle = "#e8e8e5";
+      c.font = "18px Geist";
+      c.fillText(
+        fallback ? "Observed graph recovery" : "Direct fact selection",
+        16,
+        80,
+      );
+      c.fillStyle = "#939795";
+      c.font = "12px Geist";
+      c.fillText(
+        d.memory_ids.length + " facts returned · no hierarchy pass",
+        16,
+        112,
+      );
+      $("routing-description").textContent = fallback
+        ? "The progress guard escalated to the observed graph. This step is counted as a fallback."
+        : "This method selects facts without hierarchical routing.";
+      $("routing-inspection").textContent = "";
+      return;
+    }
+    const recorded = routes[Number($("routing-pass").value)],
+      route = SomnaRouting.resolveSnapshot(run, recorded),
+      model = SomnaRouting.routingModel(route, observedHeads(), d.memory_ids);
+    const positions = new Map(),
+      levels = model.levels;
+    levels.forEach((level, j) => {
+      const nodes = level.nodes;
+      if (routingView === "layers") {
+        const gap = (w - 32) / levels.length,
+          x0 = 16 + j * gap,
+          y0 = 64,
+          pw = Math.max(24, gap - 24),
+          ph = h - 124;
+        const project = (u, v) => ({
+          x: x0 + u + v * 0.08,
+          y: y0 + v - u * 0.25,
+        });
+        c.strokeStyle = "#303b39";
+        c.lineWidth = 1;
+        c.beginPath();
+        [
+          [0, 0],
+          [pw, 0],
+          [pw, ph],
+          [0, ph],
+          [0, 0],
+        ].forEach(([u, v], k) => {
+          const p = project(u, v);
+          k ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y);
+        });
+        c.stroke();
+        c.fillStyle = "#939795";
+        c.font = "12px Geist";
+        c.fillText(level.level ? "Level " + level.level : "Originals", x0, 28);
+        const cols = Math.max(
+            1,
+            Math.ceil(Math.sqrt((nodes.length * pw) / ph)),
+          ),
+          rows = Math.max(1, Math.ceil(nodes.length / cols));
+        nodes.forEach((node, k) => {
+          const p = project(
+            (((k % cols) + 0.5) * pw) / cols,
+            ((Math.floor(k / cols) + 0.5) * ph) / rows,
+          );
+          positions.set(node.key, {
+            ...p,
+            node,
+            size: Math.max(
+              1,
+              Math.min(6, (pw / cols) * 0.6, (ph / rows) * 0.6),
+            ),
+          });
+        });
+        c.fillStyle = "#939795";
+        c.fillText(
+          nodes.filter((n) => n.kept).length + " / " + nodes.length,
+          x0,
+          h - 24,
+        );
+      } else {
+        const y0 = 32 + (j * (h - 48)) / levels.length,
+          left = 80,
+          width = w - left - 16,
+          cols = Math.max(1, Math.floor(width / 8));
+        c.fillStyle = "#939795";
+        c.font = "12px Geist";
+        c.fillText(
+          level.level ? "Level " + level.level : "Originals",
+          12,
+          y0 + 10,
+        );
+        nodes.forEach((node, k) =>
+          positions.set(node.key, {
+            x: left + (((k % cols) + 0.5) * width) / cols,
+            y: y0 + Math.floor(k / cols) * 8,
+            node,
+            size: Math.min(5, (width / cols) * 0.6),
+          }),
+        );
+      }
+    });
+    c.strokeStyle = "#355f58";
+    c.lineWidth = 0.7;
+    for (const [a, b] of model.edges) {
+      const x = positions.get(a),
+        y = positions.get(b);
+      if (!x || !y) continue;
+      c.beginPath();
+      c.moveTo(x.x, x.y);
+      c.lineTo(y.x, y.y);
+      c.stroke();
+    }
+    for (const point of positions.values()) {
+      const { node, x, y, size } = point;
+      c.fillStyle = node.kept
+        ? node.level
+          ? "#87d9cb"
+          : "#e2ce86"
+        : "#414846";
+      c.fillRect(x - size / 2, y - size / 2, size, size);
+      if (node.returned) {
+        c.strokeStyle = "#e8e8e5";
+        c.lineWidth = 0.7;
+        c.strokeRect(x - size / 2 - 1, y - size / 2 - 1, size + 2, size + 2);
+      }
+      if (node.key === routingFocus) {
+        c.strokeStyle = "#e2ce86";
+        c.lineWidth = 1;
+        c.strokeRect(x - 6, y - 6, 12, 12);
+      }
+      routingHits.push(point);
+    }
+    const fallback = d.repair?.fallback_active;
+    $("routing-description").textContent =
+      (fallback
+        ? "Unused hierarchy read; observed graph fallback supplied this step. "
+        : "") +
+      model.rawCount +
+      " originals attended; " +
+      d.memory_ids.length +
+      " facts returned to the planner." +
+      (model.mapped
+        ? " Select a node to inspect its contents."
+        : " Historical trace: node contents were not recorded.");
+    const selected = routingHits.find((p) => p.node.key === routingFocus);
+    $("routing-inspection").textContent = selected
+      ? SomnaRouting.nodeDescription(selected.node)
+      : "";
+    $("layers").classList.toggle("selected", routingView === "layers");
+    $("tree-view").classList.toggle("selected", routingView === "tree");
+    $("layers").setAttribute("aria-pressed", String(routingView === "layers"));
+    $("tree-view").setAttribute("aria-pressed", String(routingView === "tree"));
+    $("routing-description").setAttribute(
+      "aria-live",
+      playing ? "off" : "polite",
+    );
+  }
+  function inspectRouting(point) {
+    if (!run) return;
+    routingFocus = point?.node.key || null;
+    renderRouting(run.trajectory[cursor]);
+  }
+
+  function objectiveLabel(value) {
+    return (
+      {
+        explore: "Explore a frontier",
+        "scan-frontier": "Look around",
+        "scan-no-reachable-frontier": "No reachable frontier in recall",
+        "fetch-key": "Get the key",
+        "open-door": "Reach a closed door",
+        "matching-target": "Return to the matching object",
+        "matching-target-adjacent": "At the matching object",
+        "drop-for-pickup": "Put down the held object",
+        "pickup-target": "Pick up the target",
+        goal: "Reach the goal",
+      }[value] || value.replaceAll("-", " ")
+    );
+  }
   function drawMaze() {
     const row = run.trajectory[cursor];
     if (!row) return;
@@ -751,20 +1168,27 @@
       "Step " +
       row.step +
       " · " +
-      d.objective +
-      " · action: " +
+      objectiveLabel(d.objective) +
+      " · " +
       actions[row.action] +
-      " · returned reward " +
-      Number(row.reward).toFixed(3) +
-      ".";
+      (row.reward ? " · reward " + Number(row.reward).toFixed(3) : "");
     $("trace-warning").textContent =
       mode === "solution"
         ? "Official egocentric observation before this action. Black cells are unseen. The policy receives no hidden layout or true simulator position."
         : d.coverage
-          ? "Outlined cells were previously observed; their contents are omitted. Cyan edges show accepted bundle support; purple shows the planner route. The mask cannot supply a route through missing facts."
-          : "Only visible cells and selected historical facts are drawn. Purple line: current plan. Gaps in recall can disconnect this map.";
+          ? "Outlines mark previously observed cells whose contents were omitted. Cyan marks bundle support; purple marks the plan."
+          : "Visible and recalled cells. Purple marks the plan; missing facts can disconnect it.";
     $("maze-legend").hidden = mode !== "search" || !d.coverage;
     renderMazeRead(row);
+    renderRouting(row);
+    updateRunNotice(row);
+    $("next-event").hidden = !d.repair;
+    $("next-event").disabled = !run.trajectory.some(
+      (r, i) =>
+        i > cursor &&
+        r.decision.repair?.stage !==
+          run.trajectory[i - 1]?.decision.repair?.stage,
+    );
   }
   function renderMazeRead(row) {
     const d = row.decision,
@@ -821,18 +1245,44 @@
       ])
         dlMetric(dl, name, value.toLocaleString());
     }
+    if (d.repair)
+      for (const [name, value] of [
+        [
+          "Recovery stage",
+          [
+            "Base recall",
+            "Directional cues",
+            "Wider candidate search",
+            "Observed graph",
+          ][d.repair.stage],
+        ],
+        ["Reads without new evidence", d.repair.no_information_reads],
+        [
+          "Source candidate limit",
+          d.repair.candidate_budget ?? "All observed heads",
+        ],
+        ["Graph recovery reads so far", w.repair_graph_fallback_reads || 0],
+      ])
+        dlMetric(
+          dl,
+          name,
+          typeof value === "number" ? value.toLocaleString() : value,
+        );
     host.append(dl);
     dependencyDetails(d);
     $("read-description").textContent =
-      "Mission: " +
-      row.observation.mission +
-      ". Current objective: " +
-      d.objective +
-      ". " +
-      (run.reader === "none"
-        ? "This reader returns no episodic facts."
-        : "The map is rebuilt from selected facts plus the current observation.");
-    for (const f of d.memory_facts.slice(0, 4)) {
+      row.observation.mission + ". " + objectiveLabel(d.objective) + ".";
+    const prioritized = d.memory_facts
+      .slice()
+      .sort(
+        (a, b) =>
+          Number(Boolean(b.cue)) -
+          Number(Boolean(a.cue)) +
+          2 *
+            (Number([4, 5, 6, 7, 8].includes(b.object)) -
+              Number([4, 5, 6, 7, 8].includes(a.object))),
+      );
+    for (const f of prioritized.slice(0, 4)) {
       const card = document.createElement("article"),
         cv = document.createElement("canvas"),
         p = document.createElement("p");
@@ -856,11 +1306,11 @@
       tile(c, (w - sz) / 2, (h - sz) / 2, sz, f.object, f.color, f.state);
     }
     $("case-caption").textContent =
-      "First " +
+      "Showing " +
       Math.min(4, d.memory_facts.length) +
       " of " +
       d.memory_facts.length +
-      " actual historical facts. Empty map regions are not silently filled from the archive.";
+      " returned facts. Landmarks and sample cues shown first.";
   }
 
   function cohortSummary() {
@@ -876,8 +1326,11 @@
     const configs = [
       run.config,
       ...(isMaze()
-        ? run.dataset.startsWith("dependency-")
-          ? ["flat_zha_mask", "flat_exact_history_mask", "graph", "full"]
+        ? run.dataset.startsWith("dependency-") ||
+          run.dataset.startsWith("progress-")
+          ? run.dataset.startsWith("progress-")
+            ? ["bundle_zha", "cues_zha", "graph"]
+            : ["flat_zha_mask", "flat_exact_history_mask", "graph", "full"]
           : ["exact", "full"]
         : ["top16", "matching"]),
     ];
@@ -907,6 +1360,8 @@
     $("solution").textContent = maze ? "Observed view" : "Solution";
     $("search").textContent = maze ? "Recall map" : "Search probes";
     document.querySelector(".legend").hidden = maze;
+    $("routing-panel").hidden = !maze;
+    document.querySelector(".workbench").classList.toggle("single-view", !maze);
     $("maze-legend").hidden = true;
     $("dependency-detail").hidden = !maze;
     document.querySelectorAll("thead th")[2].textContent = maze
@@ -919,7 +1374,7 @@
       ? "Episode time"
       : "Search time";
     $("level").parentElement.childNodes[0].textContent = maze
-      ? "Episode seed"
+      ? "Seed"
       : "Puzzle";
     $("budget").parentElement.childNodes[0].textContent = maze
       ? "External action cap"
@@ -931,18 +1386,18 @@
         : "Recorded puzzle states and search candidates",
     );
     document.querySelector(".comparison .helper").textContent = maze
-      ? "Episode time includes policy, reconstruction, environment steps and trace recording. Different readers take different actions and may truncate; these are not matched-compute speed measurements. Query counters include every adaptive pass and rerank."
+      ? "Time includes the complete recorded episode. Different trajectories use different amounts of work."
       : "Latency includes feature extraction, retrieval, search and trace collection. Reader setup is recorded separately. Summary channel dots and raw key scores have different costs.";
     document.querySelector(".comparison .eyebrow").textContent = maze
       ? "Same task seed · same action cap"
       : "Same puzzle · same expansion budget";
     $("scope").textContent = maze
-      ? "MiniGrid supplies official partial observations. A fixed symbolic controller rebuilds its map from visible cells and retrieved historical facts; it receives no hidden layout. This tests memory and planning, not a learned RL policy or industrial deployment."
-      : "Boxoban is fully observed. ZHA retrieves solved training examples to guide classical search; it does not decide which pushes are legal. This is a research diagnostic, not validation of an industrial deployment.";
+      ? "Official MiniGrid observations and a shared symbolic planner. Each frame is a recorded decision; memory contains observed cells only."
+      : "Official Boxoban puzzles. Retrieved training cases guide a shared classical search.";
     if (maze) {
       $("board-label").textContent = "MINIGRID / " + run.split.toUpperCase();
       $("board-title").textContent =
-        run.environment_id.replace("MiniGrid-", "") + " / seed " + run.seed;
+        taskLabel(run.environment_id) + " / " + run.seed;
     }
   }
 
@@ -1027,6 +1482,89 @@
       draw();
     }
   };
+  $("show-development").onchange = () => {
+    fillCohorts($("cohort").value);
+    fillSuites();
+    fillLevels();
+    fillConfigs();
+    safe(loadRun());
+  };
+  $("next-event").onclick = () => {
+    pause();
+    const i = run.trajectory.findIndex(
+      (r, i) =>
+        i > cursor &&
+        r.decision.repair?.stage !==
+          run.trajectory[i - 1]?.decision.repair?.stage,
+    );
+    if (i >= 0) {
+      cursor = i;
+      draw();
+    }
+  };
+  $("cohort").onchange = () => {
+    fillSuites();
+    fillLevels();
+    fillConfigs();
+    safe(loadRun());
+  };
+  $("latest").onclick = () => {
+    $("cohort").value = latestCohort();
+    fillSuites();
+    fillLevels();
+    fillConfigs("progress_zha");
+    safe(loadRun());
+  };
+  $("cue").onchange = () => {
+    $("routing-pass").value = "";
+    routingFocus = null;
+    renderRouting(run.trajectory[cursor]);
+  };
+  $("routing-pass").onchange = () => {
+    routingFocus = null;
+    renderRouting(run.trajectory[cursor]);
+  };
+  $("layers").onclick = () => {
+    routingView = "layers";
+    renderRouting(run.trajectory[cursor]);
+  };
+  $("tree-view").onclick = () => {
+    routingView = "tree";
+    renderRouting(run.trajectory[cursor]);
+  };
+  $("routing").onclick = (e) => {
+    const r = $("routing").getBoundingClientRect(),
+      x = e.clientX - r.left,
+      y = e.clientY - r.top;
+    const nearest = routingHits
+      .map((p) => ({ p, d: Math.hypot(p.x - x, p.y - y) }))
+      .sort((a, b) => a.d - b.d)[0];
+    inspectRouting(nearest?.d < 12 ? nearest.p : null);
+  };
+  $("routing").onkeydown = (e) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End", "Escape"].includes(e.key))
+      return;
+    e.preventDefault();
+    const i = routingHits.findIndex((p) => p.node.key === routingFocus);
+    if (e.key === "Escape") inspectRouting(null);
+    else
+      inspectRouting(
+        routingHits[
+          e.key === "Home"
+            ? 0
+            : e.key === "End"
+              ? routingHits.length - 1
+              : Math.max(
+                  0,
+                  Math.min(
+                    routingHits.length - 1,
+                    i + (e.key === "ArrowRight" ? 1 : -1),
+                  ),
+                )
+        ],
+      );
+  };
+
   let resizeTimer;
   addEventListener("resize", () => {
     clearTimeout(resizeTimer);

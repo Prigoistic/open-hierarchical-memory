@@ -15,6 +15,10 @@ ROOT = Path(__file__).resolve().parents[1]
 MAX_EXPANDED_TRACE_BYTES = 128 * 1024 * 1024
 
 
+class TraceTooLargeError(ValueError):
+    """A valid local artifact exceeds the bounded viewer transport."""
+
+
 class TaskCatalog:
     def __init__(self, root: Path = ROOT):
         self.root = root
@@ -39,6 +43,7 @@ class TaskCatalog:
         reports = [
             *(self.root / "experiments").glob("minigrid-*/report.json"),
             *(self.root / "experiments").glob("dependency-*/report.json"),
+            *(self.root / "experiments").glob("progress-*/report.json"),
         ]
         for path in sorted(reports):
             report = json.loads(path.read_text())
@@ -111,14 +116,14 @@ class TaskCatalog:
             base = base / "evaluation"
         path = base / name
         if path.stat().st_size > 16 * 1024 * 1024:
-            raise ValueError("compressed artifact too large")
+            raise TraceTooLargeError("compressed artifact too large")
         raw = path.read_bytes()
         if len(raw) > 16 * 1024 * 1024 or hashlib.sha256(raw).hexdigest() != row["sha256"]:
             raise ValueError("invalid artifact size or checksum")
         with gzip.open(path, "rb") as stream:
             decoded = stream.read(MAX_EXPANDED_TRACE_BYTES + 1)
         if len(decoded) > MAX_EXPANDED_TRACE_BYTES:
-            raise ValueError("expanded artifact too large")
+            raise TraceTooLargeError("expanded artifact too large")
         result: dict[str, Any] = json.loads(decoded)
         result["task"] = row["task"]
         result["dataset"] = row["dataset"]
@@ -191,6 +196,7 @@ class TaskHandler(BaseHTTPRequestHandler):
                     "/": ("web/task-lab/index.html", "text/html; charset=utf-8"),
                     "/style.css": ("web/task-lab/style.css", "text/css"),
                     "/app.js": ("web/task-lab/app.js", "text/javascript"),
+                    "/routing.js": ("web/task-lab/routing.js", "text/javascript"),
                     "/geist.ttf": ("web/somna-live/fonts/geist-regular.ttf", "font/ttf"),
                     "/geist-semibold.ttf": ("web/somna-live/fonts/geist-semibold.ttf", "font/ttf"),
                 }
@@ -200,6 +206,12 @@ class TaskHandler(BaseHTTPRequestHandler):
                 self.send(200, (self.server.root / filename).read_bytes(), mime)
                 return
             self.send(200, json.dumps(result, allow_nan=False).encode(), "application/json")
+        except TraceTooLargeError:
+            self.send(
+                413,
+                b'{"error":"This historical trace is too large for the inspector. Choose a compact evaluation run."}',
+                "application/json",
+            )
         except KeyError:
             self.send(404, b'{"error":"Unknown run or route"}', "application/json")
         except (ValueError, OSError):

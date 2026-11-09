@@ -1,0 +1,161 @@
+{
+  "all_passed": true,
+  "episodes": 24,
+  "steps": 5257,
+  "comparison": "every official observation/action/non-time decision/query/selected-ID/route/work field, archive and result",
+  "excluded_timing_fields": [
+    "dependency_seconds",
+    "episode_seconds",
+    "index_rebuild_seconds",
+    "planning_seconds",
+    "policy_seconds",
+    "retrieval_seconds"
+  ],
+  "reference": "experiments/dependency-development-v2",
+  "traces": [
+    {
+      "trace": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-0.json.gz",
+      "steps": 15,
+      "current_sha256": "9da4bf799057b7bb4adfa114da18c43d9283a523490f0e62126bd952a9f067d2",
+      "reference_sha256": "79c63ef5d10d849641bf43d129287c9c4053d71c8282f2e5fa307d10110a2574"
+    },
+    {
+      "trace": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-1.json.gz",
+      "steps": 11,
+      "current_sha256": "6e086422be4c92b2319165e0b1a9c7806f8e87efd472e4b99943fd78f2e99b44",
+      "reference_sha256": "389ead21e999c53e9ae642a48c9fde8f59d77d146e9d95b40253e6e671ece2ca"
+    },
+    {
+      "trace": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-0.json.gz",
+      "steps": 15,
+      "current_sha256": "c1cb1430065ea6d0b12eb0b924f01233c144cc1319646e999f2c41f7879d54aa",
+      "reference_sha256": "87c721d880ec8b62313d25f30edeb1b7dbd7742724a962d72da4bbf7a982ed7e"
+    },
+    {
+      "trace": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-1.json.gz",
+      "steps": 11,
+      "current_sha256": "392a1282409dcfa04b01670f3618c2018400d6add1bac630ff96c42a10087675",
+      "reference_sha256": "0a16f05a8bf8a217465aa0a20046dc6fa205e200d1833da21bf4e6c19eeb77d5"
+    },
+    {
+      "trace": "episode-MiniGrid-MemoryS17Random-v0-graph-0.json.gz",
+      "steps": 15,
+      "current_sha256": "b8ff47d534bbebfc2df2bd855372613dbbd04489c4adda1d7c1de459333c963c",
+      "reference_sha256": "30f11f50fc841ffdf12501deb62b9b5cf79cbb009fdd654cb25c4dfcb707d4a7"
+    },
+    {
+      "trace": "episode-MiniGrid-MemoryS17Random-v0-graph-1.json.gz",
+      "steps": 11,
+      "current_sha256": "2d39e0b17fe5c9bd8b46c151424558e9d907a4e475960f68083af661a42b41ec",
+      "reference_sha256": "eb2e4e0a776673e236645af2b375e6d16d4ec26aaa29018016a99f7624f40c51"
+    },
+    {
+      "trace": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-0.json.gz",
+      "steps": 53,
+      "current_sha256": "13fef4c19728281b0c3398965ba96405a86186cd41409547a5b3e9685a4cb117",
+      "reference_sha256": "3b7de7a1fbe8fbafff146d6e2a5a90ee5595d29ff2a0498bb1b8aebd4b05f127"
+    },
+    {
+      "trace": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-1.json.gz",
+      "steps": 54,
+      "current_sha256": "685c573f266d82da123789dfd7b0ea311de7606a45d964cbe2a2c7a1076c3263",
+      "reference_sha256": "60f381106796ec376460914b9511483394792a8349ecfe4a90ea39aafa56dc9e"
+    },
+    {
+      "trace": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-0.json.gz",
+      "steps": 53,
+      "current_sha256": "2b14bef2880a7af83aad0ebac865a31814e881bdc1a335212a83c6e73bb20816",
+      "reference_sha256": "70f34f55323e10f42e4e0e8acfb2766d322755b14d1336dcda05028454521c3f"
+    },
+    {
+      "trace": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-1.json.gz",
+      "steps": 54,
+      "current_sha256": "71d7f43e9fe8687904e6b954e3d7d0f0dbbc5b91f94575eb3e662553f7d097b8",
+      "reference_sha256": "7ac2329cd727d42de6093442998a5d70b9deccd101d9ea84190d4741452f38ee"
+    },
+    {
+      "trace": "episode-MiniGrid-MultiRoom-N6-v0-graph-0.json.gz",
+      "steps": 53,
+      "current_sha256": "0f2c43f3b34897578c0fef70840b258b8aee80e60b09e1beca740669a1301733",
+      "reference_sha256": "b0cc6297e55cd283efcb0a30af7f48b9c837dc1d3d927521ff2140fcd5b7c903"
+    },
+    {
+      "trace": "episode-MiniGrid-MultiRoom-N6-v0-graph-1.json.gz",
+      "steps": 54,
+      "current_sha256": "648bb2f85c18ed5ceecfda31024f8821346f0785ee9fda18b45c7461c90afac7",
+      "reference_sha256": "4aec96f455a24c0a4297d5ca1901d5e43aa3b68a3243950138a623e10b8525ea"
+    },
+    {
+      "trace": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-0.json.gz",
+      "steps": 63,
+      "current_sha256": "e143225fa68bdb2e06f28926958ce5c84333894dcfe400152ca0815b405b7fa4",
+      "reference_sha256": "0ec0c39f9dbcac4c86ed853b6615839bed507a71b7bd6615db07e1c0a51092bc"
+    },
+    {
+      "trace": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-1.json.gz",
+      "steps": 61,
+      "current_sha256": "b3d3fa9aecc5a81f5c5cbb3e72c92dcd50a1b36e673a14e9246ec40165e04430",
+      "reference_sha256": "4a013ef29362aadb9097a412231cf57804faac09ce5fe3607bb04fc2bb19eb36"
+    },
+    {
+      "trace": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-0.json.gz",
+      "steps": 63,
+      "current_sha256": "f5efdec87fb19d467f81e8c1439deb18795301a726f1bf95a887ba18ea70433d",
+      "reference_sha256": "45c0df19fe10c3056609b6312b8edd56875e0054842c638921bd884a2a59de05"
+    },
+    {
+      "trace": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-1.json.gz",
+      "steps": 63,
+      "current_sha256": "df6afa4fffff4d3191088564f1b5b7c3cd18cabca4bf5efa99d98bc33c4c0046",
+      "reference_sha256": "03a52141515796f8a6a6f5a575ec6bcc7b603591af37fc14966e6cd41294bdbe"
+    },
+    {
+      "trace": "episode-MiniGrid-DoorKey-16x16-v0-graph-0.json.gz",
+      "steps": 75,
+      "current_sha256": "3a1eeeab75acf581cc97e89830c22aa4dd9669d2709eb7bd288369f2f2e40f99",
+      "reference_sha256": "670baa4800b8f05ee59c91481105b654a7859cad1d22e4aafcc71dae207aff77"
+    },
+    {
+      "trace": "episode-MiniGrid-DoorKey-16x16-v0-graph-1.json.gz",
+      "steps": 65,
+      "current_sha256": "9d77e94980c870545d0a4b6794b34a9efbf0c3b126744162a3f129409c08248f",
+      "reference_sha256": "5060c7d3c260acf040334ce063aba0ca389545ce2c9ccc389187729921981fe2"
+    },
+    {
+      "trace": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-0.json.gz",
+      "steps": 1080,
+      "current_sha256": "3cddeb8b09887621adff626ef7c2c51059d5ad435ff29c653a3e530e61400707",
+      "reference_sha256": "345f74085febbb253b64d0a8a1a26eb9510f9d636c604eb8839a86a8207378d2"
+    },
+    {
+      "trace": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-1.json.gz",
+      "steps": 1080,
+      "current_sha256": "cf7246dc285207b2f38ac91cdda337540afdf28b57e4f3dc7e23676738b0f805",
+      "reference_sha256": "2eb4f97823a824f54dbb18151b46004beceb6d2c2a6fc21930bc8fbaac0f258a"
+    },
+    {
+      "trace": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-0.json.gz",
+      "steps": 1080,
+      "current_sha256": "0da869a9f7b7b89b84ab656081050967ae754df7aa2e4c2acfb3dec2dfe02187",
+      "reference_sha256": "febd6b4a3d748737aeb58681c46d75c2e7d9fff5def9d99c15e0b6a05faf9ae3"
+    },
+    {
+      "trace": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-1.json.gz",
+      "steps": 1080,
+      "current_sha256": "b190556ce99fb66bd83f33d04b0395de84ffe5556359752bcf26a16a90493d5a",
+      "reference_sha256": "0f328df5d85ac8e9451c51c66b88e8ffdcd50cbf8c3da48524e70b90f7445810"
+    },
+    {
+      "trace": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-0.json.gz",
+      "steps": 62,
+      "current_sha256": "43a1aba98989620fdea40051b2cc5a93cfdc5ebe7fc8338d26e0531c1cac962c",
+      "reference_sha256": "5f783aa26ea13470d6e9631e8519894b13d87bbee929c92a151d68dd8c8b36bc"
+    },
+    {
+      "trace": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-1.json.gz",
+      "steps": 86,
+      "current_sha256": "30d5323e0146a9aa37ccd41f1a6ecb6da6627430bc300396da6f74bf9263d7c1",
+      "reference_sha256": "8b2667f38f3fda1bd64d4cb4b8a620d7a16f32248317ae1534236c1a18872ecf"
+    }
+  ]
+}

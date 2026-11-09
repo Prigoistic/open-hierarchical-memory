@@ -5,62 +5,96 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="Inspect real ZHA memory-guided planning on official maze and puzzle benchmarks."
+      content="Inspect recorded maze decisions, memory cues and hierarchical retrieval."
     />
     <meta name="robots" content="noindex" />
     <meta name="color-scheme" content="dark" />
-    <title>Somna / Planning experiments</title>
+    <title>Somna / Memory & navigation</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <a class="skip" href="#experiment">Skip to experiment</a>
     <header>
-      <a href="http://127.0.0.1:8791/" class="wordmark"
-        >◌ somna <span>/ planning experiments</span></a
-      ><span class="caption-5" id="connection"
-        >Loading completed experiments</span
-      >
+      <a href="/" class="wordmark">somna <span>/ experiments</span></a>
+      <nav aria-label="Laboratory">
+        <a href="http://127.0.0.1:8791/">Live memory</a
+        ><span id="connection" class="caption-5" role="status"
+          >Loading runs</span
+        >
+      </nav>
     </header>
     <main id="experiment">
       <div class="intro">
-        <div>
-          <p class="eyebrow caption-3">
-            Official tasks · recorded execution · CPU float64
-          </p>
-          <h1 class="heading-3">Memory in the search.</h1>
-        </div>
+        <h1 class="heading-5">Memory &amp; navigation</h1>
         <p class="body-6">
-          Inspect what the planner tried, what it recalled, and where it ran out
-          of budget. Every position comes from a saved experiment.
+          Inspect a maze decision and its retrieved evidence.
         </p>
       </div>
       <div id="error" role="alert" hidden></div>
       <section class="toolbar" aria-label="Experiment selection">
-        <label>Task suite<select id="suite"></select></label
-        ><label>Puzzle<select id="level"></select></label
-        ><label>Reader<select id="config"></select></label
-        ><label>Search budget<select id="budget"></select></label
-        ><button id="reload">Reload results ↻</button>
+        <label>Run<select id="cohort"></select></label
+        ><label>Task<select id="suite"></select></label
+        ><label>Seed<select id="level"></select></label
+        ><label>Method<select id="config"></select></label>
       </section>
-      <p class="caption-2 cohort" id="cohort-status"></p>
+      <div class="run-line">
+        <p id="run-notice" class="caption-2"></p>
+        <button id="latest" hidden>View updated run</button>
+        <details class="run-settings">
+          <summary>Run details</summary>
+          <div>
+            <label>Action cap<select id="budget"></select></label
+            ><button id="reload">Refresh runs</button>
+            <label class="checkbox-label"
+              ><input id="show-development" type="checkbox" /> Include
+              development runs</label
+            >
+            <p id="cohort-status" class="caption-5 muted"></p>
+          </div>
+        </details>
+      </div>
       <div class="metrics" id="run-metrics" aria-live="polite"></div>
+      <section class="transport" aria-label="Recorded playback">
+        <div class="playbar">
+          <button id="play" class="primary">Play</button
+          ><button id="back" aria-label="Previous recorded state">←</button
+          ><button id="forward" aria-label="Next recorded state">→</button
+          ><button id="next-event" hidden>Next recovery</button>
+          <input
+            id="timeline"
+            type="range"
+            min="0"
+            max="0"
+            value="0"
+            aria-label="Recorded state"
+          /><span id="cursor" class="caption-4">0 / 0</span
+          ><label class="speed-label"
+            >Speed<select id="speed">
+              <option value="280">1×</option>
+              <option value="100" selected>3×</option>
+              <option value="40">7×</option>
+            </select></label
+          >
+        </div>
+        <p id="step-description" class="caption-2"></p>
+      </section>
       <div class="workbench">
-        <section class="panel">
+        <section class="panel scene-panel" aria-label="Recorded navigation">
           <div class="panel-title">
             <div>
-              <span class="caption-3 eyebrow" id="board-label"
-                >Observed puzzle</span
+              <span id="board-label" class="caption-5 muted"
+                >Recorded maze</span
               >
-              <h2 class="title-1" id="board-title">Loading trace</h2>
+              <h2 id="board-title" class="title-2">Loading</h2>
             </div>
             <div class="segmented">
-              <button id="solution" class="selected">Solution</button
-              ><button id="search">Search probes</button>
+              <button id="solution">Observed view</button
+              ><button id="search" class="selected">Recall map</button>
             </div>
           </div>
           <canvas
             id="board"
-            aria-label="Recorded puzzle states and search candidates"
+            aria-label="Recorded maze observations and recalled cells"
             tabindex="0"
           ></canvas>
           <div class="legend caption-5">
@@ -70,98 +104,111 @@
             ><span><i class="matched"></i>Box on target</span>
           </div>
           <div id="maze-legend" class="legend caption-5" hidden>
-            <span
-              ><i class="coverage"></i>Observed before; contents omitted</span
-            ><span><i class="support"></i>Accepted bundle support</span
-            ><span><i class="plan"></i>Planner route</span>
+            <span><i class="coverage"></i>Known, omitted</span
+            ><span><i class="support"></i>Bundle support</span
+            ><span><i class="plan"></i>Plan</span>
           </div>
-          <div class="playbar">
-            <button id="play" class="primary">Play trace ↗</button
-            ><button id="back" aria-label="Previous recorded state">←</button
-            ><button id="forward" aria-label="Next recorded state">→</button
-            ><input
-              id="timeline"
-              type="range"
-              min="0"
-              max="0"
-              value="0"
-              aria-label="Recorded state"
-            /><span id="cursor" class="caption-4">0 / 0</span>
-          </div>
-          <p class="caption-2" id="step-description"></p>
-          <p class="helper caption-5" id="trace-warning">
-            Search probes are hypothetical candidate states. They are not a
-            physically executed trajectory.
-          </p>
+          <p id="trace-warning" class="helper caption-5"></p>
         </section>
-        <aside class="panel evidence">
-          <p class="eyebrow caption-3">The read behind the decision</p>
-          <h2 class="title-1">Which experience came back?</h2>
-          <p class="caption-2" id="read-description">
-            Select a recorded state to inspect its read.
-          </p>
-          <div id="read-metrics" class="metric-list"></div>
-          <details id="dependency-detail" hidden></details>
-          <div id="cases" class="cases"></div>
-          <p class="caption-5 muted" id="case-caption"></p>
-        </aside>
+        <section
+          id="routing-panel"
+          class="panel routing-panel"
+          aria-label="Hierarchical memory selection"
+        >
+          <div class="panel-title">
+            <div>
+              <span class="caption-5 muted">Memory routing</span>
+              <h2 class="title-2">Cue → branches → original facts</h2>
+            </div>
+            <div class="segmented">
+              <button id="layers" class="selected">Layers</button
+              ><button id="tree-view">Tree</button>
+            </div>
+          </div>
+          <div class="cue-controls">
+            <label>Cue<select id="cue"></select></label
+            ><label>Routing pass<select id="routing-pass"></select></label
+            ><span id="cue-context" class="caption-5 muted"></span>
+          </div>
+          <canvas
+            id="routing"
+            tabindex="0"
+            aria-label="Recorded hierarchy routing; select a node to inspect its observed facts"
+          ></canvas>
+          <div class="legend caption-5">
+            <span><i class="support"></i>Expanded</span
+            ><span><i class="dormant"></i>Pruned</span
+            ><span><i class="returned"></i>Returned</span
+            ><span><i class="box"></i>Raw attention</span>
+          </div>
+          <p
+            id="routing-description"
+            class="caption-5 muted"
+            aria-live="polite"
+          ></p>
+          <p id="routing-inspection" class="caption-5" aria-live="polite"></p>
+        </section>
       </div>
-      <section class="panel comparison">
+
+      <section class="evidence-section">
         <div class="panel-title">
           <div>
-            <p class="eyebrow caption-3">Same puzzle · same expansion budget</p>
-            <h2 class="title-1">Compare the alternatives.</h2>
+            <h2 class="title-2">Returned facts</h2>
           </div>
-          <span id="comparison-label" class="caption-5"></span>
+          <p id="read-description" class="caption-5 muted"></p>
+        </div>
+        <div id="cases" class="cases"></div>
+        <p id="case-caption" class="caption-5 muted"></p>
+      </section>
+      <details class="technical">
+        <summary>Inspect work and dependency receipts</summary>
+        <div class="technical-grid">
+          <div id="read-metrics" class="metric-list"></div>
+          <details id="dependency-detail" hidden></details>
+        </div>
+      </details>
+      <section class="comparison">
+        <div class="panel-title">
+          <div>
+            <p class="eyebrow caption-5">Same task seed · same action cap</p>
+            <h2 class="title-2">Compare methods</h2>
+          </div>
+          <span id="comparison-label" class="caption-5 muted"></span>
         </div>
         <div class="table-scroll">
           <table>
             <thead>
               <tr>
-                <th>Reader</th>
-                <th>Outcome</th>
-                <th>Pushes</th>
-                <th>Expanded</th>
-                <th>Search time</th>
-                <th>Raw key scores</th>
+                <th>Method</th>
+                <th>Result</th>
+                <th>Return</th>
+                <th>Actions</th>
+                <th>Run time</th>
+                <th>Raw scores</th>
                 <th>Summary dots</th>
               </tr>
             </thead>
             <tbody id="comparison-body"></tbody>
           </table>
         </div>
-        <p class="helper caption-5">
-          Latency includes feature extraction, retrieval, search and trace
-          collection. Index construction is recorded separately. Counts have
-          different costs: a summary dot is one reference channel scored at one
-          summary node.
-        </p>
+        <p class="helper caption-5"></p>
       </section>
-      <section class="context">
-        <p class="body-6" id="scope">
-          Boxoban is a fully observed planning task. ZHA retrieves solved
-          training examples to guide a classical search; it does not decide
-          which pushes are legal. This is a research diagnostic, not validation
-          of an industrial deployment.
-        </p>
-        <p class="caption-2">
-          <a
+      <footer>
+        <p id="scope" class="caption-5"></p>
+        <div class="caption-5">
+          <span>Recorded experiments · CPU float64</span
+          ><a href="https://minigrid.farama.org/" target="_blank" rel="noopener"
+            >MiniGrid</a
+          ><a
             href="https://github.com/google-deepmind/boxoban-levels"
             target="_blank"
             rel="noopener"
-            >Official Boxoban source ↗</a
+            >Boxoban</a
           >
-          ·
-          <a href="https://minigrid.farama.org/" target="_blank" rel="noopener"
-            >MiniGrid documentation ↗</a
-          >
-        </p>
-      </section>
-      <footer class="caption-5">
-        Recorded experiment inspector · original failures retained · selected
-        attention remains approximate
+        </div>
       </footer>
     </main>
+    <script src="routing.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

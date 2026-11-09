@@ -1,0 +1,679 @@
+{
+  "all_passed": true,
+  "limit_bytes": 134217728,
+  "largest_expanded_bytes": 77310857,
+  "traces": [
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3001.json.gz",
+      "expanded_bytes": 164961
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3002.json.gz",
+      "expanded_bytes": 311153
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3003.json.gz",
+      "expanded_bytes": 430848
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3004.json.gz",
+      "expanded_bytes": 194892
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3005.json.gz",
+      "expanded_bytes": 307410
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3006.json.gz",
+      "expanded_bytes": 162370
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3001.json.gz",
+      "expanded_bytes": 117518
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3002.json.gz",
+      "expanded_bytes": 215844
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3003.json.gz",
+      "expanded_bytes": 294837
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3004.json.gz",
+      "expanded_bytes": 129890
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3005.json.gz",
+      "expanded_bytes": 220681
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3006.json.gz",
+      "expanded_bytes": 116494
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-graph-3001.json.gz",
+      "expanded_bytes": 117440
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-graph-3002.json.gz",
+      "expanded_bytes": 215702
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-graph-3003.json.gz",
+      "expanded_bytes": 294648
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-graph-3004.json.gz",
+      "expanded_bytes": 129804
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-graph-3005.json.gz",
+      "expanded_bytes": 220532
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-graph-3006.json.gz",
+      "expanded_bytes": 116415
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3001.json.gz",
+      "expanded_bytes": 207208
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3002.json.gz",
+      "expanded_bytes": 406930
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3003.json.gz",
+      "expanded_bytes": 584186
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3004.json.gz",
+      "expanded_bytes": 242229
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3005.json.gz",
+      "expanded_bytes": 413084
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3006.json.gz",
+      "expanded_bytes": 209080
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3001.json.gz",
+      "expanded_bytes": 150451
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3002.json.gz",
+      "expanded_bytes": 281711
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3003.json.gz",
+      "expanded_bytes": 382284
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3004.json.gz",
+      "expanded_bytes": 168977
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3005.json.gz",
+      "expanded_bytes": 288837
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3006.json.gz",
+      "expanded_bytes": 151667
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3001.json.gz",
+      "expanded_bytes": 207149
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3002.json.gz",
+      "expanded_bytes": 406837
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3003.json.gz",
+      "expanded_bytes": 584051
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3004.json.gz",
+      "expanded_bytes": 242165
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3005.json.gz",
+      "expanded_bytes": 412981
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3006.json.gz",
+      "expanded_bytes": 209029
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3001.json.gz",
+      "expanded_bytes": 150392
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3002.json.gz",
+      "expanded_bytes": 281606
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3003.json.gz",
+      "expanded_bytes": 382177
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3004.json.gz",
+      "expanded_bytes": 168920
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3005.json.gz",
+      "expanded_bytes": 288740
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3006.json.gz",
+      "expanded_bytes": 151617
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3001.json.gz",
+      "expanded_bytes": 1052518
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3002.json.gz",
+      "expanded_bytes": 1420384
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3003.json.gz",
+      "expanded_bytes": 1840713
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3004.json.gz",
+      "expanded_bytes": 1403056
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3005.json.gz",
+      "expanded_bytes": 1474944
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3006.json.gz",
+      "expanded_bytes": 1253893
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3001.json.gz",
+      "expanded_bytes": 699200
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3002.json.gz",
+      "expanded_bytes": 980227
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3003.json.gz",
+      "expanded_bytes": 1279359
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3004.json.gz",
+      "expanded_bytes": 966723
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3005.json.gz",
+      "expanded_bytes": 1064925
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3006.json.gz",
+      "expanded_bytes": 856145
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3001.json.gz",
+      "expanded_bytes": 703024
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3002.json.gz",
+      "expanded_bytes": 990492
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3003.json.gz",
+      "expanded_bytes": 1671220
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3004.json.gz",
+      "expanded_bytes": 974898
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3005.json.gz",
+      "expanded_bytes": 1315643
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3006.json.gz",
+      "expanded_bytes": 862555
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3001.json.gz",
+      "expanded_bytes": 1338828
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3002.json.gz",
+      "expanded_bytes": 1820508
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3003.json.gz",
+      "expanded_bytes": 2293837
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3004.json.gz",
+      "expanded_bytes": 1771105
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3005.json.gz",
+      "expanded_bytes": 1754111
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3006.json.gz",
+      "expanded_bytes": 1572310
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3001.json.gz",
+      "expanded_bytes": 948355
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3002.json.gz",
+      "expanded_bytes": 1310265
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3003.json.gz",
+      "expanded_bytes": 1697447
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3004.json.gz",
+      "expanded_bytes": 1293781
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3005.json.gz",
+      "expanded_bytes": 1334269
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3006.json.gz",
+      "expanded_bytes": 1137774
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3001.json.gz",
+      "expanded_bytes": 1338440
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3002.json.gz",
+      "expanded_bytes": 1820061
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3003.json.gz",
+      "expanded_bytes": 2293308
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3004.json.gz",
+      "expanded_bytes": 1770683
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3005.json.gz",
+      "expanded_bytes": 1753726
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3006.json.gz",
+      "expanded_bytes": 1571955
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3001.json.gz",
+      "expanded_bytes": 948018
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3002.json.gz",
+      "expanded_bytes": 1309818
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3003.json.gz",
+      "expanded_bytes": 1696925
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3004.json.gz",
+      "expanded_bytes": 1293360
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3005.json.gz",
+      "expanded_bytes": 1333906
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3006.json.gz",
+      "expanded_bytes": 1137367
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3001.json.gz",
+      "expanded_bytes": 1231890
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3002.json.gz",
+      "expanded_bytes": 1680560
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3003.json.gz",
+      "expanded_bytes": 55564226
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3004.json.gz",
+      "expanded_bytes": 1046658
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3005.json.gz",
+      "expanded_bytes": 1646129
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3006.json.gz",
+      "expanded_bytes": 1616045
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3001.json.gz",
+      "expanded_bytes": 833940
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3002.json.gz",
+      "expanded_bytes": 1141434
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3003.json.gz",
+      "expanded_bytes": 40135338
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3004.json.gz",
+      "expanded_bytes": 791061
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3005.json.gz",
+      "expanded_bytes": 40163682
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3006.json.gz",
+      "expanded_bytes": 1051694
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3001.json.gz",
+      "expanded_bytes": 1057871
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3002.json.gz",
+      "expanded_bytes": 1432827
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3003.json.gz",
+      "expanded_bytes": 1858621
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3004.json.gz",
+      "expanded_bytes": 1285712
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3005.json.gz",
+      "expanded_bytes": 1368642
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3006.json.gz",
+      "expanded_bytes": 1286084
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3001.json.gz",
+      "expanded_bytes": 1533298
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3002.json.gz",
+      "expanded_bytes": 2109539
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3003.json.gz",
+      "expanded_bytes": 3628242
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3004.json.gz",
+      "expanded_bytes": 1354648
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3005.json.gz",
+      "expanded_bytes": 2106635
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3006.json.gz",
+      "expanded_bytes": 2124829
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3001.json.gz",
+      "expanded_bytes": 1071870
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3002.json.gz",
+      "expanded_bytes": 1481567
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3003.json.gz",
+      "expanded_bytes": 2648312
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3004.json.gz",
+      "expanded_bytes": 1031064
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3005.json.gz",
+      "expanded_bytes": 2026839
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3006.json.gz",
+      "expanded_bytes": 1364994
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3001.json.gz",
+      "expanded_bytes": 1533042
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3002.json.gz",
+      "expanded_bytes": 2109128
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3003.json.gz",
+      "expanded_bytes": 77310857
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3004.json.gz",
+      "expanded_bytes": 1354353
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3005.json.gz",
+      "expanded_bytes": 2106196
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3006.json.gz",
+      "expanded_bytes": 2124429
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3001.json.gz",
+      "expanded_bytes": 1071616
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3002.json.gz",
+      "expanded_bytes": 1481200
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3003.json.gz",
+      "expanded_bytes": 2647628
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3004.json.gz",
+      "expanded_bytes": 1030791
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3005.json.gz",
+      "expanded_bytes": 2026256
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3006.json.gz",
+      "expanded_bytes": 1364569
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3001.json.gz",
+      "expanded_bytes": 1250592
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3002.json.gz",
+      "expanded_bytes": 26180012
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3003.json.gz",
+      "expanded_bytes": 24963603
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3004.json.gz",
+      "expanded_bytes": 31121500
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3005.json.gz",
+      "expanded_bytes": 2228244
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3006.json.gz",
+      "expanded_bytes": 25334445
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3001.json.gz",
+      "expanded_bytes": 925003
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3002.json.gz",
+      "expanded_bytes": 16874477
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3003.json.gz",
+      "expanded_bytes": 16066945
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3004.json.gz",
+      "expanded_bytes": 16661863
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3005.json.gz",
+      "expanded_bytes": 1520461
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3006.json.gz",
+      "expanded_bytes": 15667553
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3001.json.gz",
+      "expanded_bytes": 1048891
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3002.json.gz",
+      "expanded_bytes": 34131984
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3003.json.gz",
+      "expanded_bytes": 2179004
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3004.json.gz",
+      "expanded_bytes": 2235522
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3005.json.gz",
+      "expanded_bytes": 1889503
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3006.json.gz",
+      "expanded_bytes": 2534805
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3001.json.gz",
+      "expanded_bytes": 1555220
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3002.json.gz",
+      "expanded_bytes": 3576550
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3003.json.gz",
+      "expanded_bytes": 4884421
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3004.json.gz",
+      "expanded_bytes": 3150246
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3005.json.gz",
+      "expanded_bytes": 2679664
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3006.json.gz",
+      "expanded_bytes": 4120292
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3001.json.gz",
+      "expanded_bytes": 1169859
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3002.json.gz",
+      "expanded_bytes": 2803899
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3003.json.gz",
+      "expanded_bytes": 3294619
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3004.json.gz",
+      "expanded_bytes": 2832659
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3005.json.gz",
+      "expanded_bytes": 1963963
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3006.json.gz",
+      "expanded_bytes": 2870755
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3001.json.gz",
+      "expanded_bytes": 1554901
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3002.json.gz",
+      "expanded_bytes": 3575817
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3003.json.gz",
+      "expanded_bytes": 4883483
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3004.json.gz",
+      "expanded_bytes": 3149589
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3005.json.gz",
+      "expanded_bytes": 2679092
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3006.json.gz",
+      "expanded_bytes": 4119602
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3001.json.gz",
+      "expanded_bytes": 1169541
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3002.json.gz",
+      "expanded_bytes": 2803142
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3003.json.gz",
+      "expanded_bytes": 3293672
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3004.json.gz",
+      "expanded_bytes": 2831983
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3005.json.gz",
+      "expanded_bytes": 1963379
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3006.json.gz",
+      "expanded_bytes": 2870086
+    }
+  ]
+}

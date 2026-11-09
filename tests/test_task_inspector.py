@@ -75,8 +75,9 @@ def test_inspector_http_is_read_only_and_does_not_serve_arbitrary_files(tmp_path
         thread.join()
 
 
-def test_dependency_catalog_requires_complete_declared_cohort(tmp_path: Path) -> None:
-    base = tmp_path / "experiments/dependency-evaluation-v1"
+@pytest.mark.parametrize("dataset", ["dependency-evaluation-v1", "progress-evaluation-v1"])
+def test_dependency_catalog_requires_complete_declared_cohort(tmp_path: Path, dataset: str) -> None:
+    base = tmp_path / "experiments" / dataset
     base.mkdir(parents=True)
     path = base / "episode-example.json.gz"
     path.write_bytes(
@@ -130,7 +131,7 @@ def test_dependency_catalog_requires_complete_declared_cohort(tmp_path: Path) ->
     target.write_text(json.dumps(report))
     row = catalog.catalog()["runs"][0]
     result = catalog.run(row["uid"])
-    assert result["dataset"] == "dependency-evaluation-v1"
+    assert result["dataset"] == dataset
     assert result["config"] == "bundle_zha" and result["success"] is False
     path.write_bytes(b"corrupted")
     with pytest.raises(ValueError, match="checksum"):
@@ -147,3 +148,27 @@ def test_inspector_enforces_expanded_bound_even_for_checksummed_gzip(
     monkeypatch.setattr("research.serve_task_benchmark.MAX_EXPANDED_TRACE_BYTES", actual_size - 1)
     with pytest.raises(ValueError, match="expanded artifact too large"):
         catalog.run("boxoban:sample.json.gz")
+
+
+def test_oversized_trace_http_response_explains_recovery(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _, path = fixture(tmp_path)
+    monkeypatch.setattr(
+        "research.serve_task_benchmark.MAX_EXPANDED_TRACE_BYTES",
+        len(gzip.decompress(path.read_bytes())) - 1,
+    )
+    server = TaskServer(("127.0.0.1", 0), tmp_path)
+    worker = threading.Thread(target=server.serve_forever, daemon=True)
+    worker.start()
+    try:
+        with pytest.raises(urllib.error.HTTPError) as error:
+            urllib.request.urlopen(
+                f"http://127.0.0.1:{server.server_port}/api/run?id=boxoban:sample.json.gz"
+            )
+        assert error.value.code == 413
+        assert "compact evaluation" in json.load(error.value)["error"]
+    finally:
+        server.shutdown()
+        server.server_close()
+        worker.join()

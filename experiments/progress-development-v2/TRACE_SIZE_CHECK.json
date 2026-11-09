@@ -1,0 +1,287 @@
+{
+  "all_passed": true,
+  "limit_bytes": 134217728,
+  "largest_expanded_bytes": 74285666,
+  "traces": [
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-0.json.gz",
+      "expanded_bytes": 374867,
+      "compressed_bytes": 19860
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-1.json.gz",
+      "expanded_bytes": 252094,
+      "compressed_bytes": 14411
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-0.json.gz",
+      "expanded_bytes": 265509,
+      "compressed_bytes": 13373
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-1.json.gz",
+      "expanded_bytes": 174184,
+      "compressed_bytes": 9508
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-graph-0.json.gz",
+      "expanded_bytes": 265360,
+      "compressed_bytes": 12628
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-graph-1.json.gz",
+      "expanded_bytes": 174067,
+      "compressed_bytes": 9032
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-0.json.gz",
+      "expanded_bytes": 497687,
+      "compressed_bytes": 37559
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-1.json.gz",
+      "expanded_bytes": 346130,
+      "compressed_bytes": 18659
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-0.json.gz",
+      "expanded_bytes": 337163,
+      "compressed_bytes": 15302
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-1.json.gz",
+      "expanded_bytes": 226129,
+      "compressed_bytes": 11212
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-0.json.gz",
+      "expanded_bytes": 497577,
+      "compressed_bytes": 37478
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-1.json.gz",
+      "expanded_bytes": 346051,
+      "compressed_bytes": 18644
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-0.json.gz",
+      "expanded_bytes": 337051,
+      "compressed_bytes": 15297
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-1.json.gz",
+      "expanded_bytes": 226045,
+      "compressed_bytes": 11215
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-0.json.gz",
+      "expanded_bytes": 1085333,
+      "compressed_bytes": 67590
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-1.json.gz",
+      "expanded_bytes": 1097991,
+      "compressed_bytes": 66267
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-0.json.gz",
+      "expanded_bytes": 740951,
+      "compressed_bytes": 40835
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-1.json.gz",
+      "expanded_bytes": 734305,
+      "compressed_bytes": 39381
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-graph-0.json.gz",
+      "expanded_bytes": 745045,
+      "compressed_bytes": 36506
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-graph-1.json.gz",
+      "expanded_bytes": 737833,
+      "compressed_bytes": 35509
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-0.json.gz",
+      "expanded_bytes": 1483722,
+      "compressed_bytes": 93978
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-1.json.gz",
+      "expanded_bytes": 1501737,
+      "compressed_bytes": 82163
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-0.json.gz",
+      "expanded_bytes": 993742,
+      "compressed_bytes": 46842
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-1.json.gz",
+      "expanded_bytes": 990805,
+      "compressed_bytes": 45398
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-0.json.gz",
+      "expanded_bytes": 1483390,
+      "compressed_bytes": 93982
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-1.json.gz",
+      "expanded_bytes": 1501355,
+      "compressed_bytes": 82157
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-0.json.gz",
+      "expanded_bytes": 993369,
+      "compressed_bytes": 46851
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-1.json.gz",
+      "expanded_bytes": 990410,
+      "compressed_bytes": 45352
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-0.json.gz",
+      "expanded_bytes": 1806430,
+      "compressed_bytes": 119538
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-1.json.gz",
+      "expanded_bytes": 1624697,
+      "compressed_bytes": 96422
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-0.json.gz",
+      "expanded_bytes": 1305224,
+      "compressed_bytes": 65061
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-1.json.gz",
+      "expanded_bytes": 1286556,
+      "compressed_bytes": 65104
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-graph-0.json.gz",
+      "expanded_bytes": 1887806,
+      "compressed_bytes": 79365
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-graph-1.json.gz",
+      "expanded_bytes": 1432135,
+      "compressed_bytes": 63455
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-0.json.gz",
+      "expanded_bytes": 2431661,
+      "compressed_bytes": 205193
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-1.json.gz",
+      "expanded_bytes": 2193995,
+      "compressed_bytes": 175277
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-0.json.gz",
+      "expanded_bytes": 1717400,
+      "compressed_bytes": 86202
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-1.json.gz",
+      "expanded_bytes": 1675068,
+      "compressed_bytes": 76458
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-0.json.gz",
+      "expanded_bytes": 2431202,
+      "compressed_bytes": 205062
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-1.json.gz",
+      "expanded_bytes": 2193530,
+      "compressed_bytes": 175091
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-0.json.gz",
+      "expanded_bytes": 1716946,
+      "compressed_bytes": 86182
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-1.json.gz",
+      "expanded_bytes": 1674608,
+      "compressed_bytes": 76472
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-0.json.gz",
+      "expanded_bytes": 33987890,
+      "compressed_bytes": 1586006
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-1.json.gz",
+      "expanded_bytes": 27076106,
+      "compressed_bytes": 872433
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-0.json.gz",
+      "expanded_bytes": 22044124,
+      "compressed_bytes": 804509
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-1.json.gz",
+      "expanded_bytes": 19414129,
+      "compressed_bytes": 753541
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-0.json.gz",
+      "expanded_bytes": 1582259,
+      "compressed_bytes": 64542
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-1.json.gz",
+      "expanded_bytes": 1822725,
+      "compressed_bytes": 72563
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-0.json.gz",
+      "expanded_bytes": 2848961,
+      "compressed_bytes": 274438
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-1.json.gz",
+      "expanded_bytes": 5226358,
+      "compressed_bytes": 463178
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-0.json.gz",
+      "expanded_bytes": 2235222,
+      "compressed_bytes": 109741
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-1.json.gz",
+      "expanded_bytes": 3501311,
+      "compressed_bytes": 137383
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-0.json.gz",
+      "expanded_bytes": 2848468,
+      "compressed_bytes": 274197
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-1.json.gz",
+      "expanded_bytes": 74285666,
+      "compressed_bytes": 9262896
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-0.json.gz",
+      "expanded_bytes": 2234657,
+      "compressed_bytes": 109681
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-1.json.gz",
+      "expanded_bytes": 25849276,
+      "compressed_bytes": 724485
+    }
+  ]
+}

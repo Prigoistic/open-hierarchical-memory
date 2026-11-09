@@ -1,0 +1,86 @@
+{
+  "all_passed": true,
+  "episodes_checked": 168,
+  "summary_rows_checked": 28,
+  "successes": 155,
+  "truncations": 13,
+  "errors": 0,
+  "cutoffs": 0,
+  "per_reader": {
+    "bundle_zha": {
+      "episodes": 24,
+      "successes": 19,
+      "errors": 0,
+      "truncations": 5,
+      "cutoffs": 0,
+      "steps": 7690,
+      "graph_fallback_reads": 0,
+      "hybrid_episodes": 0
+    },
+    "bundle_exact": {
+      "episodes": 24,
+      "successes": 18,
+      "errors": 0,
+      "truncations": 6,
+      "cutoffs": 0,
+      "steps": 10171,
+      "graph_fallback_reads": 0,
+      "hybrid_episodes": 0
+    },
+    "graph": {
+      "episodes": 24,
+      "successes": 23,
+      "errors": 0,
+      "truncations": 1,
+      "cutoffs": 0,
+      "steps": 2247,
+      "graph_fallback_reads": 0,
+      "hybrid_episodes": 0
+    },
+    "progress_zha": {
+      "episodes": 24,
+      "successes": 24,
+      "errors": 0,
+      "truncations": 0,
+      "cutoffs": 0,
+      "steps": 1322,
+      "graph_fallback_reads": 16,
+      "hybrid_episodes": 1
+    },
+    "progress_exact": {
+      "episodes": 24,
+      "successes": 24,
+      "errors": 0,
+      "truncations": 0,
+      "cutoffs": 0,
+      "steps": 1337,
+      "graph_fallback_reads": 0,
+      "hybrid_episodes": 0
+    },
+    "cues_zha": {
+      "episodes": 24,
+      "successes": 23,
+      "errors": 0,
+      "truncations": 1,
+      "cutoffs": 0,
+      "steps": 3776,
+      "graph_fallback_reads": 0,
+      "hybrid_episodes": 0
+    },
+    "cues_exact": {
+      "episodes": 24,
+      "successes": 24,
+      "errors": 0,
+      "truncations": 0,
+      "cutoffs": 0,
+      "steps": 1337,
+      "graph_fallback_reads": 0,
+      "hybrid_episodes": 0
+    }
+  },
+  "max_expanded_bytes": 77310857,
+  "report_sha256": "1fe578a901e7f9bcfcd3fa03a6a7bd776661e44091c26e1c7700fddf2ad0e6cd",
+  "independent_checker_sha256": "14db6d5641a69a94bb8be19c18f411dd3712b23b963d07db60fdef53667acc78",
+  "scope": "Arithmetic over all raw-hash-bound episode rows; every summary cost and outcome recomputed, not a new simulator run.",
+  "attribution_limit": "graph_fallback_reads counts the explicit full-observed-head SEED fallback only. All dependency variants still construct and scan an observed graph for closure; no graph-free or sublinear end-to-end claim."
+}

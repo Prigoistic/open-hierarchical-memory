@@ -1,0 +1,1019 @@
+{
+  "all_passed": true,
+  "episodes_checked": 167,
+  "steps_checked": 25320,
+  "scope": "Independent per-frame exact decoded equality of every retained observation/action/decision/query/route/work plus raw headers/archive/results; only protocol hash, wire costs/bank and elapsed timings excluded.",
+  "original_hashes_unchanged": true,
+  "protected_policy_hashes_current_and_equal": true,
+  "missing_original_case": [
+    "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3003.json.gz"
+  ],
+  "missing_case_scope": "No original artifact: reexecution only, excluded from parity claim.",
+  "owner_proof_sha256": "99463f80c15c9f38ce9f80ceaf5dd1a3af34d9b77bd4436bdbc805f531195c0c",
+  "independent_checker_sha256": "14db6d5641a69a94bb8be19c18f411dd3712b23b963d07db60fdef53667acc78",
+  "traces": [
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3001.json.gz",
+      "steps": 36,
+      "old_sha256": "f7ed5026f27c1e1ac743353371dd40fb9e0b4324b67d479fb836aa2983ec3712",
+      "new_sha256": "da225491206822c33a9cafc1c2bbf50ca1fa6667420876ffc1e5d9f404a4de90"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3002.json.gz",
+      "steps": 52,
+      "old_sha256": "960f1ab183bcbdfd5b89d46c308991e7306b04b87eb8bc84b634d4ee60f042b0",
+      "new_sha256": "0641b3d5a7c19fed53ab53d33ae2e7f33ca31e791c58afadb70c444acd07346b"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3003.json.gz",
+      "steps": 2560,
+      "old_sha256": "195c7ce99aed17e07d46bf3d351a8e2bd5d3a42247214a7c3b8540155ff560df",
+      "new_sha256": "937ab2fb8ef96e6e5c1432bc15327f9f60956111c8b587d4a172ecff74ef56e7"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3004.json.gz",
+      "steps": 40,
+      "old_sha256": "efb81073de9c4677bd57628a132c8fde4dbdf649db22f603b0bbf93727398b3b",
+      "new_sha256": "6b5ca6ee60d28d5b6847b7f86c7ea3320ee1b79b44fd2c4419eb46490008fb85"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3005.json.gz",
+      "steps": 2560,
+      "old_sha256": "2f449e7532219be9b161f7cd4a50eb34f78ee972d3519658f485a90170c764f3",
+      "new_sha256": "0f07d21c3429d4f14ae80c2a929e0d271627d50357e0cf5c43cb13f8511649c2"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-3006.json.gz",
+      "steps": 50,
+      "old_sha256": "b44b94fe8ef72fd45131ee697b4fe47248e29b8912c1c96d0bd5cd3c0cf794e3",
+      "new_sha256": "8f828281db1c59bd1690ec389737777411f1e5f70ad7d772ec7353fbc562c46f"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3001.json.gz",
+      "steps": 40,
+      "old_sha256": "f72b8d5c54cd116fd564bef2921eef589e2402c9e895696317d3ede1b20d3105",
+      "new_sha256": "8ee4f42576f51451f5e17e85a178badfb463f7ad974db64dc0cf699378338f01"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3002.json.gz",
+      "steps": 58,
+      "old_sha256": "d83bf045a122c343951780ba4d7698ff501241601194e4754794f7520d10d914",
+      "new_sha256": "ccdaf393a49f954d873de8ccf137e1bb2c511a8adc3b8a95930900a3f04f7ae8"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3003.json.gz",
+      "steps": 2560,
+      "old_sha256": "79b5dc50bef707a9ef759da28acc1a49bc11f39d5fd3f8b1ba038bae687710ba",
+      "new_sha256": "e174af571a2d4dd8d54254d94b0a339954b58447ae1b73ee5202044096d7ad95"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3004.json.gz",
+      "steps": 40,
+      "old_sha256": "b8e75f3dac4e6aa22dcfbcba16b8cff3239f1776cc8575c4dae66b525b845f8d",
+      "new_sha256": "e666d35257cab0deed472494e8d3e2f827607af180a1b16f2e114c7b68cb4189"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3005.json.gz",
+      "steps": 61,
+      "old_sha256": "894f2fbc870533a76f985a25105404e7e1f6348a565c587a4f97df87ea44f76e",
+      "new_sha256": "57f4a16d4c078e8e5b3835ab67fa9ce082792fd8ff331486b4b5e963c530f02e"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-3006.json.gz",
+      "steps": 58,
+      "old_sha256": "4b5cdaab46b03dc19d984ad4531e5cc68904c476c835af0d0f5c40c034da7cd0",
+      "new_sha256": "bb88564c805f8383e7c4d9dc68896a631597d5dd30f003a1b65c0f23c9a59d88"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3001.json.gz",
+      "steps": 36,
+      "old_sha256": "4734a8f8d0b44c8c2cfad8e579a4845c58e99d213feb6ffe483f9a998131012a",
+      "new_sha256": "543b728887f3a61e130954a5aebcda3fe1da4bfe2a1b0c2e75ce144817118ad8"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3002.json.gz",
+      "steps": 52,
+      "old_sha256": "5ce6104dc9589601d52c1ecb8f1a9e09d5c4a119535e6c6af090d6b9558b2cbd",
+      "new_sha256": "54e34d6a48b422d495de7d4983e8565c27645f9ce312c72f5bcf1349301cee92"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3003.json.gz",
+      "steps": 96,
+      "old_sha256": "4d70f6527ec305a2f500c6cedc507269ec346636ce33bb4d716304bf6c1ae9a9",
+      "new_sha256": "317546faad1ce005fd3324c97a102b7598a232bc0f3c4f657853a90f05273e4f"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3004.json.gz",
+      "steps": 40,
+      "old_sha256": "227b62df29406cfe270727f64093481e19b696e53b3274a96a9138ad6342a252",
+      "new_sha256": "a1ef533a11858d9c5d90c74bfbb346f5e2e569d56ecfaf8241c7b255053bf4e4"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3005.json.gz",
+      "steps": 77,
+      "old_sha256": "04973f5e5aeccd0d506938ce8a34408a67a0c552d533241dd0f730f93b55a08a",
+      "new_sha256": "31848b023021085e128b9d2a4ab644b3c9ef70ec58fd9f7751a66a417e7f4256"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_exact-3006.json.gz",
+      "steps": 50,
+      "old_sha256": "eadb218977a179dd1f6cdef281c9cb7daadbdb1a18d88058366357ff234d8dca",
+      "new_sha256": "3f4db0e6e390dd5f18af0a82071509a1501e4e5626aeede826ac71b8c60d6ae3"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3001.json.gz",
+      "steps": 40,
+      "old_sha256": "39b5dfa5f4c0dffe8daaa7a41419f833acdbbe91b9b01e8f0f9aff1afe6bb232",
+      "new_sha256": "4ed8aa5689324113defb269fc537d88b260e837df46a9d8f313a7b33b5a79c85"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3002.json.gz",
+      "steps": 58,
+      "old_sha256": "7622c89cbd6c4f6186052dc8f749a00332f4097e031abc6b6de28f3c4fc549d9",
+      "new_sha256": "e378f7fc04b847bd45899a8a845c39749862db6fecf34ef9c40dce77f2916787"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3004.json.gz",
+      "steps": 40,
+      "old_sha256": "5c52ad4e43617c664a6608dad3f3da1bf535220d5ad4577be2dca99e5f5a1060",
+      "new_sha256": "c13cb59556cebf4b00e14e73158b27cda0c09669cd7910cf90b181697ad2dd13"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3005.json.gz",
+      "steps": 61,
+      "old_sha256": "3aa6688dc8aea519867c48bb2a7d53f159710fe1f08d3eb37f87e2747c7d4db6",
+      "new_sha256": "0e40a3cbcc98f801e857c35f221cb64a9e32ffa68b0fd4e8698aa31adb596fb7"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-cues_zha-3006.json.gz",
+      "steps": 58,
+      "old_sha256": "b69f04c344e58269a61965b6722e4abfdc32134429d4f7ed6f7c0fd698ce7e9a",
+      "new_sha256": "9e77e1e50b94dab226379e0661c3253a1c88b47e8d4064b122437cf2fc9f9a58"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3001.json.gz",
+      "steps": 40,
+      "old_sha256": "ea2ae52afe0ba1375f1b938cfb98c031c50981ae41e4a7562e9b5f7ff8d7c077",
+      "new_sha256": "c27dbce53cee939c6657927ebf16b990147a90e054e19e9e26b57c15b27c2a77"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3002.json.gz",
+      "steps": 64,
+      "old_sha256": "76da4058f76102c55b45441a8b1d4f1e35184ebfd449147076805a05babf4582",
+      "new_sha256": "1e99282453fc2f6e215c5c7d78627f2e358797193e1b571b7815521c1d202d8d"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3003.json.gz",
+      "steps": 78,
+      "old_sha256": "cf3ee03991a482dc4586c4aeadc34bbb879e68a1f3f09a3ac3fcc5dd34318357",
+      "new_sha256": "41855b936ec4661f96a2efd625a115cc46eb4bdd6b881ab3e83b39e092a665f6"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3004.json.gz",
+      "steps": 62,
+      "old_sha256": "43a5eb413943ba8ee2efd6166783ef33f458fd47beb36d0db2ed59c559000d20",
+      "new_sha256": "d206e4c6b710da118b1963e68bc28164a863d5b706111bd641470f55ca7496c7"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3005.json.gz",
+      "steps": 65,
+      "old_sha256": "666b064a43bcd2bf2adff95659850cff0748f25f771121d92a29de0c1a92b23f",
+      "new_sha256": "ca936b19e4ac42b465600de12cfc34384f07b01627bc8b55d525ed209959a087"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-graph-3006.json.gz",
+      "steps": 54,
+      "old_sha256": "ac6542aecb943023799fefcec266e377f5ccf30af5e1ae8dd89bbfca88e43f29",
+      "new_sha256": "dcbebc344cfe5ab63aa3e3de529cce4263be00c0acc20d9e7e516f70e3fd68a2"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3001.json.gz",
+      "steps": 36,
+      "old_sha256": "51a503093cc856b2f32adb2b72316e9b924c0a31a04ca7062f89506c36b1efa9",
+      "new_sha256": "0138e5d5c3a7fff5205f30b88b24e7c72f1c8a4b1c38d076a7d7ab4c30b65d17"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3002.json.gz",
+      "steps": 52,
+      "old_sha256": "8bef0a1760e90e47aee3eefb2d5dc55f24a2b88c8d230bbc0b75d551c8195b73",
+      "new_sha256": "467da2497dd11f510d50de894b0fb5527ba75e30a890ba5d60d677ac766ef397"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3003.json.gz",
+      "steps": 96,
+      "old_sha256": "493ba44d2016faeaa195629a323fdc112220681b75af4d9649d27815a6191bd0",
+      "new_sha256": "bc194adc0e4ff7c0a5a74c63606721cab9f4509bb57c0ca724f9115c96c4edc1"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3004.json.gz",
+      "steps": 40,
+      "old_sha256": "458428a6848f1abb052b95838ed5518874e4e4d0c50f74ddce2bbaa902e08333",
+      "new_sha256": "57ac6de551ed3e7ebf6cd808491202c461b2047b3c7e1b52e59220a40fc8200c"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3005.json.gz",
+      "steps": 77,
+      "old_sha256": "933b6709837cd310598b29fec861bcc85077e825418c1f0ebaad25a23c189464",
+      "new_sha256": "9ff12d7e0cc5804924024681a63374dc021f44a07602a480d1006b4d22fb9cff"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_exact-3006.json.gz",
+      "steps": 50,
+      "old_sha256": "d0d33b85cf3a5dfb400c26a5cf3460ab9b85813423d221f95a839dff5e37f71c",
+      "new_sha256": "7a7fcb880c94688a78bdc8d332d2dfacdb7e49671a1fdb2483a3b11b535fdcd2"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3001.json.gz",
+      "steps": 40,
+      "old_sha256": "7b47250bb1a2af004e9397e5563cc5ef4f132717c6f53299c6a845e69a0ae1b5",
+      "new_sha256": "61ed3279e3fb77687d8fd66ca8b219e2844f6c1f634fd38231b7d5d299ddafb9"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3002.json.gz",
+      "steps": 58,
+      "old_sha256": "1d88bbae29552ca89d8ca2d339de62e0f37daacd4ff9abb149a96eed2bbf9ad6",
+      "new_sha256": "d34b91c643cf8e193ae65347ad8b2c2cb69011cab82e187a3d48d52e03df68de"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3003.json.gz",
+      "steps": 106,
+      "old_sha256": "a84edafb846879274f4b57c4e155349cfec16eb5a966307b4109a9ba43662107",
+      "new_sha256": "1dba7cd01d7bcd6fee0bfe54e2187027eb7330ac18d56a976705fa6d95d3a20a"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3004.json.gz",
+      "steps": 40,
+      "old_sha256": "d4cc62bb61203f5f24e466039d207af9b9e5499ae88d1542daa28a952af2960f",
+      "new_sha256": "560bcde02a374b1e562057acd3d27a9d02d0d9233deefe109b4eb7b214041f99"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3005.json.gz",
+      "steps": 61,
+      "old_sha256": "c5ce2e395579d278f22a3547d8033626a8f9f25c90aaf2c37a1b2a8efb5a487a",
+      "new_sha256": "9ae5a7f1419234dd4b2497611764f42cd95c6edef6aad33538e5d4ed65e9f2b0"
+    },
+    {
+      "file": "episode-MiniGrid-DoorKey-16x16-v0-progress_zha-3006.json.gz",
+      "steps": 58,
+      "old_sha256": "e074f1d168e7d479b710975c7f0a1352a6f016776368e812591241a076c02d5d",
+      "new_sha256": "93bfe85338646ee5366cf2af6bf331552709071839fcc46504e49203285c9587"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3001.json.gz",
+      "steps": 44,
+      "old_sha256": "ea5424870712024cbad2f6f475581d5a08d416514c81797bafd2247ae117dec9",
+      "new_sha256": "4f7ce539d2f9dc7e4c4ad2b02ab98fb0b96a7f26aabab6d641d7224500a31fce"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3002.json.gz",
+      "steps": 1080,
+      "old_sha256": "5b244992dd393097ad297f65af98360b92a37a8baffcd8f05fb45b2a556c264a",
+      "new_sha256": "d718866eb1f8c89ffc521c4a500d3f153ab1deeb2cb9c54b84cb62d277ab3e99"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3003.json.gz",
+      "steps": 1080,
+      "old_sha256": "402b341edff1696d781471c8ac8ffb74e00bf6c206de27decefbbe9d8714c575",
+      "new_sha256": "015c949d4a969745084722a8b2ae2c01659e100b4f5ea8777965370093358285"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3004.json.gz",
+      "steps": 1080,
+      "old_sha256": "7fb564f05e39ffb810bc671882b83000f35b1dc871d79777de18358c7d615269",
+      "new_sha256": "13eef6bfe9490a55cac2f7a6041eee073324cfdbd144b4ca1147639492cd34b9"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3005.json.gz",
+      "steps": 82,
+      "old_sha256": "30a823e36d83315072b74e996ce1bb2f135a7fd8f5002cfed74307aafb3dd613",
+      "new_sha256": "39732d21a4aeec4e31e99cc788621ca23b5c8496a5099ff9bc4a830264fdec2e"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-3006.json.gz",
+      "steps": 1080,
+      "old_sha256": "0f6c3d672131f6d8f56e5208f88e18d07d3d57329f701ae0a558d0786f3a102e",
+      "new_sha256": "5a785cb521d500719c0837f6b5186c8489ff0912141914eaab0026da50f2ccca"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3001.json.gz",
+      "steps": 44,
+      "old_sha256": "bd12460c244c312256256d8848dd569b01153261acc1c358bbb9b77bc4eee2d5",
+      "new_sha256": "3acc3be5813656e239eca07514c5b519d02f170b8dcdcbbc9c32bb7823bff883"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3002.json.gz",
+      "steps": 1080,
+      "old_sha256": "45487931e151718fdb52d684e6c8a4c00ea99cc59138fbea12b1d6f236be3c96",
+      "new_sha256": "099fdc555790864f15b4d550b217f966d4a07276afd6d0160431bf90c6ca1329"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3003.json.gz",
+      "steps": 1080,
+      "old_sha256": "2c6ad15f8ef3c7ce32826b247086b2f3f4ab724e15efc7d513d871ac42a79f49",
+      "new_sha256": "854192d61b47f352e18006a5ce8ebc6e2ce39e3d4fc4201913f3f906efbb7c33"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3004.json.gz",
+      "steps": 1080,
+      "old_sha256": "94866277e004ce178f2e5fab3e944f640af8795cdc5a096057a03267adbd864e",
+      "new_sha256": "985019b51485733ede796e04d889b361b55b84f3edfaba07b3eca1def8cc77d6"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3005.json.gz",
+      "steps": 82,
+      "old_sha256": "01d0f074803d9e2c46234b500cae0ff8ac6a961b185528668cbad1bad1f5cdb1",
+      "new_sha256": "9dda36a7cd4533e694a75dafcbc9a5de82b175b59b67cac7513e018b485982ab"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-3006.json.gz",
+      "steps": 1080,
+      "old_sha256": "26b8376ae87995db7ed2dccc8ae8f4b0f53ff16eaa03f22d00a3ae6b5b41ad68",
+      "new_sha256": "618dee236aca15acc1df758220f3576d174673a2544ce8a6d57fcefcb4c6df8c"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3001.json.gz",
+      "steps": 44,
+      "old_sha256": "cba7de94690d2bf8942a38af098687562549008d0dc2c3ac2c57cb46f872f6f2",
+      "new_sha256": "2372ed896dc15ad1e03b093cec959729ac06ba0157a08551cf13427cc7bf8ebe"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3002.json.gz",
+      "steps": 108,
+      "old_sha256": "6b503c04f6217841dbb5c061a82968e042cc7a809502a0e0bcabfc102a8d0712",
+      "new_sha256": "ac543d5b7641ac2d40470ec69e8cbb8e5713610999d1d65ef6e41dd99984f4b1"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3003.json.gz",
+      "steps": 131,
+      "old_sha256": "f351874849acba735fab8eb8737cea404b10a7c4b5bccf2bfe9c853ced603879",
+      "new_sha256": "f32a4b0c950da1d659de6ac77303277d3944c61f248993f4d675b2804c917cb9"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3004.json.gz",
+      "steps": 100,
+      "old_sha256": "7068bd1f0ce4994856a1bd837e19c55f2a0efce2c345a9f7167140e997fb04f8",
+      "new_sha256": "5c119b212406bd3c2925a8dac54dc316efcb6d1e21e7eef5b60f0df7fe4a57a0"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3005.json.gz",
+      "steps": 82,
+      "old_sha256": "02cc8e00238fee39fee8ca7e7188a7a6d3b542977f6532b462ad5cf6bb985871",
+      "new_sha256": "82294047f18ce7624bdda11ec65def9926911ffac82baa9dce4a456f4adc15a4"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_exact-3006.json.gz",
+      "steps": 94,
+      "old_sha256": "a89344e266ad8a090d3eb55694538b7b96e4b109a3706db19d707585567d91f0",
+      "new_sha256": "074bd0220167d823a9ab15a053426335e18942885d2b9b19be4535c9bd72b623"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3001.json.gz",
+      "steps": 44,
+      "old_sha256": "5736f72c2f9d02a913b7064d33378ffacc2da42b65770a4c2585f2f2f0ba28f4",
+      "new_sha256": "f147fbf033056079538199e533def6b2d9021a51668dfa60a5e2f6f1c5e499f5"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3002.json.gz",
+      "steps": 95,
+      "old_sha256": "8796e4f097ddc19b81780d6f535f479d1fbfbe6232e3c6fd85f310e7dff64b97",
+      "new_sha256": "a956198286db9cdc28a2989d4e3e208d6b2241fdef6b1232630c52105440bb4d"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3003.json.gz",
+      "steps": 131,
+      "old_sha256": "80e8d1ee0601b159010c81e90c54c2e4e1ca77d6c4c6e1d327581fcbf9c9941b",
+      "new_sha256": "fa787afe9df2539aab34f58a20c94237ab2157eb0e82c2811a8d620439e075c9"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3004.json.gz",
+      "steps": 86,
+      "old_sha256": "32e8869438c375ad2ce472dd6711ec9475308e65bfe6b543943b3c30a9bd1a3e",
+      "new_sha256": "bfec4b0329c4db8de023a8c2d1e010140672168bafd1595e12217ef14941adab"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3005.json.gz",
+      "steps": 82,
+      "old_sha256": "4de3ebbedfac3e47fdafc5870d1d16f21d121791df1856c0d97d6fe962858dcf",
+      "new_sha256": "db8710a958c8612e9fbd28d7a14f43b8488f66cfd647f0b88c03418d959ac7b7"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-cues_zha-3006.json.gz",
+      "steps": 94,
+      "old_sha256": "906f5f724f7c429b99aa4ab0909767ef840902f9647fc1f5bdbb299d10a771e8",
+      "new_sha256": "d5af635c006d951b04fb534f1fe442a97e8f3bf259eee75b49b787055ad90a20"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3001.json.gz",
+      "steps": 44,
+      "old_sha256": "97169bf1d0857d0ce19be76a51b0c8df6264ee9a7c5757f91d60a49e352b0fe2",
+      "new_sha256": "8e0814ed731f6b713327b7aa2fd6db43b0676694b80b4fb791c61c41780be9b6"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3002.json.gz",
+      "steps": 1080,
+      "old_sha256": "ceb85f0f400b6f9907e00d52510fb0d21dbb8ce243b46cadb0a71a7b19e266e3",
+      "new_sha256": "1dcbade031a4c1f363052b7ef5e9e71995e0d0713d3a34eb92d253e2e553953d"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3003.json.gz",
+      "steps": 85,
+      "old_sha256": "2ae32d2b2475467c6d20c311c8a7a93bc3f1458294e0416af83ff402f2a46493",
+      "new_sha256": "7c47dec39943bb706fc73e4a9cf9074cbeaf7bc58553639f6196e5bbdbf31fef"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3004.json.gz",
+      "steps": 78,
+      "old_sha256": "2168e3d419c7d791544153c50aa0ac21b5973cdc1df6b1e06c1ff44fb8291173",
+      "new_sha256": "78c6da67af146f277268f013077d994fe441504d2ccaa6f2586343180fbc7f7a"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3005.json.gz",
+      "steps": 82,
+      "old_sha256": "2b564fa47d4eaa9e79735bd38cd9d59a13db18f26b0cb6d1ad3542c55e930734",
+      "new_sha256": "1546a3d77b1177407b6280a83b4e831cb2d1710d7a842a191c2f276c8ae69d5c"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-3006.json.gz",
+      "steps": 88,
+      "old_sha256": "b8c7e452138d89cc32cafd4270f4cda163a201851076301de614de6ca0854ad2",
+      "new_sha256": "d6bc17bbaed1040dc5523d7f26922dbdc64005b6632bcb367fd16a33910c82b2"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3001.json.gz",
+      "steps": 44,
+      "old_sha256": "01506540269972eab20276f2b515e43a0149cb3943aaddf1a58a3ac208b60008",
+      "new_sha256": "60810b26fc751a67881aa3b0d28a65808511a6cf386ae540993ee8c47972390c"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3002.json.gz",
+      "steps": 108,
+      "old_sha256": "dd201f01da37f1a4dc74c928002afe1976d2605434ea20899f78580c3c4522b8",
+      "new_sha256": "2a56479597c2206abe62b571ab54740fe4eff00c096ba38d438507bd787cad7a"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3003.json.gz",
+      "steps": 131,
+      "old_sha256": "aefb9b7f5aada575dfcdea776ca4c7633fe7e2f1bea92887e364923a7af2fe01",
+      "new_sha256": "2b1a8ced29590c38297d466bdc4139a0227a87ad1f90fcbee568ac225910bada"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3004.json.gz",
+      "steps": 100,
+      "old_sha256": "19b5b6bbecd0a5058d311a891183f67fcbdc38787dc0482074779877927b3708",
+      "new_sha256": "e45820d5eafa053a0e12d8c7a356a16969949a7566d7f61beedb398162bed67c"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3005.json.gz",
+      "steps": 82,
+      "old_sha256": "d6a5a306c3c39bdb1a10f89ea551d24d7dfc83a5e69e53c2c353a13c09b07232",
+      "new_sha256": "b931e1c81421bc0aa33a7eb97e7abcc8f8f01264e8cead8795739ca84b40dfde"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_exact-3006.json.gz",
+      "steps": 94,
+      "old_sha256": "99136846ad6a7da2516ef0260c479ff684b9e0a078c4c4a8913f6e656029c4b3",
+      "new_sha256": "d746a672d6e4ca87bc32c687f8b5179364cbc6e1a7c8a75f99ac2581ae179715"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3001.json.gz",
+      "steps": 44,
+      "old_sha256": "a7b77a75a334cb7ae77fe3791dfdc66258488ee0d39ac19e7e60848032a1a1aa",
+      "new_sha256": "2be62206548e899ec3ed945225cf898fff26a209db5da2e115273708dbef11cd"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3002.json.gz",
+      "steps": 95,
+      "old_sha256": "b27f27bc0b6065e98024d8932f05316fffb8908271ca5d7a046f5308b0e2a4c5",
+      "new_sha256": "11aff91543cfc6f2220736d7986c8c4d034a3d6751b75ad0533b397f718a05b8"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3003.json.gz",
+      "steps": 131,
+      "old_sha256": "a74d609f90d42e7fe6f00aa548b7a1b4191cf863566ae9b4bb9cbba6c7dbb14e",
+      "new_sha256": "8455bde597f871ea16805ac2ce7b9de530823abb3346dcfcf8ea6a2cf50a2a19"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3004.json.gz",
+      "steps": 86,
+      "old_sha256": "4f29fbcf149977e1805bc0f517083c2642a792df51f60d42b0eadf7e48b02226",
+      "new_sha256": "db609caeb8692e249aee1be9f32b5a41ada3ff5563d523d837177bcce256e1f6"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3005.json.gz",
+      "steps": 82,
+      "old_sha256": "d86d5212ca1a133c08049e507f650c5e7fc0b148c50c4049e973e98b1e97a275",
+      "new_sha256": "7cc9fb2b5268a0c20becf8c3095b78cf628ae6fa9a558d6d07baacfdac0c714b"
+    },
+    {
+      "file": "episode-MiniGrid-KeyCorridorS6R3-v0-progress_zha-3006.json.gz",
+      "steps": 94,
+      "old_sha256": "2e23ce90bd8af8b60eedf820931838c624df61dcf885d04e61b17dc8f8951baa",
+      "new_sha256": "cd9fe6c15a92cd5017963e44822c86f05a204913183e852432ec81b0e6358b5e"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3001.json.gz",
+      "steps": 7,
+      "old_sha256": "eca68916153f9e11d31fb869861470ef95c2be56817fb50c9cec29662cc71ab1",
+      "new_sha256": "783a1d25e9477b647a124679366b077ee422ebc9408ebde125d0145464ea6998"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3002.json.gz",
+      "steps": 14,
+      "old_sha256": "03c77e3be61279f792d821932207d8c1fc8dccc5d4b312e1974b3c517999325a",
+      "new_sha256": "d6e95c1da2adfb0dbe5dfa1778c2faa7cb2aa6dba27caad2b3d83d3bac65d721"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3003.json.gz",
+      "steps": 18,
+      "old_sha256": "a7a4a029e15ec1e1d97c8d7c63dcc0f3ab1f23b91775b92bf0893f21cec26768",
+      "new_sha256": "20d008ce72e8d7ba13e30103bf3c4e4a49ac580dbf92052da5eab5fcb0d8a18d"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3004.json.gz",
+      "steps": 8,
+      "old_sha256": "0ed6b6edecf940c390d45cf546f48c68537a6ecfd95306f690d5351e557d9b67",
+      "new_sha256": "1be42c34c7290fe65c53cbf104074d032670c4710e3f994d9bd85fc81d397af7"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3005.json.gz",
+      "steps": 14,
+      "old_sha256": "4ca819245bc4575f65f8950b23c85cf729268cc3ae5928789a76fd2f7dd8c3af",
+      "new_sha256": "74112fc18f8715814dd64eb738bd46bedb43190f843b4d0304b1d7d624deb4ee"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-3006.json.gz",
+      "steps": 7,
+      "old_sha256": "84d6cafb81fcad4074b64e221bd6aebd0397fd5c298b697afa220b1c98db0d6e",
+      "new_sha256": "cafecf38f733ec3e34d2890563d4c8c097c01f55f590f1e8a2a0526c983ae777"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3001.json.gz",
+      "steps": 7,
+      "old_sha256": "7ffe84cbf1d3f3ad35b7162e1e93bd6248650def606746d48d443b3e32c88b70",
+      "new_sha256": "c6f9ed8cf1f2832822da31b2cf7d5880ed3fe9d3b69bdd593ff57ca45a5f772e"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3002.json.gz",
+      "steps": 14,
+      "old_sha256": "9ee7363ec6418757e52a0826d1ad13fe0fd9c12f65b93b2db57a077efdc5eb07",
+      "new_sha256": "3d37b465d66352bde3dbc12627370bc21ea4b81c61cf142fb2e77f4a28183083"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3003.json.gz",
+      "steps": 18,
+      "old_sha256": "c0ebc4b664ffc4f683392b8e827ca1ccf058181acd56a2f1690fe00ce63d24e6",
+      "new_sha256": "cc1e9ad81dcfa2034222152627b7ed7c17e8f6b27a93000679b63d807bf707ff"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3004.json.gz",
+      "steps": 8,
+      "old_sha256": "6cb6ed5389d4b4890001cd756784ec60d5c13019b3bfdb541c92e4eaedc4d6e3",
+      "new_sha256": "74ebb4a781d952f3d76d142c97c4eb6523be54d2814fd226591fca7572f71a8e"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3005.json.gz",
+      "steps": 14,
+      "old_sha256": "e9be05703aa0287d73fc55c292d632bd4ccc9f66e6fa833c4a9faa83c2b27a6f",
+      "new_sha256": "f0f6c62c9b3a1125c1242ab1b20671e56ade4fac1f9e44a6425c11d15cde9d38"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-3006.json.gz",
+      "steps": 7,
+      "old_sha256": "789e73af2696b6f1169924e99484db18900f71eb0f39b85fa0f29c86d2d48d6e",
+      "new_sha256": "907e6df6852352dfadd580ea9a10bd3cd6bbc7daafdfb2f654be89fe4e60b1d2"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3001.json.gz",
+      "steps": 7,
+      "old_sha256": "0a85fa6fd39a7ca22815770052d7b1c78eeec095af00a7fee5a598f745a03a8f",
+      "new_sha256": "2fc0dcce93703137c75ec4be6c25c548cfb2ac19869090416ae471a3517b0b8d"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3002.json.gz",
+      "steps": 14,
+      "old_sha256": "588621a425ef081f67fe64401b2289e41764985c3feb569f7f5247e0cbb1ba14",
+      "new_sha256": "b010884a9993cf744ff30d9108838570efb9dd8df734b25d188fd08cc640ad93"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3003.json.gz",
+      "steps": 18,
+      "old_sha256": "c108a4b19f641794bc194f3171570bd477c49d16ff51b5ef753b89ed0cd06d0d",
+      "new_sha256": "e3b01215b103622363bf158613eddce2198417aae72c94f97ea83de6903fa686"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3004.json.gz",
+      "steps": 8,
+      "old_sha256": "5ac1f9e2959473cdeeebb14bb546d3ccb51128d47c67393f985a29486ec3d124",
+      "new_sha256": "6f57172aacc104f0a832aae4e201c829d80381147bd641280824fc8fbcebc623"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3005.json.gz",
+      "steps": 14,
+      "old_sha256": "130e318c63fff78b667ba144991e9061f85828edb59987f77bd1a9eb70141e38",
+      "new_sha256": "ed74e8e577e1c793e1ae23aa862066d404607cc73cc47ca2253605dc83feac55"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_exact-3006.json.gz",
+      "steps": 7,
+      "old_sha256": "56eaff9abcd311b8951c1db8d08b72b9b1b2ca9a2600980ef8321a5420d4610c",
+      "new_sha256": "e8122f81aaaf1c5e2276b92a60c8188e8066e957405289214afe3ae254d25427"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3001.json.gz",
+      "steps": 7,
+      "old_sha256": "c3992d1f173c089a8d5fb4e98c37d02869086a27016fcdf0cda2614a79187918",
+      "new_sha256": "564c43b91b921815bb2d2a58eed5826563088345ee2d9e8e9dd23e4ac3b7820d"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3002.json.gz",
+      "steps": 14,
+      "old_sha256": "8df289d3fb5350981d56eae869e97809ae7dfffb63a7aed6dde2491ef3758c00",
+      "new_sha256": "4936b53389a51ce646c9f8b83d70cacf095992c9cae724e989f8e7ed63fd03d9"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3003.json.gz",
+      "steps": 18,
+      "old_sha256": "391a6e3cc7fe346ae78c5e604556fca85a5ddaeaac34206c2a779944e13e6464",
+      "new_sha256": "08ae51dfcfd552a6bfb3f5fc03802730f6f0b166f8b935c834cc5f180ab7f4bd"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3004.json.gz",
+      "steps": 8,
+      "old_sha256": "05574e25fe0c7ba0434418585be437aafb0ba63327880c18cf867b9845387a0f",
+      "new_sha256": "e03e6a4bc3ed5849c417f7f50f4bbafe5c4b1ebcb99bdd483f382a54bd8012c2"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3005.json.gz",
+      "steps": 14,
+      "old_sha256": "fc12baacf5b1bf887825482453315f7471543265471a54981bd7157891875042",
+      "new_sha256": "c67e9ce1a97555b1d3874e48a8a29b5582f637ba3a9a29f4010c0405cdb54a96"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-cues_zha-3006.json.gz",
+      "steps": 7,
+      "old_sha256": "b46378459adc6587817176e874be55cdaf71e921661bb35c840ebfbd0830dfb6",
+      "new_sha256": "91e7284c98892f0f402d36e648d8975bb699a4d87151dd0b9bd4e64590b40393"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-graph-3001.json.gz",
+      "steps": 7,
+      "old_sha256": "0b9d81335bcc5f6658dc9f253d9c369c24479b69c38ad99b0a4450c6cff390ac",
+      "new_sha256": "ff1add9d381a7a4fc7bb329722105e0a4d27cb9c19b59c7db28c1eb03191efcb"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-graph-3002.json.gz",
+      "steps": 14,
+      "old_sha256": "1914a8a2f07a5be2af35cb6b7f9f9e4e4517ce724984ab352c16c75cfa772b0d",
+      "new_sha256": "84787b2d702368874ed34114b0973d0372174f4ac89d7a6925fa8b210642091a"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-graph-3003.json.gz",
+      "steps": 18,
+      "old_sha256": "9a17ff76df20a43f82c841912930b9836829a4f30ee419b3f196d7873f9a7a22",
+      "new_sha256": "ab8afe02b2e88c5ec1b919971614ff3de3842d35480e789048fc951546fb3eb4"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-graph-3004.json.gz",
+      "steps": 8,
+      "old_sha256": "4c96e5148c46780829545a16adb10594268502dbba9d9abb821ca95aa1cab408",
+      "new_sha256": "85177e7a995b679d1449bb4f70493928e8cbe1a55e85a789639125b386a45e07"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-graph-3005.json.gz",
+      "steps": 14,
+      "old_sha256": "412e753f38918a33f9838ea3caae43d8308ad267215475b6843cc910b1b2a502",
+      "new_sha256": "7cba984a8348eda40cae014a0b20b456f36adfa2583799f91fa7ee2ec04b9905"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-graph-3006.json.gz",
+      "steps": 7,
+      "old_sha256": "299b8c099ac324c0b10904938c12a18296d7904143248b7fe12a215880a65d20",
+      "new_sha256": "89fe1162b693775adeb1c6e2efcebb4c7a28bae0df97e016f6442f7251609b78"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3001.json.gz",
+      "steps": 7,
+      "old_sha256": "c8f7a7436509b9c59fcdb19473828daf3490e1fc5cbd40371f6670efc9786e34",
+      "new_sha256": "4135ee9cf9ec46eb40387d7fc3b24f86c33ffcbae3dcd8fca9c7f4289c385b85"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3002.json.gz",
+      "steps": 14,
+      "old_sha256": "e1d0a474e66db9e4be6c4821c5aa7f041ef828847b602e1efe2ab0a542a59f9e",
+      "new_sha256": "df7d32f893303b0741bf3564f2bf6266b8a05996994c6056b0dfb15a3f2ff072"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3003.json.gz",
+      "steps": 18,
+      "old_sha256": "687211c41dbbb08e1377afe5f9e23eab995995db72d303f55afa38c051c5ce6c",
+      "new_sha256": "2d0f7f7730a582bc958279bec81a747d466cb41af37be2c9c9a4676de4f0c179"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3004.json.gz",
+      "steps": 8,
+      "old_sha256": "418099f8d7a98a0bd9705e17dc09e2c5fcf057a885a03d02a92b07b719ebb0ce",
+      "new_sha256": "337da565841cd0df116ce150240ef3181aa5e0c2a19c907cad062c1b8fc44670"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3005.json.gz",
+      "steps": 14,
+      "old_sha256": "f07b8697a126908ca48837bbeb8bba1fc3703f0feab4959387099ea88d0a5ee3",
+      "new_sha256": "503eda769db5faba0c2cbe496c0f0590b4394e29e367037258147f24a42e7710"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_exact-3006.json.gz",
+      "steps": 7,
+      "old_sha256": "7b159fd2cc8996d667d61e853a99a44b2756131936a0341c0834bf3cd383f575",
+      "new_sha256": "a3c60fdfa7e3de9d92c3002d52e5117504776a3a8159974837bfc8e8831dcfee"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3001.json.gz",
+      "steps": 7,
+      "old_sha256": "a372b3e1efac928f2649d141254c602833fdaabef72c9b31967cfa5759365676",
+      "new_sha256": "81b5006e888902a6b58af4fafd29f5954f0b3a71c7d8979b2efdbf4e081ddba4"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3002.json.gz",
+      "steps": 14,
+      "old_sha256": "6c11ed8b40c7aefddcc15955bb1538889801024b2d24bdb74a1ab3776083c961",
+      "new_sha256": "d32b50af0a93703b8c00bf14c297d673873cf260e782d8a722de718fd3db1f4d"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3003.json.gz",
+      "steps": 18,
+      "old_sha256": "95ca66c6fbf5949bb9ebf1022588b4030c7722801b0677296a95800404095e21",
+      "new_sha256": "e18daf0ad5cf1bd365f5062a836e0df0cf64a27103c1f8c4d90758908c90d17c"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3004.json.gz",
+      "steps": 8,
+      "old_sha256": "229765e8a71d26c4526acef25dabd456986a49b365c8ca1e48c1a705caa78cc9",
+      "new_sha256": "b50a8e2f98bc51ed6f4369e587ea1b1f980102c23663a2db95b8203a5348e25f"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3005.json.gz",
+      "steps": 14,
+      "old_sha256": "9a7b6c62dd0fc022e319037dd898bcbef8bdf0d81ac80b3e2f5211de5ddac4c9",
+      "new_sha256": "3c810ceb21c9e99cc82344f372ebc60ce3051d916ed1c937ecdbb499520730a2"
+    },
+    {
+      "file": "episode-MiniGrid-MemoryS17Random-v0-progress_zha-3006.json.gz",
+      "steps": 7,
+      "old_sha256": "39d019c1de0da407ed0727ff53a9c08b54e36027168b293b06c96759787c83d3",
+      "new_sha256": "a10cb1d1b9d652a17119b619c3997d08c2fe3d0d557f1d5045ef4cad67512a91"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3001.json.gz",
+      "steps": 52,
+      "old_sha256": "031652c9b62167b5cb5506d147b59f2bc3915638e1427864f5c8f8b21e9a0258",
+      "new_sha256": "4d9ab5061bcc5980fa517c2fc214a4cd37c4928aac2429f948a50ccdcb1cadc3"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3002.json.gz",
+      "steps": 63,
+      "old_sha256": "757bb1b2405fda018b4abbf543f703d2211b6c6e39d30d731b96f7dd1af14f21",
+      "new_sha256": "702bd493d42be6b622c2a47c50b6de01642f903f7229718a6942930fd65e6a12"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3003.json.gz",
+      "steps": 74,
+      "old_sha256": "220d29dddd84ee04e63ce39e104486f99bad020332a6c9b72cd4570fda88b554",
+      "new_sha256": "48c0421abe14808ad5fb6f451c0098dc363642a56ffdba9ca5ec9c2f24621930"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3004.json.gz",
+      "steps": 60,
+      "old_sha256": "c9eeac52ee420a6e05395a3225fe48e2bdb88dd2615c44adb6e247060a27b633",
+      "new_sha256": "7c59186cb1aafea0f4adff2d81b1ff2599abde5004a8ee5ca8926dfa78e06291"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3005.json.gz",
+      "steps": 55,
+      "old_sha256": "3cf82291031955b2f187b96a018e78f3c93d57f1381c92182c0ada79f9ca03fd",
+      "new_sha256": "2e00e1367893cc17b87ade9321cb4e49de413601939bfae43ce63a520903537b"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-3006.json.gz",
+      "steps": 55,
+      "old_sha256": "2ac7cc280b7f7d164c825aaf1e9031de69410e42b7f2d4ecd1d5933bc05a78e6",
+      "new_sha256": "619a6852fc7b0f5cbb7fd58293b41c9310367828c8def9e99122a23190b99a72"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3001.json.gz",
+      "steps": 52,
+      "old_sha256": "d11abc6a2d15c2786e27c24079657fddefae7b42c66900159855955dd6d549a9",
+      "new_sha256": "5f98b3833e8d76bb8379c853e972c0c8821ca5d23516b6d14b3bb130b013d726"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3002.json.gz",
+      "steps": 63,
+      "old_sha256": "c3c713a774b5dfb4ba0b2c01e98c21258c5abfd5ded2dd20ea08ffe80096debf",
+      "new_sha256": "00d31e3262cd84ce7cecab2e19dd9a4ae3ff209ec7ab4d05e9ce911254514826"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3003.json.gz",
+      "steps": 74,
+      "old_sha256": "3d4a2863ab0091078a3fece5108da6acf1d20f311c0ed8c67d9d0e74d550c2f0",
+      "new_sha256": "ff84cf52244144516540250709c0fc14eb456a826811093e8557b11c8fee6e35"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3004.json.gz",
+      "steps": 60,
+      "old_sha256": "a952a9c69aa6aae65640a0991d3ba5016faad4e3e82c57094ee954783c13779b",
+      "new_sha256": "8c8f6b4215ff6a79af93dca89e1204e7edd9fa091c2b586ea698c090aa7c6262"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3005.json.gz",
+      "steps": 55,
+      "old_sha256": "77738d612c86ea34ce118458b8a7b3b252f3bd98650cf922c53f1075aee5b3bc",
+      "new_sha256": "f89d8d406cb26955b59057bb87aab5927907d1ea8555161fb3e299d3e1986b01"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-3006.json.gz",
+      "steps": 55,
+      "old_sha256": "2c8e84b6804bf0be3ddeb3e642b6ead1f29b9a828b60539cfcda874056708b0b",
+      "new_sha256": "c171115d8ef7c12cb3c1db0d09eaf5d747ae8acd4e28ad256495ad4ee31a3dc5"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3001.json.gz",
+      "steps": 52,
+      "old_sha256": "b684d11bfb0f571e181f0d9e694093002fbf79ccffddf3daf2cab32d4fc584f1",
+      "new_sha256": "423d1aa68f0b12cd84a2b51df4d5ff139e2c3dd11afe114b791efb2e5b5d18b0"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3002.json.gz",
+      "steps": 63,
+      "old_sha256": "009f94beae31c819cac0a502e9f3699c288677b2c2fbce08002689acaeabf23e",
+      "new_sha256": "39e642c7964d9dfabbf3af276f9126368e50337c846d409330dfa5cdb89194fc"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3003.json.gz",
+      "steps": 74,
+      "old_sha256": "ed640578c828df318d157f499be770bf6f7883b82668404badf229ca99df43ac",
+      "new_sha256": "a1de319b7b2531f432612fa9356ef4af39db94024f1f7c30b9a91f517b6118fe"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3004.json.gz",
+      "steps": 60,
+      "old_sha256": "eb3c044ae9b85d7c1dbd06bb585989c8215b6435d8cae4e60d47e87ef5091049",
+      "new_sha256": "c647009a0e6102f0b874dbfbda0b0ae15a3c719a5f50cb872fcef51f765d2dd7"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3005.json.gz",
+      "steps": 55,
+      "old_sha256": "db19c39b4cfcd15bb6d267e0e25e6c9c0546c379ae3807dd045507076acd001b",
+      "new_sha256": "82c58332c398c593c7ba23814db96f9e5658df89f4a76fd3b978bb1a98052617"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_exact-3006.json.gz",
+      "steps": 55,
+      "old_sha256": "75fb120ac580bf5742bc8f941ac79222e099a22ae767b4683ac6ecd4de06477b",
+      "new_sha256": "4dbaa9f89eb871f4713a5b9d229240b8e61d44519342aa5ec856b1a346ab25ac"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3001.json.gz",
+      "steps": 52,
+      "old_sha256": "68987d5ca79c462eaa9714c3b7af0ffeaa3da0454a15ae8264a63a80b57d9898",
+      "new_sha256": "f2979e6901e14ac106a837231f350bff63b37eaf97c71d9f2e44885f6aed4d6d"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3002.json.gz",
+      "steps": 63,
+      "old_sha256": "276a699f1e4a23bf2d7cecb0231c1feea6bc61628f2fc60b617fee940bbf356b",
+      "new_sha256": "61af32faaf41fa7f846669531c34bb01bbbe7aa49faa81b928d53f1c2cebcc41"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3003.json.gz",
+      "steps": 74,
+      "old_sha256": "d416b476f8b0c4e952e6a18e7d8297a2227b1ce5954faba0a79b2a6f6921cb61",
+      "new_sha256": "19d6fe72c874f8cb012f154ff55fb5db5685de5b4403c7c2e8ec130af6495bcf"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3004.json.gz",
+      "steps": 60,
+      "old_sha256": "cecd4b98f7143ff8b7813951fc0850ab24cdb29cb23865466f86c99ddbd7afdf",
+      "new_sha256": "2a46946f5554006615ce62109e37180e1f65c75d353a6bfb9b9d1c2853488913"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3005.json.gz",
+      "steps": 55,
+      "old_sha256": "3dd8d553ee2f1b1b98c31290371746cc605b8b562ade6171c6b5c8d7a68e74c4",
+      "new_sha256": "4fec95a6219d36792945dab7a663627628896cc583e2d56b1ce2ac1ba96ce7a5"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-cues_zha-3006.json.gz",
+      "steps": 55,
+      "old_sha256": "9046cff782c778a319d450ed73f260e1b49420796dac58580eba3e2b8e12bb27",
+      "new_sha256": "4ab67ccc37dc18d61746a0e428d334c1c78e2d4d935288d72bd3a50508cd87d4"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3001.json.gz",
+      "steps": 52,
+      "old_sha256": "e2482d50f3db49d570279498ad5227d006ad16412195c2eb8fe865af9849e259",
+      "new_sha256": "caa23f7476ba99435cdec5ada0d82a3537ff77956110183386bcffe026bf2fd4"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3002.json.gz",
+      "steps": 63,
+      "old_sha256": "b30aee42eea2ce733f8ebf93f4288e26efe6cdf0dfb58396fb8a5040c37fba63",
+      "new_sha256": "343d85b71c007d6173f234bac18e31004de6f0054fb8669e1795f52eab7a23bd"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3003.json.gz",
+      "steps": 74,
+      "old_sha256": "65fdd545667c1997923a52680d35c04d0825de160bcc4e7d65e518ce2ef01458",
+      "new_sha256": "df6e91f0fcb7cdb0f290ea0b4603cc00cd0302be835d6eaf48bc6367eaf972c6"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3004.json.gz",
+      "steps": 60,
+      "old_sha256": "21d3046232c8aa57d1ceeda3370e980254a684250654d94d83c52fcb0e7c01c8",
+      "new_sha256": "db2bd68b43f9da82d692c1787bca011bd839f79343f6317aec9141ff1e061cd5"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3005.json.gz",
+      "steps": 55,
+      "old_sha256": "8f663b460f25a8009dcd4345e11ea0aa597b4a5373e70157ce15cf1a5105da97",
+      "new_sha256": "0ca806ee2c8ae05da2a34f607862e2033418a8021920620c5dc084d0c43453b9"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-graph-3006.json.gz",
+      "steps": 55,
+      "old_sha256": "174eacd4f8261b21301e4ba7aaf64580e38295d6be099d9fa350e815867098fd",
+      "new_sha256": "87c87a646c75cc1151ac46c56afda394145a8a11b78c4ce9218ba079541901dc"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3001.json.gz",
+      "steps": 52,
+      "old_sha256": "04e5ff9423048a24df68fed6b41272c0b7efcb289407b6d32563f32f9caa395e",
+      "new_sha256": "0ad546aad9861b8c68d96606054a13bc24349b30d6ccd08d897ad2e57abd2d10"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3002.json.gz",
+      "steps": 63,
+      "old_sha256": "2c0c8e09c1fb8d2d194817944d8dcb03f64f0d912bf859dc98b74a5d6ee606bb",
+      "new_sha256": "15b8f3cb57f64a3e950ad8fdf14492f4201680c291e7179f0a66335b386f36b4"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3003.json.gz",
+      "steps": 74,
+      "old_sha256": "5fea158c7e3a61a90153074d7cbaff47677859bbb476e4b0ea2db7847425ac24",
+      "new_sha256": "79e3c12a5484e1fa76a32b6a1d556eee9b6d7c047254cd8ec3020b404879e3dc"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3004.json.gz",
+      "steps": 60,
+      "old_sha256": "47a3d8920f99a0dc44c132e69f299388191a61b25c9e80e51503d87818709ffb",
+      "new_sha256": "79df2ce055f63c2f7c003d47a9156e6878f19e47f22aea3e44a99761c51f26ac"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3005.json.gz",
+      "steps": 55,
+      "old_sha256": "28c86d99323cd31889c9d49e07ffbe9a0cc1ec4e503fe781ee4cbc9de3801d08",
+      "new_sha256": "8bd49689dad41bfa3c079adde0cb2566ce6e6f3cf1b67db2cf79effb3a983800"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_exact-3006.json.gz",
+      "steps": 55,
+      "old_sha256": "49a567cfcdcf0070bd22ad8d3095b6a2661d1e562c554cd12d7756d066aadd54",
+      "new_sha256": "375cb98b8bccb512dcf1d68f51159834ba6759c884aed65b9b494ddf47b998fb"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3001.json.gz",
+      "steps": 52,
+      "old_sha256": "8218893757f9a0896f96e39393705c3e5fe9526ba56a9cd5f233c36153286510",
+      "new_sha256": "06e5299418e4449c780c57faef7029f8b7c6b7d72f977d4ec659983df4f97dbc"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3002.json.gz",
+      "steps": 63,
+      "old_sha256": "f13208ffc2199aaa2e22201e5e16c2bacafb23d1c7670fb769eeef41caf28f67",
+      "new_sha256": "7647a9230bb4890d4fe883737652ab90ef7944f82824113358d94f8bbfeeb30a"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3003.json.gz",
+      "steps": 74,
+      "old_sha256": "6b5feecf72ebd64d9101c7a5549001920ec474fbee394544c879b50c3eec8ab1",
+      "new_sha256": "9cf1a021d4c818393c57fa197456ac64d3c25bc6e40f8d03c6fbfbe44fb124b0"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3004.json.gz",
+      "steps": 60,
+      "old_sha256": "624242be1d69a67cac44c2e72af09d32b99da83fba186e33310be1f25d8224b4",
+      "new_sha256": "10d71434bb7f1a00ca072d29bd972afbb796f725dd58cc99daf20289e856acbb"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3005.json.gz",
+      "steps": 55,
+      "old_sha256": "ecbf04a05321a3fdfab6ba2d1ab7cdd26ef8fed5645d3b7e0a2eafacf026f380",
+      "new_sha256": "317b0894b5bf8aeb7aa8e93677bcdd738d6616a1db6606920f5f19fdbec5a89d"
+    },
+    {
+      "file": "episode-MiniGrid-MultiRoom-N6-v0-progress_zha-3006.json.gz",
+      "steps": 55,
+      "old_sha256": "3f5059259fa9472aae0dd371e9da1ef4557c49d0aa637f621f66a229c5779409",
+      "new_sha256": "f1c07ea43e01dbbc63e4e044c2417e2ef620a0875c0baa38cb510dd27cd76a13"
+    }
+  ],
+  "independent_checker_source": "\"\"\"Independent wire-only overlap equality and summary arithmetic check.\"\"\"\nfrom pathlib import Path\nimport collections\nimport gc\nimport gzip\nimport hashlib\nimport json\nimport math\n\nROOT = Path('/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory')\nOLD = ROOT / 'experiments/progress-evaluation-v1'\nNEW = ROOT / 'experiments/progress-evaluation-v2'\nOUT = Path('/private/tmp/research-review-somna')\n\ndef sha(path):\n    return hashlib.sha256(path.read_bytes()).hexdigest()\n\ndef non_time(value):\n    if isinstance(value, dict):\n        return {k: non_time(v) for k, v in value.items()\n                if not k.endswith('_seconds') and not k.startswith('wire_')}\n    if isinstance(value, list):\n        return [non_time(v) for v in value]\n    return value\n\ndef decoded_row(row, events):\n    decision = dict(row['decision'])\n    if 'repair' in decision and events is not None:\n        decision['route'] = [events[r['route_ref']] for r in decision['route']]\n    return non_time({**row, 'decision': decision})\n\nincomplete = json.loads((OLD / 'INCOMPLETE_RUN.json').read_text())\nproof = json.loads((NEW / 'SERIALIZATION_PARITY.json').read_text())\nreport = json.loads((NEW / 'report.json').read_text())\npolicy = json.loads((ROOT / 'experiments/progress-serialization-preflight-v1/POLICY_EQUALITY.json').read_text())\nassert len(incomplete['existing_artifacts']) == 167\nassert len(proof['traces']) == 167\nold_hashes = {x['file']: x['sha256'] for x in incomplete['existing_artifacts']}\nproof_rows = {x['trace_file']: x for x in proof['traces']}\nassert old_hashes.keys() == proof_rows.keys()\nassert all(sha(ROOT / name) == row['frozen'] == row['current']\n           for name, row in policy['protected'].items())\nsteps = 0\nchecked = []\nfor i, name in enumerate(sorted(old_hashes)):\n    assert sha(OLD / name) == old_hashes[name] == proof_rows[name]['original_sha256']\n    assert sha(NEW / name) == proof_rows[name]['recovered_sha256']\n    a, b = [json.loads(gzip.decompress((base / name).read_bytes())) for base in (OLD, NEW)]\n    # Only transport-specific event bank, protocol identity and actual timings differ.\n    excluded = {'trajectory', 'routing_events', 'protocol_hash'}\n    assert non_time({k:v for k,v in a.items() if k not in excluded}) == non_time({k:v for k,v in b.items() if k not in excluded}), ('header',name)\n    assert len(a['trajectory']) == len(b['trajectory']) == proof_rows[name]['steps']\n    for j, (left, right) in enumerate(zip(a['trajectory'], b['trajectory'], strict=True)):\n        assert decoded_row(left,a.get('routing_events')) == decoded_row(right,b.get('routing_events')), (name,j)\n    steps += len(a['trajectory'])\n    checked.append({'file':name,'steps':len(a['trajectory']),'old_sha256':old_hashes[name],'new_sha256':sha(NEW/name)})\n    del a,b\n    gc.collect()\n    if i % 20 == 0: print('parity episodes',i+1,flush=True)\nassert steps == proof['overlap_steps'] == 25320\nassert set(x.name for x in NEW.glob('episode-*.json.gz')) - old_hashes.keys() == set(incomplete['missing'])\noverlap = {\n    'all_passed':True,'episodes_checked':len(checked),'steps_checked':steps,\n    'scope':'Independent per-frame exact decoded equality of every retained observation/action/decision/query/route/work plus raw headers/archive/results; only protocol hash, wire costs/bank and elapsed timings excluded.',\n    'original_hashes_unchanged':True,'protected_policy_hashes_current_and_equal':True,\n    'missing_original_case':incomplete['missing'],\n    'missing_case_scope':'No original artifact: reexecution only, excluded from parity claim.',\n    'owner_proof_sha256':sha(NEW/'SERIALIZATION_PARITY.json'),\n    'independent_checker_sha256':sha(Path(__file__)),\n    'traces':checked,\n}\n(OUT/'progress-independent-parity.json').write_text(json.dumps(overlap,indent=2)+'\\n')\n\nrows=report['episodes']\nassert len(rows)==168\nassert report['source_changed_during_run']==[]\ntotals=collections.defaultdict(lambda:collections.Counter(episodes=0,successes=0,errors=0,truncations=0,cutoffs=0,steps=0,graph_fallback_reads=0,hybrid_episodes=0))\nfor row in rows:\n    assert sha(NEW/row['trace_file'])==row['sha256']\n    t=totals[row['reader']]\n    for k,v in dict(episodes=1,successes=int(row['success']),errors=int(row['error'] is not None),truncations=int(row['truncated']),cutoffs=int(row['external_cutoff']),steps=row['steps']).items():t[k]+=v\n    fallback=row['costs'].get('repair_graph_fallback_reads',0)\n    t['graph_fallback_reads']+=fallback;t['hybrid_episodes']+=int(fallback>0)\nfor summary in report['summaries']:\n    cohort=[r for r in rows if r['environment_id']==summary['environment_id'] and r['reader']==summary['reader']]\n    assert len(cohort)==summary['episodes']==6\n    for k,target in [('successes','success'),('errors','error'),('truncations','truncated'),('cutoffs','external_cutoff')]:\n        assert sum(int(r[target] is not None) if target=='error' else int(r[target]) for r in cohort)==summary[k]\n    assert math.isclose(sum(r['steps'] for r in cohort)/6,summary['mean_steps'],rel_tol=1e-12)\n    assert math.isclose(sum(r['return'] for r in cohort)/6,summary['mean_return'],rel_tol=1e-12)\n    for k,v in summary['costs'].items():\n        assert math.isclose(sum(r['costs'][k] for r in cohort),v,rel_tol=1e-12,abs_tol=1e-12),(summary['reader'],k)\nassert len(report['summaries'])==28\naggregate={\n    'all_passed':True,'episodes_checked':len(rows),'summary_rows_checked':28,\n    'successes':sum(r['success'] for r in rows),'truncations':sum(r['truncated'] for r in rows),\n    'errors':sum(r['error'] is not None for r in rows),'cutoffs':sum(r['external_cutoff'] for r in rows),\n    'per_reader':dict(totals),'max_expanded_bytes':max(r['expanded_bytes'] for r in rows),\n    'report_sha256':sha(NEW/'report.json'),'independent_checker_sha256':sha(Path(__file__)),\n    'scope':'Arithmetic over all raw-hash-bound episode rows; every summary cost and outcome recomputed, not a new simulator run.',\n    'attribution_limit':'graph_fallback_reads counts the explicit full-observed-head SEED fallback only. All dependency variants still construct and scan an observed graph for closure; no graph-free or sublinear end-to-end claim.'\n}\n(OUT/'progress-independent-aggregates.json').write_text(json.dumps(aggregate,indent=2)+'\\n')\nprint(json.dumps({k:v for k,v in aggregate.items() if k!='independent_checker_sha256'},indent=2))\n"
+}

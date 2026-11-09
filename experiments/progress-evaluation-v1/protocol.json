@@ -1,0 +1,97 @@
+{
+  "capacity": 96,
+  "closure": "observed path plus accessible observed matching-key prerequisites and one-hop known-neighbor halo; no global frontier-closure claim",
+  "conditions": [
+    "bundle_zha",
+    "bundle_exact",
+    "graph",
+    "progress_zha",
+    "progress_exact",
+    "cues_zha",
+    "cues_exact"
+  ],
+  "cue_controls": "cues_zha/exact never use graph fallback; progress_zha/exact share identical observable progress rules",
+  "current_observation_exempt": true,
+  "development_seeds": [
+    0,
+    1
+  ],
+  "environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "evaluation_seeds": [
+    3001,
+    3002,
+    3003,
+    3004,
+    3005,
+    3006
+  ],
+  "external_step_cap": 4096,
+  "graph_control": "all observed current heads eligible; same mission/frontier ranking and closure as retrieval seeds",
+  "mask": {
+    "bytes": 512,
+    "contains": "observed-known only; no object or passability",
+    "origin": [
+      -32,
+      -32
+    ],
+    "shape": [
+      64,
+      64
+    ]
+  },
+  "max_nominated_bundles": 8,
+  "official_versions": {
+    "gymnasium": "1.4.0",
+    "minigrid": "3.1.0"
+  },
+  "packing": "whole historical support set union or explicit rejection; no coverage fallback",
+  "previously_exposed_seeds": [
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006
+  ],
+  "progress": {
+    "candidate_budget": 192,
+    "cue_after": 8,
+    "fallback": "full observed graph until new canonical payload; not a ZHA win",
+    "graph_after_repeated": 24,
+    "hard_graph_after": 48,
+    "history_limit": 24,
+    "widen_after": 16
+  },
+  "scope": "hand-written partial-observation controller;96 raw facts plus explicit512-byte known mask where declared; not neural learning/dreaming/novelty",
+  "selected_environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "selected_readers": [
+    "bundle_zha",
+    "bundle_exact",
+    "graph",
+    "progress_zha",
+    "progress_exact",
+    "cues_zha",
+    "cues_exact"
+  ],
+  "selected_seeds": [
+    3001,
+    3002,
+    3003,
+    3004,
+    3005,
+    3006
+  ],
+  "split": "evaluation",
+  "version": "progress-cues-widening-compact-snapshots-v3",
+  "workers": 2
+}

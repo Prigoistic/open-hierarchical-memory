@@ -1,0 +1,5 @@
+{
+  "all_passed": true,
+  "episodes": 56,
+  "scope": "every action,observation,selected fact IDs,archive andresult; wire metadata compacted only"
+}

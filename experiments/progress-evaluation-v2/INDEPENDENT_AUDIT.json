@@ -1,0 +1,48 @@
+{
+  "all_passed": true,
+  "episodes_checked": 168,
+  "official_steps_checked": 27880,
+  "repair_reads_checked": 7772,
+  "graph_fallback_reads": 16,
+  "new_variant_hierarchy_routes_checked": 63910,
+  "affine_branch_scores_checked": 2169576,
+  "new_variant_outcomes": [
+    {
+      "reader": "progress_zha",
+      "episodes": 24,
+      "successes": 24,
+      "successful_without_graph": 23,
+      "successful_with_graph": 1
+    },
+    {
+      "reader": "progress_exact",
+      "episodes": 24,
+      "successes": 24,
+      "successful_without_graph": 24,
+      "successful_with_graph": 0
+    },
+    {
+      "reader": "cues_zha",
+      "episodes": 24,
+      "successes": 23,
+      "successful_without_graph": 23,
+      "successful_with_graph": 0
+    },
+    {
+      "reader": "cues_exact",
+      "episodes": 24,
+      "successes": 24,
+      "successful_without_graph": 24,
+      "successful_with_graph": 0
+    }
+  ],
+  "scope": "official observed-prefix replay, bounded progress state, actual cue and independent affine-tree routing/output numerics, structural budgets/costs and explicit graph attribution; not a semantic correctness certificate",
+  "attestation": {
+    "method": "Exact independent-auditor stdout extracted from parent full gate; no duplicate formal audit execution.",
+    "protocol_hash": "aa9137b93404c1d48b7acc1c4645fa105db8d802a4da1c2fc0538dfddf4cfb23",
+    "manifest_sha256": "cbfb59305df5059e0f7cfc81a7aaa40bdc7aeb6f2ded16e0ee25d65ab91e6c4b",
+    "auditor_source_sha256": "b868800cd8f40c1e6dc1b801da8cb6a7675759239c7a7de551ae6ddbc1dbd81e",
+    "verification_log_sha256_at_extraction": "584fc718e971cd616d405714d58bf91f685f2bd4dde674bdb4e0e3d06b326cfc",
+    "serialization_scope": "SAME sealed cohort/policies, wire-only recovery. v1 remains incomplete. Graph counts mean full-observed-head SEED fallback only; closure still uses observed graph."
+  }
+}

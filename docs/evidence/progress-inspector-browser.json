@@ -1,0 +1,352 @@
+{
+  "initial": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      }
+    ],
+    "cursor": "0 / 94",
+    "dataset": "progress-evaluation-v2",
+    "error": "",
+    "inspection": "",
+    "metricCount": 5,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 base recall",
+    "pixels": 3629164145,
+    "playDisabled": false,
+    "playTop": 293,
+    "reader": "progress_zha",
+    "routing": "35 originals attended; 0 facts returned to the planner. Select a node to inspect its contents.",
+    "task": "Key corridor",
+    "viewport": 1440,
+    "width": 1440
+  },
+  "recovery": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      },
+      {
+        "text": "Explore east",
+        "value": "2"
+      },
+      {
+        "text": "Explore south",
+        "value": "3"
+      },
+      {
+        "text": "Explore west",
+        "value": "4"
+      },
+      {
+        "text": "Explore north",
+        "value": "5"
+      }
+    ],
+    "cursor": "43 / 94",
+    "dataset": "progress-evaluation-v2",
+    "error": "",
+    "inspection": "",
+    "metricCount": 5,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 directional cues",
+    "pixels": 765544718,
+    "playDisabled": false,
+    "playTop": 293,
+    "reader": "progress_zha",
+    "routing": "59 originals attended; 0 facts returned to the planner. Select a node to inspect its contents.",
+    "task": "Key corridor",
+    "viewport": 1440,
+    "width": 1440
+  },
+  "directional_cue": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      },
+      {
+        "text": "Explore east",
+        "value": "2"
+      },
+      {
+        "text": "Explore south",
+        "value": "3"
+      },
+      {
+        "text": "Explore west",
+        "value": "4"
+      },
+      {
+        "text": "Explore north",
+        "value": "5"
+      }
+    ],
+    "cursor": "43 / 94",
+    "dataset": "progress-evaluation-v2",
+    "error": "",
+    "inspection": "",
+    "metricCount": 5,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 directional cues",
+    "pixels": 3106570740,
+    "playDisabled": false,
+    "playTop": 293,
+    "reader": "progress_zha",
+    "routing": "51 originals attended; 0 facts returned to the planner. Select a node to inspect its contents.",
+    "task": "Key corridor",
+    "viewport": 1440,
+    "width": 1440
+  },
+  "tree": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      },
+      {
+        "text": "Explore east",
+        "value": "2"
+      },
+      {
+        "text": "Explore south",
+        "value": "3"
+      },
+      {
+        "text": "Explore west",
+        "value": "4"
+      },
+      {
+        "text": "Explore north",
+        "value": "5"
+      }
+    ],
+    "cursor": "43 / 94",
+    "dataset": "progress-evaluation-v2",
+    "error": "",
+    "inspection": "",
+    "metricCount": 5,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 directional cues",
+    "pixels": 359380972,
+    "playDisabled": false,
+    "playTop": 293,
+    "reader": "progress_zha",
+    "routing": "51 originals attended; 0 facts returned to the planner. Select a node to inspect its contents.",
+    "task": "Key corridor",
+    "viewport": 1440,
+    "width": 1440
+  },
+  "node": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      },
+      {
+        "text": "Explore east",
+        "value": "2"
+      },
+      {
+        "text": "Explore south",
+        "value": "3"
+      },
+      {
+        "text": "Explore west",
+        "value": "4"
+      },
+      {
+        "text": "Explore north",
+        "value": "5"
+      }
+    ],
+    "cursor": "43 / 94",
+    "dataset": "progress-evaluation-v2",
+    "error": "",
+    "inspection": "L3 / node 0 \u00b7 18 wall, 44 empty, 2 door \u00b7 score 9.305",
+    "metricCount": 5,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 directional cues",
+    "pixels": 102463517,
+    "playDisabled": false,
+    "playTop": 293,
+    "reader": "progress_zha",
+    "routing": "51 originals attended; 0 facts returned to the planner. Select a node to inspect its contents.",
+    "task": "Key corridor",
+    "viewport": 1440,
+    "width": 1440
+  },
+  "displayed_repair": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      },
+      {
+        "text": "Explore east",
+        "value": "2"
+      },
+      {
+        "text": "Explore south",
+        "value": "3"
+      },
+      {
+        "text": "Explore west",
+        "value": "4"
+      },
+      {
+        "text": "Explore north",
+        "value": "5"
+      }
+    ],
+    "cursor": "51 / 94",
+    "dataset": "progress-evaluation-v2",
+    "error": "",
+    "inspection": "L3 / node 0 \u00b7 18 wall, 44 empty, 2 door \u00b7 score 9.305",
+    "metricCount": 5,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 wider candidate search",
+    "pixels": 3388602448,
+    "playDisabled": false,
+    "playTop": 293,
+    "reader": "progress_zha",
+    "routing": "51 originals attended; 95 facts returned to the planner. Select a node to inspect its contents.",
+    "task": "Key corridor",
+    "viewport": 1440,
+    "width": 1440
+  },
+  "mobile": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      },
+      {
+        "text": "Explore east",
+        "value": "2"
+      },
+      {
+        "text": "Explore south",
+        "value": "3"
+      },
+      {
+        "text": "Explore west",
+        "value": "4"
+      },
+      {
+        "text": "Explore north",
+        "value": "5"
+      }
+    ],
+    "cursor": "51 / 94",
+    "dataset": "progress-evaluation-v2",
+    "error": "",
+    "inspection": "L3 / node 0 \u00b7 18 wall, 44 empty, 2 door \u00b7 score 9.305",
+    "metricCount": 5,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 wider candidate search",
+    "pixels": 1221745506,
+    "playDisabled": false,
+    "playTop": 436,
+    "reader": "progress_zha",
+    "routing": "51 originals attended; 95 facts returned to the planner. Select a node to inspect its contents.",
+    "task": "Key corridor",
+    "viewport": 390,
+    "width": 390
+  },
+  "oversize_error": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      }
+    ],
+    "cursor": "0 / 139",
+    "dataset": "progress-development-v1",
+    "error": "This historical trace is too large for the inspector. Choose a compact evaluation run.",
+    "inspection": "",
+    "metricCount": 0,
+    "notice": "Choose another run or retry.",
+    "pixels": 2355267525,
+    "playDisabled": true,
+    "playTop": 335,
+    "reader": "cues_zha",
+    "routing": "No trace loaded.",
+    "task": "Key corridor",
+    "viewport": 1440,
+    "width": 1440
+  },
+  "recovered_load": {
+    "cues": [
+      {
+        "text": "Local position",
+        "value": "0"
+      },
+      {
+        "text": "Mission objects",
+        "value": "1"
+      }
+    ],
+    "cursor": "0 / 94",
+    "dataset": "progress-evaluation-v2",
+    "error": "",
+    "inspection": "",
+    "metricCount": 5,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 base recall",
+    "pixels": 3629164145,
+    "playDisabled": false,
+    "playTop": 293,
+    "reader": "progress_zha",
+    "routing": "35 originals attended; 0 facts returned to the planner. Select a node to inspect its contents.",
+    "task": "Key corridor",
+    "viewport": 1440,
+    "width": 1440
+  },
+  "errors": {
+    "errors": []
+  },
+  "scope": "Recorded progress traces, actual cue/pass/node controls, compact snapshots, mobile layout, and stale-data removal on bounded transport failure",
+  "source_hashes": {
+    "web/task-lab/app.js": "d4bcdea01504d1c73e43f65d1dac722cf9a5c83941796893343c3eaf278cc2e4",
+    "web/task-lab/routing.js": "1d225c48d49383338faefe2d12a4f2a703cfa908ba6aa57222197986272d9210",
+    "web/task-lab/style.css": "936140ea63d5a74cf477779ba4598172bdc6846c2147363d61b5c8020ec3f83c",
+    "web/task-lab/index.html": "a8b04d70fc0a03192ec937010a4285b380a7a189f88b164031db2b30b0d37929",
+    "research/serve_task_benchmark.py": "a3a8c377706d3147f6a6955ae45c616e627454dd327586dd5070eef80cff5daa",
+    "experiments/progress-evaluation-v2/report.json": "1fe578a901e7f9bcfcd3fa03a6a7bd776661e44091c26e1c7700fddf2ad0e6cd"
+  },
+  "explicit_graph_fallback": {
+    "cueDisabled": true,
+    "cursor": "79 / 105",
+    "layerDisabled": true,
+    "nextDisabled": false,
+    "notice": "Recorded evaluation \u00b7 solved \u00b7 observed graph fallback",
+    "routing": "The progress guard escalated to the observed graph. This step is counted as a fallback."
+  }
+}

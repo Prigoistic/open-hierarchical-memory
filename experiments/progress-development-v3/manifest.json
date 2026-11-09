@@ -1,0 +1,31 @@
+{
+  "protocol_hash": "be636c920ac5796d2784dbf90fd76b09eec30441eba55c0bdc3a6c195e887d2a",
+  "source_hashes": {
+    "research/progress_retrieval.py": "fc0f936626d32b7c00d951d11468e7676b5d09a711ee3395e82622dd6f47545d",
+    "research/run_progress_benchmark.py": "ff9eef8714f039d02539f3d2fcbbe71a8c2e7170dfe0dd3931fb02b574d8cffb",
+    "research/dependency_memory.py": "d0a517d97f58d219da864a0604bbd68cacc2594af3e321c87d43fb4af0561454",
+    "research/run_dependency_benchmark.py": "ee1834a5bffe2fc41b6b294863e3e48437bfb9b1ebb4971d7464e9ea6f994c36",
+    "research/minigrid_benchmark.py": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d",
+    "research/run_minigrid_benchmark.py": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b",
+    "tests/test_progress_retrieval.py": "ef07c1af448a479faa69e05099feedd89351131644125bf9a45f126896e06ba4",
+    "docs/PROGRESS_RETRIEVAL.md": "76b39eb1dd951be60b071837058d4b1e92d9c9252409e992ba7155f4cb961128",
+    "uv.lock": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796",
+    "src/open_hierarchical_memory/tree.py": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+    "src/open_hierarchical_memory/attention.py": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+    "src/open_hierarchical_memory/__init__.py": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+    "src/open_hierarchical_memory/routing.py": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+    "src/open_hierarchical_memory/contracts.py": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+    "src/open_hierarchical_memory/summaries.py": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+    "src/open_hierarchical_memory/training.py": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e"
+  },
+  "versions": {
+    "minigrid": "3.1.0",
+    "gymnasium": "1.4.0",
+    "pygame-ce": "2.5.8",
+    "torch": "2.15.0",
+    "numpy": "2.5.4"
+  },
+  "python": "3.12.14",
+  "dtype": "CPU float64",
+  "torch_threads_per_worker": 1
+}

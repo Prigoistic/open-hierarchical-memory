@@ -1,0 +1,35 @@
+{
+  "scope": "supplemental startup-freeze check; SAME-COHORT serialization recovery, original decision-policy bytes unchanged",
+  "primary_freeze": "experiments/progress-evaluation-v2/manifest.json written by runner before execution",
+  "helper_note": "initial supplemental helper used systemPython and failed to import editable package; rerun under verified projectvenv; runner startup freeze and prior policy-equality attestation were unaffected",
+  "preflight_raw_bytes": 77312254,
+  "selected_readers": [
+    "bundle_zha",
+    "bundle_exact",
+    "graph",
+    "progress_zha",
+    "progress_exact",
+    "cues_zha",
+    "cues_exact"
+  ],
+  "selected_environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "selected_seeds": [
+    3001,
+    3002,
+    3003,
+    3004,
+    3005,
+    3006
+  ],
+  "source_hashes": {
+    "research/progress_retrieval.py": "fc0f936626d32b7c00d951d11468e7676b5d09a711ee3395e82622dd6f47545d",
+    "research/run_progress_benchmark.py": "81cec043c490c6ae59106b7d43cd65e18003607f4eeef1a7a5f604d861b95929",
+    "tests/test_progress_retrieval.py": "e091edbb601e69b1f42bc7081edaaa902653fc00c58122110f173246425aaad1",
+    "docs/PROGRESS_RETRIEVAL.md": "fc0b1909edf5318f6b520e7ba051e9463dc3728249ffb9d4bff29f0571142d84"
+  }
+}

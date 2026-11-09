@@ -1,0 +1,105 @@
+{
+  "all_passed": true,
+  "episodes": 24,
+  "steps": 5257,
+  "scope": "every old observation/action/non-time decision/selected-ID/query/route/shared work field/archive/result; only new wire-format counters excluded",
+  "reference": "experiments/dependency-development-v2",
+  "traces": [
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-0.json.gz",
+      "steps": 15
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_zha-1.json.gz",
+      "steps": 11
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-0.json.gz",
+      "steps": 15
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-bundle_exact-1.json.gz",
+      "steps": 11
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-graph-0.json.gz",
+      "steps": 15
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-graph-1.json.gz",
+      "steps": 11
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-0.json.gz",
+      "steps": 53
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_zha-1.json.gz",
+      "steps": 54
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-0.json.gz",
+      "steps": 53
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-bundle_exact-1.json.gz",
+      "steps": 54
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-graph-0.json.gz",
+      "steps": 53
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-graph-1.json.gz",
+      "steps": 54
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-0.json.gz",
+      "steps": 63
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_zha-1.json.gz",
+      "steps": 61
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-0.json.gz",
+      "steps": 63
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-bundle_exact-1.json.gz",
+      "steps": 63
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-graph-0.json.gz",
+      "steps": 75
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-graph-1.json.gz",
+      "steps": 65
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-0.json.gz",
+      "steps": 1080
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_zha-1.json.gz",
+      "steps": 1080
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-0.json.gz",
+      "steps": 1080
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-bundle_exact-1.json.gz",
+      "steps": 1080
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-0.json.gz",
+      "steps": 62
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-graph-1.json.gz",
+      "steps": 86
+    }
+  ]
+}

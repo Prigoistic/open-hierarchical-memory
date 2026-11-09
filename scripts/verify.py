@@ -5,6 +5,7 @@ import importlib.metadata
 import importlib.util
 import json
 import platform
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -82,9 +83,12 @@ def main() -> int:
             "research/serve_task_benchmark.py",
             "research/dependency_memory.py",
             "research/run_dependency_benchmark.py",
+            "research/progress_retrieval.py",
+            "research/run_progress_benchmark.py",
             "research/diagnose_dependency_failures.py",
             "scripts/audit_complex_tasks.py",
             "scripts/audit_dependency_memory.py",
+            "scripts/audit_progress_retrieval.py",
         ],
         [
             sys.executable,
@@ -114,12 +118,23 @@ def main() -> int:
                 "experiments/dependency-evaluation-v1",
             ]
         )
+        commands.append(
+            [
+                sys.executable,
+                "scripts/audit_progress_retrieval.py",
+                "--results",
+                "experiments/progress-evaluation-v2",
+            ]
+        )
+    node_runtime = shutil.which("node")
+    if node_runtime:
+        commands.append([node_runtime, "scripts/check_task_routing.cjs"])
     if arguments.profile == "full":
         commands.append([sys.executable, "scripts/check_package.py"])
     checks = []
     for command in commands:
         # Avoid embedding the machine-specific Python path in committed evidence.
-        label = "python " + " ".join(command[1:])
+        label = ("node " if command[0] == node_runtime else "python ") + " ".join(command[1:])
         print(f"\nChecking: {label}", flush=True)
         run = subprocess.run(command, cwd=ROOT, check=False)
         checks.append({"command": label, "exit_code": run.returncode})
@@ -129,6 +144,7 @@ def main() -> int:
         "scope": "CPU float64 no-RoPE core, separate lifecycle, symbolic spatial replay and continuous learned-memory behavior and official planning-task artifacts; no full-model/GPU/industry/guarantee validation",
         "profile": arguments.profile,
         "official_minigrid_audit_enabled": benchmark_extra,
+        "frontend_routing_checks_enabled": node_runtime is not None,
         "package_installations_checked": arguments.profile == "full"
         and len(checks) == len(commands)
         and checks[-1]["exit_code"] == 0,
