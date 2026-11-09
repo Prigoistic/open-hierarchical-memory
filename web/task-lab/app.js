@@ -28,6 +28,10 @@
       "zha-p50": "ZHA / p = 0.50",
       "random-values": "Shuffled case targets",
     };
+  const initialView = new URLSearchParams(location.search);
+  let pendingStep = initialView.has("step")
+    ? Number(initialView.get("step"))
+    : null;
   let catalog = { runs: [], summary: [] },
     bank = null,
     run = null,
@@ -39,7 +43,9 @@
     readMap = new Map(),
     headCursor = -1,
     headMap = new Map(),
-    routingView = "layers",
+    routingView = ["structure", "tree"].includes(initialView.get("view"))
+      ? initialView.get("view")
+      : "layers",
     routingHits = [],
     routingFocus = null,
     routing3D = null;
@@ -331,7 +337,9 @@
     if (id !== requestId) return;
     run = next;
     setRunControls(false);
-    cursor = 0;
+    cursor =
+      Number.isSafeInteger(pendingStep) && pendingStep >= 0 ? pendingStep : 0;
+    pendingStep = null;
     headCursor = -1;
     headMap.clear();
     routingFocus = null;
@@ -353,6 +361,10 @@
       seed: String(run.level_id),
     });
     if (isMaze()) params.set("env", run.environment_id);
+    params.set("step", String(cursor));
+    params.set("view", routingView);
+    if (initialView.get("renderer") === "canvas")
+      params.set("renderer", "canvas");
     history.replaceState(null, "", "?" + params);
     draw();
   }
@@ -366,6 +378,7 @@
       "cue",
       "routing-pass",
       "layers",
+      "structure",
       "tree-view",
       "solution",
       "search",
@@ -833,6 +846,7 @@
   }
   function routingCanvas() {
     routing3D?.setVisible(false);
+    $("routing-readout").replaceChildren();
     $("routing").hidden = false;
     return canvas($("routing"));
   }
@@ -864,6 +878,7 @@
     );
     $("cue").disabled = $("routing-pass").disabled = !routes.length;
     $("layers").disabled = $("tree-view").disabled = !routes.length;
+    $("structure").disabled = !routes.length || !routing3D;
     $("routing").setAttribute("aria-disabled", String(!routes.length));
     const inventory = d.inventory
       ? (objectNames[d.inventory[0]] || "object") +
@@ -903,7 +918,8 @@
     const recorded = routes[Number($("routing-pass").value)],
       route = SomnaRouting.resolveSnapshot(run, recorded),
       model = SomnaRouting.routingModel(route, observedHeads(), d.memory_ids);
-    if (routing3D && routingView === "layers" && model.mapped) {
+    $("structure").disabled = !routing3D || !model.mapped;
+    if (routing3D && routingView !== "tree" && model.mapped) {
       $("routing").hidden = true;
       routing3D.setVisible(true);
       routingHits = model.levels.flatMap((l) =>
@@ -918,7 +934,13 @@
         $("cue").value,
         $("routing-pass").value,
       ].join(":");
-      routing3D.setData(SomnaVisuals.hierarchyModel(model, key));
+      routing3D.setData(
+        (routingView === "structure"
+          ? SomnaVisuals.arborHierarchyModel
+          : SomnaVisuals.indexHierarchyModel)(model, key, {
+          columns: innerWidth < 600 ? 12 : 24,
+        }),
+      );
       routing3D.highlight(routingFocus);
       $("routing-description").textContent =
         model.rawCount +
@@ -928,10 +950,18 @@
       const selected = routingHits.find((p) => p.node.key === routingFocus);
       $("routing-inspection").textContent = selected
         ? SomnaRouting.nodeDescription(selected.node)
-        : "";
-      $("layers").classList.add("selected");
+        : "Select a node to inspect its original records.";
+      $("layers").classList.toggle("selected", routingView === "layers");
+      $("structure").classList.toggle("selected", routingView === "structure");
       $("tree-view").classList.remove("selected");
-      $("layers").setAttribute("aria-pressed", "true");
+      $("layers").setAttribute(
+        "aria-pressed",
+        String(routingView === "layers"),
+      );
+      $("structure").setAttribute(
+        "aria-pressed",
+        String(routingView === "structure"),
+      );
       $("tree-view").setAttribute("aria-pressed", "false");
       return;
     }
@@ -1444,6 +1474,12 @@
     if (!run) return;
     const data = frames();
     cursor = Math.min(Math.max(0, cursor), Math.max(0, data.length - 1));
+    if (!playing) {
+      const u = new URL(location.href);
+      u.searchParams.set("step", String(cursor));
+      u.searchParams.set("view", routingView);
+      history.replaceState(null, "", u);
+    }
     if (isMaze()) {
       drawMaze();
       return;
@@ -1480,9 +1516,11 @@
   }
   routing3D = globalThis.SomnaVisuals?.create({
     canvas: $("routing-spatial"),
+    readout: $("routing-readout"),
     onPick: (key) =>
       inspectRouting(routingHits.find((p) => p.node.key === key)),
   });
+  if (!routing3D && routingView === "structure") routingView = "tree";
   $("suite").onchange = () => {
     fillLevels();
     safe(loadRun());
@@ -1570,10 +1608,17 @@
   };
   $("layers").onclick = () => {
     routingView = "layers";
+    draw();
+    renderRouting(run.trajectory[cursor]);
+  };
+  $("structure").onclick = () => {
+    routingView = "structure";
+    draw();
     renderRouting(run.trajectory[cursor]);
   };
   $("tree-view").onclick = () => {
     routingView = "tree";
+    draw();
     renderRouting(run.trajectory[cursor]);
   };
   $("routing").onclick = (e) => {

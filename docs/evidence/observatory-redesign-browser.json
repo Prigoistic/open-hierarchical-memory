@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-09",
+  "scope": "Visual redesign after user rejected the initial spatial UI; presentation only",
+  "source_sha256": {
+    "web/visuals/src/models.mjs": "bbcf1db87bc5ee7a5a98da43b22564787cb2087d3a94f7a6b95b0733183f0829",
+    "web/visuals/src/scene.mjs": "d6e9143f4e9af31087bf7ebd18a3c39343c56f95aba30f8dc145ca95044f7ded",
+    "web/visuals/scene.css": "40c275e348166f446980fb89962a3e529cc47d1ebea0abd77bce9cb29f9ea6a8",
+    "web/visuals/build-manifest.json": "830654f58793cb8bc557426ca93a7e0702b7254642d3d6e9917eb3317dd6f0c8",
+    "web/task-lab/app.js": "eed628e426c8a6055f20a42311f2aabdfe9e3662d00a7fb53baef87d64db1c17",
+    "web/task-lab/index.html": "2b8c4cd665da65d214240a6d9db15ff674c7857208a8ba91513e3f8364f56548",
+    "web/somna-live/index.html": "940803a5b615622ba31ad4b33c4f6c099f80cf72832a8a595a9de37307f4e029",
+    "research/somna_engine.py": "4233683d3760b68ab25ef6c08b7d8c047c0ebf601f00546c70f10f42f69d9e9d",
+    "experiments/progress-evaluation-v2/report.json": "1fe578a901e7f9bcfcd3fa03a6a7bd776661e44091c26e1c7700fddf2ad0e6cd"
+  },
+  "browser": {
+    "desktop": {
+      "viewport": [1600, 900],
+      "cursor": "51 / 94",
+      "originals": 179,
+      "raw_read": 167,
+      "retained_edges": 216,
+      "source_value_glyphs": 895,
+      "playback_bottom_px": 892,
+      "horizontal_overflow": false
+    },
+    "pointer_inspection": {
+      "node": "L2 / node 0",
+      "composition": "6 wall, 10 empty",
+      "score": 6.918
+    },
+    "gsap_replay": {
+      "start_phase": 0,
+      "sample_count": 156,
+      "first_sample_phase": 0.133537,
+      "last_sample_phase": 1,
+      "distinct_first_marker_positions": 5,
+      "ends_hidden": true,
+      "markers": 216,
+      "recorded_edges": 216
+    },
+    "view_switches": [
+      "Layers to Branches",
+      "Orbit in Branches",
+      "Branches to Layers",
+      "Keyboard Home inspection",
+      "Focus read"
+    ],
+    "mobile": {
+      "viewport": [390, 844],
+      "overflow": false,
+      "atlas_columns": 12,
+      "live_originals": 256,
+      "live_channels": 1536
+    },
+    "reduced_motion": {
+      "preference": true,
+      "orbit_disabled": true,
+      "initial_replays": 0
+    },
+    "canvas_fallback": {
+      "webgl_hidden": true,
+      "canvas_visible": true,
+      "branches_disabled": true,
+      "renderer_preference_preserved": true
+    },
+    "graph_recovery": {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 3003,
+      "step": 79,
+      "three_hidden": true,
+      "population_cleared": true,
+      "cue_disabled": true,
+      "branches_disabled": true
+    },
+    "live_retrieval": {
+      "isolated_archive": "/private/tmp/somna-redesign-1109.sqlite",
+      "mask": [false, true],
+      "returned_read": 8,
+      "originals": 256,
+      "busy": false
+    },
+    "unhandled_errors": []
+  },
+  "validation": {
+    "python_tests": 429,
+    "source_mapping_tests": 16,
+    "ruff": "pass",
+    "format": "149 files",
+    "mypy": "7 files pass",
+    "js_syntax": "pass",
+    "routing_contracts": "pass",
+    "asset_hash_match": "pass"
+  },
+  "limits": [
+    "Graph projections are presentation layouts, not learned embeddings.",
+    "Marker timing is illustrative, not measured compute timing.",
+    "Live tests used a separate archive; user8791 was not restarted or reset.",
+    "Cua browser access was unavailable; rendered checks used Chromium agent-browser."
+  ],
+  "artifacts": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/console-redesign",
+  "video": {
+    "file": "ui-motion.mp4",
+    "codec": "h264",
+    "width": 1600,
+    "height": 900,
+    "duration_seconds": 34.2,
+    "type": "actual browser recording of layout, route replay, Branches, orbit and focus"
+  }
+}

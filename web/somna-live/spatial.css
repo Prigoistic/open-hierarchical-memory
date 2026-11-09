@@ -175,3 +175,823 @@
 .spatial-stage:fullscreen .spatial-status {
   top: 52px;
 }
+
+/* Instrument composition: the scene is the workspace, controls are peripheral. */
+.console-kicker {
+  font:
+    400 12px/16px Geist,
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c8b90;
+  margin: 0 0 12px;
+}
+.console-task header,
+.console-live header {
+  max-width: none;
+  padding: 12px 24px;
+  height: 56px;
+  border: 1px solid #202629;
+}
+.console-task .wordmark,
+.console-live .brand {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.04em;
+}
+.console-task .wordmark:before {
+  content: "◈";
+  font-size: 24px;
+  color: #d4b878;
+  margin-right: 8px;
+}
+.console-task header .wordmark span,
+.console-live .brand small {
+  color: #71828b;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.console-task main,
+.console-live main {
+  max-width: none;
+  padding: 0 24px 24px;
+}
+.console-task .intro,
+.console-live .intro {
+  padding: 16px 0 12px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.console-task .intro h1,
+.console-live .intro h1 {
+  font:
+    400 20px/28px Geist,
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+.console-task .intro h1 span,
+.console-live .intro h1 span {
+  color: #52666f;
+}
+.console-task .intro p,
+.console-live .intro > p {
+  font:
+    400 12px/16px Geist,
+    sans-serif;
+  color: #7c8b90;
+  max-width: 480px;
+}
+.console-task label,
+.console-live label {
+  color: #849298;
+  font-size: 12px;
+  line-height: 16px;
+}
+.console-task button,
+.console-task select,
+.console-live button,
+.console-live select {
+  border-radius: 2px;
+  background: #000;
+  border-color: #2a3337;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 8px 12px;
+}
+.console-task button:hover,
+.console-live button:hover {
+  background: #181818;
+  border-color: #687b83;
+}
+.console-task button.selected,
+.console-live button.selected {
+  background: #181818;
+  border-color: #697e85;
+  color: #e9ece9;
+}
+.console-task button.primary,
+.console-live button.primary {
+  background: #c4b27e;
+  border-color: #c4b27e;
+  color: #000;
+}
+.console-task .toolbar {
+  grid-template-columns: 1.25fr 1fr 0.5fr 1.4fr;
+  gap: 12px;
+}
+.console-task .toolbar label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px;
+}
+.console-task .toolbar select {
+  width: 100%;
+  height: 32px;
+  font-size: 12px;
+}
+.console-task .run-line {
+  margin-top: 4px;
+  min-height: 28px;
+  font-size: 12px;
+}
+.console-task .run-line #run-notice {
+  font-size: 12px;
+  color: #7c8b90;
+}
+.console-task .metrics {
+  padding: 4px 0 12px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.console-task .metrics b {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #d5e2df;
+}
+.console-task .metrics span {
+  color: #6c7e86;
+}
+.console-task .workbench {
+  grid-template-columns: minmax(192px, 0.8fr) minmax(0, 3.5fr) minmax(
+      208px,
+      0.85fr
+    );
+  gap: 0;
+  border: 1px solid #263137;
+  background: #000;
+  align-items: stretch;
+}
+.console-task .panel {
+  border: 0;
+  border-radius: 0;
+  padding: 12px;
+  min-height: 0;
+}
+.console-task .scene-panel {
+  border-right: 1px solid #263137;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.console-task .scene-panel .panel-title {
+  display: block;
+  margin: 0;
+}
+.console-task .scene-panel .panel-title .segmented {
+  margin-top: 12px;
+  gap: 4px;
+}
+.console-task .scene-panel h2 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.console-task .scene-panel .segmented button {
+  padding: 4px 8px;
+}
+.console-task #board {
+  height: 300px;
+  width: 100%;
+  display: block;
+  margin: 0;
+}
+.console-task .scene-panel .helper {
+  font-size: 12px;
+  line-height: 16px;
+  color: #74838b;
+}
+.console-task .scene-panel .legend {
+  margin: 0;
+  gap: 8px;
+  font-size: 12px;
+}
+.console-task .routing-panel {
+  padding: 0;
+  min-width: 0;
+  position: relative;
+}
+.console-task .routing-panel > .panel-title {
+  padding: 12px 16px 0;
+  margin: 0;
+}
+.console-task .routing-panel > .panel-title h2 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  margin-top: 4px;
+  color: #d5e2df;
+}
+.console-task .routing-panel > .panel-title .caption-5 {
+  color: #74838b;
+  letter-spacing: 0.04em;
+}
+.console-task .routing-panel .segmented button {
+  padding: 4px 8px;
+}
+.console-task .cue-controls {
+  padding: 8px 16px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(120px, 1fr);
+  gap: 8px;
+}
+.console-task .cue-controls label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: center;
+}
+.console-task .cue-controls label select {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+.console-task #cue-context {
+  grid-column: 1/-1;
+  font-size: 12px;
+  color: #60737b;
+}
+.console-task #routing-spatial,
+.console-task #routing {
+  width: 100%;
+  height: calc(100dvh - 352px);
+  min-height: 480px;
+  max-height: 880px;
+}
+.console-task .routing-panel > .legend {
+  padding: 0 16px;
+  margin: 0;
+  font-size: 12px;
+  color: #8c9aa0;
+  gap: 12px;
+}
+.console-task #routing-description {
+  padding: 8px 16px 12px;
+  color: #6e838d;
+  font-size: 12px;
+  line-height: 16px;
+}
+.console-task .evidence-section {
+  padding: 12px;
+  border: 0;
+  border-left: 1px solid #263137;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+.console-task .evidence-section > .panel-title {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.console-task .evidence-section h2 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.console-task #read-description {
+  margin-top: 4px;
+  line-height: 16px;
+}
+.console-task #routing-inspection {
+  min-height: 48px;
+  color: #c3d5d5;
+  font-size: 12px;
+  line-height: 20px;
+}
+.console-task .cases {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-height: calc(100dvh - 560px);
+  min-height: 180px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #35454d #000;
+}
+.console-task .case {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 8px;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #172125;
+  background: none;
+}
+.console-task .case canvas {
+  width: 32px !important;
+  height: 32px !important;
+  grid-row: span 2;
+}
+.console-task .case p {
+  font-size: 12px;
+  line-height: 16px;
+  word-break: break-word;
+}
+.console-task #case-caption {
+  font-size: 12px;
+  line-height: 16px;
+  color: #6e838d;
+  margin-top: 12px;
+}
+.routing-readout {
+  padding: 16px 0;
+  color: #758890;
+}
+.routing-readout .console-kicker {
+  margin-bottom: 8px;
+}
+.readout-row {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 48px;
+  gap: 8px;
+  align-items: center;
+  font:
+    400 12px/20px Geist,
+    sans-serif;
+}
+.readout-row > i {
+  height: 3px;
+  position: relative;
+  background: #223036;
+}
+.readout-row > i:after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--kept);
+  background: #a8c1bf;
+}
+.readout-row > span:last-child {
+  text-align: right;
+  color: #becdcb;
+}
+.readout-hint {
+  font-size: 12px;
+  line-height: 16px;
+  color: #4f6975;
+  margin: 8px 0 0;
+}
+.console-task .transport {
+  margin: 0;
+  padding: 12px 0;
+  position: relative;
+}
+.console-task .playbar {
+  gap: 8px;
+}
+.console-task #step-description {
+  margin: 4px 0 0;
+  color: #9dafb7;
+  font-size: 12px;
+}
+.console-task .technical,
+.console-task .comparison {
+  margin-top: 16px;
+}
+.console-task .comparison .title-2 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.console-task .workbench.single-view {
+  grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr);
+}
+.console-task .single-view #board {
+  height: 540px;
+}
+.console-live .intro .eyebrow {
+  margin: 0 0 4px;
+  color: #74838b;
+}
+.console-live .brand > span {
+  font-size: 24px;
+  line-height: 28px;
+  color: #d4b878;
+}
+.console-live .actions {
+  margin: 0 0 8px;
+  gap: 8px;
+}
+.console-live .actions button {
+  padding: 8px 12px;
+}
+.console-live .archive-strip {
+  gap: 24px;
+  padding: 8px 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.console-live .archive-strip > div {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.console-live .archive-strip b {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #d5e2df;
+}
+.console-live .archive-strip span {
+  font-size: 12px;
+  color: #6c7e86;
+}
+.console-live .scene-grid {
+  grid-template-columns: minmax(0, 1fr) 288px;
+  gap: 0;
+  margin-top: 0;
+  border: 1px solid #263137;
+}
+.console-live .experience {
+  border: 0;
+  border-radius: 0;
+}
+.console-live .panel-top {
+  padding: 12px 16px;
+  gap: 12px;
+}
+.console-live .panel-top h2 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.console-live .panel-top .eyebrow {
+  font-size: 12px;
+  line-height: 16px;
+  color: #74838b;
+  margin-bottom: 4px;
+}
+.console-live .panel-top .segmented button {
+  padding: 4px 8px;
+}
+.console-live .query-bar {
+  padding: 8px 16px;
+  gap: 12px;
+  font-size: 12px;
+}
+.console-live .query-bar label,
+.console-live .query-bar span {
+  font-size: 12px;
+  line-height: 16px;
+}
+.console-live #experience-spatial,
+.console-live #experience {
+  height: calc(100dvh - 408px);
+  min-height: 480px;
+  max-height: 880px;
+}
+.console-live .scene-grid > .right-scenes {
+  border-left: 1px solid #263137;
+  min-width: 0;
+}
+.console-live .scene-grid > .right-scenes section {
+  border: 0;
+  border-radius: 0;
+  padding: 12px;
+}
+.console-live .scene-grid > .right-scenes h2 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.console-live .scene-grid > .right-scenes .panel-top {
+  padding: 0 0 12px;
+}
+.console-live .scene-grid > .right-scenes canvas {
+  height: 208px;
+}
+.console-live .experience > .legend {
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 12px;
+  gap: 16px;
+}
+.console-live .experience > .hint {
+  padding: 0 16px;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 8px;
+  color: #74838b;
+}
+.console-live .sleep-panel {
+  margin-top: 24px;
+  border-radius: 0;
+}
+.spatial-status {
+  top: 48px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6f8e9a;
+  letter-spacing: 0.06em;
+}
+.spatial-toolbar {
+  left: 16px;
+  right: auto;
+  top: 8px;
+  gap: 4px;
+}
+.spatial-toolbar button {
+  padding: 4px 8px;
+  background: #000;
+  border: 1px solid #293941;
+  border-radius: 2px;
+  color: #a3b6bf;
+  font-size: 12px;
+}
+.spatial-toolbar button[aria-pressed="true"] {
+  color: #e6d79e;
+  border-color: #9d8a55;
+}
+.spatial-caption {
+  color: #587580;
+  font-size: 12px;
+  line-height: 16px;
+  bottom: 8px;
+}
+.spatial-label {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  color: #b7d1d9;
+  text-shadow: 0 0 8px #000;
+}
+.spatial-lens {
+  border-radius: 0;
+  border-color: #6c939d;
+  background: #000e;
+  box-shadow: none;
+  color: #b9d4da;
+  font-size: 12px;
+  line-height: 20px;
+}
+@media (max-width: 1200px) {
+  .console-task main,
+  .console-live main {
+    padding: 0 12px 24px;
+  }
+  .console-task .workbench {
+    grid-template-columns: 192px minmax(0, 1fr) 208px;
+  }
+  .console-task .metrics {
+    gap: 16px;
+  }
+  .console-task .scene-panel .segmented {
+    flex-wrap: wrap;
+  }
+  .console-task #board {
+    height: 256px;
+  }
+  .console-live .scene-grid {
+    grid-template-columns: minmax(0, 1fr) 240px;
+  }
+  .console-task .intro p {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .console-task .workbench {
+    grid-template-columns: 192px minmax(0, 1fr);
+  }
+  .console-task .evidence-section {
+    grid-column: 1/-1;
+    border: 0;
+    border-top: 1px solid #263137;
+    display: grid;
+    grid-template-columns: 192px 1fr;
+    gap: 12px;
+  }
+  .console-task .cases {
+    grid-column: 2;
+    grid-row: 1/6;
+    min-height: 200px;
+    max-height: 256px;
+  }
+  .console-task .evidence-section > .panel-title {
+    margin: 0;
+  }
+  .console-task .cue-controls {
+    grid-template-columns: 1fr;
+  }
+  .console-live .scene-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .console-live .scene-grid > .right-scenes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-left: 0;
+    border-top: 1px solid #263137;
+  }
+  .console-live .intro > p {
+    display: none;
+  }
+  .console-task .toolbar label {
+    display: flex;
+    align-items: stretch;
+  }
+  .console-task .toolbar {
+    gap: 8px;
+  }
+}
+@media (max-width: 600px) {
+  .console-task header,
+  .console-live header {
+    padding: 8px 12px;
+  }
+  .console-task header nav {
+    gap: 12px;
+  }
+  .console-task .intro,
+  .console-live .intro {
+    padding: 12px 0;
+  }
+  .console-task .toolbar {
+    grid-template-columns: 1fr 1fr;
+  }
+  .console-task .toolbar label {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .console-task .metrics {
+    gap: 8px 16px;
+    padding: 8px 0;
+  }
+  .console-task .metrics b {
+    font-size: 12px;
+  }
+  .console-task .metrics div {
+    gap: 4px;
+  }
+  .console-task .workbench {
+    display: flex;
+    flex-direction: column;
+  }
+  .console-task .scene-panel {
+    order: 2;
+    border-right: 0;
+    border-top: 1px solid #263137;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .console-task #board {
+    grid-row: 1/5;
+    grid-column: 2;
+    height: 192px;
+  }
+  .console-task .routing-panel {
+    order: 1;
+  }
+  .console-task .evidence-section {
+    order: 3;
+    display: block;
+  }
+  .console-task .scene-panel .panel-title .segmented {
+    flex-direction: column;
+  }
+  .console-task #routing-spatial,
+  .console-task #routing {
+    height: 520px;
+    min-height: 520px;
+  }
+  .console-task .cases {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 280px;
+  }
+  .console-task .playbar {
+    flex-wrap: wrap;
+  }
+  .console-task #timeline {
+    order: 5;
+    width: 100%;
+    flex-basis: 100%;
+  }
+  .console-task .run-line {
+    gap: 8px;
+  }
+  .console-task #run-notice {
+    max-width: 70%;
+    line-height: 16px;
+  }
+  .console-live .brand small {
+    display: none;
+  }
+  .console-live .intro h1 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .console-live .actions {
+    gap: 4px;
+  }
+  .console-live .cycle-status {
+    margin-left: 0;
+    font-size: 12px;
+    width: 100%;
+  }
+  .console-live .archive-strip {
+    gap: 8px 16px;
+  }
+  .console-live .archive-strip b {
+    font-size: 12px;
+  }
+  .console-live .panel-top {
+    flex-wrap: wrap;
+  }
+  .console-live .query-bar {
+    gap: 8px;
+  }
+  .console-live .scene-grid > .right-scenes {
+    grid-template-columns: 1fr;
+  }
+  .console-live #experience-spatial {
+    height: 520px;
+    min-height: 520px;
+  }
+  .spatial-toolbar {
+    left: 8px;
+    right: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .spatial-status {
+    left: 8px;
+    top: 52px;
+  }
+  .spatial-caption {
+    left: 8px;
+    right: 8px;
+  }
+}
+
+@media (min-width: 901px) {
+  .console-task #routing-spatial,
+  .console-task #routing {
+    height: calc(100dvh - 470px);
+    min-height: 360px;
+  }
+  .console-task .cases {
+    max-height: calc(100dvh - 640px);
+  }
+  .console-task .transport {
+    padding: 8px 0;
+  }
+  .console-task #step-description {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.channel-key {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  font:
+    400 12px/16px Geist,
+    sans-serif;
+  color: #829da7;
+}
+.channel-key span {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.channel-key i {
+  width: 4px;
+  height: 4px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .console-task .wordmark span {
+    display: none;
+  }
+  .console-task #routing-spatial,
+  .console-task #routing {
+    height: 440px;
+    min-height: 440px;
+  }
+}
+@media (min-width: 901px) {
+  .console-task .evidence-section {
+    max-height: calc(100dvh - 310px);
+    overflow-y: auto;
+  }
+  .console-task .speed-label {
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+  }
+  .console-task .playbar {
+    margin-bottom: 4px;
+  }
+}

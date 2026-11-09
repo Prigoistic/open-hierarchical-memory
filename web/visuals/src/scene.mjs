@@ -1,14 +1,26 @@
 import * as THREE from "three";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
-export { memoryModel, hierarchyModel } from "./models.mjs";
+export {
+  memoryModel,
+  hierarchyModel,
+  indexHierarchyModel,
+  arborHierarchyModel,
+} from "./models.mjs";
 gsap.registerPlugin(CustomEase);
 CustomEase.create("somna", "0.22,1,0.36,1");
 const V = (p) => new THREE.Vector3(...p);
 export class SpatialView {
-  constructor({ canvas, onPick, onQuery, onHover }) {
+  constructor({ canvas, onPick, onQuery, onHover, readout }) {
     this.canvas = canvas;
+    this.readout = readout;
+    this.traceCurves = [];
+    this.traceClock = { progress: 1 };
     this.onPick = onPick;
     this.onQuery = onQuery;
     this.onHover = onHover;
@@ -25,13 +37,18 @@ export class SpatialView {
       alpha: false,
       powerPreference: "low-power",
     });
-    this.renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+    this.renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
     this.renderer.setClearColor(0x000000);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.scene = new THREE.Scene();
     this.group = new THREE.Group();
     this.scene.add(this.group);
     this.camera = new THREE.OrthographicCamera(-4, 4, 3, -3, 0.01, 100);
+    this.composer = new EffectComposer(this.renderer);
+    this.composer.addPass(new RenderPass(this.scene, this.camera));
+    this.bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.38, 0.45, 0.72);
+    this.composer.addPass(this.bloom);
+    this.composer.addPass(new OutputPass());
     this.camera.position.set(5, 5, 7);
     this.controls = new OrbitControls(this.camera, canvas);
     this.controls.target.set(0, 1, 0);
@@ -83,6 +100,7 @@ export class SpatialView {
             });
         },
       ],
+      ["Replay read", () => this.replay()],
       ["Home", () => this.reset()],
       ["Focus read", () => this.focus()],
       [
@@ -168,7 +186,8 @@ export class SpatialView {
         changed ||
         this.dirty ||
         gsap.isTweening(this.camera.position) ||
-        gsap.isTweening(this.controls.target)
+        gsap.isTweening(this.controls.target) ||
+        gsap.isTweening(this.traceClock)
       )
         this.render();
     };
@@ -194,6 +213,7 @@ export class SpatialView {
     this.width = r.width;
     this.height = r.height;
     this.renderer.setSize(r.width, r.height, false);
+    this.composer?.setSize(r.width, r.height);
     const aspect = r.width / r.height;
     this.fitSpan(aspect);
     const span = this.span || 5.5;
@@ -228,10 +248,15 @@ export class SpatialView {
     this.group.traverse((o) => {
       o.geometry?.dispose();
       if (o.material) {
-        for (const m of Array.isArray(o.material) ? o.material : [o.material])
+        for (const m of Array.isArray(o.material) ? o.material : [o.material]) {
+          gsap.killTweensOf(m);
           m.dispose();
+        }
       }
     });
+    gsap.killTweensOf(this.traceClock);
+    this.traceCurves = [];
+    this.traceHeads = null;
     this.group.clear();
     this.focusMarker = null;
     for (const l of this.labels) l.el.remove();
@@ -306,9 +331,12 @@ export class SpatialView {
   }
   setData(model) {
     if (this.model?.key === model.key) return;
-    const first = !this.model;
+    const first = !this.model,
+      layoutChanged = this.model?.layout !== model.layout;
     this.model = model;
     this.clear();
+    this.group.rotation.x = model.layout === "ordinal" ? Math.PI / 2 : 0;
+    this.group.updateMatrixWorld(true);
     this.glowTexture ??= this.texture("glow");
     this.ringTexture ??= this.texture("ring");
     const box = new THREE.Box3();
@@ -317,15 +345,15 @@ export class SpatialView {
       const [a, b, c, d] = plane.bounds,
         y = plane.y,
         grid = [];
-      for (let j = 0; j <= 8; j++) {
-        const x = a + ((b - a) * j) / 8,
-          z = c + ((d - c) * j) / 8;
+      for (let j = 0; j <= 24; j++) {
+        const x = a + ((b - a) * j) / 24,
+          z = c + ((d - c) * j) / 24;
         grid.push(
           { from: [x, y, c], to: [x, y, d] },
           { from: [a, y, z], to: [b, y, z] },
         );
       }
-      this.line(grid, plane.color, 0.085);
+      this.line(grid, plane.color, 0.16);
       this.line(
         [
           { from: [a, y, c], to: [b, y, c] },
@@ -341,7 +369,7 @@ export class SpatialView {
         new THREE.MeshBasicMaterial({
           color: plane.color,
           transparent: true,
-          opacity: 0.018,
+          opacity: 0.025,
           side: THREE.DoubleSide,
           depthWrite: false,
         }),
@@ -352,10 +380,27 @@ export class SpatialView {
       this.group.add(mesh);
       box.expandByPoint(V([a, y, c]));
       box.expandByPoint(V([b, y, d]));
-      this.label(plane.label, [a - 0.02, y, d + 0.06], plane.color);
+      this.label(
+        plane.label +
+          (plane.count !== undefined
+            ? " · " + plane.kept + " / " + plane.count
+            : ""),
+        [a - 0.02, y, d + 0.06],
+        plane.color,
+      );
+      this.line(
+        [
+          { from: [a, y - 0.045, c], to: [b, y - 0.045, c] },
+          { from: [b, y - 0.045, c], to: [b, y - 0.045, d] },
+          { from: [b, y - 0.045, d], to: [a, y - 0.045, d] },
+          { from: [a, y - 0.045, d], to: [a, y - 0.045, c] },
+        ],
+        plane.color,
+        0.2,
+      );
     }
-    const top = Math.max(...model.planes.map((p) => p.y)),
-      bottom = Math.min(...model.planes.map((p) => p.y));
+    const top = Math.max(0, ...model.planes.map((p) => p.y)),
+      bottom = Math.min(0, ...model.planes.map((p) => p.y));
     const p = model.planes[0];
     if (p) {
       const [a, b, c, d] = p.bounds;
@@ -373,6 +418,10 @@ export class SpatialView {
     for (const kind of ["stem", "transition", "cue", "read", "prediction"]) {
       const source = model.segments.filter((s) => s.kind === kind),
         colors = [...new Set(source.map((s) => s.color))];
+      if (kind === "read" && model.kind === "hierarchy") {
+        this.curveLinks(source);
+        continue;
+      }
       for (const color of colors) {
         const group = source.filter((s) => s.color === color);
         this.line(
@@ -425,7 +474,7 @@ export class SpatialView {
     this.points(
       model.points.filter((p) => p.dim),
       2.7,
-      0.2,
+      0.42,
     );
     this.points(
       model.points.filter((p) => !p.dim),
@@ -458,6 +507,8 @@ export class SpatialView {
       1,
       this.ringTexture,
     );
+    this.glyphs(model.points);
+    if (model.layout === "ordinal") this.spanContours(model.points);
     for (const a of model.anchors) {
       this.points(
         [{ position: a.position, color: "#edece4" }],
@@ -467,6 +518,7 @@ export class SpatialView {
       );
       this.label(a.label, a.position, "#edece4");
     }
+    box.applyMatrix4(this.group.matrixWorld);
     const changedBounds = !this.box || !this.box.equals(box);
     this.box = box;
     this.center = box.getCenter(new THREE.Vector3());
@@ -478,14 +530,241 @@ export class SpatialView {
       model.readCount +
       " IN READ";
     this.caption.textContent = model.heightLabel;
+    this.updateReadout(model);
     this.canvas.dataset.sourceCount = model.sourceCount;
     this.canvas.dataset.readCount = model.readCount;
     this.canvas.dataset.modelKey = model.key;
     this.canvas.dataset.geometryPoints = model.points.length;
-    if (first || (changedBounds && !this.userCamera)) this.reset(0);
+    if (first || layoutChanged || (changedBounds && !this.userCamera))
+      this.reset(layoutChanged && !first && !this.reduced ? 0.9 : 0);
     else this.resize();
     this.highlight(this.focused);
     this.render();
+    if ((first || layoutChanged) && !this.reduced) {
+      if (first)
+        gsap.from(this.camera.position, {
+          x: this.camera.position.x + 2.5,
+          z: this.camera.position.z + 3,
+          duration: 1.8,
+          ease: "somna",
+          onUpdate: () => (this.dirty = true),
+        });
+      let delay = 0;
+      this.group.traverse((o) => {
+        if (o.material && o.material.transparent) {
+          const opacity = o.material.opacity;
+          gsap.fromTo(
+            o.material,
+            { opacity: 0 },
+            {
+              opacity,
+              duration: 0.9,
+              delay: Math.min(0.5, (delay += 0.008)),
+              ease: "somna",
+              onUpdate: () => (this.dirty = true),
+            },
+          );
+        }
+      });
+      this.replay();
+    }
+  }
+  curveLinks(segments) {
+    const lines = [];
+    for (const s of segments) {
+      const a = V(s.from),
+        b = V(s.to),
+        middle = a.clone().lerp(b, 0.5);
+      middle.x += (b.z - a.z) * 0.12;
+      if (this.model.layout === "arbor")
+        middle.set(a.x, a.y + (b.y - a.y) * 0.7, a.z);
+      const curve = new THREE.QuadraticBezierCurve3(a, middle, b);
+      if (this.model.layout === "arbor") {
+        const tube = new THREE.Mesh(
+          new THREE.TubeGeometry(curve, 20, s.radius || 0.012, 4, false),
+          new THREE.MeshBasicMaterial({
+            color: "#96c1be",
+            transparent: true,
+            opacity: 0.36,
+            depthWrite: false,
+          }),
+        );
+        this.group.add(tube);
+      }
+      this.traceCurves.push({ curve, level: s.level || 1 });
+      const pts = curve.getPoints(24);
+      for (let i = 1; i < pts.length; i++)
+        lines.push({ from: pts[i - 1].toArray(), to: pts[i].toArray() });
+    }
+    this.line(lines, "#a1c3c7", 0.48);
+    if (this.traceCurves.length) {
+      this.traceHeads = this.points(
+        this.traceCurves.map(({ curve }) => ({
+          position: curve.getPoint(0).toArray(),
+          color: "#f4e6ae",
+        })),
+        5,
+        1,
+      );
+      this.traceHeads.visible = false;
+    }
+  }
+  replay() {
+    if (this.reduced || !this.model) return;
+    this.canvas.dataset.traceReplay = String(
+      Number(this.canvas.dataset.traceReplay || 0) + 1,
+    );
+    const source = this.traceCurves.length
+      ? this.traceCurves
+      : this.model.segments
+          .filter((s) => s.kind === "read")
+          .map((s) => ({
+            curve: new THREE.LineCurve3(V(s.from), V(s.to)),
+            level: 1,
+          }));
+    if (!source.length) return;
+    if (!this.traceHeads) {
+      this.traceCurves = source;
+      this.traceHeads = this.points(
+        source.map(({ curve }) => ({
+          position: curve.getPoint(0).toArray(),
+          color: "#f4e6ae",
+        })),
+        5,
+        1,
+      );
+    }
+    this.traceHeads.visible = true;
+    gsap.fromTo(
+      this.traceClock,
+      { progress: 0 },
+      {
+        progress: 1,
+        duration: 2.2,
+        ease: "somna",
+        overwrite: true,
+        onUpdate: () => (this.dirty = true),
+        onComplete: () => {
+          this.traceHeads.visible = false;
+          this.dirty = true;
+        },
+      },
+    );
+  }
+  glyphs(points) {
+    const cells = [];
+    const palette = [
+      "#8dbecf",
+      "#7ac9bf",
+      "#e4b56f",
+      "#c7c97b",
+      "#a990c9",
+      "#b2c4b0",
+    ];
+    for (const p of points)
+      for (const [i, f] of (p.fields || []).entries()) {
+        const value = Math.min(
+          1,
+          Math.abs(f.value) /
+            (f.name === "x" || f.name === "y"
+              ? 32
+              : f.name === "object"
+                ? 10
+                : f.name === "salience"
+                  ? 2
+                  : 5),
+        );
+        cells.push({
+          position: [
+            p.position[0] + ((i % 3) - 1) * 0.045,
+            p.position[1] + 0.012 + value * 0.018,
+            p.position[2] + (Math.floor(i / 3) - 0.5) * 0.045,
+          ],
+          color: palette[i % palette.length],
+          dim: p.dim,
+        });
+      }
+    this.points(
+      cells.filter((p) => p.dim),
+      2,
+      0.26,
+    );
+    this.points(
+      cells.filter((p) => !p.dim),
+      2.6,
+      0.92,
+    );
+    this.canvas.dataset.channelGlyphs = cells.length;
+  }
+  spanContours(points) {
+    for (const p of points.filter(
+      (p) => p.level && p.selected && p.members?.length,
+    )) {
+      const xs = p.members.map((p) => p[0]),
+        zs = p.members.map((p) => p[2]),
+        a = Math.min(...xs) - 0.11,
+        b = Math.max(...xs) + 0.11,
+        c = Math.min(...zs) - 0.11,
+        d = Math.max(...zs) + 0.11,
+        y = p.position[1];
+      this.line(
+        [
+          { from: [a, y, c], to: [b, y, c] },
+          { from: [b, y, c], to: [b, y, d] },
+          { from: [b, y, d], to: [a, y, d] },
+          { from: [a, y, d], to: [a, y, c] },
+        ],
+        p.level > 1 ? "#879bb0" : "#83c7bd",
+        0.2,
+      );
+    }
+  }
+  updateReadout(model) {
+    if (!this.readout) return;
+    this.readout.replaceChildren();
+    const heading = document.createElement("p");
+    heading.className = "console-kicker";
+    heading.textContent = "Routing population";
+    this.readout.append(heading);
+    for (const l of model.readout || []) {
+      const row = document.createElement("div");
+      row.className = "readout-row";
+      const label = document.createElement("span");
+      label.textContent = l.label;
+      const bar = document.createElement("i");
+      bar.style.setProperty(
+        "--kept",
+        (100 * l.kept) / Math.max(1, l.count) + "%",
+      );
+      const count = document.createElement("span");
+      count.textContent = l.kept + " / " + l.count;
+      row.append(label, bar, count);
+      this.readout.append(row);
+    }
+    const hint = document.createElement("p");
+    hint.className = "readout-hint";
+    hint.textContent = "Expanded / scored · this recorded read";
+    this.readout.append(hint);
+    const key = document.createElement("div");
+    key.className = "channel-key";
+    for (const [name, color] of [
+      ["X", "#8dbecf"],
+      ["Y", "#7ac9bf"],
+      ["Object", "#e4b56f"],
+      ["Colour", "#c7c97b"],
+      ["State", "#a990c9"],
+    ]) {
+      const item = document.createElement("span"),
+        dot = document.createElement("i");
+      dot.style.background = color;
+      item.append(dot, document.createTextNode(name));
+      key.append(item);
+    }
+    this.readout.append(key);
+    const note = document.createElement("p");
+    note.className = "readout-hint";
+    note.textContent = "Glyph height: normalised magnitude. Hover for values.";
+    this.readout.append(note);
   }
   reset(duration = this.reduced ? 0 : 0.7) {
     if (!this.model) return;
@@ -543,6 +822,7 @@ export class SpatialView {
     const center = new THREE.Vector3();
     for (const p of points) center.add(V(p.position));
     center.divideScalar(points.length);
+    center.applyMatrix4(this.group.matrixWorld);
     const offset = this.camera.position.clone().sub(this.controls.target);
     const duration = this.reduced ? 0 : 0.65;
     gsap.to(this.controls.target, {
@@ -591,7 +871,9 @@ export class SpatialView {
     this.dirty = true;
   }
   project(position) {
-    const p = V(position).project(this.camera);
+    const p = V(position)
+      .applyMatrix4(this.group.matrixWorld)
+      .project(this.camera);
     return {
       x: ((p.x + 1) * this.width) / 2,
       y: ((1 - p.y) * this.height) / 2,
@@ -636,13 +918,39 @@ export class SpatialView {
   showTip(point) {
     this.tip.hidden = !point;
     if (!point) return;
-    this.tip.textContent = point.label + "\n" + point.detail;
+    this.tip.textContent =
+      point.label +
+      "\n" +
+      point.detail +
+      (point.fields?.length
+        ? "\n" +
+          point.fields
+            .map((f) => f.name + " " + Number(f.value.toFixed(3)))
+            .join(" · ")
+        : "");
     const p = this.project(point.position);
     this.tip.style.transform = `translate(${Math.min(this.width - 228, Math.max(8, p.x + 12))}px,${Math.min(this.height - 70, Math.max(40, p.y - 20))}px)`;
   }
   render() {
     if (!this.width || !this.height) return;
-    this.renderer.render(this.scene, this.camera);
+    if (this.traceHeads?.visible) {
+      const attr = this.traceHeads.geometry.attributes.position,
+        max = Math.max(...this.traceCurves.map((c) => c.level));
+      for (let i = 0; i < this.traceCurves.length; i++) {
+        const item = this.traceCurves[i],
+          phase = Math.max(
+            0,
+            Math.min(
+              1,
+              this.traceClock.progress * (max + 1) - (max - item.level),
+            ),
+          );
+        const p = item.curve.getPoint(phase);
+        attr.setXYZ(i, p.x, p.y, p.z);
+      }
+      attr.needsUpdate = true;
+    }
+    this.composer.render();
     for (const l of this.labels) {
       const p = this.project(l.position);
       l.el.hidden =
@@ -662,6 +970,8 @@ export class SpatialView {
     this.clear();
     this.glowTexture?.dispose();
     this.ringTexture?.dispose();
+    this.composer.dispose();
+    this.bloom.dispose();
     this.renderer.dispose();
     this.overlay.remove();
   }

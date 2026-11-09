@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="spatial.css" />
   </head>
-  <body>
+  <body class="console-live">
     <a href="#lab" class="skip">Skip to experiment</a>
     <header>
       <a class="brand" href="/"
@@ -24,7 +24,7 @@
       <div class="intro">
         <div>
           <p class="eyebrow">Experience → partial recall → offline learning</p>
-          <h1>Remember. Forget. Reconstruct.</h1>
+          <h1>Memory observatory<span> / 02</span></h1>
         </div>
         <p>
           Click a position to ask what happens there. Remove part of the cue.
@@ -34,7 +34,7 @@
       </div>
       <div id="error" class="error" role="alert" hidden></div>
       <div class="actions">
-        <button id="cycle" class="primary">Run a memory cycle ↗</button
+        <button id="cycle" class="primary">Run cycle</button
         ><button id="collect">Collect 32 observations</button
         ><button id="fade">Let memories fade</button
         ><button id="sleep">Learn offline</button>
@@ -55,7 +55,7 @@
           <div class="panel-top">
             <div>
               <span class="eyebrow">01 / Recorded experience</span>
-              <h2>A field of possible memories</h2>
+              <h2>Recorded experience</h2>
             </div>
             <div class="segmented">
               <button data-projection="layers" class="selected">Layers</button
@@ -91,15 +91,20 @@
                 <option value="down">Down ↓</option>
                 <option value="">Unknown</option>
               </select></label
-            ><button id="query-now">Recall from this cue ↗</button>
+            ><button id="query-now">Recall cue ↗</button>
           </div>
           <div class="spatial-stage">
-          <canvas
-            id="experience"
-            tabindex="0"
-            aria-label="Observed spatial episodes. Click to query a position. Choose Inspect to select an observation."
-          ></canvas>
-            <canvas id="experience-spatial" hidden tabindex="0" aria-label="Interactive 3D observed memory field"></canvas>
+            <canvas
+              id="experience"
+              tabindex="0"
+              aria-label="Observed spatial episodes. Click to query a position. Choose Inspect to select an observation."
+            ></canvas>
+            <canvas
+              id="experience-spatial"
+              hidden
+              tabindex="0"
+              aria-label="Interactive 3D observed memory field"
+            ></canvas>
           </div>
           <div class="legend">
             <span><i class="world-a"></i>World A</span

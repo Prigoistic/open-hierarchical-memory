@@ -1,6 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { memoryModel, hierarchyModel, COLORS } from "../src/models.mjs";
+import {
+  memoryModel,
+  hierarchyModel,
+  COLORS,
+  indexHierarchyModel,
+  arborHierarchyModel,
+} from "../src/models.mjs";
 const node = (id, context = 0) => ({
   id,
   context,
@@ -197,5 +203,132 @@ test("offline replay rings mark only the recorded sources of the active update",
   assert.equal(
     memoryModel(s).points.some((p) => p.replayed),
     false,
+  );
+});
+
+function mappedHierarchy() {
+  const a = { id: 17, x: 8, y: 16, object: 4, color: 0, state: 2 },
+    b = { id: 28, x: 24, y: 32, object: 5, color: 2, state: 0 };
+  return {
+    mapped: true,
+    originalCount: 2,
+    rawCount: 1,
+    edges: [
+      ["1:0", "0:0"],
+      ["1:0", "0:1"],
+    ],
+    levels: [
+      {
+        level: 1,
+        nodes: [
+          {
+            key: "1:0",
+            level: 1,
+            index: 0,
+            facts: [a, b],
+            kept: true,
+            returned: false,
+            score: 0.23,
+          },
+        ],
+      },
+      {
+        level: 0,
+        nodes: [
+          {
+            key: "0:0",
+            level: 0,
+            index: 0,
+            facts: [a],
+            kept: true,
+            returned: true,
+          },
+          {
+            key: "0:1",
+            level: 0,
+            index: 1,
+            facts: [b],
+            kept: false,
+            returned: false,
+          },
+        ],
+      },
+    ],
+  };
+}
+test("ordinal atlas preserves original IDs, five actual fields and recorded edge ownership", () => {
+  const h = freeze(mappedHierarchy()),
+    m = indexHierarchyModel(h, "index");
+  assert.equal(m.sourceCount, 2);
+  assert.equal(m.readCount, 1);
+  assert.deepEqual(
+    m.points.map((p) => p.id),
+    ["1:0", "0:0", "0:1"],
+  );
+  assert.equal(m.points[1].fields.length, 5);
+  assert.equal(m.points[1].fields.find((f) => f.name === "object").value, 4);
+  for (let i = 0; i < h.edges.length; i++) {
+    const [a, b] = h.edges[i];
+    assert.deepEqual(
+      m.segments[i].from,
+      m.points.find((p) => p.id === a).position,
+    );
+    assert.deepEqual(
+      m.segments[i].to,
+      m.points.find((p) => p.id === b).position,
+    );
+  }
+  assert.equal(
+    m.points[0].position[0],
+    (m.points[1].position[0] + m.points[2].position[0]) / 2,
+  );
+  assert.equal(m.readout[0].kept, 1);
+  assert.equal(m.readout[1].count, 2);
+});
+test("ordinal atlas refuses member IDs absent from its indexed originals", () => {
+  const h = mappedHierarchy();
+  h.levels[0].nodes[0].facts.push({ id: 999, x: 1, y: 2 });
+  assert.throws(() => indexHierarchyModel(h, "bad"), /Missing original/);
+});
+test("branch display preserves topology and produces finite separated display coordinates", () => {
+  const h = freeze(mappedHierarchy()),
+    a = arborHierarchyModel(h, "arbor"),
+    b = indexHierarchyModel(h, "index");
+  assert.equal(a.layout, "arbor");
+  assert.equal(a.planes.length, 0);
+  assert.equal(a.segments.length, h.edges.length);
+  assert.deepEqual(
+    a.points.map((p) => p.id),
+    b.points.map((p) => p.id),
+  );
+  assert.notDeepEqual(a.points[1].position, a.points[2].position);
+  assert.ok(a.points.every((p) => p.position.every(Number.isFinite)));
+  assert.ok(a.segments.every((s) => Number.isFinite(s.radius) && s.radius > 0));
+});
+test("ending an offline update invalidates the replay-source cache at the same model tick", () => {
+  const s = state();
+  s.sleep = { busy: true, trace: [{ sources: [28] }] };
+  const a = memoryModel(s);
+  s.sleep.busy = false;
+  const b = memoryModel(s);
+  assert.notEqual(a.key, b.key);
+  assert.equal(
+    b.points.some((p) => p.replayed),
+    false,
+  );
+});
+test("portrait atlas changes display columns while preserving IDs and recorded edge topology", () => {
+  const h = freeze(mappedHierarchy()),
+    wide = indexHierarchyModel(h, "wide"),
+    portrait = indexHierarchyModel(h, "portrait", { columns: 12 });
+  assert.deepEqual(
+    wide.points.map((p) => p.id),
+    portrait.points.map((p) => p.id),
+  );
+  assert.equal(wide.segments.length, portrait.segments.length);
+  assert.notEqual(wide.key, portrait.key);
+  assert.throws(
+    () => indexHierarchyModel(h, "bad", { columns: 0 }),
+    /Invalid ordinal/,
   );
 });

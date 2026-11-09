@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="spatial.css" />
   </head>
-  <body>
+  <body class="console-task">
     <a class="skip" href="#experiment">Skip to experiment</a>
     <header>
       <a href="/" class="wordmark">somna <span>/ experiments</span></a>
@@ -26,10 +26,8 @@
     </header>
     <main id="experiment">
       <div class="intro">
-        <h1 class="heading-5">Memory &amp; navigation</h1>
-        <p class="body-6">
-          Inspect a maze decision and its retrieved evidence.
-        </p>
+        <h1 class="heading-5">Routing observatory<span> / 01</span></h1>
+        <p class="body-6">Recorded navigation · hierarchical memory</p>
       </div>
       <div id="error" role="alert" hidden></div>
       <section class="toolbar" aria-label="Experiment selection">
@@ -55,36 +53,12 @@
         </details>
       </div>
       <div class="metrics" id="run-metrics" aria-live="polite"></div>
-      <section class="transport" aria-label="Recorded playback">
-        <div class="playbar">
-          <button id="play" class="primary">Play</button
-          ><button id="back" aria-label="Previous recorded state">←</button
-          ><button id="forward" aria-label="Next recorded state">→</button
-          ><button id="next-event" hidden>Next recovery</button>
-          <input
-            id="timeline"
-            type="range"
-            min="0"
-            max="0"
-            value="0"
-            aria-label="Recorded state"
-          /><span id="cursor" class="caption-4">0 / 0</span
-          ><label class="speed-label"
-            >Speed<select id="speed">
-              <option value="280">1×</option>
-              <option value="100" selected>3×</option>
-              <option value="40">7×</option>
-            </select></label
-          >
-        </div>
-        <p id="step-description" class="caption-2"></p>
-      </section>
       <div class="workbench">
         <section class="panel scene-panel" aria-label="Recorded navigation">
           <div class="panel-title">
             <div>
               <span id="board-label" class="caption-5 muted"
-                >Recorded maze</span
+                >01 / Navigation</span
               >
               <h2 id="board-title" class="title-2">Loading</h2>
             </div>
@@ -118,11 +92,12 @@
         >
           <div class="panel-title">
             <div>
-              <span class="caption-5 muted">Memory routing</span>
-              <h2 class="title-2">Cue → branches → original facts</h2>
+              <span class="caption-5 muted">02 / Hierarchical memory</span>
+              <h2 class="title-2">Hierarchical read</h2>
             </div>
             <div class="segmented">
               <button id="layers" class="selected">Layers</button
+              ><button id="structure">Branches</button
               ><button id="tree-view">Tree</button>
             </div>
           </div>
@@ -132,12 +107,17 @@
             ><span id="cue-context" class="caption-5 muted"></span>
           </div>
           <div class="spatial-stage">
-          <canvas
-            id="routing"
-            tabindex="0"
-            aria-label="Recorded hierarchy routing; select a node to inspect its observed facts"
-          ></canvas>
-            <canvas id="routing-spatial" hidden tabindex="0" aria-label="Interactive 3D recorded hierarchy"></canvas>
+            <canvas
+              id="routing"
+              tabindex="0"
+              aria-label="Recorded hierarchy routing; select a node to inspect its observed facts"
+            ></canvas>
+            <canvas
+              id="routing-spatial"
+              hidden
+              tabindex="0"
+              aria-label="Interactive 3D recorded hierarchy"
+            ></canvas>
           </div>
           <div class="legend caption-5">
             <span><i class="support"></i>Expanded</span
@@ -150,19 +130,47 @@
             class="caption-5 muted"
             aria-live="polite"
           ></p>
-          <p id="routing-inspection" class="caption-5" aria-live="polite"></p>
+        </section>
+        <section class="evidence-section" aria-label="Source inspector">
+          <p class="console-kicker">03 / Source inspector</p>
+          <p id="routing-inspection" class="caption-5" aria-live="polite">
+            Select a node to inspect its source.
+          </p>
+          <div id="routing-readout" class="routing-readout"></div>
+          <div class="panel-title">
+            <div>
+              <h2 class="title-2">Returned facts</h2>
+            </div>
+            <p id="read-description" class="caption-5 muted"></p>
+          </div>
+          <div id="cases" class="cases"></div>
+          <p id="case-caption" class="caption-5 muted"></p>
         </section>
       </div>
 
-      <section class="evidence-section">
-        <div class="panel-title">
-          <div>
-            <h2 class="title-2">Returned facts</h2>
-          </div>
-          <p id="read-description" class="caption-5 muted"></p>
+      <section class="transport" aria-label="Recorded playback">
+        <div class="playbar">
+          <button id="play" class="primary">Play</button
+          ><button id="back" aria-label="Previous recorded state">←</button
+          ><button id="forward" aria-label="Next recorded state">→</button
+          ><button id="next-event" hidden>Next recovery</button>
+          <input
+            id="timeline"
+            type="range"
+            min="0"
+            max="0"
+            value="0"
+            aria-label="Recorded state"
+          /><span id="cursor" class="caption-4">0 / 0</span
+          ><label class="speed-label"
+            >Speed<select id="speed">
+              <option value="280">1×</option>
+              <option value="100" selected>3×</option>
+              <option value="40">7×</option>
+            </select></label
+          >
         </div>
-        <div id="cases" class="cases"></div>
-        <p id="case-caption" class="caption-5 muted"></p>
+        <p id="step-description" class="caption-2"></p>
       </section>
       <details class="technical">
         <summary>Inspect work and dependency receipts</summary>
