@@ -70,3 +70,14 @@ uv run --locked --extra research --extra benchmarks python scripts/verify.py
 ```
 
 Open `http://127.0.0.1:8792/` for puzzle solutions, hypothetical search probes and recalled source cases, or `http://127.0.0.1:8792/?task=maze` for the recorded maze observations and reconstructed recall map. This read-only inspector uses checked experimental artifacts. It does not replay a canned demonstration as live model execution. The benchmark extra pins MiniGrid 3.1.0; the official Boxoban source and Apache 2.0 license are retained under `data/boxoban/`.
+
+
+## Dependency-preserving maze memory
+
+The [implementation overview](docs/PROJECT_OVERVIEW.md) separates the numerical ZHA engine, live Somna learner and symbolic task adapters. The [dependency-memory protocol](docs/DEPENDENCY_MEMORY.md) tests a concrete interface change: return a landmark together with its observed route and prerequisites, and separately supply a 512-byte observed-known mask. The mask suppresses invented exploration frontiers; it does not reveal omitted cell contents or create a navigable path.
+
+Flat ZHA/exact mask controls, exact historical-only selection, identical bundle packing with different seed readers, and an ordinary observed-graph control separate those effects. Archive scans, graph building, BFS, packing and metadata transport are explicitly counted. A 96-fact workspace is not a total-memory or computational bound. The [independent review](docs/DEPENDENCY_REVIEW.md) states the acceptance contract and evidence limitations.
+
+Open `http://127.0.0.1:8792/?task=dependencies` after launching the inspector above to compare the completed fresh cohort. Recall maps distinguish omitted known cells, accepted bundle support and the shared planner's route. Receipts can be inspected per action; they certify only their stated local support requirements.
+
+The [fresh six-seed comparison](experiments/dependency-evaluation-v1/SUMMARY.md) contains 264 episodes. Coverage raises adaptive ZHA from 7/24 to 20/24; ZHA bundles remain 20/24, historical-only exact selection reaches 21/24, and observed-graph bundles/full memory reach 24/24. The result supports correcting the coverage interface; it does not establish a hierarchy or bundling advantage. All 82 official truncations are retained. Graph computation and the additional mask remain explicit costs.

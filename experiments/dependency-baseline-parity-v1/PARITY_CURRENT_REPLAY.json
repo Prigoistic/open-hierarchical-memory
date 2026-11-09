@@ -1,0 +1,524 @@
+{
+  "all_passed": true,
+  "episodes_checked": 56,
+  "steps_checked": 49612,
+  "current_source_sha256": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d",
+  "frozen_reference_source_sha256": "3e58dc71124b083d3508c9e0f91c1624d1b9cf020deafaefd929f5323eae3a08",
+  "reference_directory": "/Users/priyamghosh/Documents/GitHub/open-hierarchical-memory/experiments/minigrid-development-v2",
+  "checked": "same observation prefix, actions, every decision/query/selected ID/route/work count except timing, added versions and final immutable archive",
+  "excluded_timing_fields": [
+    "dependency_seconds",
+    "episode_seconds",
+    "index_rebuild_seconds",
+    "planning_seconds",
+    "policy_seconds",
+    "retrieval_seconds"
+  ],
+  "episodes": [
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-exact-0.json.gz",
+      "sha256": "16226bbaf0b48cb19d0427db87e53cc8da4bdde81fdcd161cca7034239ea1a1f",
+      "steps_checked": 2560,
+      "reader": "exact",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-exact-1.json.gz",
+      "sha256": "c0e5a5f017072bbebbdbd825c198aa49afae3a4eb4ff2c09b896d3ffb914b480",
+      "steps_checked": 2560,
+      "reader": "exact",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-fifo-0.json.gz",
+      "sha256": "ca76790e2afef4e8e97f1ad9acfde1f3709dd396bbf237fbf152625caaae4740",
+      "steps_checked": 2560,
+      "reader": "fifo",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-fifo-1.json.gz",
+      "sha256": "c9c64d72b16c8269ce789c9031b02c07067cad8a0b569ba3f91f7adcde81a7a1",
+      "steps_checked": 2560,
+      "reader": "fifo",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-full-0.json.gz",
+      "sha256": "a02a2d07d49831e7f86b965559643e19c1d15468cc2c9d1ee9d641ce0f79fc8e",
+      "steps_checked": 75,
+      "reader": "full",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-full-1.json.gz",
+      "sha256": "9a347bf8042fa781e7fd2fcc62e196f2abfb2440faab98a31ac1d1b99430ccb9",
+      "steps_checked": 65,
+      "reader": "full",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-none-0.json.gz",
+      "sha256": "ac9c5e6924b0584f9f22db7184b6d021cf3d14bf5e42ab2c06589761ec2fe014",
+      "steps_checked": 2560,
+      "reader": "none",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-none-1.json.gz",
+      "sha256": "fb2ac4d570c02b581e63b6ef8534bd51734fdbc805d14a147b94c7162840e4c0",
+      "steps_checked": 2560,
+      "reader": "none",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-recency-0.json.gz",
+      "sha256": "bb80673cac1d149cd89cd1a27dc01ec952ebcd4aab34e9ddf55c13f2d458adbd",
+      "steps_checked": 2560,
+      "reader": "recency",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-recency-1.json.gz",
+      "sha256": "86226012b1fdf2d5278075ef5887e9776687cfa9b5ce4978e477c3e307298c8a",
+      "steps_checked": 2560,
+      "reader": "recency",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-zha-0.json.gz",
+      "sha256": "3ebe96016494c1e72fdd518ed433ec91f462229967338de40e86386ca1a7f27b",
+      "steps_checked": 2560,
+      "reader": "zha",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-zha-1.json.gz",
+      "sha256": "68c78fbd46adac179a73911ac58512462dbf31e7d1da8b21bd4ec031ead248d0",
+      "steps_checked": 2560,
+      "reader": "zha",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-zha_adaptive-0.json.gz",
+      "sha256": "634daec765aba8e9e9dcc2449ef8b65e0ea3c065615a9e1b459d2d1f4c42231b",
+      "steps_checked": 2560,
+      "reader": "zha_adaptive",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-DoorKey-16x16-v0-zha_adaptive-1.json.gz",
+      "sha256": "21199ad3cd44cdf8c82b00d1bc28bb8fabc8d2469b5adf09977cd1cb66317122",
+      "steps_checked": 2560,
+      "reader": "zha_adaptive",
+      "environment_id": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-exact-0.json.gz",
+      "sha256": "5a5de161526a0e5c059fd8064a5da7754a97e393513c0cfb2b606a4906449e76",
+      "steps_checked": 1080,
+      "reader": "exact",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-exact-1.json.gz",
+      "sha256": "7cfb23c9bf503be33dc54f243f413cc2d379aca918e883002882b65a7cae4fd1",
+      "steps_checked": 1080,
+      "reader": "exact",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-fifo-0.json.gz",
+      "sha256": "b245b79b0c9745bdd4ad6b6a11fe5dff45c28ec7f4097c5eb7f315d58126593e",
+      "steps_checked": 1080,
+      "reader": "fifo",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-fifo-1.json.gz",
+      "sha256": "9243bb7373322e04e02f9b450938ef9cbe3b595d6b116c32411e1af0b8d75029",
+      "steps_checked": 1080,
+      "reader": "fifo",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-full-0.json.gz",
+      "sha256": "7fa151e2bcd6df109522ad9f22cb8865c903fc622bc8cf5a667fbcc303cbeaa2",
+      "steps_checked": 62,
+      "reader": "full",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-full-1.json.gz",
+      "sha256": "59e0be6adb530d2ae52fbb7c6c2b1bdd6169db37a993c92a8eaef0cf1dc74abf",
+      "steps_checked": 86,
+      "reader": "full",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-none-0.json.gz",
+      "sha256": "b2d1f60194d0dc72a796c97af767d07128ac9021830607cf29ee86e1b53f4faa",
+      "steps_checked": 1080,
+      "reader": "none",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-none-1.json.gz",
+      "sha256": "fe1c10d796b0d88bd33549474f8c34bbb39a5cb69bf7d83f941d5ea963645331",
+      "steps_checked": 1080,
+      "reader": "none",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-recency-0.json.gz",
+      "sha256": "d9a92191a4ecf108e14da786affe862fc7f190655e271347f307783ce8ac8f4f",
+      "steps_checked": 1080,
+      "reader": "recency",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-recency-1.json.gz",
+      "sha256": "9b09118816ac8940046a40f4b68351f6cf2a18353e061114097af3652e28faa6",
+      "steps_checked": 1080,
+      "reader": "recency",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-zha-0.json.gz",
+      "sha256": "4ab264eee88e2162f7a53835d665c301d11f31df08db352cb6b5887a44cf97f7",
+      "steps_checked": 1080,
+      "reader": "zha",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-zha-1.json.gz",
+      "sha256": "4fd23ea357391b556c239fca9e9ad29c8ad032d1d36dbc2e07add43fd6806751",
+      "steps_checked": 1080,
+      "reader": "zha",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-zha_adaptive-0.json.gz",
+      "sha256": "135f30d55b4e21bf196e5f90a934eccbcd7239b03b15bbcd0de5e8263ca03a98",
+      "steps_checked": 1080,
+      "reader": "zha_adaptive",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-KeyCorridorS6R3-v0-zha_adaptive-1.json.gz",
+      "sha256": "7bd9b2eb06d149d4f17aa6775e1585da43d5a92cca7b06754352c06ebb955607",
+      "steps_checked": 1080,
+      "reader": "zha_adaptive",
+      "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-exact-0.json.gz",
+      "sha256": "ae7ddcbb5b055f08a5e054be21beb127ae8ebacf005927283c249bcb464b1eb0",
+      "steps_checked": 15,
+      "reader": "exact",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-exact-1.json.gz",
+      "sha256": "13390a94466596808d5fea0b7fc5634a7f928971ef3a19e8444921ad53baba29",
+      "steps_checked": 11,
+      "reader": "exact",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-fifo-0.json.gz",
+      "sha256": "2274f1c7d287c0d5e45698a4b2478a360dfa69b25153f1f6390d965443a18fd6",
+      "steps_checked": 15,
+      "reader": "fifo",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-fifo-1.json.gz",
+      "sha256": "032178e94083e1585f70bfb3f990ee08f0ac17cef5ce31fc3a32a6807e135f07",
+      "steps_checked": 11,
+      "reader": "fifo",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-full-0.json.gz",
+      "sha256": "edf44c8623dd4c76e8606f8f03fe6212f5ab2cba73511debebeeee904282361f",
+      "steps_checked": 15,
+      "reader": "full",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-full-1.json.gz",
+      "sha256": "625d4182b792b37a35c53a288abeaf2f3e886d0dc0e8db7b7723edaee245f317",
+      "steps_checked": 11,
+      "reader": "full",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-none-0.json.gz",
+      "sha256": "17115e86bed21801183cad6c38fa3a979094cae98cfdbb28a820ad43c484eb7e",
+      "steps_checked": 1445,
+      "reader": "none",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-none-1.json.gz",
+      "sha256": "bbe6478c1868acae3e4fd56e8a6609d11dff7a916f17a7daa29d7b0fdc954219",
+      "steps_checked": 1445,
+      "reader": "none",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-recency-0.json.gz",
+      "sha256": "ad3e10463d1173c23e6c9c8c0276da0ab32af31fff3e0a3ffd0e90c76e0ca508",
+      "steps_checked": 15,
+      "reader": "recency",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-recency-1.json.gz",
+      "sha256": "009cb91bbfd8a47edde7a663efcf184bb3b1e2bf10ddacad1e57767a7e88bf15",
+      "steps_checked": 11,
+      "reader": "recency",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-zha-0.json.gz",
+      "sha256": "effc3226ced0cdc613d6ec52f83a6ba7bf97f435d8f6648857295790f09a35d3",
+      "steps_checked": 1445,
+      "reader": "zha",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-zha-1.json.gz",
+      "sha256": "03ae11cff7892461a409acb42752ba5552cdd86e5534ad533726e94f696fbdb0",
+      "steps_checked": 27,
+      "reader": "zha",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-zha_adaptive-0.json.gz",
+      "sha256": "7d51cb74dafd1f60d5d9594146fc55eefcdabb298308170d7fa245cdd51f15a0",
+      "steps_checked": 15,
+      "reader": "zha_adaptive",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MemoryS17Random-v0-zha_adaptive-1.json.gz",
+      "sha256": "1a1a568f7bdfff01840bc58dc3c1566099902918500af2639989a96c48197b16",
+      "steps_checked": 11,
+      "reader": "zha_adaptive",
+      "environment_id": "MiniGrid-MemoryS17Random-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-exact-0.json.gz",
+      "sha256": "1e09174652dcedce053f699cc8e2b625d1e5c87b5b325295b7006d30dbeb249f",
+      "steps_checked": 53,
+      "reader": "exact",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-exact-1.json.gz",
+      "sha256": "1ed57f85669710fc501843b3dc31339f2268679ff976e78ed5e9b9ae0fa2392f",
+      "steps_checked": 54,
+      "reader": "exact",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-fifo-0.json.gz",
+      "sha256": "17f712af1b6382264ad3a816e05444e95d73a2711a3e15b9d2418bf34b7b22e0",
+      "steps_checked": 120,
+      "reader": "fifo",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-fifo-1.json.gz",
+      "sha256": "4d5050d63bd5d74c3caf73b7af50e5f9bd0f98dc0ba224618ea8dac08be18f66",
+      "steps_checked": 120,
+      "reader": "fifo",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-full-0.json.gz",
+      "sha256": "351bac8540172068f69cd2360017f88b013d392448a28507da2dfa2f14974bdc",
+      "steps_checked": 53,
+      "reader": "full",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-full-1.json.gz",
+      "sha256": "ef5e8d9d5939ac78fd45a02f40840e1bd726003f8635fb583b651befd2d9c1e9",
+      "steps_checked": 54,
+      "reader": "full",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-none-0.json.gz",
+      "sha256": "8aa9b2be318a8e6b126b9540b2b65502f82b94e9f48cb36313ae82636a6a7b76",
+      "steps_checked": 120,
+      "reader": "none",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-none-1.json.gz",
+      "sha256": "a3e0bea1f26bc7753cfd960d4caab110d3baa9fc7a7b18c2c3c09570dc9e1f05",
+      "steps_checked": 120,
+      "reader": "none",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-recency-0.json.gz",
+      "sha256": "54cc8cf6ae1d80b64d0fab9b5a7b436105ac1cf4df219bbbd06497ad84e925cb",
+      "steps_checked": 53,
+      "reader": "recency",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-recency-1.json.gz",
+      "sha256": "c837ed7e7ee944587ef1554d85a517620b5619adb73988085dad7decf2e0dca8",
+      "steps_checked": 54,
+      "reader": "recency",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-zha-0.json.gz",
+      "sha256": "d6ffd73c1daf2ee771b7bdfa2eb6cf9c89c2169cb679d35e3401a94624109862",
+      "steps_checked": 120,
+      "reader": "zha",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-zha-1.json.gz",
+      "sha256": "03ea03852dca2e97db310adef659f19ef5689210cb305c764072a7a0375436ad",
+      "steps_checked": 120,
+      "reader": "zha",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 1,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-zha_adaptive-0.json.gz",
+      "sha256": "4be8bc4fa13f3c4852ca073aa5c6f7a045fede52a6f0956b264bcbfabbccfe18",
+      "steps_checked": 55,
+      "reader": "zha_adaptive",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 0,
+      "passed": true
+    },
+    {
+      "trace_file": "episode-MiniGrid-MultiRoom-N6-v0-zha_adaptive-1.json.gz",
+      "sha256": "dd0fe67d2a6a9842857ef17f1e3d0220aada4a43b6987e0e7ebbbf050d0bc672",
+      "steps_checked": 56,
+      "reader": "zha_adaptive",
+      "environment_id": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 1,
+      "passed": true
+    }
+  ],
+  "wall_seconds": 27.78253029100597
+}

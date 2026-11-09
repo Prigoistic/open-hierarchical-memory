@@ -1,0 +1,1505 @@
+{
+  "scope": "post-run paired description only; no further policy changes",
+  "comparisons": [
+    {
+      "a": "zha_adaptive",
+      "b": "flat_zha_mask",
+      "rescued": 13,
+      "lost": 0,
+      "same_success_outcome": 11,
+      "identical_action_traces": 7,
+      "entries": [
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 9,
+          "b_steps": 9,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 18,
+          "b_steps": 18,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 15,
+          "b_steps": 15,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 12,
+          "b_steps": 12,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 8,
+          "b_steps": 8,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 7,
+          "b_steps": 7,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 42,
+          "b_steps": 42,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2002,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 120,
+          "b_steps": 59,
+          "identical_actions": false,
+          "first_action_divergence": 39
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2003,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 120,
+          "b_steps": 58,
+          "identical_actions": false,
+          "first_action_divergence": 40
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 120,
+          "b_steps": 72,
+          "identical_actions": false,
+          "first_action_divergence": 19
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2005,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 120,
+          "b_steps": 68,
+          "identical_actions": false,
+          "first_action_divergence": 25
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 120,
+          "b_steps": 75,
+          "identical_actions": false,
+          "first_action_divergence": 13
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2001,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 50,
+          "identical_actions": false,
+          "first_action_divergence": 19
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2002,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 42,
+          "identical_actions": false,
+          "first_action_divergence": 13
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2003,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 63,
+          "identical_actions": false,
+          "first_action_divergence": 12
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 29,
+          "identical_actions": false,
+          "first_action_divergence": 14
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2005,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 39,
+          "identical_actions": false,
+          "first_action_divergence": 27
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 61,
+          "identical_actions": false,
+          "first_action_divergence": 31
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2001,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 20
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2002,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 1080,
+          "b_steps": 63,
+          "identical_actions": false,
+          "first_action_divergence": 34
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2003,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 1080,
+          "b_steps": 48,
+          "identical_actions": false,
+          "first_action_divergence": 19
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 39
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2005,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 14
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 12
+        }
+      ]
+    },
+    {
+      "a": "exact",
+      "b": "flat_exact_mask",
+      "rescued": 10,
+      "lost": 0,
+      "same_success_outcome": 14,
+      "identical_action_traces": 9,
+      "entries": [
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 9,
+          "b_steps": 9,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 18,
+          "b_steps": 18,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 15,
+          "b_steps": 15,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 12,
+          "b_steps": 12,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 8,
+          "b_steps": 8,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 7,
+          "b_steps": 7,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 42,
+          "b_steps": 42,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 59,
+          "b_steps": 59,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 58,
+          "b_steps": 58,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 120,
+          "b_steps": 72,
+          "identical_actions": false,
+          "first_action_divergence": 21
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2005,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 120,
+          "b_steps": 68,
+          "identical_actions": false,
+          "first_action_divergence": 25
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 120,
+          "b_steps": 120,
+          "identical_actions": false,
+          "first_action_divergence": 13
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2001,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 54,
+          "identical_actions": false,
+          "first_action_divergence": 23
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2002,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 44,
+          "identical_actions": false,
+          "first_action_divergence": 13
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2003,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 65,
+          "identical_actions": false,
+          "first_action_divergence": 17
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 29,
+          "identical_actions": false,
+          "first_action_divergence": 14
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2005,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 39,
+          "identical_actions": false,
+          "first_action_divergence": 27
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 63,
+          "identical_actions": false,
+          "first_action_divergence": 36
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2001,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 20
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2002,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 1080,
+          "b_steps": 63,
+          "identical_actions": false,
+          "first_action_divergence": 33
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2003,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 1080,
+          "b_steps": 48,
+          "identical_actions": false,
+          "first_action_divergence": 21
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 39
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2005,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 14
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 12
+        }
+      ]
+    },
+    {
+      "a": "flat_zha_mask",
+      "b": "bundle_zha",
+      "rescued": 0,
+      "lost": 0,
+      "same_success_outcome": 24,
+      "identical_action_traces": 22,
+      "entries": [
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 9,
+          "b_steps": 9,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 18,
+          "b_steps": 18,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 15,
+          "b_steps": 15,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 12,
+          "b_steps": 12,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 8,
+          "b_steps": 8,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 7,
+          "b_steps": 7,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 42,
+          "b_steps": 42,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 59,
+          "b_steps": 59,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 58,
+          "b_steps": 58,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 72,
+          "b_steps": 72,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 68,
+          "b_steps": 68,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 75,
+          "b_steps": 75,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 50,
+          "b_steps": 50,
+          "identical_actions": false,
+          "first_action_divergence": 38
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 42,
+          "b_steps": 42,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 63,
+          "b_steps": 65,
+          "identical_actions": false,
+          "first_action_divergence": 48
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 29,
+          "b_steps": 29,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 39,
+          "b_steps": 39,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 61,
+          "b_steps": 61,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2001,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 63,
+          "b_steps": 63,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 48,
+          "b_steps": 48,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2005,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        }
+      ]
+    },
+    {
+      "a": "flat_exact_mask",
+      "b": "bundle_exact",
+      "rescued": 0,
+      "lost": 0,
+      "same_success_outcome": 24,
+      "identical_action_traces": 24,
+      "entries": [
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 9,
+          "b_steps": 9,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 18,
+          "b_steps": 18,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 15,
+          "b_steps": 15,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 12,
+          "b_steps": 12,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 8,
+          "b_steps": 8,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 7,
+          "b_steps": 7,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 42,
+          "b_steps": 42,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 59,
+          "b_steps": 59,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 58,
+          "b_steps": 58,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 72,
+          "b_steps": 72,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 68,
+          "b_steps": 68,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 120,
+          "b_steps": 120,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 54,
+          "b_steps": 54,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 44,
+          "b_steps": 44,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 65,
+          "b_steps": 65,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 29,
+          "b_steps": 29,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 39,
+          "b_steps": 39,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 63,
+          "b_steps": 63,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2001,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 63,
+          "b_steps": 63,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 48,
+          "b_steps": 48,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2005,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        }
+      ]
+    },
+    {
+      "a": "flat_exact_history_mask",
+      "b": "bundle_zha",
+      "rescued": 1,
+      "lost": 2,
+      "same_success_outcome": 21,
+      "identical_action_traces": 16,
+      "entries": [
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 9,
+          "b_steps": 9,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 18,
+          "b_steps": 18,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 15,
+          "b_steps": 15,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 12,
+          "b_steps": 12,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 8,
+          "b_steps": 8,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 7,
+          "b_steps": 7,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 42,
+          "b_steps": 42,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 59,
+          "b_steps": 59,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 58,
+          "b_steps": 58,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 72,
+          "b_steps": 72,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 68,
+          "b_steps": 68,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 75,
+          "b_steps": 75,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 66,
+          "b_steps": 50,
+          "identical_actions": false,
+          "first_action_divergence": 19
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 44,
+          "b_steps": 42,
+          "identical_actions": false,
+          "first_action_divergence": 18
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 65,
+          "b_steps": 65,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2004,
+          "a_success": false,
+          "b_success": true,
+          "a_steps": 2560,
+          "b_steps": 29,
+          "identical_actions": false,
+          "first_action_divergence": 14
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 61,
+          "b_steps": 39,
+          "identical_actions": false,
+          "first_action_divergence": 27
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 81,
+          "b_steps": 61,
+          "identical_actions": false,
+          "first_action_divergence": 34
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2001,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 63,
+          "b_steps": 63,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 43,
+          "b_steps": 48,
+          "identical_actions": false,
+          "first_action_divergence": 21
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": false,
+          "a_steps": 70,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 39
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": false,
+          "a_steps": 77,
+          "b_steps": 1080,
+          "identical_actions": false,
+          "first_action_divergence": 30
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2006,
+          "a_success": false,
+          "b_success": false,
+          "a_steps": 1080,
+          "b_steps": 1080,
+          "identical_actions": true,
+          "first_action_divergence": null
+        }
+      ]
+    },
+    {
+      "a": "full",
+      "b": "graph",
+      "rescued": 0,
+      "lost": 0,
+      "same_success_outcome": 24,
+      "identical_action_traces": 24,
+      "entries": [
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 9,
+          "b_steps": 9,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 18,
+          "b_steps": 18,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 15,
+          "b_steps": 15,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 12,
+          "b_steps": 12,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 8,
+          "b_steps": 8,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MemoryS17Random-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 7,
+          "b_steps": 7,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 42,
+          "b_steps": 42,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 59,
+          "b_steps": 59,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 58,
+          "b_steps": 58,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 72,
+          "b_steps": 72,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 68,
+          "b_steps": 68,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-MultiRoom-N6-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 75,
+          "b_steps": 75,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 66,
+          "b_steps": 66,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 44,
+          "b_steps": 44,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 65,
+          "b_steps": 65,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 61,
+          "b_steps": 61,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 61,
+          "b_steps": 61,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-DoorKey-16x16-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 81,
+          "b_steps": 81,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2001,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 90,
+          "b_steps": 90,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2002,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 63,
+          "b_steps": 63,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2003,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 43,
+          "b_steps": 43,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2004,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 70,
+          "b_steps": 70,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2005,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 77,
+          "b_steps": 77,
+          "identical_actions": true,
+          "first_action_divergence": null
+        },
+        {
+          "environment_id": "MiniGrid-KeyCorridorS6R3-v0",
+          "seed": 2006,
+          "a_success": true,
+          "b_success": true,
+          "a_steps": 99,
+          "b_steps": 99,
+          "identical_actions": true,
+          "first_action_divergence": null
+        }
+      ]
+    }
+  ]
+}

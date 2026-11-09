@@ -1,0 +1,68 @@
+{
+  "all_match": true,
+  "sources": {
+    "research/dependency_memory.py": {
+      "expected": "d0a517d97f58d219da864a0604bbd68cacc2594af3e321c87d43fb4af0561454",
+      "after_run": "d0a517d97f58d219da864a0604bbd68cacc2594af3e321c87d43fb4af0561454"
+    },
+    "research/run_dependency_benchmark.py": {
+      "expected": "ee1834a5bffe2fc41b6b294863e3e48437bfb9b1ebb4971d7464e9ea6f994c36",
+      "after_run": "ee1834a5bffe2fc41b6b294863e3e48437bfb9b1ebb4971d7464e9ea6f994c36"
+    },
+    "research/minigrid_benchmark.py": {
+      "expected": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d",
+      "after_run": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d"
+    },
+    "research/run_minigrid_benchmark.py": {
+      "expected": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b",
+      "after_run": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b"
+    },
+    "tests/test_dependency_memory.py": {
+      "expected": "54479f15c18fbf9ef54d55827b3446c3980340d7003edff0484d0c073ef10899",
+      "after_run": "54479f15c18fbf9ef54d55827b3446c3980340d7003edff0484d0c073ef10899"
+    },
+    "docs/DEPENDENCY_MEMORY.md": {
+      "expected": "1121c0681dce7d48629e38bb5ba9c36944337ed039fc31498d4ab9973c8c12cc",
+      "after_run": "1121c0681dce7d48629e38bb5ba9c36944337ed039fc31498d4ab9973c8c12cc"
+    },
+    "uv.lock": {
+      "expected": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796",
+      "after_run": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796"
+    },
+    "src/open_hierarchical_memory/tree.py": {
+      "expected": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+      "after_run": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38"
+    },
+    "src/open_hierarchical_memory/attention.py": {
+      "expected": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+      "after_run": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420"
+    },
+    "src/open_hierarchical_memory/__init__.py": {
+      "expected": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+      "after_run": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a"
+    },
+    "src/open_hierarchical_memory/routing.py": {
+      "expected": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+      "after_run": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83"
+    },
+    "src/open_hierarchical_memory/contracts.py": {
+      "expected": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+      "after_run": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075"
+    },
+    "src/open_hierarchical_memory/summaries.py": {
+      "expected": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+      "after_run": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0"
+    },
+    "src/open_hierarchical_memory/training.py": {
+      "expected": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e",
+      "after_run": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e"
+    }
+  },
+  "scope": "checked at computation completion before documented post-run protocol-summary update",
+  "post_run_documentation_update": {
+    "path": "docs/DEPENDENCY_MEMORY.md",
+    "before": "1121c0681dce7d48629e38bb5ba9c36944337ed039fc31498d4ab9973c8c12cc",
+    "after": "27f27c7f36a59cde8a359a8e575ee1925c7bc40b6b4e90e7ec45e81c4b1a9fa6",
+    "reason": "link completed formal results and retain precise claim limits; no policy/code changes"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "scope": "Post-hoc development diagnosis of already evaluated traces. Uses only observed-prefix current heads. Omission boundaries do not establish globally wrong actions.",
+  "report_sha256": "f0f20ca9f657235b44d4461e5ff68586927465cd31fd06ac574c617ad85e237e",
+  "source_sha256": "13f9fd3056276e893db765c8f4bcf3cff3994e8b87f70451d9241db76614c308",
+  "summary": [
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "reader": "zha",
+      "actions": 2902,
+      "known_landmarks_omitted": 1444,
+      "frontier_only_omitted_known_cells": 2888,
+      "frontier_only_omitted_known_obstacles": 1
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "reader": "zha_adaptive",
+      "actions": 39,
+      "known_landmarks_omitted": 0
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "reader": "exact",
+      "actions": 39,
+      "known_landmarks_omitted": 0
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "reader": "recency",
+      "actions": 39,
+      "known_landmarks_omitted": 0
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "reader": "fifo",
+      "actions": 39,
+      "known_landmarks_omitted": 0
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "reader": "none",
+      "actions": 4335,
+      "known_landmarks_omitted": 9520,
+      "frontier_only_omitted_known_cells": 4327,
+      "frontier_only_omitted_known_obstacles": 1289
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "reader": "full",
+      "actions": 39,
+      "known_landmarks_omitted": 0
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "reader": "zha",
+      "actions": 360,
+      "known_landmarks_omitted": 0,
+      "frontier_only_omitted_known_cells": 235,
+      "frontier_only_omitted_known_obstacles": 88
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "reader": "zha_adaptive",
+      "actions": 360,
+      "known_landmarks_omitted": 141,
+      "frontier_only_omitted_known_cells": 248,
+      "frontier_only_omitted_known_obstacles": 161
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "reader": "exact",
+      "actions": 235,
+      "known_landmarks_omitted": 140,
+      "frontier_only_omitted_known_cells": 89,
+      "frontier_only_omitted_known_obstacles": 43
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "reader": "recency",
+      "actions": 301,
+      "known_landmarks_omitted": 113,
+      "frontier_only_omitted_known_cells": 189,
+      "frontier_only_omitted_known_obstacles": 75
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "reader": "fifo",
+      "actions": 360,
+      "known_landmarks_omitted": 150,
+      "frontier_only_omitted_known_cells": 305,
+      "frontier_only_omitted_known_obstacles": 52
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "reader": "none",
+      "actions": 360,
+      "known_landmarks_omitted": 159,
+      "frontier_only_omitted_known_cells": 357,
+      "frontier_only_omitted_known_obstacles": 147
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "reader": "full",
+      "actions": 185,
+      "known_landmarks_omitted": 0
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "reader": "zha",
+      "actions": 7680,
+      "known_landmarks_omitted": 3,
+      "frontier_only_omitted_known_cells": 7660,
+      "frontier_only_omitted_known_obstacles": 1279
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "reader": "zha_adaptive",
+      "actions": 7680,
+      "known_landmarks_omitted": 0,
+      "frontier_only_omitted_known_cells": 7634,
+      "frontier_only_omitted_known_obstacles": 2542
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "reader": "exact",
+      "actions": 7680,
+      "known_landmarks_omitted": 0,
+      "frontier_only_omitted_known_cells": 6356,
+      "frontier_only_omitted_known_obstacles": 3812
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "reader": "recency",
+      "actions": 7680,
+      "known_landmarks_omitted": 637,
+      "frontier_only_omitted_known_cells": 7626
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "reader": "fifo",
+      "actions": 7680,
+      "known_landmarks_omitted": 1197,
+      "frontier_only_omitted_known_cells": 7635,
+      "frontier_only_omitted_known_obstacles": 1274
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "reader": "none",
+      "actions": 7680,
+      "known_landmarks_omitted": 1917,
+      "frontier_only_omitted_known_cells": 7661,
+      "frontier_only_omitted_known_obstacles": 1208
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "reader": "full",
+      "actions": 175,
+      "known_landmarks_omitted": 0
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "reader": "zha",
+      "actions": 3240,
+      "known_landmarks_omitted": 2642,
+      "frontier_only_omitted_known_cells": 3235,
+      "frontier_only_omitted_known_obstacles": 540
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "reader": "zha_adaptive",
+      "actions": 3240,
+      "known_landmarks_omitted": 9560,
+      "frontier_only_omitted_known_cells": 2631,
+      "frontier_only_omitted_known_obstacles": 1581
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "reader": "exact",
+      "actions": 3240,
+      "known_landmarks_omitted": 10987,
+      "frontier_only_omitted_known_cells": 2627,
+      "frontier_only_omitted_known_obstacles": 2104
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "reader": "recency",
+      "actions": 3240,
+      "known_landmarks_omitted": 9043,
+      "frontier_only_omitted_known_cells": 2916,
+      "frontier_only_omitted_known_obstacles": 1791
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "reader": "fifo",
+      "actions": 3240,
+      "known_landmarks_omitted": 1251,
+      "frontier_only_omitted_known_cells": 1972,
+      "frontier_only_omitted_known_obstacles": 532
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "reader": "none",
+      "actions": 3240,
+      "known_landmarks_omitted": 6824,
+      "frontier_only_omitted_known_cells": 3237,
+      "frontier_only_omitted_known_obstacles": 510
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "reader": "full",
+      "actions": 232,
+      "known_landmarks_omitted": 0
+    }
+  ]
+}

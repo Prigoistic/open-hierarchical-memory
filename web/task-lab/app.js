@@ -3,6 +3,13 @@
   const $ = (id) => document.getElementById(id),
     labels = {
       none: "No episodic recall",
+      flat_zha_mask: "Flat ZHA + coverage",
+      flat_exact_mask: "Flat exact + coverage",
+      flat_exact_history_mask: "Exact history + coverage",
+      bundle_zha: "ZHA dependency bundles",
+      bundle_exact: "Exact dependency bundles",
+      bundle_recency: "Recent dependency bundles",
+      graph: "Observed graph + coverage",
       full: "Full observed memory",
       exact: "Exact fact retrieval",
       fifo: "FIFO facts",
@@ -122,16 +129,33 @@
       ]),
       $("suite").value || "boxoban:hard",
     );
-    const mazeStart =
-      !run && new URLSearchParams(location.search).get("task") === "maze";
+    const start = new URLSearchParams(location.search).get("task"),
+      dependencyStart = !run && start === "dependencies",
+      mazeStart = !run && start === "maze";
+    if (dependencyStart) {
+      const cohorts = unique(
+        catalog.runs
+          .filter((r) => r.dataset?.startsWith("dependency-evaluation-"))
+          .map((r) => r.dataset),
+      ).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+      const dataset = cohorts.at(-1);
+      if (dataset)
+        $("suite").value = "minigrid:MiniGrid-KeyCorridorS6R3-v0/" + dataset;
+    }
     if (mazeStart)
       $("suite").value =
         "minigrid:MiniGrid-MultiRoom-N6-v0/minigrid-evaluation-v2";
-    fillLevels(mazeStart ? "1001" : undefined);
+    fillLevels(dependencyStart ? "2001" : mazeStart ? "1001" : undefined);
     fillConfigs(
-      run ? $("config").value : mazeStart ? "zha_adaptive" : "zha-p25",
+      run
+        ? $("config").value
+        : dependencyStart
+          ? "bundle_zha"
+          : mazeStart
+            ? "zha_adaptive"
+            : "zha-p25",
     );
-    if (mazeStart) mode = "search";
+    if (mazeStart || dependencyStart) mode = "search";
     await loadRun();
     if (mazeStart) {
       cursor = 17;
@@ -547,6 +571,71 @@
     ctx.fill();
     ctx.restore();
   }
+  function coverageCells(packet) {
+    if (!packet) return [];
+    if (
+      packet.width !== 64 ||
+      packet.height !== 64 ||
+      packet.bits_hex?.length !== 1024 ||
+      !(
+        packet.origin?.length === 2 &&
+        packet.origin.every(Number.isInteger) &&
+        packet.origin.every((v) => v === -32)
+      ) ||
+      !/^[0-9a-f]+$/i.test(packet.bits_hex)
+    )
+      throw Error("Unsupported recorded coverage mask");
+    const result = [];
+    for (let byte = 0; byte < 512; byte++) {
+      const value = parseInt(packet.bits_hex.slice(byte * 2, byte * 2 + 2), 16);
+      for (let bit = 0; bit < 8; bit++)
+        if (value & (1 << bit)) {
+          const index = byte * 8 + bit;
+          result.push([
+            packet.origin[0] + (index % 64),
+            packet.origin[1] + Math.floor(index / 64),
+          ]);
+        }
+    }
+    return result;
+  }
+  function dependencyDetails(d) {
+    const panel = document.getElementById("dependency-detail");
+    if (!panel) return;
+    panel.hidden = !d.dependency;
+    panel.replaceChildren();
+    if (!d.dependency) return;
+    const summary = document.createElement("summary");
+    summary.textContent = "Inspect dependency receipts";
+    panel.append(summary);
+    const scope = document.createElement("p");
+    scope.className = "caption-5 muted";
+    scope.textContent =
+      "Path and one-hop support checks. These receipts do not certify global map completeness or a successful plan.";
+    panel.append(scope);
+    for (const b of d.dependency.bundles || []) {
+      const p = document.createElement("p");
+      p.className = "caption-5";
+      p.textContent =
+        b.kind +
+        " #" +
+        b.seed_id +
+        " · " +
+        b.status +
+        " · " +
+        b.required_historical_count +
+        " historical facts" +
+        (b.missing?.length ? " · " + b.missing.join(", ") : "");
+      panel.append(p);
+    }
+    if (!(d.dependency.bundles || []).length) {
+      const p = document.createElement("p");
+      p.className = "caption-5";
+      p.textContent = "Coverage-only control: no dependency bundles packed.";
+      panel.append(p);
+    }
+  }
+
   function drawMaze() {
     const row = run.trajectory[cursor];
     if (!row) return;
@@ -573,11 +662,12 @@
         (d.memory_facts || []).map((f) => [f.x + "," + f.y, f]),
       );
       for (const f of d.current_facts || []) facts.set(f.x + "," + f.y, f);
+      const known = coverageCells(d.coverage);
       const all = [...facts.values()],
         px = d.pose[0],
         py = d.pose[1],
-        xs = [px, ...all.map((f) => f.x)],
-        ys = [py, ...all.map((f) => f.y)],
+        xs = [px, ...all.map((f) => f.x), ...known.map((p) => p[0])],
+        ys = [py, ...all.map((f) => f.y), ...known.map((p) => p[1])],
         loX = Math.min(...xs) - 1,
         loY = Math.min(...ys) - 1,
         nx = Math.max(...xs) - loX + 2,
@@ -585,6 +675,16 @@
         cell = Math.max(2, Math.floor(Math.min((w - 32) / nx, (h - 32) / ny))),
         x0 = (w - nx * cell) / 2,
         y0 = (h - ny * cell) / 2;
+      c.strokeStyle = "#54606b";
+      c.lineWidth = 1;
+      for (const [x, y] of known)
+        if (!facts.has(x + "," + y))
+          c.strokeRect(
+            x0 + (x - loX) * cell + 1,
+            y0 + (y - loY) * cell + 1,
+            Math.max(1, cell - 2),
+            Math.max(1, cell - 2),
+          );
       for (const f of all)
         tile(
           c,
@@ -595,6 +695,26 @@
           f.color,
           f.state,
         );
+      const archive = new Map((run.archive || []).map((f) => [f.id, f]));
+      c.strokeStyle = "#69c6c3";
+      c.lineWidth = 1.5;
+      for (const b of d.dependency?.bundles || [])
+        if (b.status === "complete")
+          for (const [a, z] of b.support_edges || []) {
+            const f = archive.get(a),
+              g = archive.get(z);
+            if (!f || !g) continue;
+            c.beginPath();
+            c.moveTo(
+              x0 + (f.x - loX + 0.5) * cell,
+              y0 + (f.y - loY + 0.5) * cell,
+            );
+            c.lineTo(
+              x0 + (g.x - loX + 0.5) * cell,
+              y0 + (g.y - loY + 0.5) * cell,
+            );
+            c.stroke();
+          }
       c.strokeStyle = "#baa2e6";
       c.lineWidth = 2;
       c.beginPath();
@@ -635,12 +755,15 @@
       " · action: " +
       actions[row.action] +
       " · returned reward " +
-      row.reward +
+      Number(row.reward).toFixed(3) +
       ".";
     $("trace-warning").textContent =
       mode === "solution"
         ? "Official egocentric observation before this action. Black cells are unseen. The policy receives no hidden layout or true simulator position."
-        : "Only visible cells and selected historical facts are drawn. Purple line: current plan. Gaps in recall can disconnect this map.";
+        : d.coverage
+          ? "Outlined cells were previously observed; their contents are omitted. Cyan edges show accepted bundle support; purple shows the planner route. The mask cannot supply a route through missing facts."
+          : "Only visible cells and selected historical facts are drawn. Purple line: current plan. Gaps in recall can disconnect this map.";
+    $("maze-legend").hidden = mode !== "search" || !d.coverage;
     renderMazeRead(row);
   }
   function renderMazeRead(row) {
@@ -672,7 +795,34 @@
         name,
         typeof value === "number" ? value.toLocaleString() : value,
       );
+    if (d.dependency) {
+      const bundles = d.dependency.bundles || [],
+        work = d.dependency.work_delta || {};
+      for (const [name, value] of [
+        ["Coverage (binary bytes)", d.coverage?.binary_bytes || 0],
+        [
+          "Bundles packed",
+          bundles.filter((b) => b.status === "complete").length,
+        ],
+        [
+          "Rejected / budget",
+          bundles.filter((b) => b.status === "overbudget").length,
+        ],
+        [
+          "Rejected / prerequisite",
+          bundles.filter((b) => b.status === "missing_prerequisite").length,
+        ],
+        ["Head scans / this read", work.head_scan_items || 0],
+        ["BFS nodes / this read", work.bfs_nodes || 0],
+        [
+          "Residual omitted neighbors",
+          d.dependency.residual_known_neighbor_omissions?.length || 0,
+        ],
+      ])
+        dlMetric(dl, name, value.toLocaleString());
+    }
     host.append(dl);
+    dependencyDetails(d);
     $("read-description").textContent =
       "Mission: " +
       row.observation.mission +
@@ -725,7 +875,11 @@
     );
     const configs = [
       run.config,
-      ...(isMaze() ? ["exact", "full"] : ["top16", "matching"]),
+      ...(isMaze()
+        ? run.dataset.startsWith("dependency-")
+          ? ["flat_zha_mask", "flat_exact_history_mask", "graph", "full"]
+          : ["exact", "full"]
+        : ["top16", "matching"]),
     ];
     const chosen = [...new Set(configs)]
       .map((name) => rows.find((r) => (r.reader || r.config) === name))
@@ -753,6 +907,8 @@
     $("solution").textContent = maze ? "Observed view" : "Solution";
     $("search").textContent = maze ? "Recall map" : "Search probes";
     document.querySelector(".legend").hidden = maze;
+    $("maze-legend").hidden = true;
+    $("dependency-detail").hidden = !maze;
     document.querySelectorAll("thead th")[2].textContent = maze
       ? "Return"
       : "Pushes";

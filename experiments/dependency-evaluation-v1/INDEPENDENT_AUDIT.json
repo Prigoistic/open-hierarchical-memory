@@ -1,0 +1,23 @@
+{
+  "all_passed": true,
+  "episodes_checked": 264,
+  "official_transitions_checked": 110470,
+  "fact_versions_checked": 45093,
+  "seed_query_routes_checked": 200941,
+  "dependency_reads_checked": 32998,
+  "bundles_checked": 19173,
+  "historical_facts_returned": 1250263,
+  "raw_fact_json_bytes": 184493085,
+  "mask_json_bytes": 39364486,
+  "successes": 182,
+  "unrecorded_work_categories": [],
+  "scope": "official replay and independent seed numerics, observed-head/mask identity, nomination, path/key/halo support, whole-bundle packing, known residual omissions and declared work events; no semantic correctness certificate or ZHA-advantage claim",
+  "attestation": {
+    "method": "Original independent-auditor JSON captured from the completed repository full-verification gate; no duplicate formal run.",
+    "protocol_hash": "02c88a6b108078126de4e3a8966d7787bbc656e40f279b51d0b09d1feda7e063",
+    "manifest_sha256": "75730614309548600eb36f37c57d8d9014b7249a6d585baf2b00c07e92dee89d",
+    "auditor_source_sha256": "584d05bc7990a5f814bcc4539462c9afb9ae2f31972b7730139d6ece0d552529",
+    "verification_log_sha256": "04a9055a811d94a8fff8e852ed5a4a5c0f7d5298a2c8d8ec8fab939dbcc17ead",
+    "scope": "Post-run evidence attestation, not a semantic correctness certificate."
+  }
+}

@@ -69,6 +69,12 @@
             ><span><i class="goal"></i>Target</span
             ><span><i class="matched"></i>Box on target</span>
           </div>
+          <div id="maze-legend" class="legend caption-5" hidden>
+            <span
+              ><i class="coverage"></i>Observed before; contents omitted</span
+            ><span><i class="support"></i>Accepted bundle support</span
+            ><span><i class="plan"></i>Planner route</span>
+          </div>
           <div class="playbar">
             <button id="play" class="primary">Play trace ↗</button
             ><button id="back" aria-label="Previous recorded state">←</button
@@ -95,6 +101,7 @@
             Select a recorded state to inspect its read.
           </p>
           <div id="read-metrics" class="metric-list"></div>
+          <details id="dependency-detail" hidden></details>
           <div id="cases" class="cases"></div>
           <p class="caption-5 muted" id="case-caption"></p>
         </aside>

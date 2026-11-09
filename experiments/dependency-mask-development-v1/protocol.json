@@ -1,0 +1,84 @@
+{
+  "capacity": 96,
+  "closure": "observed path plus accessible observed matching-key prerequisites and one-hop known-neighbor halo; no global frontier-closure claim",
+  "conditions": [
+    "zha_adaptive",
+    "exact",
+    "full",
+    "none",
+    "flat_zha_mask",
+    "flat_exact_mask",
+    "flat_exact_history_mask",
+    "bundle_zha",
+    "bundle_exact",
+    "bundle_recency",
+    "graph"
+  ],
+  "current_observation_exempt": true,
+  "development_seeds": [
+    0,
+    1
+  ],
+  "environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "evaluation_seeds": [
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006
+  ],
+  "external_step_cap": 4096,
+  "flat_controls": "unchanged adaptive/exact selected facts plus same known-coverage allowance; no structural graph",
+  "graph_control": "all observed current heads eligible; same mission/frontier ranking and closure as retrieval seeds",
+  "mask": {
+    "bytes": 512,
+    "contains": "observed-known only; no object or passability",
+    "origin": [
+      -32,
+      -32
+    ],
+    "shape": [
+      64,
+      64
+    ]
+  },
+  "max_nominated_bundles": 8,
+  "official_versions": {
+    "gymnasium": "1.4.0",
+    "minigrid": "3.1.0"
+  },
+  "optional_capacity_diagnostic": 192,
+  "packing": "whole historical support set union or explicit rejection; no coverage fallback",
+  "previously_exposed_seeds": [
+    1001,
+    1002,
+    1003
+  ],
+  "scope": "hand-written partial-observation controller;96 raw facts plus explicit512-byte known mask where declared; not neural learning/dreaming/novelty",
+  "selected_environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "selected_readers": [
+    "zha_adaptive",
+    "exact",
+    "flat_zha_mask",
+    "flat_exact_mask",
+    "flat_exact_history_mask"
+  ],
+  "selected_seeds": [
+    0,
+    1
+  ],
+  "split": "development",
+  "version": "dependency-raw-facts-known-mask-v1",
+  "workers": 2
+}

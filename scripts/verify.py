@@ -80,7 +80,11 @@ def main() -> int:
             "research/minigrid_benchmark.py",
             "research/run_minigrid_benchmark.py",
             "research/serve_task_benchmark.py",
+            "research/dependency_memory.py",
+            "research/run_dependency_benchmark.py",
+            "research/diagnose_dependency_failures.py",
             "scripts/audit_complex_tasks.py",
+            "scripts/audit_dependency_memory.py",
         ],
         [
             sys.executable,
@@ -100,6 +104,14 @@ def main() -> int:
                 "scripts/audit_complex_tasks.py",
                 "--minigrid",
                 "experiments/minigrid-evaluation-v2",
+            ]
+        )
+        commands.append(
+            [
+                sys.executable,
+                "scripts/audit_dependency_memory.py",
+                "--results",
+                "experiments/dependency-evaluation-v1",
             ]
         )
     if arguments.profile == "full":

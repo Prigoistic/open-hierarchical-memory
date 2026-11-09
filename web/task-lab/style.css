@@ -517,3 +517,25 @@ footer {
   margin-top: 16px;
   color: var(--muted);
 }
+
+.legend .coverage {
+  background: transparent;
+  border: 1px solid #54606b;
+}
+.legend .support {
+  background: #69c6c3;
+}
+.legend .plan {
+  background: #baa2e6;
+}
+#dependency-detail {
+  border-top: 1px solid var(--line, #303238);
+  padding: 16px 0;
+}
+#dependency-detail summary {
+  cursor: pointer;
+}
+#dependency-detail p {
+  margin: 10px 0;
+  overflow-wrap: anywhere;
+}

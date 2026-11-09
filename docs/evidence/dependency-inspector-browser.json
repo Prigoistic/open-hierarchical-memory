@@ -1,0 +1,96 @@
+{
+  "scope": "Browser verification of checksum-bound recorded experiments, not live model execution",
+  "initial": {
+    "cursor": "0 / 1079",
+    "description": "Step 0 \u00b7 scan-frontier \u00b7 action: turn right \u00b7 returned reward 0.000.",
+    "documentWidth": 1440,
+    "error": "",
+    "legendHidden": false,
+    "metrics": "History facts returned\n0\nCurrent visible facts\n28\nHistorical slot limit\n96\nPrefix raw attention pairs\n156\nPrefix exact + rerank scores\n56\nPrefix summary channel dots\n512\nPrefix index rebuilds\n1\nFull-candidate fallbacks\n0\nCoverage (binary bytes)\n512\nBundles packed\n8\nRejected / budget\n0\nRejected / prerequisite\n0\nHead scans / this read\n28\nBFS nodes / this read\n44\nResidual omitted neighbors\n0",
+    "outcome": "Outcome\nEnv timeout\nActions\n1,080\nReturn\n0.000\nEpisode time\n2784.6 ms\nArchived fact versions\n247",
+    "pixels": 4164474301,
+    "reader": "bundle_zha",
+    "receiptHidden": false,
+    "suite": "minigrid:MiniGrid-KeyCorridorS6R3-v0/dependency-evaluation-v1",
+    "title": "KeyCorridorS6R3-v0 / seed 2001",
+    "viewport": 1440
+  },
+  "zha_end": {
+    "cursor": "1079 / 1079",
+    "description": "Step 1079 \u00b7 scan-no-reachable-frontier \u00b7 action: turn right \u00b7 returned reward 0.000.",
+    "documentWidth": 1440,
+    "error": "",
+    "legendHidden": false,
+    "metrics": "History facts returned\n0\nCurrent visible facts\n21\nHistorical slot limit\n96\nPrefix raw attention pairs\n442,824\nPrefix exact + rerank scores\n367,922\nPrefix summary channel dots\n2,211,488\nPrefix index rebuilds\n26\nFull-candidate fallbacks\n0\nCoverage (binary bytes)\n512\nBundles packed\n0\nRejected / budget\n0\nRejected / prerequisite\n0\nHead scans / this read\n229\nBFS nodes / this read\n144\nResidual omitted neighbors\n11",
+    "outcome": "Outcome\nEnv timeout\nActions\n1,080\nReturn\n0.000\nEpisode time\n2784.6 ms\nArchived fact versions\n247",
+    "pixels": 945963805,
+    "reader": "bundle_zha",
+    "receiptHidden": false,
+    "suite": "minigrid:MiniGrid-KeyCorridorS6R3-v0/dependency-evaluation-v1",
+    "title": "KeyCorridorS6R3-v0 / seed 2001",
+    "viewport": 1440
+  },
+  "graph_end": {
+    "cursor": "89 / 89",
+    "description": "Step 89 \u00b7 pickup-target \u00b7 action: pick up \u00b7 returned reward 0.925.",
+    "documentWidth": 1440,
+    "error": "",
+    "legendHidden": false,
+    "metrics": "History facts returned\n52\nCurrent visible facts\n18\nHistorical slot limit\n96\nPrefix raw attention pairs\n0\nPrefix exact + rerank scores\n0\nPrefix summary channel dots\n0\nPrefix index rebuilds\n0\nFull-candidate fallbacks\n0\nCoverage (binary bytes)\n512\nBundles packed\n3\nRejected / budget\n0\nRejected / prerequisite\n0\nHead scans / this read\n255\nBFS nodes / this read\n316\nResidual omitted neighbors\n31",
+    "outcome": "Outcome\nSolved\nActions\n90\nReturn\n0.925\nEpisode time\n143.0 ms\nArchived fact versions\n278",
+    "pixels": 1719896774,
+    "reader": "graph",
+    "receiptHidden": false,
+    "suite": "minigrid:MiniGrid-KeyCorridorS6R3-v0/dependency-evaluation-v1",
+    "title": "KeyCorridorS6R3-v0 / seed 2001",
+    "viewport": 1440
+  },
+  "exact_history": {
+    "cursor": "0 / 1079",
+    "description": "Step 0 \u00b7 scan-frontier \u00b7 action: turn right \u00b7 returned reward 0.000.",
+    "documentWidth": 1440,
+    "error": "",
+    "legendHidden": false,
+    "metrics": "History facts returned\n0\nCurrent visible facts\n28\nHistorical slot limit\n96\nPrefix raw attention pairs\n0\nPrefix exact + rerank scores\n56\nPrefix summary channel dots\n0\nPrefix index rebuilds\n0\nFull-candidate fallbacks\n0\nCoverage (binary bytes)\n512\nBundles packed\n0\nRejected / budget\n0\nRejected / prerequisite\n0\nHead scans / this read\n28\nBFS nodes / this read\n0\nResidual omitted neighbors\n0",
+    "outcome": "Outcome\nEnv timeout\nActions\n1,080\nReturn\n0.000\nEpisode time\n1496.1 ms\nArchived fact versions\n247",
+    "pixels": 3870266677,
+    "reader": "flat_exact_history_mask",
+    "receiptHidden": false,
+    "suite": "minigrid:MiniGrid-KeyCorridorS6R3-v0/dependency-evaluation-v1",
+    "title": "KeyCorridorS6R3-v0 / seed 2001",
+    "viewport": 1440
+  },
+  "mobile": {
+    "cursor": "0 / 1079",
+    "description": "Step 0 \u00b7 scan-frontier \u00b7 action: turn right \u00b7 returned reward 0.000.",
+    "documentWidth": 390,
+    "error": "",
+    "legendHidden": false,
+    "metrics": "History facts returned\n0\nCurrent visible facts\n28\nHistorical slot limit\n96\nPrefix raw attention pairs\n0\nPrefix exact + rerank scores\n56\nPrefix summary channel dots\n0\nPrefix index rebuilds\n0\nFull-candidate fallbacks\n0\nCoverage (binary bytes)\n512\nBundles packed\n0\nRejected / budget\n0\nRejected / prerequisite\n0\nHead scans / this read\n28\nBFS nodes / this read\n0\nResidual omitted neighbors\n0",
+    "outcome": "Outcome\nEnv timeout\nActions\n1,080\nReturn\n0.000\nEpisode time\n1496.1 ms\nArchived fact versions\n247",
+    "pixels": 3824188076,
+    "reader": "flat_exact_history_mask",
+    "receiptHidden": false,
+    "suite": "minigrid:MiniGrid-KeyCorridorS6R3-v0/dependency-evaluation-v1",
+    "title": "KeyCorridorS6R3-v0 / seed 2001",
+    "viewport": 390
+  },
+  "errors": {
+    "errors": []
+  },
+  "source_hashes": {
+    "web/task-lab/app.js": "897ff21e95c8b050bdb67de9220c110fcd327f61bef03bb0ba3717d3e0a12132",
+    "web/task-lab/style.css": "6fc50b06cccb8e8e2d443333af9831a28b53dfe4b264da9e27322f091b32c8f8",
+    "web/task-lab/index.html": "267591d311731f8cc4520c60cee184be337c6bdcaefddeefc18e86ee25ee47b2",
+    "research/serve_task_benchmark.py": "2152778be98b1184451a3f4eed902e39e3a4f871733fee07a0abb68108522263",
+    "experiments/dependency-evaluation-v1/report.json": "40e2a16b7136b506052ae9179fad99fbcd5156d8de8e7b0ce8f58b3c53df10b0"
+  },
+  "largest_trace_endpoint": {
+    "status": 200,
+    "response_bytes": 83690076,
+    "trace": "minigrid:dependency-evaluation-v1:episode-MiniGrid-DoorKey-16x16-v0-zha_adaptive-2004.json.gz",
+    "actions": 2560,
+    "outcome": false,
+    "reader": "zha_adaptive"
+  }
+}

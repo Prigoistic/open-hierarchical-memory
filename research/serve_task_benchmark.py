@@ -12,6 +12,7 @@ from typing import Any
 from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+MAX_EXPANDED_TRACE_BYTES = 128 * 1024 * 1024
 
 
 class TaskCatalog:
@@ -35,17 +36,38 @@ class TaskCatalog:
                     for r in report["runs"]
                 )
                 summaries.extend({"task": "boxoban", **r} for r in report["summary"])
-        for path in sorted((self.root / "experiments").glob("minigrid-*/report.json")):
+        reports = [
+            *(self.root / "experiments").glob("minigrid-*/report.json"),
+            *(self.root / "experiments").glob("dependency-*/report.json"),
+        ]
+        for path in sorted(reports):
             report = json.loads(path.read_text())
             if "episodes" not in report or "protocol" not in report:
                 continue
             protocol = report["protocol"]
+            if not all(
+                k in protocol
+                for k in (
+                    "selected_environments",
+                    "selected_readers",
+                    "selected_seeds",
+                    "external_step_cap",
+                )
+            ):
+                continue
             expected = (
                 len(protocol["selected_environments"])
                 * len(protocol["selected_readers"])
                 * len(protocol["selected_seeds"])
             )
-            if len(report["episodes"]) != expected:
+            identities = {(r["environment_id"], r["reader"], r["seed"]) for r in report["episodes"]}
+            declared = {
+                (environment, reader, seed)
+                for environment in protocol["selected_environments"]
+                for reader in protocol["selected_readers"]
+                for seed in protocol["selected_seeds"]
+            }
+            if len(report["episodes"]) != expected or identities != declared:
                 continue
             dataset = path.parent.name
             for r in report["episodes"]:
@@ -94,8 +116,8 @@ class TaskCatalog:
         if len(raw) > 16 * 1024 * 1024 or hashlib.sha256(raw).hexdigest() != row["sha256"]:
             raise ValueError("invalid artifact size or checksum")
         with gzip.open(path, "rb") as stream:
-            decoded = stream.read(64 * 1024 * 1024 + 1)
-        if len(decoded) > 64 * 1024 * 1024:
+            decoded = stream.read(MAX_EXPANDED_TRACE_BYTES + 1)
+        if len(decoded) > MAX_EXPANDED_TRACE_BYTES:
             raise ValueError("expanded artifact too large")
         result: dict[str, Any] = json.loads(decoded)
         result["task"] = row["task"]

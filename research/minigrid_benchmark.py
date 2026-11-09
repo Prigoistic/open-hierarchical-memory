@@ -13,7 +13,7 @@ import math
 import time
 from collections import Counter, deque
 from dataclasses import asdict, dataclass, replace
-from typing import Any, Literal
+from typing import Any, Literal, Protocol
 
 import numpy as np
 import torch
@@ -58,6 +58,97 @@ class Fact:
     @property
     def position(self) -> tuple[int, int]:
         return self.x, self.y
+
+
+@dataclass(frozen=True)
+class ReadContext:
+    """Official current cells and controller-owned egomotion; no remembered map."""
+
+    position: tuple[int, int]
+    direction: int
+    mission: str
+    inventory: tuple[int, int] | None
+    current_facts: tuple[Fact, ...]
+    step: int
+
+    def __post_init__(self) -> None:
+        if (
+            not isinstance(self.position, tuple)
+            or len(self.position) != 2
+            or any(type(x) is not int or abs(x) > 64 for x in self.position)
+            or type(self.direction) is not int
+            or not 0 <= self.direction < 4
+            or not isinstance(self.mission, str)
+            or len(self.mission) > 1024
+            or type(self.step) is not int
+            or self.step < 0
+            or not isinstance(self.current_facts, tuple)
+            or len(self.current_facts) > 49
+            or any(
+                not isinstance(f, Fact) or f.id != 0 or f.observed_step != self.step
+                for f in self.current_facts
+            )
+            or len({f.position for f in self.current_facts}) != len(self.current_facts)
+        ):
+            raise ValueError("invalid observation-bound read context")
+        if self.inventory is not None and (
+            not isinstance(self.inventory, tuple)
+            or len(self.inventory) != 2
+            or any(type(v) is not int for v in self.inventory)
+            or self.inventory[0] not in (5, 6, 7)
+            or not 0 <= self.inventory[1] <= 5
+        ):
+            raise ValueError("invalid observed inventory")
+
+
+@dataclass(frozen=True)
+class KnownCoverage:
+    """Fixed observed-known bits only; no passability/object information."""
+
+    bits: bytes
+    version: int
+    head_hash: str
+
+    def __post_init__(self) -> None:
+        if (
+            not isinstance(self.bits, bytes)
+            or len(self.bits) != 512
+            or type(self.version) is not int
+            or self.version < 0
+            or len(self.head_hash) != 64
+            or any(c not in "0123456789abcdef" for c in self.head_hash)
+        ):
+            raise ValueError("invalid fixed64x64 known-coverage mask")
+
+    def contains(self, point: tuple[int, int]) -> bool:
+        x, y = point
+        if not (-32 <= x < 32 and -32 <= y < 32):
+            return False
+        index = (y + 32) * 64 + x + 32
+        return bool(self.bits[index // 8] & (1 << (index % 8)))
+
+    def serialized(self) -> dict[str, Any]:
+        return {
+            "origin": [-32, -32],
+            "width": 64,
+            "height": 64,
+            "version": self.version,
+            "head_hash": self.head_hash,
+            "bits_hex": self.bits.hex(),
+            "binary_bytes": len(self.bits),
+        }
+
+
+class ContextualFactReader(Protocol):
+    costs: dict[str, int | float]
+
+    def observe(self, visible: list[Fact]) -> list[Fact]: ...
+
+    def select_with_context(
+        self, queries: torch.Tensor, context: ReadContext
+    ) -> tuple[list[Fact], list[dict[str, Any]], dict[str, Any], KnownCoverage | None]: ...
+
+    def archive(self) -> list[dict[str, Any]]: ...
 
 
 def normalize_observation(observation: dict[str, Any]) -> dict[str, Any]:
@@ -414,8 +505,16 @@ def observation_digest(observation: dict[str, Any]) -> str:
 class ObservationPlanner:
     """A shared task-aware symbolic controller receiving no environment handle."""
 
-    def __init__(self, reader: ReaderName, capacity: int = 96) -> None:
-        self.reader = FactReader(reader, capacity)
+    def __init__(
+        self,
+        reader: ReaderName,
+        capacity: int = 96,
+        *,
+        injected_reader: ContextualFactReader | None = None,
+    ) -> None:
+        self.reader: FactReader | ContextualFactReader = (
+            injected_reader if injected_reader is not None else FactReader(reader, capacity)
+        )
         self.position = (0, 0)
         self.direction: int | None = None
         self.previous_action: int | None = None
@@ -450,7 +549,20 @@ class ObservationPlanner:
         visible, inventory = observed_cells(obs, self.position, self.step)
         additions = self.reader.observe(visible)
         queries = query_vectors(self.position, obs["mission"])
-        recalled, trace = self.reader.select(queries)
+        receipt = None
+        coverage = None
+        if isinstance(self.reader, FactReader):
+            recalled, trace = self.reader.select(queries)
+        else:
+            context = ReadContext(
+                self.position,
+                obs["direction"],
+                obs["mission"],
+                inventory,
+                tuple(visible),
+                self.step,
+            )
+            recalled, trace, receipt, coverage = self.reader.select_with_context(queries, context)
         planning_started = time.perf_counter()
         view = {fact.position: fact for fact in recalled}
         for cell in visible:
@@ -458,7 +570,9 @@ class ObservationPlanner:
             if past is not None and (past.object, past.color) == (cell.object, cell.color):
                 cell = replace(cell, cue=cell.cue or past.cue)
             view[cell.position] = cell
-        action, objective, goal, sources, plan = self._plan(view, inventory, obs["mission"])
+        action, objective, goal, sources, plan = self._plan(
+            view, inventory, obs["mission"], known_coverage=coverage
+        )
         assert self.direction is not None
         dx, dy = DIRECTIONS[self.direction]
         self.previous_front = next(
@@ -483,13 +597,22 @@ class ObservationPlanner:
             "planning_seconds": time.perf_counter() - planning_started,
             "policy_seconds": time.perf_counter() - started,
         }
+        if receipt is not None:
+            decision["dependency"] = receipt
+        if coverage is not None:
+            decision["coverage"] = coverage.serialized()
         self.previous_action = action
         self.recent.append((*self.position, self.direction))
         self.step += 1
         return action, decision, additions
 
     def _plan(
-        self, view: dict[tuple[int, int], Fact], inventory: tuple[int, int] | None, mission: str
+        self,
+        view: dict[tuple[int, int], Fact],
+        inventory: tuple[int, int] | None,
+        mission: str,
+        *,
+        known_coverage: KnownCoverage | None = None,
     ) -> tuple[int, str, tuple[int, int] | None, list[int], list[tuple[int, int]]]:
         assert self.direction is not None
         matching = "matching" in mission
@@ -613,7 +736,11 @@ class ObservationPlanner:
         for point in parent:
             for direction, (dx, dy) in enumerate(DIRECTIONS):
                 unknown = (point[0] + dx, point[1] + dy)
-                if unknown not in view and unknown not in danger:
+                if (
+                    unknown not in view
+                    and unknown not in danger
+                    and (known_coverage is None or not known_coverage.contains(unknown))
+                ):
                     route = path(point)
                     score = len(route) + 12 * visits[(*point, direction)]
                     frontiers.append((score, len(route), point[0], point[1], direction, route))

@@ -1,0 +1,99 @@
+{
+  "all_aggregates_agree": true,
+  "aggregate_rows": 44,
+  "executed_code_hashes_current": true,
+  "post_run_doc_differences": [
+    "docs/DEPENDENCY_MEMORY.md"
+  ],
+  "protocol_hash": "02c88a6b108078126de4e3a8966d7787bbc656e40f279b51d0b09d1feda7e063",
+  "results": [
+    {
+      "reader": "zha_adaptive",
+      "successes": 7,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 17,
+      "cutoffs": 0
+    },
+    {
+      "reader": "exact",
+      "successes": 9,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 15,
+      "cutoffs": 0
+    },
+    {
+      "reader": "full",
+      "successes": 24,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 0,
+      "cutoffs": 0
+    },
+    {
+      "reader": "none",
+      "successes": 0,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 24,
+      "cutoffs": 0
+    },
+    {
+      "reader": "flat_zha_mask",
+      "successes": 20,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 4,
+      "cutoffs": 0
+    },
+    {
+      "reader": "flat_exact_mask",
+      "successes": 19,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 5,
+      "cutoffs": 0
+    },
+    {
+      "reader": "flat_exact_history_mask",
+      "successes": 21,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 3,
+      "cutoffs": 0
+    },
+    {
+      "reader": "bundle_zha",
+      "successes": 20,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 4,
+      "cutoffs": 0
+    },
+    {
+      "reader": "bundle_exact",
+      "successes": 19,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 5,
+      "cutoffs": 0
+    },
+    {
+      "reader": "bundle_recency",
+      "successes": 19,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 5,
+      "cutoffs": 0
+    },
+    {
+      "reader": "graph",
+      "successes": 24,
+      "episodes": 24,
+      "errors": 0,
+      "truncations": 0,
+      "cutoffs": 0
+    }
+  ]
+}
