@@ -19,6 +19,14 @@ const bytes = result.outputFiles[0].contents,
 for (const app of ["somna-live", "task-lab"]) {
   await writeFile(resolve(root, "..", app, "spatial.bundle.js"), bytes);
   await writeFile(resolve(root, "..", app, "spatial.css"), css);
+  await copyFile(
+    resolve(root, "embedded.css"),
+    resolve(root, "..", app, "embedded.css"),
+  );
+  await copyFile(
+    resolve(root, "panel-boot.js"),
+    resolve(root, "..", app, "panel-boot.js"),
+  );
 }
 await mkdir(resolve(root, "licenses"), { recursive: true });
 await copyFile(
@@ -30,6 +38,12 @@ const manifest = {
   bundle_bytes: bytes.length,
   bundle_sha256: createHash("sha256").update(bytes).digest("hex"),
   css_sha256: createHash("sha256").update(css).digest("hex"),
+  embedded_sha256: createHash("sha256")
+    .update(await readFile(resolve(root, "embedded.css")))
+    .digest("hex"),
+  panel_boot_sha256: createHash("sha256")
+    .update(await readFile(resolve(root, "panel-boot.js")))
+    .digest("hex"),
 };
 await writeFile(
   resolve(root, "build-manifest.json"),

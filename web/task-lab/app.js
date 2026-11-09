@@ -48,7 +48,8 @@
       : "layers",
     routingHits = [],
     routingFocus = null,
-    routing3D = null;
+    routing3D = null,
+    panelRouting = null;
   const signature = (s) => s.player + "|" + s.boxes.join(",");
   function fail(e) {
     $("error").hidden = false;
@@ -305,6 +306,7 @@
     run = null;
     setRunControls(true);
     routingHits = [];
+    panelRouting = null;
     $("next-event").hidden = true;
     headCursor = -1;
     headMap.clear();
@@ -889,6 +891,7 @@
       "Position (" + d.pose.slice(0, 2).join(", ") + ") · " + inventory;
     routingHits = [];
     if (!routes.length) {
+      panelRouting = null;
       const { c, w, h } = routingCanvas();
       const fallback = d.repair?.fallback_active;
       opts($("cue"), [
@@ -918,6 +921,7 @@
     const recorded = routes[Number($("routing-pass").value)],
       route = SomnaRouting.resolveSnapshot(run, recorded),
       model = SomnaRouting.routingModel(route, observedHeads(), d.memory_ids);
+    panelRouting = model;
     $("structure").disabled = !routing3D || !model.mapped;
     if (routing3D && routingView !== "tree" && model.mapped) {
       $("routing").hidden = true;
@@ -938,7 +942,13 @@
         (routingView === "structure"
           ? SomnaVisuals.arborHierarchyModel
           : SomnaVisuals.indexHierarchyModel)(model, key, {
-          columns: innerWidth < 600 ? 12 : 24,
+          columns:
+            innerWidth <
+            (document.documentElement.classList.contains("is-embedded")
+              ? 1000
+              : 600)
+              ? 12
+              : 24,
         }),
       );
       routing3D.highlight(routingFocus);
@@ -1103,6 +1113,8 @@
   function inspectRouting(point) {
     if (!run) return;
     routingFocus = point?.node.key || null;
+    if (point && window.parent !== window)
+      window.parent.postMessage({ type: "somna-selection" }, location.origin);
     renderRouting(run.trajectory[cursor]);
   }
 
@@ -1661,5 +1673,139 @@
     resizeTimer = setTimeout(draw, 100);
   });
   document.fonts.ready.then(draw);
+
+  const panelChoices = (id) =>
+    [...$(id).options].map((o) => ({ value: o.value, label: o.textContent }));
+  window.SomnaPanel = {
+    snapshot() {
+      return {
+        kind: "tasks",
+        taskKind: run ? (isMaze() ? "maze" : "puzzles") : null,
+        address: run
+          ? {
+              task: isMaze() ? "maze" : "puzzles",
+              dataset: run.dataset,
+              reader: run.reader || run.config,
+              seed: String(run.level_id),
+              env: run.environment_id,
+            }
+          : null,
+        ready: !!run,
+        error: $("error").hidden ? "" : $("error").textContent,
+        title: $("board-title").textContent,
+        status: $("run-notice").textContent,
+        selection: Object.fromEntries(
+          ["cohort", "suite", "level", "config", "cue", "routing-pass"].map(
+            (id) => [id, $(id).value],
+          ),
+        ),
+        choices: Object.fromEntries(
+          ["cohort", "suite", "level", "config", "cue", "routing-pass"].map(
+            (id) => [id, panelChoices(id)],
+          ),
+        ),
+        cursor,
+        max: run ? Math.max(0, frames().length - 1) : 0,
+        playing,
+        view: routingView,
+        hierarchy: !!panelRouting,
+        canBranch: !$("structure").disabled,
+        originals: panelRouting?.originalCount ?? null,
+        read: panelRouting?.rawCount ?? null,
+        inspector: $("routing-inspection").textContent,
+        description: $("routing-description").textContent,
+        population:
+          panelRouting?.levels.map((l) => ({
+            level: l.level,
+            count: l.nodes.length,
+            kept: l.nodes.filter((n) => n.kept).length,
+          })) || [],
+        returned:
+          run && isMaze()
+            ? run.trajectory[cursor]?.decision.memory_ids.length
+            : null,
+        metrics: [...$("run-metrics").children].map((d) => ({
+          label: d.querySelector("span")?.textContent,
+          value: d.querySelector("b")?.textContent,
+        })),
+        renderer: routing3D ? "three" : "canvas",
+      };
+    },
+    command(name, payload) {
+      if (name === "select") {
+        if (
+          ![
+            "cohort",
+            "suite",
+            "level",
+            "config",
+            "cue",
+            "routing-pass",
+          ].includes(payload?.id)
+        )
+          throw Error("Unsupported task selector");
+        const el = $(payload.id);
+        if (![...el.options].some((o) => o.value === payload.value))
+          throw Error("Unknown task option");
+        el.value = payload.value;
+        el.dispatchEvent(new Event("change"));
+        return;
+      }
+      if (name === "step") {
+        if (
+          !Number.isInteger(payload) ||
+          payload < 0 ||
+          payload > Number($("timeline").max)
+        )
+          throw Error("Invalid recorded step");
+        $("timeline").value = payload;
+        $("timeline").dispatchEvent(new Event("input"));
+        return;
+      }
+      if (name === "view") {
+        const id = {
+          layers: "layers",
+          structure: "structure",
+          tree: "tree-view",
+        }[payload];
+        if (!id || $(id).disabled) throw Error("View unavailable");
+        $(id).click();
+        return;
+      }
+      if (name === "play") {
+        $("play").click();
+        return;
+      }
+      if (name === "recovery") {
+        if (!$("next-event").hidden) $("next-event").click();
+        return;
+      }
+      if (name === "navigation") {
+        if (!["observed", "recall"].includes(payload))
+          throw Error("Unknown navigation view");
+        pause();
+        mode = payload === "recall" ? "search" : "solution";
+        draw();
+        return;
+      }
+      if (name === "map") {
+        document.body.classList.toggle("show-navigation", !!payload);
+        return;
+      }
+      if (name === "camera") {
+        if (!routing3D) return;
+        if (payload === "home") routing3D.reset();
+        else if (payload === "focus") routing3D.focus();
+        else if (payload === "replay") routing3D.replay();
+        else if (payload === "orbit") {
+          routing3D.controls.autoRotate =
+            !routing3D.controls.autoRotate && !routing3D.reduced;
+          routing3D.dirty = true;
+        } else throw Error("Unknown camera action");
+        return;
+      }
+      throw Error("Unsupported task command");
+    },
+  };
   safe(reload());
 })();

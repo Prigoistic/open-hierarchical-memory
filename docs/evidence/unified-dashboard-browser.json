@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-09",
+  "entry": "http://127.0.0.1:8792/",
+  "scope": "One interface for two independently labelled experiment sources",
+  "source_sha256": {
+    "research/serve_task_benchmark.py": "689f276875c7b0ccc0133cf6234e989e23804b1cec08429b0edb884db2bec27b",
+    "research/dashboard_gateway.py": "dd3c63c8e28576fcdffe0977973c0aed7490498cffc82291ed6c973191f3a79f",
+    "web/dashboard/index.html": "999afd945da222977b0dae6fc94691862677cb4f8ddfe2a29a8eda5cd0926430",
+    "web/dashboard/app.js": "b1fea51b161994030e25c516bd5659e6d57d737fb7310f4c9863d79d26264216",
+    "web/dashboard/style.css": "a84e1a3c117d70fa8629fdc760a2fe31bf3d82652a2e5c0d958aaf2f905d03e6",
+    "web/task-lab/app.js": "a24289a6efcb3648bb36e128d9f45e1bee16f47605943d44de5f75b8fa7416ee",
+    "web/somna-live/app.js": "bda8f763cc245ceaaa6e39be7d11c8b51adf20f190819a704665906e3bbcdf0b",
+    "web/visuals/embedded.css": "f018cdd2e82e21202180d0e17969a311c1d53886875818428f5ae1ae7238adc3",
+    "web/visuals/panel-boot.js": "06c36cae4dad5892d4c0f6b5f6115b0ff2fa1abdad36df27cc7bbc5ba186795b",
+    "web/visuals/build-manifest.json": "44906cc734130ceb6deaa8553b6ccfbeaef938c120e9486817e2fea6175c2a45",
+    "research/somna_engine.py": "4233683d3760b68ab25ef6c08b7d8c047c0ebf601f00546c70f10f42f69d9e9d",
+    "experiments/progress-evaluation-v2/report.json": "1fe578a901e7f9bcfcd3fa03a6a7bd776661e44091c26e1c7700fddf2ad0e6cd"
+  },
+  "references": ["https://threejs.org/editor/", "https://vitessce.io/"],
+  "browser": {
+    "desktop": {
+      "viewport": [1600, 1000],
+      "both_connected": true,
+      "default_step": "51 / 94",
+      "default_visible_primary_buttons": ["Run memory cycle", "Play"],
+      "source_originals": 480,
+      "unchanged_source_checksum": "974d58b0d1e4cea59954b3df69d2b47b52f9853dbcb6f7cfd1d8d4486493f91b",
+      "unchanged_original_count": true,
+      "overflow": false
+    },
+    "task_controls": {
+      "timeline_step": 55,
+      "branch_view_selected": true,
+      "focus_memory_width_px": 1351,
+      "focus_preserved_step": 55
+    },
+    "source_inspection": {
+      "panel": "Recorded hierarchy",
+      "node": "L2 / node 0",
+      "facts": "6 wall, 10 empty",
+      "score": 6.918
+    },
+    "live_cycle_isolated": {
+      "archive": "/private/tmp/somna-unified-1109.sqlite",
+      "before_originals": 256,
+      "after_originals": 288,
+      "learning_updates": 160,
+      "recorded_step_preserved": true
+    },
+    "live_query_isolated": {
+      "published_mask": [true, false],
+      "published_context": 0,
+      "read": 12,
+      "source_originals": 288,
+      "updates": 160,
+      "task_step": 51
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "overflow": false,
+      "drawer_open_and_closed": true,
+      "aria_expanded_correct": true,
+      "focus_frame_width_px": 389,
+      "focus_frame_height_px": 691
+    },
+    "migration": {
+      "old_memory_entry": "http://127.0.0.1:8791/",
+      "redirect_to_dashboard": true
+    },
+    "unhandled_errors": []
+  },
+  "validation": {
+    "python_tests": 439,
+    "visual_mapping_tests": 16,
+    "routing_contracts": "passed",
+    "ruff": "passed",
+    "format": "151 files",
+    "mypy_core": "7 files passed",
+    "mypy_gateway": "passed",
+    "javascript_syntax": "passed",
+    "embedded_assets_match_manifest": true
+  },
+  "boundaries": [
+    "Numerical core, planner, live engine and frozen task data unchanged.",
+    "Task evidence remains read-only.",
+    "Gateway checks same-origin writes, finite bounded JSON, expected schema, reply limits, redirects, outage and read timeouts.",
+    "Live archive owner process was not restarted; interactive workflow tests used an isolated archive.",
+    "The UI combines views; it does not claim that the recorded maze runs the live learning loop."
+  ],
+  "artifact_directory": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/unified-dashboard"
+}

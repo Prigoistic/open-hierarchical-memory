@@ -34,7 +34,11 @@
         const ctrl = new AbortController(),
           timeout = setTimeout(() => ctrl.abort(), 30000);
         try {
-          const r = await fetch(path, {
+          const endpoint =
+            new URLSearchParams(location.search).get("embed") === "1"
+              ? "/api/memory" + path.replace(/^\/api/, "")
+              : path;
+          const r = await fetch(endpoint, {
             method: body === undefined ? "GET" : "POST",
             headers: { "Content-Type": "application/json" },
             body: body === undefined ? undefined : JSON.stringify(body),
@@ -773,6 +777,8 @@
         : "Position information is missing. A span marks an omitted axis; the reader combines what remains with context and action. The white arrow shows recalled displacement at the cursor, whose hidden coordinates are not used for search.");
   }
   function renderRecord() {
+    if (selectedId !== null && window.parent !== window)
+      window.parent.postMessage({ type: "somna-selection" }, location.origin);
     const node = state?.nodes.find((n) => n.id === selectedId);
     $("record-card").hidden = !node;
     if (!node) return;
@@ -1030,6 +1036,112 @@
     resizeTimer = setTimeout(draw, 100);
   });
   document.fonts.ready.then(draw);
+
+  window.SomnaPanel = {
+    snapshot() {
+      const selected = state?.nodes.find((n) => n.id === selectedId);
+      return {
+        kind: "memory",
+        ready: !!state,
+        error: $("error").hidden ? "" : $("error").textContent,
+        originals: state?.archive.total ?? null,
+        hot: state?.archive.hot ?? null,
+        cold: state?.archive.cold ?? null,
+        updates: state?.model.trained_steps ?? null,
+        read: state?.query?.selected_ids.length ?? null,
+        busy: !!state?.sleep.busy || cycleActive,
+        phase: $("phase").textContent,
+        selection: selected
+          ? {
+              id: selected.id,
+              context: selected.context,
+              x: selected.x,
+              y: selected.y,
+              salience: selected.salience,
+              hot: selected.hot,
+              current: selected.current,
+              version: selected.version,
+            }
+          : null,
+        queryContext: state?.query?.cue.context,
+        queryMask: state?.query?.cue.mask?.slice(),
+        context: $("context").value,
+        action: $("action").value,
+        mask: [$("know-x").checked, $("know-y").checked],
+        position: position.slice(),
+        projection,
+        tool,
+        renderer: field3D ? "three" : "canvas",
+      };
+    },
+    command(name, payload) {
+      if (name === "action") {
+        const id = {
+          cycle: "cycle",
+          collect: "collect",
+          forget: "fade",
+          learn: "sleep",
+        }[payload];
+        if (!id || $(id).disabled) throw Error("Memory action unavailable");
+        $(id).click();
+        return;
+      }
+      if (name === "query") {
+        if (
+          !payload ||
+          !["0", "1", ""].includes(payload.context) ||
+          !["right", "left", "up", "down", ""].includes(payload.action) ||
+          !Array.isArray(payload.mask) ||
+          payload.mask.length !== 2 ||
+          !payload.mask.every((v) => typeof v === "boolean")
+        )
+          throw Error("Invalid memory cue");
+        if (state?.sleep.busy) throw Error("Offline learning is running");
+        if (payload.position) {
+          if (
+            !Array.isArray(payload.position) ||
+            payload.position.length !== 2 ||
+            !payload.position.every(
+              (v) => Number.isFinite(v) && v >= -1 && v <= 1,
+            )
+          )
+            throw Error("Position must be inside the field");
+          position = payload.position.slice();
+        }
+        $("context").value = payload.context;
+        $("action").value = payload.action;
+        $("know-x").checked = payload.mask[0];
+        $("know-y").checked = payload.mask[1];
+        safe(api("/api/query", cue()));
+        return;
+      }
+      if (name === "view") {
+        if (!["layers", "plane"].includes(payload))
+          throw Error("Unknown memory view");
+        document.querySelector('[data-projection="' + payload + '"]').click();
+        return;
+      }
+      if (name === "tool") {
+        if (!["query", "inspect"].includes(payload))
+          throw Error("Unknown field tool");
+        document.querySelector('[data-tool="' + payload + '"]').click();
+        return;
+      }
+      if (name === "camera") {
+        if (!field3D) return;
+        if (payload === "home") field3D.reset();
+        else if (payload === "focus") field3D.focus();
+        else if (payload === "replay") field3D.replay();
+        else if (payload === "orbit") {
+          field3D.controls.autoRotate =
+            !field3D.controls.autoRotate && !field3D.reduced;
+          field3D.dirty = true;
+        } else throw Error("Unknown camera action");
+        return;
+      }
+      throw Error("Unsupported memory command");
+    },
+  };
   (async () => {
     try {
       await api("/api/state");

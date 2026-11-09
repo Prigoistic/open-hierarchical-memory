@@ -1,4 +1,4 @@
-"""Read-only loopback inspector for completed, checksum-bound task traces."""
+"""Unified local dashboard: read-only task evidence and a bounded live-memory bridge."""
 
 from __future__ import annotations
 
@@ -10,6 +10,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlsplit
+
+from research.dashboard_gateway import MAX_BODY, MEMORY_WRITES, MemoryGateway
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_EXPANDED_TRACE_BYTES = 128 * 1024 * 1024
@@ -154,7 +156,8 @@ class TaskCatalog:
 class TaskServer(ThreadingHTTPServer):
     daemon_threads = True
 
-    def __init__(self, address: tuple[str, int], root: Path = ROOT):
+    def __init__(self, address: tuple[str, int], root: Path = ROOT, *, memory_port: int = 8791):
+        self.memory = MemoryGateway(memory_port)
         self.catalog = TaskCatalog(root)
         self.root = root
         super().__init__(address, TaskHandler)
@@ -174,7 +177,8 @@ class TaskHandler(BaseHTTPRequestHandler):
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header(
             "Content-Security-Policy",
-            "default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'",
+            "default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'self'; frame-ancestors "
+            + ("'self'" if urlsplit(self.path).path.startswith(("/task/", "/live/")) else "'none'"),
         )
         self.end_headers()
         self.wfile.write(body)
@@ -182,6 +186,10 @@ class TaskHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         route = urlsplit(self.path)
         try:
+            if route.path == "/api/memory/state" and not route.query:
+                status, body = self.server.memory.request("state")
+                self.send(status, body, "application/json")
+                return
             if route.path == "/api/catalog":
                 result = self.server.catalog.catalog()
             elif route.path == "/api/run":
@@ -193,7 +201,9 @@ class TaskHandler(BaseHTTPRequestHandler):
                 result = self.server.catalog.bank()
             else:
                 allowed = {
-                    "/": ("web/task-lab/index.html", "text/html; charset=utf-8"),
+                    "/": ("web/dashboard/index.html", "text/html; charset=utf-8"),
+                    "/dashboard.css": ("web/dashboard/style.css", "text/css"),
+                    "/dashboard.js": ("web/dashboard/app.js", "text/javascript"),
                     "/style.css": ("web/task-lab/style.css", "text/css"),
                     "/app.js": ("web/task-lab/app.js", "text/javascript"),
                     "/routing.js": ("web/task-lab/routing.js", "text/javascript"),
@@ -202,6 +212,26 @@ class TaskHandler(BaseHTTPRequestHandler):
                     "/geist.ttf": ("web/somna-live/fonts/geist-regular.ttf", "font/ttf"),
                     "/geist-semibold.ttf": ("web/somna-live/fonts/geist-semibold.ttf", "font/ttf"),
                 }
+                for prefix, folder in [("task", "task-lab"), ("live", "somna-live")]:
+                    allowed[f"/{prefix}/"] = (
+                        f"web/{folder}/index.html",
+                        "text/html; charset=utf-8",
+                    )
+                    for asset, mime in [
+                        ("app.js", "text/javascript"),
+                        ("style.css", "text/css"),
+                        ("spatial.bundle.js", "text/javascript"),
+                        ("spatial.css", "text/css"),
+                        ("embedded.css", "text/css"),
+                        ("panel-boot.js", "text/javascript"),
+                    ]:
+                        allowed[f"/{prefix}/{asset}"] = (f"web/{folder}/{asset}", mime)
+                allowed["/task/routing.js"] = ("web/task-lab/routing.js", "text/javascript")
+                for weight in ["regular", "semibold"]:
+                    allowed[f"/live/fonts/geist-{weight}.ttf"] = (
+                        f"web/somna-live/fonts/geist-{weight}.ttf",
+                        "font/ttf",
+                    )
                 if route.path not in allowed:
                     raise KeyError("unknown route")
                 filename, mime = allowed[route.path]
@@ -222,15 +252,60 @@ class TaskHandler(BaseHTTPRequestHandler):
             )
 
     def do_POST(self) -> None:
-        self.send(405, b'{"error":"This inspector is read only"}', "application/json")
+        route = urlsplit(self.path)
+        operation = route.path.removeprefix("/api/memory/")
+        if (
+            not route.path.startswith("/api/memory/")
+            or operation not in MEMORY_WRITES
+            or route.query
+        ):
+            self.send(
+                405,
+                b'{"error":"Task evidence is read only; unsupported operation"}',
+                "application/json",
+            )
+            return
+        host = self.headers.get("Host", "")
+        if (
+            host
+            not in {f"127.0.0.1:{self.server.server_port}", f"localhost:{self.server.server_port}"}
+            or self.headers.get("Origin") != "http://" + host
+        ):
+            self.send(
+                403,
+                b'{"error":"Dashboard writes require the same loopback origin"}',
+                "application/json",
+            )
+            return
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            if (
+                not 0 < length <= MAX_BODY
+                or self.headers.get("Content-Type", "").split(";")[0] != "application/json"
+            ):
+                raise ValueError("bounded JSON required")
+            value = json.loads(self.rfile.read(length))
+            if not isinstance(value, dict):
+                raise ValueError("object required")
+            payload = json.dumps(value, allow_nan=False).encode()
+        except (ValueError, UnicodeDecodeError):
+            self.send(
+                400,
+                b'{"error":"Request must be a finite JSON object of at most 64 KiB"}',
+                "application/json",
+            )
+            return
+        status, body = self.server.memory.request(operation, payload)
+        self.send(status, body, "application/json")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=8792)
+    parser.add_argument("--memory-port", type=int, default=8791)
     args = parser.parse_args()
-    server = TaskServer(("127.0.0.1", args.port))
-    print(f"Benchmark inspector: http://127.0.0.1:{args.port}/", flush=True)
+    server = TaskServer(("127.0.0.1", args.port), memory_port=args.memory_port)
+    print(f"Somna dashboard: http://127.0.0.1:{args.port}/", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

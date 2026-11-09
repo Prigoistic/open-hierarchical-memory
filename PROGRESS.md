@@ -241,3 +241,16 @@ GSAP now supplies visible staged entrance/material reveal, bounded read-path rep
 Verification passes 429 Python tests, 16 source-mapping tests, existing routing contracts, JS syntax, Ruff/format and strict mypy. Browser checks cover point picking after transformed projection, both 3D views, orbit/focus, reduced motion, Canvas fallback, graph recovery and live partial retrieval in an isolated archive. The live8791 server, algorithms and experimental recordings remain unchanged. A browser wait with incorrect expected hint text was cancelled; the isolated archive confirms the correct [false,true] query, eight read originals and all256 sources retained. Actual IAB automation was unavailable; browser verification used Chromium. The 34.2-second MP4 is an actual UI recording.
 
 See `docs/SCIENTIFIC_VISUALS.md` and `docs/evidence/observatory-redesign-browser.json`. No public push or release.
+
+
+## 9 November 2026 — one unified dashboard
+
+Replaced the separate task/live entry pages with one workspace on8792. Both existing structures are visible by default, with larger viewport areas, a narrow control rail, the actual navigation thumbnail, a shared source inspector and focus layouts. Only Play and Run memory cycle are default visible workflow buttons. Secondary run/query settings and camera actions are behind disclosures. The prior8791 page redirects to this same dashboard. The archive API process remains the existing owner; no database reset or engine restart was needed.
+
+The same-origin view modules expose explicit snapshot/command adapters and retain separate experiment state. Changing observation/projection views preserves the recorded timeline. Canonical run URLs come from actual controller identities. A bounded loopback gateway forwards only the approved live operations; task artifacts remain read-only. Origin checks, finite JSON/body limits, protocol/schema checks, reply limits, disabled operations, proxy/redirect exclusion and typed read-timeout/outage errors have regression coverage. This unifies the UI, not the numerical experiments or their provenance.
+
+Browser checks verify both connected panels, reduced default controls, timeline/projection/focus commands, source picking into the common inspector, cue draft persistence, an actual returned partial query, the mobile control drawer and a complete isolated live-memory cycle. The isolated archive grew256→288 and completed160 learning updates; the selected recorded task stayed unchanged. The user's live archive retains480 originals and the identical source checksum across migration. At390px there is no horizontal overflow; focus view uses a389×691 frame.
+
+Final checks:439 Python tests,16 visual tests, existing Node routing contracts, JS syntax, Ruff/format and strict core/gateway typing all pass. Browser error histories are empty. The rendering bundle, embedded style and shared boot assets match their build manifest in both view modules. No numerical-core, planner or frozen-evidence changes; no public push/release. The visual references were the supplied scientific figures, Vitessce's multi-view approach and the Three.js editor's viewport/sidebar proportions; no external code or assets were copied.
+
+See `docs/UNIFIED_DASHBOARD.md`, `docs/evidence/unified-dashboard-browser.json` and the current root dashboard. Earlier milestone evidence remains separate.

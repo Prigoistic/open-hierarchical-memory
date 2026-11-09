@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="robots" content="noindex" />
+    <title>Somna / Memory laboratory</title>
+    <meta
+      name="description"
+      content="One workspace for recorded hierarchical retrieval and live memory experiments."
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="dashboard.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#workspace">Skip to visual workspace</a>
+    <header class="mast">
+      <a class="brand" href="/"
+        ><span class="brand-mark" aria-hidden="true">◇</span> somna
+        <span class="brand-note">/ memory laboratory</span></a
+      >
+      <div class="mast-right">
+        <span class="connection" id="connection">Connecting</span
+        ><label class="layout-control"
+          ><span class="sr-only">Workspace layout</span
+          ><select id="layout">
+            <option value="both">Both structures</option>
+            <option value="hierarchy">Hierarchy focus</option>
+            <option value="memory">Live memory focus</option>
+          </select></label
+        ><button
+          class="rail-toggle"
+          id="rail-toggle"
+          aria-expanded="false"
+          aria-controls="controls"
+        >
+          Controls
+        </button>
+      </div>
+    </header>
+    <div class="laboratory">
+      <aside id="controls" aria-label="Experiment controls">
+        <div class="rail-intro">
+          <span class="eyebrow">Workspace</span>
+          <h1>Experiment controls</h1>
+          <p>Recorded task · live archive.</p>
+        </div>
+        <section class="control-section">
+          <div class="section-heading">
+            <i class="signal recorded"></i>
+            <h2>Recorded experiment</h2>
+          </div>
+          <label>Task<select id="task-suite" disabled></select></label
+          ><label>Method<select id="task-config" disabled></select></label>
+          <details class="advanced">
+            <summary>Run &amp; query</summary>
+            <div>
+              <label>Study<select id="task-cohort" disabled></select></label
+              ><label>Seed<select id="task-level" disabled></select></label
+              ><label>Cue<select id="task-cue" disabled></select></label
+              ><label
+                >Routing pass<select
+                  id="task-routing-pass"
+                  disabled
+                ></select></label
+              ><label
+                >Maze view<select id="navigation">
+                  <option value="recall">Recalled map</option>
+                  <option value="observed">Current observation</option>
+                </select></label
+              ><label class="check"
+                ><input type="checkbox" id="show-map" checked /> Show navigation
+                inset</label
+              ><button id="recovery" class="quiet" disabled>
+                Jump to next recovery
+              </button>
+            </div>
+          </details>
+          <canvas
+            id="navigation-preview"
+            width="208"
+            height="144"
+            aria-label="Recorded navigation map"
+          ></canvas>
+          <p class="source-note" id="task-status">Loading recorded evidence.</p>
+        </section>
+        <section class="control-section">
+          <div class="section-heading">
+            <i class="signal live"></i>
+            <h2>Live memory</h2>
+          </div>
+          <div class="memory-stats">
+            <div><b id="memory-originals">—</b><span>originals</span></div>
+            <div><b id="memory-hot">—</b><span>active</span></div>
+            <div><b id="memory-updates">—</b><span>updates</span></div>
+          </div>
+          <button id="memory-cycle" class="primary" disabled>
+            Run memory cycle <span aria-hidden="true">↗</span>
+          </button>
+          <p class="source-note" id="memory-phase">Connecting to archive.</p>
+          <details class="advanced">
+            <summary>Cue &amp; memory actions</summary>
+            <div>
+              <label
+                >Context<select id="memory-context">
+                  <option value="0">World A</option>
+                  <option value="1">World B / rare</option>
+                  <option value="">Unknown</option>
+                </select></label
+              ><label
+                >Action<select id="memory-action">
+                  <option value="right">Right →</option>
+                  <option value="up">Up ↑</option>
+                  <option value="left">Left ←</option>
+                  <option value="down">Down ↓</option>
+                  <option value="">Unknown</option>
+                </select></label
+              >
+              <fieldset class="mask">
+                <legend>Known coordinates</legend>
+                <label class="check"
+                  ><input id="mask-x" type="checkbox" checked />X</label
+                ><label class="check"
+                  ><input id="mask-y" type="checkbox" checked />Y</label
+                >
+              </fieldset>
+              <label
+                >Click behaviour<select id="memory-tool">
+                  <option value="inspect">Inspect a memory</option>
+                  <option value="query">Query a position</option>
+                </select></label
+              ><button id="memory-query" class="quiet" disabled>
+                Recall from cue</button
+              ><label
+                >Archive action<select id="memory-operation">
+                  <option value="collect">Collect 32 observations</option>
+                  <option value="forget">Let memories fade</option>
+                  <option value="learn">Learn offline</option>
+                </select></label
+              ><button id="memory-execute" class="quiet" disabled>
+                Run action
+              </button>
+            </div>
+          </details>
+        </section>
+        <details class="selection-section" open>
+          <summary>Selection</summary>
+          <p class="selection-source" id="selection-source">
+            Click either structure
+          </p>
+          <p id="selection-detail">
+            Source information appears here when you select a point.
+          </p>
+          <dl id="selection-values"></dl>
+        </details>
+        <details class="about">
+          <summary>About this workspace</summary>
+          <p>
+            The hierarchy replays a saved task read. The live field uses its own
+            running archive. Both use the ZHA retrieval implementation.
+          </p>
+          <p>
+            Drag to orbit. Scroll to zoom. Use each view menu for focus and
+            replay.
+          </p>
+        </details>
+      </aside>
+      <main id="workspace" class="workspace" data-layout="both">
+        <article
+          id="hierarchy-panel"
+          class="view-panel"
+          aria-label="Recorded hierarchy"
+        >
+          <div class="view-heading">
+            <div>
+              <span class="eyebrow">01 / Recorded</span>
+              <h2>
+                <span id="task-view-name">Hierarchical read</span>
+                <span id="task-title"></span>
+              </h2>
+            </div>
+            <div class="view-tools">
+              <label
+                ><span class="sr-only">Hierarchy projection</span
+                ><select id="hierarchy-view">
+                  <option value="layers">Layers</option>
+                  <option value="structure">Branches</option>
+                  <option value="tree">Tree</option>
+                </select></label
+              >
+              <details class="view-menu">
+                <summary aria-label="Hierarchy view actions">···</summary>
+                <div>
+                  <button data-panel="tasks" data-camera="home">
+                    Reset camera</button
+                  ><button data-panel="tasks" data-camera="focus">
+                    Focus selection</button
+                  ><button data-panel="tasks" data-camera="replay">
+                    Replay read</button
+                  ><button data-panel="tasks" data-camera="orbit">
+                    Toggle orbit
+                  </button>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="frame-wrap">
+            <iframe
+              id="task-frame"
+              title="Recorded hierarchy and navigation"
+              allow="fullscreen"
+              loading="eager"
+            ></iframe>
+            <div class="loading" id="task-loading">
+              <span>Opening recorded evidence</span
+              ><button id="retry-tasks" hidden>Reconnect view</button>
+              <div class="skeleton"></div>
+            </div>
+          </div>
+          <div class="playback">
+            <button id="play" class="play" disabled>
+              Play <span aria-hidden="true">▷</span></button
+            ><input
+              type="range"
+              id="timeline"
+              min="0"
+              max="0"
+              value="0"
+              aria-label="Recorded episode step"
+              disabled
+            /><span id="cursor">— / —</span>
+          </div>
+          <div class="view-foot">
+            <span id="task-counts">Recorded originals</span
+            ><span class="key"
+              ><i class="gold"></i>Read <i class="cyan"></i>Expanded</span
+            >
+          </div>
+        </article>
+        <article
+          id="memory-panel"
+          class="view-panel"
+          aria-label="Live memory structure"
+        >
+          <div class="view-heading">
+            <div>
+              <span class="eyebrow">02 / Live</span>
+              <h2>
+                Memory field <span id="memory-state">Persistent archive</span>
+              </h2>
+            </div>
+            <div class="view-tools">
+              <label
+                ><span class="sr-only">Memory projection</span
+                ><select id="memory-view">
+                  <option value="layers">Layers</option>
+                  <option value="plane">Plane</option>
+                </select></label
+              >
+              <details class="view-menu">
+                <summary aria-label="Memory view actions">···</summary>
+                <div>
+                  <button data-panel="memory" data-camera="home">
+                    Reset camera</button
+                  ><button data-panel="memory" data-camera="focus">
+                    Focus selection</button
+                  ><button data-panel="memory" data-camera="replay">
+                    Replay read</button
+                  ><button data-panel="memory" data-camera="orbit">
+                    Toggle orbit
+                  </button>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="frame-wrap">
+            <iframe
+              id="memory-frame"
+              title="Live observed memory structure"
+              allow="fullscreen"
+              loading="eager"
+            ></iframe>
+            <div class="loading" id="memory-loading">
+              <span>Connecting to the live archive</span
+              ><button id="retry-memory" hidden>Reconnect archive</button>
+              <div class="skeleton"></div>
+            </div>
+          </div>
+          <div class="memory-caption">
+            <span id="memory-counts"
+              >Observed transitions · salience height</span
+            ><span id="memory-busy"></span>
+          </div>
+          <div class="view-foot">
+            <span>Independent live session</span
+            ><span class="key"
+              ><i class="cyan"></i>World A <i class="rust"></i>World B</span
+            >
+          </div>
+        </article>
+        <div
+          id="dashboard-error"
+          class="dashboard-error"
+          role="alert"
+          hidden
+        ></div>
+      </main>
+    </div>
+  </body>
+</html>

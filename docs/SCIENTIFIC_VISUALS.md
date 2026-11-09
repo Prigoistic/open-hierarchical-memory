@@ -1,6 +1,6 @@
 # Scientific visual system
 
-The current observatory replaces the large form/card layout with a compact instrument frame: navigation on the left, a primary 3D field in the centre and source inspection on the right. Playback remains visible at desktop900px height. On mobile the scene comes first and uses a portrait atlas. The supplied references guide composition, wireframes, source-density, annotation and motion; they are not experimental data.
+The current single dashboard at `http://127.0.0.1:8792/` shows the recorded hierarchy and live memory field together. A narrow side rail contains run selection, navigation, memory actions and source inspection. Only the two primary workflow buttons are visible by default; detailed settings and camera actions are disclosed on demand. Focus layouts expand either structure. See `UNIFIED_DASHBOARD.md` for the integration and source boundaries.
 
 ## Source projections
 
@@ -21,4 +21,6 @@ The shared source is `web/visuals/src`, with pinned dependencies and a reproduci
 
 ## Verification
 
-The current source/topology suite has 16 passing tests, including atlas membership, exact edges, source fields, portrait identity, finite branch geometry and replay cache invalidation. The locked Python suite passes 429 tests; lint, formatting, strict typing, JS syntax and existing routing contracts pass. Browser checks cover pointer picking, GSAP route movement and termination, view switching, cue retrieval, desktop/mobile overflow, visible playback, reduced motion, Canvas fallback and explicit observed-graph recovery. The updated evidence is `docs/evidence/observatory-redesign-browser.json`; earlier milestone evidence is retained separately.
+The current source/topology suite has 16 passing tests, including atlas membership, exact edges, source fields, portrait identity, finite branch geometry and replay cache invalidation. The locked Python suite passes 439 tests; lint, formatting, strict typing, JS syntax and existing routing contracts pass. Browser checks cover pointer picking, GSAP route movement and termination, view switching, cue retrieval, desktop/mobile overflow, visible playback, reduced motion, Canvas fallback and explicit observed-graph recovery. The updated evidence is `docs/evidence/observatory-redesign-browser.json`; earlier milestone evidence is retained separately.
+
+The current unified-entry verification is `docs/evidence/unified-dashboard-browser.json`; earlier visual milestones remain separately recorded.

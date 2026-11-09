@@ -24,6 +24,19 @@ See [progress](PROGRESS.md), the [engineering plan](docs/ENGINEERING_PLAN.md), a
 
 This project is independent and is not affiliated with Zyphra. The paper's authors retain credit for ZHA. No code has been copied from their implementation.
 
+## Unified local dashboard
+
+Open **http://127.0.0.1:8792/**. The recorded ZHA hierarchy and live Somna memory field now share one workspace, with controls in the side rail. The former8791 page redirects here.
+
+For a fresh local session, start the archive service and dashboard in separate terminals:
+
+```sh
+uv run --locked python -m research.serve_somna --port 8791
+uv run --locked --extra benchmarks python -m research.serve_task_benchmark --port 8792 --memory-port 8791
+```
+
+The UI combines views; the recorded task and live archive retain distinct state and provenance. See [the dashboard guide](docs/UNIFIED_DASHBOARD.md).
+
 ## Measured layer pilot
 
 The [frozen GPT-2 pilot](experiments/gpt2-layer5-pilot-v1/SUMMARY.md) fits only 6,144 routing-reference parameters per seed. Held-out pooled KL improves in all three seeds. At threshold 0.73, mean attention-output L2 error is 11.9% lower than the untrained sampled-query initialization at nearly equal selected-key fractions. The random-reference baseline is close, and higher-threshold results are mixed. This covers one layer, 256-token contexts and two test books; it establishes no whole-model quality or speed claim.

@@ -30,7 +30,7 @@ The frozen fresh evaluation contains 264 episodes: four tasks, eleven conditions
 
 The demonstrated improvement is the coverage interface. These results do not establish ZHA superiority, a speedup or a new navigation algorithm. The graph reader scans its observed archive; the 96-fact limit applies to returned historical facts, with a separately charged mask. See `experiments/dependency-evaluation-v1/` for frozen source, protocol, every trace and the comparison. Earlier results and failures remain separate in `experiments/`.
 
-Use the live memory lab at `http://127.0.0.1:8791/` and the recorded task inspector at `http://127.0.0.1:8792/`. The separate `neural-fields` repository is an independent dynamical-systems project; its field simulation is not the maze controller.
+Open the unified Somna dashboard at `http://127.0.0.1:8792/` for both the recorded hierarchy and live memory field. The live-memory service on8791 supplies the archive; its old page redirects to the same dashboard. The separate `neural-fields` repository is an independent dynamical-systems project; its field simulation is not the maze controller.
 
 ## 5. Progress-aware retrieval repair
 
@@ -39,3 +39,10 @@ The new progress readers detect repeated poses without novel observed evidence. 
 On the fixed 24-episode cohort per method, original ZHA bundles solve 19/24. Query plus widening repair solves 23/24; fallback-enabled repair solves 24/24 with 16 fallback reads in one case. Matched exact solves 24/24 without fallback. This repairs the operational stall without establishing a ZHA advantage.
 
 The inspector exposes actual cues, routing passes, node spans, original facts and recovery transitions. Playback is recorded execution. Shared event/layout banks keep failed controls inspectable under the bounded transport. The same cohort was rerun after a serialization failure with unchanged policies; 167 retained originals have exact decoded parity. See `experiments/progress-evaluation-v2/ANALYSIS.md` and `docs/PROGRESS_RETRIEVAL.md` for the full comparison and missing-original caveat.
+
+
+## 6. Unified dashboard
+
+The one user-facing entry is `http://127.0.0.1:8792/`. Both visual structures are visible by default. A shared side rail contains task selection, a navigation thumbnail, memory actions and source inspection. Secondary query settings and camera actions are disclosed only when needed. Focus layouts expand either structure without changing its experiment state.
+
+The saved task and live archive remain distinct evidence sources. UI unification does not make the maze controller run the separate neural-learning loop. A bounded same-origin bridge forwards only approved live-memory operations to the existing loopback archive service. Task recordings stay read-only. The two panel controllers have explicit snapshot/command interfaces; their numerical state is not combined.

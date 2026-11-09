@@ -1,0 +1,222 @@
+.is-embedded,
+.is-embedded body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  margin: 0;
+}
+.is-embedded .skip,
+.is-embedded body > header,
+.is-embedded main > .intro,
+.is-embedded main > .toolbar,
+.is-embedded main > .run-line,
+.is-embedded main > .metrics,
+.is-embedded main > .transport,
+.is-embedded main > .technical,
+.is-embedded main > .comparison,
+.is-embedded main > footer {
+  display: none !important;
+}
+.is-embedded .console-task main {
+  height: 100dvh;
+  padding: 0;
+  max-width: none;
+}
+.is-embedded .console-task .workbench {
+  height: 100%;
+  display: block;
+  border: 0;
+}
+.is-embedded .console-task .routing-panel {
+  height: 100%;
+  padding: 0;
+  border: 0;
+  min-height: 0;
+}
+.is-embedded .routing-panel > .panel-title,
+.is-embedded .routing-panel > .cue-controls,
+.is-embedded .routing-panel > .legend,
+.is-embedded #routing-description,
+.is-embedded .evidence-section {
+  display: none !important;
+}
+.is-embedded .spatial-stage {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.is-embedded .console-task #routing-spatial,
+.is-embedded .console-task #routing,
+.is-embedded .console-live #experience-spatial,
+.is-embedded .console-live #experience {
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  width: 100%;
+}
+.is-embedded .spatial-toolbar {
+  display: none !important;
+}
+.is-embedded .spatial-status {
+  top: 8px;
+  left: 16px;
+  color: #557784;
+  font-size: 12px;
+  line-height: 16px;
+}
+.is-embedded .spatial-caption {
+  left: 16px;
+  right: 16px;
+  bottom: 8px;
+  color: #4b6b7b;
+  font-size: 12px;
+  line-height: 16px;
+}
+.is-embedded .spatial-label {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+}
+.is-embedded .console-task .scene-panel {
+  display: none !important;
+}
+.is-embedded .console-task.show-navigation .scene-panel {
+  display: block !important;
+  position: absolute;
+  left: 16px;
+  bottom: 40px;
+  width: 160px;
+  height: 160px;
+  padding: 8px;
+  z-index: 4;
+  background: #000b;
+  border: 1px solid #243942;
+  overflow: hidden;
+}
+.is-embedded .scene-panel > .panel-title,
+.is-embedded .scene-panel > .legend,
+.is-embedded .scene-panel > .helper {
+  display: none !important;
+}
+.is-embedded .console-task #board {
+  width: 144px !important;
+  height: 144px !important;
+  margin: 0;
+}
+.is-embedded .console-live main {
+  height: 100dvh;
+  max-width: none;
+  padding: 0;
+  position: relative;
+}
+.is-embedded .console-live main > .actions,
+.is-embedded .console-live main > .archive-strip,
+.is-embedded .console-live main > .sleep-panel,
+.is-embedded .console-live main > .bottom-grid,
+.is-embedded .console-live main > footer {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 600px;
+  visibility: hidden;
+  pointer-events: none;
+}
+.is-embedded .console-live .scene-grid {
+  height: 100%;
+  display: block;
+  border: 0;
+  margin: 0;
+}
+.is-embedded .console-live .experience {
+  height: 100%;
+  border: 0;
+  padding: 0;
+  position: relative;
+}
+.is-embedded .experience > .panel-top,
+.is-embedded .experience > .query-bar,
+.is-embedded .experience > .legend,
+.is-embedded .experience > .hint {
+  display: none !important;
+}
+.is-embedded .right-scenes,
+.is-embedded #record-card {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 400px;
+  visibility: hidden;
+  pointer-events: none;
+}
+.is-embedded .console-live .right-scenes canvas {
+  width: 400px;
+  height: 240px;
+}
+.is-embedded #error:not([hidden]) {
+  position: fixed;
+  inset: 48px 16px auto;
+  z-index: 30;
+  background: #181818;
+  border: 1px solid #9a7256;
+  padding: 16px;
+  color: #d9b89c;
+  font-size: 12px;
+  line-height: 20px;
+}
+@media (max-width: 600px) {
+  .is-embedded .console-task.show-navigation .scene-panel {
+    width: 112px;
+    height: 112px;
+    left: 8px;
+    bottom: 32px;
+    padding: 4px;
+  }
+  .is-embedded .console-task #board {
+    width: 102px !important;
+    height: 102px !important;
+  }
+  .is-embedded .spatial-status {
+    left: 8px;
+    font-size: 12px;
+  }
+  .is-embedded .spatial-caption {
+    left: 8px;
+    right: 8px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .is-embedded .spatial-label {
+    font-size: 12px;
+  }
+}
+
+.is-embedded .console-task .scene-panel,
+.is-embedded .console-task.show-navigation .scene-panel {
+  display: block !important;
+  position: fixed !important;
+  left: -10000px !important;
+  top: 0;
+  bottom: auto;
+  width: 160px;
+  height: 160px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.is-embedded .console-task .workbench.single-view .scene-panel {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  padding: 0;
+  background: #000;
+  border: 0;
+}
+.is-embedded .console-task .workbench.single-view #board {
+  width: 100% !important;
+  height: 100% !important;
+}
