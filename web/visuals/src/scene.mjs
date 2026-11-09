@@ -5,6 +5,9 @@ import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js"
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { gsap } from "gsap";
+import { createContextGrid } from "./grid.mjs";
+import navigation from "./navigation.cjs";
+export const PoseTween = navigation.PoseTween;
 import { CustomEase } from "gsap/CustomEase";
 export {
   memoryModel,
@@ -44,17 +47,20 @@ export class SpatialView {
     this.scene = new THREE.Scene();
     this.group = new THREE.Group();
     this.scene.add(this.group);
+    this.contextGrid = createContextGrid();
+    this.scene.add(this.contextGrid);
+    this.canvas.dataset.contextGrid = "fading floor";
     this.camera = new THREE.OrthographicCamera(-4, 4, 3, -3, 0.01, 100);
     this.composer = new EffectComposer(this.renderer);
     this.composer.addPass(new RenderPass(this.scene, this.camera));
-    this.bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.38, 0.45, 0.72);
+    this.bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.16, 0.35, 0.86);
     this.composer.addPass(this.bloom);
     this.composer.addPass(new OutputPass());
     this.camera.position.set(5, 5, 7);
     this.controls = new OrbitControls(this.camera, canvas);
     this.controls.target.set(0, 1, 0);
     this.controls.enableDamping = !this.reduced;
-    this.controls.dampingFactor = 0.12;
+    this.controls.dampingFactor = 0.075;
     this.controls.minZoom = 0.45;
     this.controls.maxZoom = 5;
     this.controls.enablePan = true;
@@ -69,6 +75,7 @@ export class SpatialView {
         this.camera.position,
         this.controls.target,
         this.camera,
+        this.framing,
       ]);
     });
     this.overlay = document.createElement("div");
@@ -217,7 +224,12 @@ export class SpatialView {
     this.composer?.setSize(r.width, r.height);
     const aspect = r.width / r.height;
     this.fitSpan(aspect);
-    const span = this.span || 5.5;
+    this.applySpan(this.span || 5.5);
+    this.dirty = true;
+  }
+  applySpan(span) {
+    const aspect = this.width / this.height;
+    this.span = span;
     this.camera.left = (-span * aspect) / 2;
     this.camera.right = (span * aspect) / 2;
     this.camera.top = span / 2;
@@ -333,7 +345,8 @@ export class SpatialView {
   setData(model) {
     if (this.model?.key === model.key) return;
     const first = !this.model,
-      layoutChanged = this.model?.layout !== model.layout;
+      layoutChanged = this.model?.layout !== model.layout,
+      previousSpan = this.span;
     this.model = model;
     this.clear();
     this.group.rotation.x = model.layout === "ordinal" ? Math.PI / 2 : 0;
@@ -354,7 +367,7 @@ export class SpatialView {
           { from: [a, y, z], to: [b, y, z] },
         );
       }
-      this.line(grid, plane.color, 0.16);
+      this.line(grid, "#8e9683", 0.045);
       this.line(
         [
           { from: [a, y, c], to: [b, y, c] },
@@ -362,15 +375,15 @@ export class SpatialView {
           { from: [b, y, d], to: [a, y, d] },
           { from: [a, y, d], to: [a, y, c] },
         ],
-        plane.color,
-        0.38,
+        "#8d9581",
+        0.15,
       );
       const mesh = new THREE.Mesh(
         new THREE.PlaneGeometry(b - a, d - c),
         new THREE.MeshBasicMaterial({
           color: plane.color,
           transparent: true,
-          opacity: 0.025,
+          opacity: 0.008,
           side: THREE.DoubleSide,
           depthWrite: false,
         }),
@@ -387,7 +400,7 @@ export class SpatialView {
             ? " · " + plane.kept + " / " + plane.count
             : ""),
         [a - 0.02, y, d + 0.06],
-        plane.color,
+        "#a2aa96",
       );
       this.line(
         [
@@ -396,8 +409,8 @@ export class SpatialView {
           { from: [b, y - 0.045, d], to: [a, y - 0.045, d] },
           { from: [a, y - 0.045, d], to: [a, y - 0.045, c] },
         ],
-        plane.color,
-        0.2,
+        "#878e7c",
+        0.045,
       );
     }
     const top = Math.max(0, ...model.planes.map((p) => p.y)),
@@ -412,11 +425,18 @@ export class SpatialView {
           [b, c],
           [b, d],
         ].map(([x, z]) => ({ from: [x, bottom, z], to: [x, top, z] })),
-        0x738582,
-        0.13,
+        0x858d7b,
+        0.055,
       );
     }
-    for (const kind of ["stem", "transition", "cue", "read", "prediction"]) {
+    for (const kind of [
+      "stem",
+      "transition",
+      "cue",
+      "read",
+      "prediction",
+      "plan",
+    ]) {
       const source = model.segments.filter((s) => s.kind === kind),
         colors = [...new Set(source.map((s) => s.color))];
       if (kind === "read" && model.kind === "hierarchy") {
@@ -430,13 +450,15 @@ export class SpatialView {
           color,
           kind === "prediction"
             ? 1
-            : kind === "read"
-              ? 0.4
-              : kind === "cue"
-                ? 0.5
-                : kind === "stem"
-                  ? 0.13
-                  : 0.18,
+            : kind === "plan"
+              ? 0.8
+              : kind === "read"
+                ? 0.19
+                : kind === "cue"
+                  ? 0.5
+                  : kind === "stem"
+                    ? 0.06
+                    : 0.14,
         );
         this.line(
           group.filter((s) => s.dim),
@@ -487,11 +509,11 @@ export class SpatialView {
         ...p,
         color: model.kind === "memory" ? "#e2ce86" : p.color,
       })),
-      18,
-      0.24,
+      12,
+      0.13,
       this.glowTexture,
     );
-    this.points(selected, 5.1, 1);
+    this.points(selected, 4, 0.95);
     this.points(
       model.points
         .filter((p) => p.returned)
@@ -540,9 +562,19 @@ export class SpatialView {
     this.canvas.dataset.readCount = model.readCount;
     this.canvas.dataset.modelKey = model.key;
     this.canvas.dataset.geometryPoints = model.points.length;
-    if (first || layoutChanged || (changedBounds && !this.userCamera))
-      this.reset(layoutChanged && !first && !this.reduced ? 0.9 : 0);
-    else this.resize();
+    this.contextGrid.position.set(
+      this.center.x,
+      box.min.y - 0.3,
+      this.center.z,
+    );
+    this.contextGrid.material.uniforms.radius.value = Math.max(
+      8,
+      box.getSize(new THREE.Vector3()).length() * 1.3,
+    );
+    if (first || layoutChanged)
+      this.reset(layoutChanged && !first && !this.reduced ? 0.65 : 0);
+    else if (changedBounds && !this.userCamera) this.reframe(previousSpan);
+    else if (!gsap.isTweening(this.framing)) this.resize();
     this.highlight(this.focused);
     this.render();
     if ((first || layoutChanged) && !this.reduced) {
@@ -588,20 +620,20 @@ export class SpatialView {
         const tube = new THREE.Mesh(
           new THREE.TubeGeometry(curve, 20, s.radius || 0.012, 4, false),
           new THREE.MeshBasicMaterial({
-            color: "#96c1be",
+            color: "#a6b7a0",
             transparent: true,
-            opacity: 0.36,
+            opacity: 0.16,
             depthWrite: false,
           }),
         );
         this.group.add(tube);
       }
       this.traceCurves.push({ curve, level: s.level || 1 });
-      const pts = curve.getPoints(24);
+      const pts = curve.getPoints(12);
       for (let i = 1; i < pts.length; i++)
         lines.push({ from: pts[i - 1].toArray(), to: pts[i].toArray() });
     }
-    this.line(lines, "#a1c3c7", 0.48);
+    this.line(lines, "#a8b59f", 0.25);
     if (this.traceCurves.length) {
       this.traceHeads = this.points(
         this.traceCurves.map(({ curve }) => ({
@@ -659,12 +691,12 @@ export class SpatialView {
   glyphs(points) {
     const cells = [];
     const palette = [
-      "#8dbecf",
-      "#7ac9bf",
-      "#e4b56f",
-      "#c7c97b",
-      "#a990c9",
-      "#b2c4b0",
+      "#a6b6b1",
+      "#91afa1",
+      "#c1b296",
+      "#b6b89e",
+      "#aaa2b6",
+      "#b2bcaa",
     ];
     for (const p of points)
       for (const [i, f] of (p.fields || []).entries()) {
@@ -691,13 +723,13 @@ export class SpatialView {
       }
     this.points(
       cells.filter((p) => p.dim),
-      2,
-      0.26,
+      1.6,
+      0.17,
     );
     this.points(
       cells.filter((p) => !p.dim),
-      2.6,
-      0.92,
+      2.2,
+      0.72,
     );
     this.canvas.dataset.channelGlyphs = cells.length;
   }
@@ -719,8 +751,8 @@ export class SpatialView {
           { from: [b, y, d], to: [a, y, d] },
           { from: [a, y, d], to: [a, y, c] },
         ],
-        p.level > 1 ? "#879bb0" : "#83c7bd",
-        0.2,
+        "#a1ad94",
+        0.055,
       );
     }
   }
@@ -771,6 +803,44 @@ export class SpatialView {
     note.className = "readout-hint";
     note.textContent = "Glyph height: normalised magnitude. Hover for values.";
     this.readout.append(note);
+  }
+  reframe(previousSpan) {
+    const offset = this.camera.position.clone().sub(this.controls.target);
+    this.resize();
+    const goalSpan = this.span,
+      duration = this.reduced ? 0 : 0.42;
+    gsap.killTweensOf(this.framing);
+    this.framing = { span: previousSpan || goalSpan };
+    this.applySpan(this.framing.span);
+    gsap.to(this.framing, {
+      span: goalSpan,
+      duration,
+      ease: "somna",
+      onUpdate: () => this.applySpan(this.framing.span),
+    });
+    gsap.to(this.controls.target, {
+      x: this.center.x,
+      y: this.center.y,
+      z: this.center.z,
+      duration,
+      ease: "somna",
+      overwrite: true,
+      onUpdate: () => {
+        this.dirty = true;
+      },
+    });
+    gsap.to(this.camera.position, {
+      x: this.center.x + offset.x,
+      y: this.center.y + offset.y,
+      z: this.center.z + offset.z,
+      duration,
+      ease: "somna",
+      overwrite: true,
+      onUpdate: () => {
+        this.dirty = true;
+      },
+    });
+    this.canvas.dataset.reframe = "eased";
   }
   reset(duration = this.reduced ? 0 : 0.7) {
     if (!this.model) return;
@@ -957,11 +1027,34 @@ export class SpatialView {
       attr.needsUpdate = true;
     }
     this.composer.render();
+    const occupied = [];
     for (const l of this.labels) {
       const p = this.project(l.position);
       l.el.hidden =
         p.z > 1 || p.x < 0 || p.x > this.width || p.y < 0 || p.y > this.height;
-      l.el.style.transform = `translate(${p.x}px,${p.y}px)`;
+      if (l.el.hidden) continue;
+      const width = l.width ?? (l.width = l.el.offsetWidth);
+      const x = Math.max(8, Math.min(this.width - width - 8, p.x));
+      let y = p.y;
+      for (const offset of [0, -20, 20, -40, 40]) {
+        const candidate = { x, y: p.y + offset, w: width, h: 16 };
+        if (
+          candidate.y >= 8 &&
+          candidate.y + 16 < this.height &&
+          !occupied.some(
+            (o) =>
+              candidate.x < o.x + o.w + 8 &&
+              candidate.x + candidate.w + 8 > o.x &&
+              candidate.y < o.y + o.h + 4 &&
+              candidate.y + candidate.h + 4 > o.y,
+          )
+        ) {
+          y = candidate.y;
+          break;
+        }
+      }
+      occupied.push({ x, y, w: width, h: 16 });
+      l.el.style.transform = `translate(${x}px,${y}px)`;
     }
     this.dirty = false;
     this.canvas.dataset.renderCount = String(
@@ -973,6 +1066,14 @@ export class SpatialView {
     this.resizeObserver.disconnect();
     this.observer.disconnect();
     this.controls.dispose();
+    gsap.killTweensOf([
+      this.framing,
+      this.camera.position,
+      this.controls.target,
+      this.camera,
+    ]);
+    this.contextGrid.geometry.dispose();
+    this.contextGrid.material.dispose();
     this.clear();
     this.glowTexture?.dispose();
     this.ringTexture?.dispose();

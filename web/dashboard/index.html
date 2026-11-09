@@ -8,7 +8,7 @@
     <title>Somna / Memory laboratory</title>
     <meta
       name="description"
-      content="One workspace for recorded hierarchical retrieval and live memory experiments."
+      content="One task, its retrieval hierarchy and its observed memory."
     />
     <link rel="stylesheet" href="dashboard.css" />
     <link rel="stylesheet" href="/spatial.css" />
@@ -20,7 +20,7 @@
     <header class="mast">
       <a class="brand" href="/"
         ><span class="brand-mark" aria-hidden="true">◇</span> somna
-        <span class="brand-note">/ memory laboratory</span></a
+        <span class="brand-note">/ memory studies</span></a
       >
       <div class="mast-right">
         <span class="connection" id="connection">Connecting</span
@@ -43,15 +43,27 @@
     </header>
     <div class="laboratory">
       <aside id="controls" aria-label="Experiment controls">
-        <div class="rail-intro">
-          <span class="eyebrow">Workspace</span>
-          <h1>Experiment controls</h1>
-          <p>One task. One retrieval timeline.</p>
-        </div>
+        <section class="navigation-card" aria-label="Maze navigation">
+          <div class="navigation-heading">
+            <h1>Navigation</h1>
+            <span id="navigation-step">Decision 0</span>
+          </div>
+          <canvas
+            id="navigation-preview"
+            width="640"
+            height="480"
+            aria-label="Current task navigation map"
+          ></canvas>
+          <div class="navigation-key">
+            <span><i class="map-agent"></i>Agent</span
+            ><span><i class="map-plan"></i>Plan</span
+            ><span>Observed space</span>
+          </div>
+        </section>
         <section class="control-section">
           <div class="section-heading">
             <i class="signal recorded"></i>
-            <h2>Task solver</h2>
+            <h2>Experiment</h2>
           </div>
           <label>Task<select id="task-suite" disabled></select></label
           ><label>Method<select id="task-config" disabled></select></label>
@@ -106,18 +118,12 @@
               </button>
             </div>
           </details>
-          <canvas
-            id="navigation-preview"
-            width="208"
-            height="144"
-            aria-label="Current task navigation map"
-          ></canvas>
           <p class="source-note" id="task-status">Loading recorded evidence.</p>
         </section>
         <section class="control-section episode-receipt">
           <div class="section-heading">
             <i class="signal live"></i>
-            <h2>This decision</h2>
+            <h2>Decision</h2>
           </div>
           <dl class="decision-receipt">
             <div>
@@ -239,9 +245,9 @@
         >
           <div class="view-heading">
             <div>
-              <span class="eyebrow" id="task-source">01 / Saved example</span>
+              <span class="eyebrow" id="task-source">Saved example</span>
               <h2>
-                <span id="task-view-name">Hierarchical read</span>
+                <span id="task-view-name">Retrieval hierarchy</span>
                 <span id="task-title"></span>
               </h2>
             </div>
@@ -310,9 +316,7 @@
         >
           <div class="view-heading">
             <div>
-              <span class="eyebrow" id="memory-source-label"
-                >02 / Same task</span
-              >
+              <span class="eyebrow" id="memory-source-label">Task memory</span>
               <h2>
                 Memory field <span id="memory-state">Observed → retrieved</span>
               </h2>
@@ -369,8 +373,7 @@
             </div>
           </div>
           <div class="memory-caption">
-            <span id="memory-counts"
-              >Observed transitions · salience height</span
+            <span id="memory-counts">Waiting for task evidence</span
             ><span id="memory-busy"></span>
           </div>
           <div class="view-foot">

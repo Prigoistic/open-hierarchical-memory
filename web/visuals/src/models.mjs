@@ -1,10 +1,10 @@
 export const COLORS = {
-  a: "#87d9cb",
-  b: "#e9987d",
-  gold: "#e2ce86",
-  violet: "#baa2e6",
+  a: "#91b5a3",
+  b: "#bc9a88",
+  gold: "#e0d8b9",
+  violet: "#aba4bb",
   white: "#edece4",
-  dim: "#45514c",
+  dim: "#485044",
 };
 const finite = (v) => {
   if (!Number.isFinite(v)) throw Error("Nonfinite visual coordinate");
@@ -295,7 +295,7 @@ export function indexHierarchyModel(model, key, { columns = 24 } = {}) {
     id: String(l.level),
     label: l.level ? "L" + l.level + " / SUMMARIES" : "L0 / ORIGINALS",
     y: l.level * 1.1,
-    color: l.level > 1 ? "#8194ad" : l.level ? "#78c4bd" : "#e2ce86",
+    color: l.level > 1 ? "#87917d" : l.level ? "#9eac93" : "#bfbda5",
     bounds,
     count: l.nodes.length,
     kept: l.nodes.filter((n) => n.kept).length,

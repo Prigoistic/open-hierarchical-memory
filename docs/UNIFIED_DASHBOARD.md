@@ -31,3 +31,18 @@ The visual direction continues the supplied scientific-wireframe references, vie
 ## Verification
 
 Behavioral tests cover a real fresh Key Corridor solve, contiguous route/layout transport, original ownership, observer parity, cancellation, duplicate-worker rejection, trace limits, invalid configurations and HTTP origins. The visual mapper tests temporal visibility, exact returned IDs and plan geometry. Browser checks cover shared cursor/source inspection, automatic paced playback, refresh recovery, stop/restart, optional archive access, Canvas fallback and mobile sizing. Source-bound results are recorded in `docs/evidence/task-solve-dashboard.json`; the previous UI-only milestone remains in its own evidence file.
+
+
+## 10 November 2026 visual refinement
+
+Navigation now sits at the top of a320px desktop rail, in a240px tall canvas rather than the old144px thumbnail. It draws at its actual display resolution from the task controller's observed/current/recalled data; it no longer scales up a small offscreen bitmap. Typography, controls and separators use neutral tones with restrained semantic colours. Human-readable planner objectives replace machine strings.
+
+A persistent low-opacity antialiased floor grid supplies depth beneath both3D structures. It is context geometry only and adds no data points or axes claims. Less opaque plate grids, outlines and links let active observations carry the contrast. Plane/anchor labels avoid collisions. Auto-framing eases changes to camera span/target while preserving orientation, rather than snapping to the home pose on new bounds. Drag/orbit/focus still retain user camera control.
+
+`PoseTween` interpolates only adjacent poses from the same evidence source during playback. The movement stops exactly at each observed target. Scrubbing, changing source, nonlocal moves and reduced motion snap to exact poses. The interpolation is presentation only; observations, fact identities, actions and decision timestamps remain unchanged. Navigation draws on animation frames only while dirty or transitioning. The helper is bundled with the existing visual runtime, so updating the UI did not restart either backend or expire the current solve.
+
+The official [Drei Grid](https://github.com/pmndrs/drei/blob/master/src/core/Grid.tsx) and [Three.js dynamic-buffer example](https://github.com/mrdoob/three.js/blob/dev/examples/webgl_buffergeometry_drawrange.html) were read as implementation references. The grid/motion code is independently written for this existing vanilla Three.js interface; no React dependency was added.
+
+Verification:452 Python tests,21 visual/motion tests, routing contracts, lint/format and strict typing pass. Browser checks cover actual intermediate poses, exact reduced-motion samples, mobile navigation/primary-action fit, focus layouts, source inspection, Canvas fallback and a fresh95-action solve. No FPS or numerical speedup claim is made. Source-bound evidence: `docs/evidence/refined-observatory-ui.json`.
+
+The next proposed research milestone is persistent task memory across episodes, followed by a controlled wake/replay/forget/retest experiment against exact and graph controls. This requires implementation and evaluation; the UI refinement does not connect maze decisions to the independent continuous-learning engine.

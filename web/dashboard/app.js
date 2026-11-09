@@ -19,7 +19,10 @@
     solveAfter = 0,
     solveRequest = false,
     resumeAttempted = false,
-    selectedEpisode = null;
+    selectedEpisode = null,
+    navigationDirty = true,
+    navigationAnimating = false,
+    navigationRevision = -1;
   const episodeView =
     (new URLSearchParams(location.search).get("renderer") !== "canvas" &&
       globalThis.SomnaVisuals?.create({
@@ -167,11 +170,11 @@
       s.taskKind === "puzzles"
         ? "Puzzle search"
         : s.hierarchy
-          ? "Hierarchical read"
+          ? "Retrieval hierarchy"
           : "Evidence selection",
     );
     text("task-title", s.ready ? s.title : "");
-    text("task-source", s.live ? "01 / Fresh solve" : "01 / Saved example");
+    text("task-source", s.live ? "Fresh solve" : "Saved example");
     text("task-status", s.error || s.status || "Opening task evidence.");
     const supported = [
       "progress_zha",
@@ -221,26 +224,21 @@
     }
     $("recovery").disabled = !s.ready;
     $("timeline").disabled = !s.ready;
+    if (!s.ready) {
+      const c = $("navigation-preview");
+      c.getContext("2d").clearRect(0, 0, c.width, c.height);
+      navigationDirty = false;
+      navigationAnimating = false;
+      text("navigation-step", "Waiting for evidence");
+    }
     if (s.ready) {
-      const mini = $("navigation-preview"),
-        source = frames.tasks.contentDocument?.querySelector("#board");
+      const mini = $("navigation-preview");
       mini.hidden = !$("show-map").checked;
-      if (source?.width && source?.height) {
-        const c = mini.getContext("2d"),
-          scale = Math.min(
-            mini.width / source.width,
-            mini.height / source.height,
-          );
-        c.clearRect(0, 0, mini.width, mini.height);
-        c.drawImage(
-          source,
-          (mini.width - source.width * scale) / 2,
-          (mini.height - source.height * scale) / 2,
-          source.width * scale,
-          source.height * scale,
-        );
+      if (navigationRevision !== s.navigationRevision) {
+        navigationDirty = true;
+        navigationRevision = s.navigationRevision;
       }
-
+      text("navigation-step", `Decision ${s.cursor}`);
       $("task-loading").hidden = true;
       $("timeline").max = String(s.max);
       if (document.activeElement !== $("timeline"))
@@ -352,7 +350,7 @@
         !!states.tasks?.ready &&
         (episodeMode ? !!episodeModel : !!states.memory?.ready);
       $("connection").className = "connection " + (ready ? "ready" : "partial");
-      text("connection", ready ? "Both views connected" : "Connecting views");
+      text("connection", ready ? "Connected" : "Connecting");
       selection();
     }
   }
@@ -396,7 +394,11 @@
       `${evidence.newIds.length} new · ${d.current_facts.length} visible`,
     );
     text("receipt-retrieve", `${d.memory_ids.length} facts`);
-    text("receipt-plan", (d.objective || "None").replaceAll("_", " "));
+    text(
+      "receipt-plan",
+      evidence.objective ||
+        (d.objective || "None").replaceAll("_", " ").replaceAll("-", " "),
+    );
     text(
       "receipt-act",
       [
@@ -412,11 +414,13 @@
     text(
       "receipt-recovery",
       d.repair?.fallback_active
-        ? "Observed graph recovery · not a ZHA retrieval step"
-        : states.tasks?.solveConfig?.reader?.includes("exact") ||
-            states.tasks?.solveConfig?.reader === "graph"
-          ? "Comparison reader → dependency support → symbolic plan"
-          : "ZHA recall → dependency support → symbolic plan",
+        ? "Graph recovery · observed map"
+        : !d.memory_ids.length
+          ? "Current observation only"
+          : states.tasks?.solveConfig?.reader?.includes("exact") ||
+              states.tasks?.solveConfig?.reader === "graph"
+            ? "Exact recall · shared planner"
+            : "Hierarchical recall · memory-supported plan",
     );
     $("memory-loading").hidden = true;
     if (selectedEpisode)
@@ -667,7 +671,10 @@
   $("hierarchy-view").onchange = (e) =>
     command("tasks", "view", e.target.value);
   $("memory-view").onchange = (e) => command("memory", "view", e.target.value);
-  $("show-map").onchange = (e) => command("tasks", "map", e.target.checked);
+  $("show-map").onchange = (e) => {
+    navigationDirty = true;
+    command("tasks", "map", e.target.checked);
+  };
   $("navigation").onchange = (e) =>
     command("tasks", "navigation", e.target.value);
   $("memory-source").onchange = (e) => {
@@ -678,7 +685,7 @@
     episodeView?.setVisible(episodeMode);
     text(
       "memory-source-label",
-      episodeMode ? "02 / Same task" : "02 / Independent archive",
+      episodeMode ? "Task memory" : "Independent archive",
     );
     text(
       "field-source-note",
@@ -778,6 +785,30 @@
     initialised.delete("memory");
     frames.memory.contentWindow.location.reload();
   };
+  function navigationFrame() {
+    if (
+      !document.hidden &&
+      !$("navigation-preview").hidden &&
+      controllers.tasks?.paintNavigation &&
+      (navigationDirty || navigationAnimating)
+    ) {
+      navigationAnimating = controllers.tasks.paintNavigation(
+        $("navigation-preview"),
+      );
+      navigationDirty = false;
+    }
+    requestAnimationFrame(navigationFrame);
+  }
+  new ResizeObserver(() => {
+    navigationDirty = true;
+  }).observe($("navigation-preview"));
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      navigationDirty = true;
+      poll();
+    }
+  });
   poll();
+  requestAnimationFrame(navigationFrame);
   setInterval(poll, 500);
 })();

@@ -1,6 +1,6 @@
 # Scientific visual system
 
-The current single dashboard at `http://127.0.0.1:8792/` shows the recorded hierarchy and live memory field together. A narrow side rail contains run selection, navigation, memory actions and source inspection. Only the two primary workflow buttons are visible by default; detailed settings and camera actions are disclosed on demand. Focus layouts expand either structure. See `UNIFIED_DASHBOARD.md` for the integration and source boundaries.
+The current dashboard at `http://127.0.0.1:8792/` starts a fresh maze with one Solve action. The hierarchy and task memory follow the same decision; the independent continuous archive remains an optional advanced view. Navigation is larger and at the top of the rail. The current palette, fading context grid and evidence-preserving motion are documented in `UNIFIED_DASHBOARD.md` and `evidence/refined-observatory-ui.json`.
 
 ## Source projections
 

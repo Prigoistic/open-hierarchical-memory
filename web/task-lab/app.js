@@ -51,6 +51,9 @@
     routingFocus = null,
     routing3D = null,
     panelRouting = null;
+  const navigationMotion = new SomnaVisuals.PoseTween();
+  let navigationRevision = 0;
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const signature = (s) => s.player + "|" + s.boxes.join(",");
   function fail(e) {
     $("error").hidden = false;
@@ -476,8 +479,10 @@
   function canvas(el) {
     const r = el.getBoundingClientRect(),
       d = Math.min(devicePixelRatio || 1, 2);
-    el.width = Math.round(r.width * d);
-    el.height = Math.round(r.height * d);
+    const width = Math.round(r.width * d),
+      height = Math.round(r.height * d);
+    if (el.width !== width) el.width = width;
+    if (el.height !== height) el.height = height;
     const c = el.getContext("2d");
     c.setTransform(d, 0, 0, d, 0, 0);
     c.clearRect(0, 0, r.width, r.height);
@@ -1152,10 +1157,10 @@
       }[value] || value.replaceAll("-", " ")
     );
   }
-  function drawMaze() {
+  function paintMaze(target, displayPose) {
     const row = run.trajectory[cursor];
     if (!row) return;
-    const { c, w, h } = canvas($("board")),
+    const { c, w, h } = canvas(target),
       d = row.decision;
     if (mode === "solution") {
       const image = row.observation.image,
@@ -1191,7 +1196,7 @@
         cell = Math.max(2, Math.floor(Math.min((w - 32) / nx, (h - 32) / ny))),
         x0 = (w - nx * cell) / 2,
         y0 = (h - ny * cell) / 2;
-      c.strokeStyle = "#54606b";
+      c.strokeStyle = "#495043";
       c.lineWidth = 1;
       for (const [x, y] of known)
         if (!facts.has(x + "," + y))
@@ -1212,7 +1217,7 @@
           f.state,
         );
       const archive = new Map((run.archive || []).map((f) => [f.id, f]));
-      c.strokeStyle = "#69c6c3";
+      c.strokeStyle = "#91b5a3";
       c.lineWidth = 1.5;
       for (const b of d.dependency?.bundles || [])
         if (b.status === "complete")
@@ -1231,7 +1236,7 @@
             );
             c.stroke();
           }
-      c.strokeStyle = "#baa2e6";
+      c.strokeStyle = "#aba4bb";
       c.lineWidth = 2;
       c.beginPath();
       for (const [i, p] of (d.plan || []).entries()) {
@@ -1242,12 +1247,26 @@
       c.stroke();
       agent(
         c,
-        x0 + (px - loX + 0.5) * cell,
-        y0 + (py - loY + 0.5) * cell,
+        x0 + ((displayPose?.[0] ?? px) - loX + 0.5) * cell,
+        y0 + ((displayPose?.[1] ?? py) - loY + 0.5) * cell,
         cell,
-        d.pose[2],
+        displayPose?.[2] ?? d.pose[2],
       );
     }
+  }
+  function drawMaze() {
+    const row = run.trajectory[cursor];
+    if (!row) return;
+    const d = row.decision;
+    navigationMotion.update(
+      run.live?.id || run.dataset + run.environment_id + run.seed + run.reader,
+      cursor,
+      row.decision.pose,
+      performance.now(),
+      playing && !reduceMotion.matches,
+      (run.live ? streamDelay : Number($("speed").value)) * 0.8,
+    );
+    paintMaze($("board"), navigationMotion.sample(performance.now()).pose);
     $("solution").classList.toggle("selected", mode === "solution");
     $("search").classList.toggle("selected", mode === "search");
     $("timeline").max = String(Math.max(0, run.trajectory.length - 1));
@@ -1504,6 +1523,7 @@
 
   function draw() {
     if (!run) return;
+    navigationRevision++;
     const data = frames();
     cursor = Math.min(Math.max(0, cursor), Math.max(0, data.length - 1));
     if (!playing) {
@@ -1774,14 +1794,31 @@
         step: cursor,
         facts: observedHeads(),
         decision: row.decision,
+        objective: objectiveLabel(row.decision.objective),
         newIds: row.new_facts.map((f) => f.id),
         source: run.live ? "fresh" : "recorded",
         action: row.action,
       });
     },
+    paintNavigation(target) {
+      if (!run) return false;
+      if (!isMaze()) {
+        paint(target, run.rows, frames()[cursor]);
+        return false;
+      }
+      const sample = navigationMotion.sample(performance.now());
+      paintMaze(target, sample.pose);
+      target.dataset.visualPose = JSON.stringify(sample.pose);
+      target.dataset.evidencePose = JSON.stringify(
+        run.trajectory[cursor]?.decision.pose,
+      );
+      target.dataset.interpolating = String(sample.active);
+      return sample.active;
+    },
     snapshot() {
       return {
         kind: "tasks",
+        navigationRevision,
         taskKind: run ? (isMaze() ? "maze" : "puzzles") : null,
         address: run
           ? {

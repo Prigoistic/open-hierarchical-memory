@@ -265,3 +265,14 @@ Added a post-action observer to the existing runner and a bounded single-worker 
 The four task checks at seed3002/cap512 solve in14,63,58 and95 actions respectively. These are workflow diagnostics, not new benchmark superiority/generalization claims. Browser checks verify real start, paced3→7 progression over1.2s, matching memory/cursor identity, original inspection, stop after9 computed actions, a fresh DoorKey restart solving in58, refresh recovery, Canvas completion, optional archive access and390px mobile without overflow. The archive owner process was not restarted; its1024 originals and checksum remain unchanged across the main dashboard switch. Early missing-label and fallback/pacing defects found in testing were fixed; final fresh-browser errors are empty.
 
 Validation:452 Python tests;17 visual mapping tests; Node routing contracts; JS syntax; Ruff/format154 files; strict mypy core7 and gateway/solver2 files all pass. No numerical-core, planner, retrieval-policy or frozen-evidence changes; no public push. See `docs/UNIFIED_DASHBOARD.md` and `docs/evidence/task-solve-dashboard.json`.
+
+
+## 10 November 2026 — quieter instrument UI and smooth navigation
+
+Moved the maze to the top of a wider rail, increased its display height144→240px and replaced scaled bitmap copying with direct full-resolution controller painting. Simplified neutral chrome/type/separators, subdued semantic colours/line opacity, exposed human-readable planner objectives, and added a faint antialiased3D context floor. Shared labels avoid collisions. The grid is view context, never experiment data.
+
+Camera bounds ease without returning to home orientation. A bundled, independently tested pose tween uses only adjacent observations from the same episode; scrubs, source changes and reduced motion remain exact. Rendering is animation-frame driven and idle navigation avoids repainting. This changes presentation only. The active8792 and8791 owners were not restarted; the original solve can still be resumed. GitHub primary references were Drei Grid and Three.js dynamic draw-range; no code was copied or React/dependency added.
+
+Validation passes452 Python tests,21 visual/motion tests, routing contracts, Ruff/format154 files, strict mypy7 core and2 gateway/solver files, plus JS syntax. Browser checks verify intermediate render positions,16 exact reduced-motion samples, Canvas fallback,390px no-overflow/action fit, source picking, focus layouts and a fresh95-action solve. Early extraction/loading defects were caught in QA and repaired. Final main/reduced/Canvas sessions have no errors. No FPS or numerical performance claim. The next persistent-task wake/replay/forget experiment remains proposed, not implemented by this UI pass.
+
+See `docs/UNIFIED_DASHBOARD.md` and `docs/evidence/refined-observatory-ui.json`. No scientific implementation changes or public push.

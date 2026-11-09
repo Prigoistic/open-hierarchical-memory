@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-10",
+  "entry": "http://127.0.0.1:8792/",
+  "scope": "Presentation refinement; numerical core, research code and frozen artifacts unchanged",
+  "source_sha256": {
+    "web/dashboard/app.js": "a79a993945de4e719080a0c2d7b6890404193c23dc368be973cf6935f5075cb9",
+    "web/dashboard/index.html": "34d1d46123093249f585610ef24543792982e52786af529f89d1f83302cea515",
+    "web/dashboard/style.css": "553f808d7c9bcd10e94d8a21eb2fa0e781006e432103328e21c8c368f74d917b",
+    "web/task-lab/app.js": "93ffab920085168a61a3c00108ecbdb9b60429616966b94f39b5cab574c89ccf",
+    "web/visuals/src/scene.mjs": "10771e34132d21566d534345f0fc812cf9af7b0db0a0eef0971e5de90d462269",
+    "web/visuals/src/models.mjs": "f7bf747a5c9af42fa14475e4b901de148a9664dea8e60f434013d4cffc515c3a",
+    "web/visuals/src/grid.mjs": "cc014fc18edd5e9112eb90f8e5b1aeb4f7887d4cdf66495b563a617075592724",
+    "web/visuals/src/navigation.cjs": "0d53466481a9712a061544d65931dd40de690a60121b768ab2f5da025ea12c62",
+    "web/visuals/build-manifest.json": "d6b9bef22e56493365021d77e0d29a7ed71ac1f604d763641e8685c82e9c69c1"
+  },
+  "visual_direction": {
+    "rail_width": 320,
+    "navigation_height": 240,
+    "previous_navigation_height": 144,
+    "palette": "Neutral chrome; muted observed/retrieved/plan colours",
+    "grid": "Persistent antialiased floor with radial opacity falloff; view geometry only"
+  },
+  "references": [
+    "https://github.com/pmndrs/drei/blob/master/src/core/Grid.tsx",
+    "https://github.com/mrdoob/three.js/blob/dev/examples/webgl_buffergeometry_drawrange.html"
+  ],
+  "browser": {
+    "fresh_run": {
+      "id": "ca02c2388a94777d2cc2f85f43f8edb2",
+      "status": "solved",
+      "steps": 95,
+      "selected_decision": 51
+    },
+    "navigation": {
+      "desktop_display": [275, 240],
+      "mobile_display": [307, 240],
+      "top_of_rail": true,
+      "rendered_pose_sample": [-5, 6.341165778860344, 3],
+      "sample_evidence_pose": [-5, 6, 3],
+      "sample_count": 40,
+      "intermediate_pose_observed": true
+    },
+    "reframing": "Eased path executed on changed bounds; data identity/cursor retained",
+    "reduced_motion": {
+      "samples": 16,
+      "all_exact": true,
+      "no_interpolation": true
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "overflow": false,
+      "solve_button_bounds": [17, 568, 307, 38]
+    },
+    "focus": {
+      "memory_width": 1280,
+      "decision_preserved": 40
+    },
+    "inspector": {
+      "original": 1,
+      "position": [1, 6],
+      "observed_step": 0
+    },
+    "canvas_fallback": true,
+    "final_errors": [],
+    "final_console_messages": [],
+    "archived_puzzle_paints": true
+  },
+  "validation": {
+    "python_tests": 452,
+    "visual_motion_tests": 21,
+    "routing_contracts": "passed",
+    "ruff": "passed",
+    "format": "154 files",
+    "mypy_core": "7 files passed",
+    "mypy_gateway_solver": "2 files passed",
+    "javascript_syntax": "passed"
+  },
+  "boundaries": [
+    "Smooth pose positions are view-only interpolation between consecutive observations.",
+    "Scrubs and source changes do not animate through unobserved space.",
+    "The context grid is not evidence or an inferred environment.",
+    "No solver/retrieval/learning modifications or new dependencies.",
+    "No FPS, quality improvement or speedup claim.",
+    "Both active backend processes remained running."
+  ],
+  "fixed_in_qa": [
+    "Loading order for the initial separate motion script; bundled into the existing visual runtime instead.",
+    "Missing local decision variable after extracting the canvas painter; repaired and rendered before handoff."
+  ],
+  "screenshot": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/unified-dashboard/refined-dashboard.png"
+}

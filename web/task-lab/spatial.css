@@ -15,18 +15,18 @@
   position: absolute;
   left: 16px;
   top: 16px;
-  color: #8b9691;
+  color: #8c9681;
   font:
     400 12px/16px Geist,
     sans-serif;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
 }
 .spatial-caption {
   position: absolute;
   bottom: 12px;
   left: 16px;
   right: 16px;
-  color: #8b9691;
+  color: #8c9681;
   font:
     400 12px/16px Geist,
     sans-serif;
@@ -73,11 +73,11 @@
   font:
     400 12px/16px Geist,
     sans-serif;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
   white-space: nowrap;
   text-shadow:
     0 1px 4px #000,
-    0 0 8px #000;
+    0 0 4px #000;
 }
 .spatial-lens {
   position: absolute;
@@ -208,7 +208,7 @@
 .console-task header .wordmark span,
 .console-live .brand small {
   color: #71828b;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 .console-task main,
@@ -390,7 +390,7 @@
 }
 .console-task .routing-panel > .panel-title .caption-5 {
   color: #74838b;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
 }
 .console-task .routing-panel .segmented button {
   padding: 4px 8px;
@@ -721,7 +721,7 @@
   line-height: 16px;
   letter-spacing: 0.06em;
   color: #b7d1d9;
-  text-shadow: 0 0 8px #000;
+  text-shadow: 0 0 4px #000;
 }
 .spatial-lens {
   border-radius: 0;
@@ -994,4 +994,35 @@
   .console-task .playbar {
     margin-bottom: 4px;
   }
+}
+
+/* Current instrument palette: neutral chrome, colour reserved for evidence. */
+.spatial-status {
+  color: #8c9287;
+  letter-spacing: 0;
+  font:
+    400 12px/16px Geist,
+    sans-serif;
+}
+.spatial-caption {
+  color: #818879;
+  font:
+    400 12px/16px Geist,
+    sans-serif;
+}
+.spatial-label {
+  font:
+    400 12px/16px Geist,
+    sans-serif;
+  letter-spacing: 0;
+  text-shadow: 0 1px 4px #000;
+}
+.spatial-lens {
+  background: #181818;
+  border: 1px solid #3a4032;
+  border-radius: 4px;
+  color: #d4d9cc;
+  font:
+    400 12px/20px Geist,
+    sans-serif;
 }
