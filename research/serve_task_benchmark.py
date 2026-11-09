@@ -12,6 +12,7 @@ from typing import Any
 from urllib.parse import parse_qs, urlsplit
 
 from research.dashboard_gateway import MAX_BODY, MEMORY_WRITES, MemoryGateway
+from research.live_solver import LiveSolver, SolverBusyError
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_EXPANDED_TRACE_BYTES = 128 * 1024 * 1024
@@ -158,9 +159,14 @@ class TaskServer(ThreadingHTTPServer):
 
     def __init__(self, address: tuple[str, int], root: Path = ROOT, *, memory_port: int = 8791):
         self.memory = MemoryGateway(memory_port)
+        self.solver = LiveSolver()
         self.catalog = TaskCatalog(root)
         self.root = root
         super().__init__(address, TaskHandler)
+
+    def server_close(self) -> None:
+        self.solver.close()
+        super().server_close()
 
 
 class TaskHandler(BaseHTTPRequestHandler):
@@ -186,6 +192,13 @@ class TaskHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         route = urlsplit(self.path)
         try:
+            if route.path == "/api/solve":
+                args = parse_qs(route.query)
+                if set(args) != {"id", "after"} or any(len(v) != 1 for v in args.values()):
+                    raise ValueError("one id and after cursor required")
+                result = self.server.solver.snapshot(args["id"][0], int(args["after"][0]))
+                self.send(200, json.dumps(result, allow_nan=False).encode(), "application/json")
+                return
             if route.path == "/api/memory/state" and not route.query:
                 status, body = self.server.memory.request("state")
                 self.send(status, body, "application/json")
@@ -255,10 +268,9 @@ class TaskHandler(BaseHTTPRequestHandler):
         route = urlsplit(self.path)
         operation = route.path.removeprefix("/api/memory/")
         if (
-            not route.path.startswith("/api/memory/")
-            or operation not in MEMORY_WRITES
-            or route.query
-        ):
+            route.path not in {"/api/solve", "/api/solve/cancel"}
+            and (not route.path.startswith("/api/memory/") or operation not in MEMORY_WRITES)
+        ) or route.query:
             self.send(
                 405,
                 b'{"error":"Task evidence is read only; unsupported operation"}',
@@ -294,6 +306,21 @@ class TaskHandler(BaseHTTPRequestHandler):
                 b'{"error":"Request must be a finite JSON object of at most 64 KiB"}',
                 "application/json",
             )
+            return
+        if route.path in {"/api/solve", "/api/solve/cancel"}:
+            try:
+                result = (
+                    self.server.solver.start(value)
+                    if route.path == "/api/solve"
+                    else self.server.solver.cancel(value)
+                )
+                self.send(200, json.dumps(result, allow_nan=False).encode(), "application/json")
+            except SolverBusyError as error:
+                self.send(409, json.dumps({"error": str(error)}).encode(), "application/json")
+            except KeyError:
+                self.send(404, b'{"error":"Unknown solve"}', "application/json")
+            except (ValueError, TypeError) as error:
+                self.send(400, json.dumps({"error": str(error)}).encode(), "application/json")
             return
         status, body = self.server.memory.request(operation, payload)
         self.send(status, body, "application/json")

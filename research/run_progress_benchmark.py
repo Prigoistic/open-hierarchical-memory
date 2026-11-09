@@ -86,6 +86,7 @@ def run_episode(
     capacity: int = 96,
     step_cap: int = 4096,
     factory: Callable[[str], Any] = environment,
+    on_step: Callable[[dict[str, Any], dict[str, Any], dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     if (
         identifier not in ENVIRONMENTS
@@ -181,6 +182,8 @@ def run_episode(
                     "next_observation": serial_observation(observation),
                 }
             )
+            if on_step is not None:
+                on_step(trajectory[-1], routing_snapshots, routing_events)
             if terminated or truncated:
                 break
     except Exception as caught:

@@ -365,3 +365,110 @@ export function arborHierarchyModel(model, key) {
     "Canopy projection of recorded spans · branches preserve actual routing edges";
   return result;
 }
+
+// A task's observed facts, returned facts and plan share one identity and cursor.
+// Height is a categorical display layer, never a learned salience or confidence.
+export function taskMemoryModel(evidence) {
+  const { facts, decision: d, step, key } = evidence;
+  const ids = new Set(facts.map((f) => f.id)),
+    read = new Set(d.memory_ids),
+    plan = new Set(d.plan_fact_ids),
+    fresh = new Set(evidence.newIds),
+    names = [
+      "unseen",
+      "empty",
+      "wall",
+      "floor",
+      "door",
+      "key",
+      "ball",
+      "box",
+      "goal",
+      "lava",
+    ];
+  if (facts.some((f) => f.observed_step > step))
+    throw Error("Future fact in task field");
+  if ([...read].some((id) => !ids.has(id)))
+    throw Error("Returned fact missing from observed heads");
+  const points = facts.map((f) => ({
+    id: String(f.id),
+    position: pos(f.x / 8, read.has(f.id) ? 0.7 : 0, f.y / 8),
+    color: plan.has(f.id)
+      ? COLORS.violet
+      : read.has(f.id)
+        ? COLORS.gold
+        : COLORS.a,
+    dim: !read.has(f.id),
+    selected: read.has(f.id),
+    returned: plan.has(f.id),
+    fields: ["x", "y", "object", "color", "state", "observed_step"].map(
+      (name) => ({ name, value: f[name] }),
+    ),
+    label: `${names[f.object] || "cell"} #${f.id}`,
+    detail: `${read.has(f.id) ? "Returned to planner" : "Observed archive"}${plan.has(f.id) ? " · on plan" : ""}${fresh.has(f.id) ? " · just observed" : ""}`,
+  }));
+  const byId = new Map(points.map((p) => [Number(p.id), p])),
+    cue = pos(d.pose[0] / 8, 0.72, d.pose[1] / 8),
+    segments = [];
+  for (const id of read) {
+    const p = byId.get(id);
+    segments.push({
+      from: [p.position[0], 0, p.position[2]],
+      to: p.position,
+      color: p.color,
+      kind: "stem",
+    });
+    segments.push({
+      from: cue,
+      to: p.position,
+      color: COLORS.gold,
+      kind: "read",
+    });
+  }
+  for (let i = 1; i < (d.plan || []).length; i++) {
+    const a = d.plan[i - 1],
+      b = d.plan[i];
+    segments.push({
+      from: pos(a[0] / 8, 0.78, a[1] / 8),
+      to: pos(b[0] / 8, 0.78, b[1] / 8),
+      color: COLORS.violet,
+      kind: "plan",
+    });
+  }
+  const xs = [cue[0], ...points.map((p) => p.position[0])],
+    zs = [cue[2], ...points.map((p) => p.position[2])],
+    bounds = [
+      Math.min(...xs) - 0.15,
+      Math.max(...xs) + 0.15,
+      Math.min(...zs) - 0.15,
+      Math.max(...zs) + 0.15,
+    ];
+  return {
+    key,
+    kind: "task-memory",
+    points,
+    segments,
+    anchors: [{ position: cue, label: "Current pose" }],
+    planes: [
+      {
+        id: "observed",
+        label: "OBSERVED MEMORY",
+        y: 0,
+        color: COLORS.a,
+        bounds,
+      },
+      {
+        id: "returned",
+        label: "RETURNED TO PLANNER",
+        y: 0.7,
+        color: COLORS.gold,
+        bounds,
+      },
+    ],
+    queryPlane: 0.7,
+    queryBounds: bounds,
+    heightLabel: "Layers = observed / returned · purple = plan",
+    sourceCount: facts.length,
+    readCount: read.size,
+  };
+}

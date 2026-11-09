@@ -1,0 +1,135 @@
+{
+  "date": "2026-11-09",
+  "entry": "http://127.0.0.1:8792/",
+  "scope": "Fresh MiniGrid solver with task-linked hierarchy and memory, not continuous-network learning",
+  "source_sha256": {
+    "research/live_solver.py": "16fa5f87274297d90ab5d20aee1a69465e9c4feff144e14f2acece1c2a110ed8",
+    "research/run_progress_benchmark.py": "24ae5c8e6c560997aedc9ce2215dafdf8630e865d98d95a76ea6eee857b5ed0d",
+    "research/serve_task_benchmark.py": "8391547cba74ba809b218c7f7bc20a5fbe11a0a04b1b9017072640206e5e7f29",
+    "web/dashboard/app.js": "6840dd8b52e88c2c2b0a04f96e5d904d3fa34ca32227b89b199cba558c585b3c",
+    "web/dashboard/index.html": "0b6df653f626ea3789f0874ef9e306ca711094b025821a2586484c836fa88163",
+    "web/dashboard/style.css": "6d7a7ee749d00a475715fd4756e33edb62a6f1acedeeba7ba3fa41894fa0e99c",
+    "web/task-lab/app.js": "a3b26aac2ffafc2d6deaa51c8e3dcc09a5fb22ba95f9b92897f2a7dfe7e1f52d",
+    "web/visuals/src/models.mjs": "161b1115b1f29c3ae6330d001ab46919a77493a73f5d144f8ea1904aed4507d0",
+    "web/visuals/src/scene.mjs": "f7e807f183373878f7e14560a1d04c8f279de6e66bf91aca31b591ed96e0490c",
+    "web/visuals/build-manifest.json": "44e929a62626d793be61413b8f1be7db499822b329dbdf2d509c151f6a8ad3eb"
+  },
+  "fresh_checks": [
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "status": "solved",
+      "steps": 14,
+      "return": 0.991280276816609,
+      "graph_recovery_steps": 0,
+      "route_events": 159
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "status": "solved",
+      "steps": 63,
+      "return": 0.5275,
+      "graph_recovery_steps": 0,
+      "route_events": 374
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "status": "solved",
+      "steps": 58,
+      "return": 0.979609375,
+      "graph_recovery_steps": 0,
+      "route_events": 354
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "status": "solved",
+      "steps": 95,
+      "return": 0.9208333333333333,
+      "graph_recovery_steps": 0,
+      "route_events": 948
+    }
+  ],
+  "fresh_checks_scope": "One diagnostic seed (3002) per family, step cap512; not a generalization or performance claim",
+  "browser": {
+    "main_fresh_solve": {
+      "id": "d597bb1756d76149ebebd76559d80551",
+      "status": "solved",
+      "computed_actions": 95,
+      "displayed_step": 32,
+      "memory_key": "d597bb1756d76149ebebd76559d80551:32"
+    },
+    "pacing": {
+      "before": 3,
+      "after": 7,
+      "interval_ms": 1200,
+      "memory_matches_step": true
+    },
+    "inspection": {
+      "original_id": 1,
+      "object": "wall",
+      "position": [1, 6],
+      "observed_step": 0,
+      "selected_cursor": 51
+    },
+    "stop": {
+      "status": "cancelled",
+      "computed_actions": 9,
+      "restart_button_restored": true
+    },
+    "restart": {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 3002,
+      "status": "solved",
+      "steps": 58
+    },
+    "refresh": {
+      "same_solve_id_resumed": true,
+      "new_worker_started": false
+    },
+    "archive_tools": {
+      "existing_archive_connected": true,
+      "cycle_not_executed": true
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "overflow": false,
+      "controls_drawer_opens": true,
+      "solve_action_visible_in_drawer": true
+    },
+    "canvas": {
+      "fresh_solve": "solved",
+      "computed_actions": 95,
+      "observed_heads": 231,
+      "returned": 45,
+      "unhandled_errors": []
+    },
+    "main_unhandled_errors": [],
+    "fixed_during_verification": [
+      "Playback delay was assigned to an unavailable select option; now an explicit stream delay.",
+      "Field footer lacked its source label ID; restored and verified in a fresh clean browser session.",
+      "Explicit Canvas selection returned false rather than null; corrected and exercised through solve completion."
+    ]
+  },
+  "archive_preserved": {
+    "total": 1024,
+    "checksum": "1d25584a750d1604559f2ef59b7608e8307591c8ffe862bf30412daeaa984440"
+  },
+  "validation": {
+    "python_tests": 452,
+    "visual_tests": 17,
+    "routing_contracts": "passed",
+    "ruff": "passed",
+    "format": "154 files",
+    "strict_mypy_core": "7 files passed",
+    "strict_mypy_gateway_and_solver": "2 files passed",
+    "javascript_syntax": "passed"
+  },
+  "boundaries": [
+    "Numerical core, planner, retrieval policy and frozen benchmark artifacts unchanged.",
+    "Optional step observer preserves action and returned-memory parity.",
+    "No separate continuous model learning is claimed for maze execution.",
+    "Cancellation, errors and resource cutoffs never publish a successful solve.",
+    "Camera and playback motion are visual pacing, not measured compute timing.",
+    "Saved Boxoban examples remain recorded; fresh solving here supports MiniGrid only."
+  ],
+  "screenshot": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/unified-dashboard/solve-dashboard.png"
+}

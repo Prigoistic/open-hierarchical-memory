@@ -26,16 +26,13 @@ This project is independent and is not affiliated with Zyphra. The paper's autho
 
 ## Unified local dashboard
 
-Open **http://127.0.0.1:8792/**. The recorded ZHA hierarchy and live Somna memory field now share one workspace, with controls in the side rail. The former8791 page redirects here.
-
-For a fresh local session, start the archive service and dashboard in separate terminals:
+Open **http://127.0.0.1:8792/**, choose a maze and press **Solve maze**. The navigation, ZHA hierarchy, task memory field and decision receipt follow one fresh episode and one shared timeline. The former8791 page redirects here.
 
 ```sh
-uv run --locked python -m research.serve_somna --port 8791
-uv run --locked --extra benchmarks python -m research.serve_task_benchmark --port 8792 --memory-port 8791
+uv run --locked --extra benchmarks python -m research.serve_task_benchmark --port 8792
 ```
 
-The UI combines views; the recorded task and live archive retain distinct state and provenance. See [the dashboard guide](docs/UNIFIED_DASHBOARD.md).
+The initial example and historical recordings remain labelled. Independent archive tools can optionally connect to `python -m research.serve_somna --port 8791`; this separate continuous-learning experiment is not required to solve mazes. See [the dashboard guide](docs/UNIFIED_DASHBOARD.md).
 
 ## Measured layer pilot
 

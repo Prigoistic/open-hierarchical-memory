@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 export {
   memoryModel,
+  taskMemoryModel,
   hierarchyModel,
   indexHierarchyModel,
   arborHierarchyModel,
@@ -525,7 +526,11 @@ export class SpatialView {
     this.status.textContent =
       model.sourceCount +
       " " +
-      (model.kind === "memory" ? "OBSERVATIONS" : "INDEXED ORIGINALS") +
+      (model.kind === "memory"
+        ? "OBSERVATIONS"
+        : model.kind === "task-memory"
+          ? "OBSERVED FACTS"
+          : "INDEXED ORIGINALS") +
       " / " +
       model.readCount +
       " IN READ";
@@ -722,6 +727,7 @@ export class SpatialView {
   updateReadout(model) {
     if (!this.readout) return;
     this.readout.replaceChildren();
+    if (model.kind === "task-memory") return;
     const heading = document.createElement("p");
     heading.className = "console-kicker";
     heading.textContent = "Routing population";

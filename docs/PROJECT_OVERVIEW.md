@@ -30,7 +30,7 @@ The frozen fresh evaluation contains 264 episodes: four tasks, eleven conditions
 
 The demonstrated improvement is the coverage interface. These results do not establish ZHA superiority, a speedup or a new navigation algorithm. The graph reader scans its observed archive; the 96-fact limit applies to returned historical facts, with a separately charged mask. See `experiments/dependency-evaluation-v1/` for frozen source, protocol, every trace and the comparison. Earlier results and failures remain separate in `experiments/`.
 
-Open the unified Somna dashboard at `http://127.0.0.1:8792/` for both the recorded hierarchy and live memory field. The live-memory service on8791 supplies the archive; its old page redirects to the same dashboard. The separate `neural-fields` repository is an independent dynamical-systems project; its field simulation is not the maze controller.
+Open the unified Somna dashboard at `http://127.0.0.1:8792/` and press Solve maze for a fresh episode. The hierarchy and task memory share its decisions. Independent archive tools optionally connect to the separate continuous-memory service on8791; its old page redirects to the same dashboard. The separate `neural-fields` repository is an independent dynamical-systems project; its field simulation is not the maze controller.
 
 ## 5. Progress-aware retrieval repair
 
@@ -41,8 +41,8 @@ On the fixed 24-episode cohort per method, original ZHA bundles solve 19/24. Que
 The inspector exposes actual cues, routing passes, node spans, original facts and recovery transitions. Playback is recorded execution. Shared event/layout banks keep failed controls inspectable under the bounded transport. The same cohort was rerun after a serialization failure with unchanged policies; 167 retained originals have exact decoded parity. See `experiments/progress-evaluation-v2/ANALYSIS.md` and `docs/PROGRESS_RETRIEVAL.md` for the full comparison and missing-original caveat.
 
 
-## 6. Unified dashboard
+## 6. Unified solve workflow
 
-The one user-facing entry is `http://127.0.0.1:8792/`. Both visual structures are visible by default. A shared side rail contains task selection, a navigation thumbnail, memory actions and source inspection. Secondary query settings and camera actions are disclosed only when needed. Focus layouts expand either structure without changing its experiment state.
+The entry is `http://127.0.0.1:8792/`. Solve maze launches the existing observation-only MiniGrid controller with a bounded worker. Its navigation, hierarchical reads, observed facts, returned memories and planner actions share one cursor. The side rail has one primary start/stop action. Pause/scrub controls affect both structures. Source inspection reports actual original IDs and observation steps; graph recovery is explicit.
 
-The saved task and live archive remain distinct evidence sources. UI unification does not make the maze controller run the separate neural-learning loop. A bounded same-origin bridge forwards only approved live-memory operations to the existing loopback archive service. Task recordings stay read-only. The two panel controllers have explicit snapshot/command interfaces; their numerical state is not combined.
+Saved examples retain separate labels. The default task memory field now belongs to the maze itself. The independent archive and its continuous neural-learning loop remain available under advanced tools. Solving a maze does not train those separate weights. The numerical controller, ZHA core and frozen experimental artifacts are unchanged; a step observer and bounded incremental transport provide fresh execution evidence. See `docs/UNIFIED_DASHBOARD.md`.

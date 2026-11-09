@@ -756,3 +756,63 @@ iframe {
     align-content: start;
   }
 }
+
+[hidden] {
+  display: none !important;
+}
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  color: var(--ink);
+  background: #181818;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+#solve {
+  margin-top: 16px;
+}
+.archive-tools {
+  display: block;
+}
+.archive-tools > label {
+  margin: 16px 0;
+}
+.archive-tools > summary {
+  color: var(--muted);
+}
+.decision-receipt {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+.decision-receipt > div {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 8px;
+}
+.decision-receipt dt {
+  color: var(--muted);
+}
+.decision-receipt dd {
+  margin: 0;
+  color: #c6dcd8;
+  overflow-wrap: anywhere;
+}
+#episode-field {
+  position: absolute;
+  inset: 0;
+}
+#episode-field canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#episode-readout {
+  top: 16px;
+  left: 16px;
+}
+
+#episode-field .spatial-toolbar,
+#episode-field .spatial-expand {
+  display: none;
+}

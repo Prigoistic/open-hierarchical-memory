@@ -181,3 +181,25 @@ def test_gateway_response_read_timeout_is_a_typed_unavailable_result(monkeypatch
         "research.dashboard_gateway._LOCAL_OPENER.open", lambda *args, **kwargs: Response()
     )
     assert MemoryGateway().request("state")[0] == 503
+
+
+def test_solve_http_origin_validation_and_incremental_cursor(dashboard):
+    _, base = dashboard
+    config = {
+        "environment": "MiniGrid-KeyCorridorS6R3-v0",
+        "reader": "progress_zha",
+        "seed": 3002,
+        "step_cap": 1,
+    }
+    body = json.dumps(config).encode()
+    assert post(base, "/api/solve", body, origin=None)[0] == 403
+    assert post(base, "/api/solve", body, origin="http://outside.test")[0] == 403
+    assert post(base, "/api/solve", b'{"seed":true}')[0] == 400
+    status, ack = post(base, "/api/solve", body)
+    assert status == 200 and ack["schema"] == "somna-solve-v1"
+    with urlopen(base + "/api/solve?id=" + ack["id"] + "&after=0") as response:
+        page = json.load(response)
+        assert page["id"] == ack["id"] and page["after"] == 0
+    assert post(base, "/api/solve/cancel", json.dumps({"id": ack["id"]}).encode())[0] == 200
+    with pytest.raises(HTTPError):
+        urlopen(base + "/api/solve?id=unknown&after=0")

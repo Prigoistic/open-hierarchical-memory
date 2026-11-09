@@ -11,6 +11,8 @@
       content="One workspace for recorded hierarchical retrieval and live memory experiments."
     />
     <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="/spatial.css" />
+    <script src="/spatial.bundle.js" defer></script>
     <script src="dashboard.js" defer></script>
   </head>
   <body>
@@ -27,7 +29,7 @@
           ><select id="layout">
             <option value="both">Both structures</option>
             <option value="hierarchy">Hierarchy focus</option>
-            <option value="memory">Live memory focus</option>
+            <option value="memory">Memory focus</option>
           </select></label
         ><button
           class="rail-toggle"
@@ -44,19 +46,46 @@
         <div class="rail-intro">
           <span class="eyebrow">Workspace</span>
           <h1>Experiment controls</h1>
-          <p>Recorded task · live archive.</p>
+          <p>One task. One retrieval timeline.</p>
         </div>
         <section class="control-section">
           <div class="section-heading">
             <i class="signal recorded"></i>
-            <h2>Recorded experiment</h2>
+            <h2>Task solver</h2>
           </div>
           <label>Task<select id="task-suite" disabled></select></label
           ><label>Method<select id="task-config" disabled></select></label>
+          <button id="solve" class="primary" disabled>
+            Solve maze <span aria-hidden="true">↗</span>
+          </button>
+          <p id="solve-status" class="source-note" role="status">
+            Choose a maze, then solve.
+          </p>
           <details class="advanced">
             <summary>Run &amp; query</summary>
+            <button id="solve-retry" hidden>Retry evidence</button>
             <div>
-              <label>Study<select id="task-cohort" disabled></select></label
+              <label
+                >New run seed<input
+                  id="solve-seed"
+                  type="number"
+                  min="0"
+                  max="2147483647"
+                  value="3002" /></label
+              ><label
+                >Action limit<select id="solve-cap">
+                  <option value="128">128</option>
+                  <option value="512" selected>512</option>
+                  <option value="1024">1024</option>
+                </select></label
+              ><label
+                >Playback<select id="solve-speed">
+                  <option value="120">Fast</option>
+                  <option value="300" selected>Follow decisions</option>
+                  <option value="650">Inspect each step</option>
+                </select></label
+              ><label
+                >Saved study<select id="task-cohort" disabled></select></label
               ><label>Seed<select id="task-level" disabled></select></label
               ><label>Cue<select id="task-cue" disabled></select></label
               ><label
@@ -81,69 +110,103 @@
             id="navigation-preview"
             width="208"
             height="144"
-            aria-label="Recorded navigation map"
+            aria-label="Current task navigation map"
           ></canvas>
           <p class="source-note" id="task-status">Loading recorded evidence.</p>
         </section>
-        <section class="control-section">
+        <section class="control-section episode-receipt">
           <div class="section-heading">
             <i class="signal live"></i>
-            <h2>Live memory</h2>
+            <h2>This decision</h2>
           </div>
-          <div class="memory-stats">
-            <div><b id="memory-originals">—</b><span>originals</span></div>
-            <div><b id="memory-hot">—</b><span>active</span></div>
-            <div><b id="memory-updates">—</b><span>updates</span></div>
-          </div>
-          <button id="memory-cycle" class="primary" disabled>
-            Run memory cycle <span aria-hidden="true">↗</span>
-          </button>
-          <p class="source-note" id="memory-phase">Connecting to archive.</p>
-          <details class="advanced">
-            <summary>Cue &amp; memory actions</summary>
+          <dl class="decision-receipt">
             <div>
-              <label
-                >Context<select id="memory-context">
-                  <option value="0">World A</option>
-                  <option value="1">World B / rare</option>
-                  <option value="">Unknown</option>
-                </select></label
-              ><label
-                >Action<select id="memory-action">
-                  <option value="right">Right →</option>
-                  <option value="up">Up ↑</option>
-                  <option value="left">Left ←</option>
-                  <option value="down">Down ↓</option>
-                  <option value="">Unknown</option>
-                </select></label
-              >
-              <fieldset class="mask">
-                <legend>Known coordinates</legend>
-                <label class="check"
-                  ><input id="mask-x" type="checkbox" checked />X</label
-                ><label class="check"
-                  ><input id="mask-y" type="checkbox" checked />Y</label
-                >
-              </fieldset>
-              <label
-                >Click behaviour<select id="memory-tool">
-                  <option value="inspect">Inspect a memory</option>
-                  <option value="query">Query a position</option>
-                </select></label
-              ><button id="memory-query" class="quiet" disabled>
-                Recall from cue</button
-              ><label
-                >Archive action<select id="memory-operation">
-                  <option value="collect">Collect 32 observations</option>
-                  <option value="forget">Let memories fade</option>
-                  <option value="learn">Learn offline</option>
-                </select></label
-              ><button id="memory-execute" class="quiet" disabled>
-                Run action
-              </button>
+              <dt>Observe</dt>
+              <dd id="receipt-observe">—</dd>
             </div>
-          </details>
+            <div>
+              <dt>Retrieve</dt>
+              <dd id="receipt-retrieve">—</dd>
+            </div>
+            <div>
+              <dt>Plan</dt>
+              <dd id="receipt-plan">—</dd>
+            </div>
+            <div>
+              <dt>Act</dt>
+              <dd id="receipt-act">—</dd>
+            </div>
+          </dl>
+          <p id="receipt-recovery" class="source-note"></p>
         </section>
+        <details class="control-section archive-tools">
+          <summary>Independent archive tools</summary>
+          <label
+            >Right view<select id="memory-source">
+              <option value="episode">Task memory</option>
+              <option value="archive">Continuous archive</option>
+            </select></label
+          >
+          <div id="archive-actions" hidden>
+            <div class="section-heading">
+              <i class="signal live"></i>
+              <h2>Continuous memory</h2>
+            </div>
+            <div class="memory-stats">
+              <div><b id="memory-originals">—</b><span>originals</span></div>
+              <div><b id="memory-hot">—</b><span>active</span></div>
+              <div><b id="memory-updates">—</b><span>updates</span></div>
+            </div>
+            <button id="memory-cycle" class="primary" disabled>
+              Run memory cycle <span aria-hidden="true">↗</span>
+            </button>
+            <p class="source-note" id="memory-phase">Connecting to archive.</p>
+            <details class="advanced">
+              <summary>Cue &amp; memory actions</summary>
+              <div>
+                <label
+                  >Context<select id="memory-context">
+                    <option value="0">World A</option>
+                    <option value="1">World B / rare</option>
+                    <option value="">Unknown</option>
+                  </select></label
+                ><label
+                  >Action<select id="memory-action">
+                    <option value="right">Right →</option>
+                    <option value="up">Up ↑</option>
+                    <option value="left">Left ←</option>
+                    <option value="down">Down ↓</option>
+                    <option value="">Unknown</option>
+                  </select></label
+                >
+                <fieldset class="mask">
+                  <legend>Known coordinates</legend>
+                  <label class="check"
+                    ><input id="mask-x" type="checkbox" checked />X</label
+                  ><label class="check"
+                    ><input id="mask-y" type="checkbox" checked />Y</label
+                  >
+                </fieldset>
+                <label
+                  >Click behaviour<select id="memory-tool">
+                    <option value="inspect">Inspect a memory</option>
+                    <option value="query">Query a position</option>
+                  </select></label
+                ><button id="memory-query" class="quiet" disabled>
+                  Recall from cue</button
+                ><label
+                  >Archive action<select id="memory-operation">
+                    <option value="collect">Collect 32 observations</option>
+                    <option value="forget">Let memories fade</option>
+                    <option value="learn">Learn offline</option>
+                  </select></label
+                ><button id="memory-execute" class="quiet" disabled>
+                  Run action
+                </button>
+              </div>
+            </details>
+          </div>
+        </details>
         <details class="selection-section" open>
           <summary>Selection</summary>
           <p class="selection-source" id="selection-source">
@@ -157,8 +220,10 @@
         <details class="about">
           <summary>About this workspace</summary>
           <p>
-            The hierarchy replays a saved task read. The live field uses its own
-            running archive. Both use the ZHA retrieval implementation.
+            Solve runs the observation-only MiniGrid controller with ZHA
+            retrieval. Both structures follow the same decision. Only observed
+            facts enter memory. Graph recovery is labelled when used. The
+            planner is symbolic, not a trained policy.
           </p>
           <p>
             Drag to orbit. Scroll to zoom. Use each view menu for focus and
@@ -170,11 +235,11 @@
         <article
           id="hierarchy-panel"
           class="view-panel"
-          aria-label="Recorded hierarchy"
+          aria-label="Task retrieval hierarchy"
         >
           <div class="view-heading">
             <div>
-              <span class="eyebrow">01 / Recorded</span>
+              <span class="eyebrow" id="task-source">01 / Saved example</span>
               <h2>
                 <span id="task-view-name">Hierarchical read</span>
                 <span id="task-title"></span>
@@ -208,7 +273,7 @@
           <div class="frame-wrap">
             <iframe
               id="task-frame"
-              title="Recorded hierarchy and navigation"
+              title="Task hierarchy and navigation"
               allow="fullscreen"
               loading="eager"
             ></iframe>
@@ -227,7 +292,7 @@
               min="0"
               max="0"
               value="0"
-              aria-label="Recorded episode step"
+              aria-label="Shared task decision"
               disabled
             /><span id="cursor">— / —</span>
           </div>
@@ -241,13 +306,15 @@
         <article
           id="memory-panel"
           class="view-panel"
-          aria-label="Live memory structure"
+          aria-label="Task memory structure"
         >
           <div class="view-heading">
             <div>
-              <span class="eyebrow">02 / Live</span>
+              <span class="eyebrow" id="memory-source-label"
+                >02 / Same task</span
+              >
               <h2>
-                Memory field <span id="memory-state">Persistent archive</span>
+                Memory field <span id="memory-state">Observed → retrieved</span>
               </h2>
             </div>
             <div class="view-tools">
@@ -275,6 +342,20 @@
             </div>
           </div>
           <div class="frame-wrap">
+            <div id="episode-field" class="spatial-stage">
+              <canvas
+                id="episode-spatial"
+                tabindex="0"
+                aria-label="Observed and retrieved memory from the current task"
+              ></canvas
+              ><canvas
+                id="episode-flat"
+                tabindex="0"
+                aria-label="Task memory map"
+                hidden
+              ></canvas>
+              <div id="episode-readout" class="spatial-status"></div>
+            </div>
             <iframe
               id="memory-frame"
               title="Live observed memory structure"
@@ -293,9 +374,10 @@
             ><span id="memory-busy"></span>
           </div>
           <div class="view-foot">
-            <span>Independent live session</span
+            <span id="field-source-note">Same episode · same decision</span
             ><span class="key"
-              ><i class="cyan"></i>World A <i class="rust"></i>World B</span
+              ><i class="cyan"></i><span id="field-key-a">Observed</span>
+              <i class="gold"></i><span id="field-key-b">Retrieved</span></span
             >
           </div>
         </article>

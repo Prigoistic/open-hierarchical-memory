@@ -1,27 +1,33 @@
-# One memory laboratory
+# One task, one evidence timeline
 
-Open `http://127.0.0.1:8792/`. This replaces the separate task/live entry pages. The dashboard shows the recorded hierarchy and the live archive at the same time. The old8791 page redirects here; its API process remains the archive owner. No additional user-facing preview port is needed.
+Open `http://127.0.0.1:8792/`. Select a maze and method, then **Solve maze**. This launches a fresh official MiniGrid episode. The navigation inset, hierarchy, observed-memory field and Observe / Retrieve / Plan / Act receipt all follow that episode's selected decision. The initial saved example is labelled separately. The two structures no longer require independent start actions.
 
-## Navigation
+## Reading the views
 
-The side rail contains Task and Method, a thumbnail of the recorded navigation, the live record/update counters, Run memory cycle and a shared selection inspector. Run/query and memory details remain collapsed by default. Only Play and Run memory cycle are normal visible buttons on desktop; camera/reset/replay actions are in per-view menus. Both structures is the default layout; either focus option expands one view. On mobile, Controls opens the rail and the structures stack.
+The hierarchy shows one selected cue and routing pass. Its raw-attention count can differ from the total returned memory: the planner combines multiple cues/passes and dependency support. The memory field shows current observed heads at the same step. Cyan is observed memory, gold is returned memory, and purple marks facts used in the current plan. Vertical layers distinguish observed and returned facts; their height is not learned salience or confidence. Selecting a point shows its original ID and observation step. Unknown cells are never filled from the simulator's hidden layout.
 
-The recorded timeline, query pass and selected source stay local to their task trace. The live field has its own cue, archive and learning job. Changing a view never rewinds the selected recorded step. The canonical URL is taken from the controller's actual run identity, not its UI selector labels.
+Playback starts automatically when the first real decision arrives. The single timeline pauses or scrubs both structures together. Computation can finish ahead of playback; the status explicitly reports actions computed. Playback speed changes display pacing, not solver execution speed. The top layout selector expands either structure; camera actions remain in the view menus. Mobile Controls opens the same rail.
 
-## Implementation
+Four maze families are supported: MemoryS17Random, MultiRoomN6, DoorKey16x16 and KeyCorridorS6R3. Supported fresh readers are progress/cues ZHA or exact, dependency-bundle ZHA or exact, and the observed-graph comparison. Progress recovery is labelled when it uses the observed graph. This remains the existing hand-written observation-aware planner with hierarchical retrieval, not a trained neural maze policy. Saved Boxoban cases remain inspectable; they are not advertised as fresh maze solves or assigned invented spatial-memory evidence.
 
-`web/dashboard/` is the single shell. The existing visual controllers run in same-origin view documents, exposing small snapshot/command adapters. Each retains its own DOM and state; only serializable metadata and explicit commands cross the view boundary. Selection messages are accepted only from the two known windows on the dashboard origin. Snapshot data is copied rather than exposing mutable source arrays.
+## Independent archive
 
-`web/visuals/embedded.css` removes the old surrounding UI and lets both visualizers fill their panels. The side-rail navigation thumbnail copies the actual task canvas. Both old panel code paths and Canvas fallbacks remain available to the shell. The build copies and hashes the embedded style and boot assets alongside the existing shared rendering bundle.
+Independent archive tools remains collapsed. It can switch the right view to the existing continuous-memory archive and access its separate collect/fade/learn/query operations. This is an explicitly different experiment. No maze action claims to train its weights, consolidate its memories, or add observations to its database. The default task flow never contacts or resets that archive. The8791 page still redirects to the dashboard; its existing API process remains the archive owner.
 
-`research/dashboard_gateway.py` forwards a fixed set of live operations to a configured127.0.0.1 service. It requires the exact same dashboard origin for writes, bounded finite JSON objects, bounded replies and the expected live-state schema. It does not use environment proxies, follow redirects, forward arbitrary URLs, or expose reset/remember through this bridge. Errors from live operations remain explicit. This is a local research interface; task archives and the numerical engines are unchanged.
+## Solver lifecycle
 
-## Visual references
+`research/live_solver.py` owns one worker and one latest run. It invokes the existing `run_progress_benchmark.run_episode` with an optional post-action evidence observer. The observer does not change selection, planning or simulator inputs. Completed decisions, route events and their source layouts are copied into a bounded append-only run. No frozen experiment files are overwritten.
 
-The supplied scientific-wireframe references remain the visual direction. The Three.js editor (`https://threejs.org/editor/`, viewed9November2026) informed the viewport/sidebar proportions and progressive disclosure. Vitessce (`https://vitessce.io/`) informed the use of multiple visible scientific views in one workspace. No code or visual assets were copied from these sites.
+Same-origin JSON POST `/api/solve` starts a run with an allowlisted environment/reader, integer seed and action cap of1–1024. Only one worker is admitted; a second start gets409. POST `/api/solve/cancel` stops the matching run cooperatively after the current decision. GET `/api/solve?id=…&after=…` returns at most16 contiguous decisions with the route events and layouts they reference. The evidence cursor and original source IDs are preserved across incremental transport. The URL retains the solve ID, so refresh resumes that run rather than starting a duplicate. A server restart expires in-memory runs and is reported explicitly.
+
+Execution is bounded by the requested actions, a90-second cooperative wall budget and64MiB of retained trace data. No hard preemption is claimed inside a single numerical operation. Typed states are running, solved, limited, cancelled and failed. Cancellation/error cannot publish successful completion. Model errors, cutoffs and failures retain the valid evidence already published. A failed evidence poll offers retry without launching another worker. Shutdown requests cancellation and joins the worker for up to3seconds.
+
+## Components
+
+`web/dashboard/` coordinates the workflow and renders the task memory with the existing Three.js/GSAP bundle or Canvas fallback. `web/task-lab/` retains the existing hierarchy/observation controller and adds owned evidence, fresh-run initialization and append adapters. Task frame messages are accepted only from that known same-origin window. `taskMemoryModel` checks temporal visibility and returned-source membership before rendering. The optional continuous archive retains its existing controller and bounded gateway.
+
+The visual direction continues the supplied scientific-wireframe references, viewport/sidebar proportions from the [Three.js editor](https://threejs.org/editor/) and coordinated views from [Vitessce](https://vitessce.io/). No outside assets or code were copied for this change.
 
 ## Verification
 
-The browser verification covers one-origin panel loading, timeline control, source picking into the shared inspector, view/focus changes, cue drafts surviving synchronization, a returned partial query and a complete isolated memory cycle. A test archive grew256→288 observations and completed160 learning updates while the recorded task stayed at its selected step. The user's actual archive retained all480 originals and the same source checksum during the dashboard switch.
-
-HTTP tests cover the shell and panel assets, framing policy, same-origin writes, invalid and oversized requests/replies, disabled operations, protocol errors, redirects, outages and response-read timeouts. The locked suite passes439 tests;16 visualization tests and the existing routing contracts pass. Ruff, formatting, strict core typing and the typed gateway check also pass. Detailed source-bound evidence is `docs/evidence/unified-dashboard-browser.json`.
+Behavioral tests cover a real fresh Key Corridor solve, contiguous route/layout transport, original ownership, observer parity, cancellation, duplicate-worker rejection, trace limits, invalid configurations and HTTP origins. The visual mapper tests temporal visibility, exact returned IDs and plan geometry. Browser checks cover shared cursor/source inspection, automatic paced playback, refresh recovery, stop/restart, optional archive access, Canvas fallback and mobile sizing. Source-bound results are recorded in `docs/evidence/task-solve-dashboard.json`; the previous UI-only milestone remains in its own evidence file.

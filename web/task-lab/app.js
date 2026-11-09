@@ -39,6 +39,7 @@
     cursor = 0,
     playing = false,
     timer = null,
+    streamDelay = 300,
     requestId = 0,
     readMap = new Map(),
     headCursor = -1,
@@ -261,6 +262,19 @@
     await loadRun();
   }
   function updateRunNotice(row) {
+    if (run.live) {
+      const phase = row?.decision.repair?.fallback_active
+        ? "Observed graph recovery"
+        : row?.decision.repair?.stage === 2
+          ? "Wider ZHA search"
+          : "Hierarchical recall";
+      $("run-notice").textContent =
+        `Fresh solve · ${run.live.status} · ${phase}`;
+      $("run-notice").dataset.warning = String(
+        !!row?.decision.repair?.fallback_active,
+      );
+      return;
+    }
     const historical = !/(?:progress|repair).*evaluation/.test(run.dataset),
       status = statusLabel(run);
     let text =
@@ -438,12 +452,16 @@
     if (!playing) return;
     const data = frames();
     if (cursor >= data.length - 1) {
+      if (["running", "streaming"].includes(run.live?.status)) {
+        timer = setTimeout(tick, 120);
+        return;
+      }
       pause();
       return;
     }
     cursor++;
     draw();
-    timer = setTimeout(tick, Number($("speed").value));
+    timer = setTimeout(tick, run.live ? streamDelay : Number($("speed").value));
   }
   function play() {
     if (playing) {
@@ -1263,6 +1281,8 @@
     renderMazeRead(row);
     renderRouting(row);
     updateRunNotice(row);
+    if (parent !== window)
+      parent.postMessage({ type: "somna-frame" }, location.origin);
     $("next-event").hidden = !d.repair;
     $("next-event").disabled = !run.trajectory.some(
       (r, i) =>
@@ -1676,7 +1696,89 @@
 
   const panelChoices = (id) =>
     [...$(id).options].map((o) => ({ value: o.value, label: o.textContent }));
+  function solveStart(packet) {
+    pause();
+    ++requestId; // A stale artifact fetch cannot replace a fresh solve.
+    const c = packet.config;
+    run = {
+      task: "minigrid",
+      dataset: "live-session",
+      environment_id: c.environment,
+      reader: c.reader,
+      seed: c.seed,
+      level_id: c.seed,
+      capacity: 96,
+      split: "diagnostic",
+      archive: [],
+      trajectory: [],
+      routing_events: {},
+      routing_snapshots: {},
+      result: { success: false, return: 0, steps: 0 },
+      success: false,
+      expanded: 0,
+      expansion_limit: c.step_cap,
+      wall_seconds: 0,
+      live: { id: packet.id, status: packet.status },
+    };
+    cursor = 0;
+    headCursor = -1;
+    headMap.clear();
+    routingFocus = null;
+    panelRouting = null;
+    mode = "search";
+    $("run-metrics").replaceChildren();
+    $("comparison-body").replaceChildren();
+    $("routing-inspection").textContent =
+      "Select a node to inspect its original records.";
+    $("error").hidden = true;
+    $("run-notice").textContent = "Starting fresh observation-only solve";
+    configureTaskDisplay();
+    setRunControls(true);
+    // The first published decision starts the single shared timeline.
+    playing = true;
+    timer = setTimeout(tick, 120);
+  }
+  function solveAppend(packet) {
+    if (run?.live?.id !== packet.id) throw Error("Solve identity changed");
+    if (packet.after !== run.trajectory.length)
+      throw Error("Noncontiguous solve evidence");
+    Object.assign(run.routing_events, packet.routing_events);
+    Object.assign(run.routing_snapshots, packet.routing_snapshots);
+    for (const row of packet.trajectory) {
+      run.trajectory.push(row);
+      run.archive.push(...row.new_facts);
+    }
+    run.live.status =
+      packet.next < packet.available ? "streaming" : packet.status;
+    run.live.reason = packet.reason;
+    run.expanded = run.trajectory.length;
+    if (packet.result) {
+      run.result = packet.result;
+      run.success = packet.status === "solved";
+    }
+    if (run.trajectory.length) {
+      setRunControls(false);
+      draw();
+    }
+  }
   window.SomnaPanel = {
+    evidence() {
+      if (!run || !isMaze() || !run.trajectory[cursor]) return null;
+      const row = run.trajectory[cursor];
+      return structuredClone({
+        key:
+          (run.live?.id ||
+            run.dataset + run.environment_id + run.seed + run.reader) +
+          ":" +
+          cursor,
+        step: cursor,
+        facts: observedHeads(),
+        decision: row.decision,
+        newIds: row.new_facts.map((f) => f.id),
+        source: run.live ? "fresh" : "recorded",
+        action: row.action,
+      });
+    },
     snapshot() {
       return {
         kind: "tasks",
@@ -1690,7 +1792,16 @@
               env: run.environment_id,
             }
           : null,
-        ready: !!run,
+        ready: !!run && frames().length > 0,
+        live: run?.live ? { ...run.live } : null,
+        solveConfig:
+          run && isMaze()
+            ? {
+                environment: run.environment_id,
+                reader: run.reader,
+                seed: run.seed,
+              }
+            : null,
         error: $("error").hidden ? "" : $("error").textContent,
         title: $("board-title").textContent,
         status: $("run-notice").textContent,
@@ -1732,6 +1843,24 @@
       };
     },
     command(name, payload) {
+      if (name === "speed") {
+        if (![120, 300, 650].includes(payload))
+          throw Error("Unsupported playback speed");
+        streamDelay = payload;
+        return;
+      }
+      if (name === "solveStart") {
+        solveStart(payload);
+        return;
+      }
+      if (name === "solveAppend") {
+        solveAppend(payload);
+        return;
+      }
+      if (name === "pause") {
+        pause();
+        return;
+      }
       if (name === "select") {
         if (
           ![

@@ -332,3 +332,43 @@ test("portrait atlas changes display columns while preserving IDs and recorded e
     /Invalid ordinal/,
   );
 });
+
+test("task memory follows current observed heads, exact returned ids and plan", async () => {
+  const { taskMemoryModel } = await import("../src/models.mjs");
+  const evidence = freeze({
+    key: "run:3",
+    step: 3,
+    newIds: [2],
+    facts: [
+      { id: 1, x: 0, y: 0, object: 2, color: 0, state: 0, observed_step: 0 },
+      { id: 2, x: 2, y: 1, object: 4, color: 1, state: 2, observed_step: 3 },
+    ],
+    decision: {
+      pose: [1, 1, 0],
+      memory_ids: [2],
+      plan_fact_ids: [2],
+      plan: [
+        [1, 1],
+        [2, 1],
+      ],
+    },
+  });
+  const model = taskMemoryModel(evidence);
+  assert.equal(model.sourceCount, 2);
+  assert.equal(model.readCount, 1);
+  assert.deepEqual(
+    model.points.map((p) => p.id),
+    ["1", "2"],
+  );
+  assert.deepEqual(model.points[1].position, [0.25, 0.7, 0.125]);
+  assert.equal(model.points[1].color, COLORS.violet);
+  assert.equal(model.segments.filter((s) => s.kind === "read").length, 1);
+  assert.equal(model.segments.filter((s) => s.kind === "plan").length, 1);
+  assert.match(model.heightLabel, /observed \/ returned/);
+  const invalid = structuredClone(evidence);
+  invalid.facts[1].observed_step = 4;
+  assert.throws(() => taskMemoryModel(invalid), /Future fact/);
+  invalid.facts[1].observed_step = 3;
+  invalid.decision.memory_ids = [999];
+  assert.throws(() => taskMemoryModel(invalid), /missing from observed/);
+});
