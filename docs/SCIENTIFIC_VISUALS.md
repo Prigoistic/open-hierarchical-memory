@@ -1,6 +1,15 @@
 # Scientific visual system
 
-The current dashboard at `http://127.0.0.1:8792/` starts a fresh maze with one Solve action. The hierarchy and task memory follow the same decision; the independent continuous archive remains an optional advanced view. Navigation is larger and at the top of the rail. The current palette, fading context grid and evidence-preserving motion are documented in `UNIFIED_DASHBOARD.md` and `evidence/refined-observatory-ui.json`.
+The dashboard at `http://127.0.0.1:8792/` now uses a cybernetics instrument composition: a dominant colour-mapped activity field, an adjacent retrieval hierarchy, a narrow navigation/configuration rail and five linked diagnostic plots. There is no branded masthead. One Solve action still starts a fresh maze; both structures follow the same decision. The continuous archive remains a separate optional experiment. See `UNIFIED_DASHBOARD.md` and `evidence/cybernetics-instrument-ui.json` for current verification.
+
+## Activity field and point cloud
+
+Height and colour encode **how many selected-decision-prefix reads returned a fact at each observed location**. Counts accumulate by location, including across revisions of that location; they are not the salience of one immutable fact. The scale is `log(1 + count) / log(1 + peak)`, with a zero-safe denominator. The colour scale reports the real peak, including zero. Original-point picking retains current-head source IDs and exact observed timestamps. Future observations and foreign returned IDs are rejected.
+
+The height field interpolates adjacent observed-cell values on a 6×6 subdivision per cell. Unknown neighbours fall back to that cell's value; no patch is created over unknown cells. The point-cloud mode adds vertical display samples. These meshes/samples are rendering geometry, not additional memories, learned embeddings, an attractor landscape, a fluid simulation or a new numerical result. Observed-cell counts and display-sample counts are separate telemetry. The Canvas fallback renders a flat activity map, reports its actual point count and disables the unavailable point-cloud mode.
+
+Diagnostics show the selected prefix's per-location return density, exact current returned mask, returned-fact history, actual hierarchy occupancy and observed object classes. Object colours have a compact key. All five use the same selected decision as the primary scene. Shared Home/End timeline controls update both cursor and displayed range value. The small cube bounds, backdrop grid, material bloom and camera easing are presentation only.
+
 
 ## Source projections
 
@@ -21,6 +30,8 @@ The shared source is `web/visuals/src`, with pinned dependencies and a reproduci
 
 ## Verification
 
-The current source/topology suite has 16 passing tests, including atlas membership, exact edges, source fields, portrait identity, finite branch geometry and replay cache invalidation. The locked Python suite passes 439 tests; lint, formatting, strict typing, JS syntax and existing routing contracts pass. Browser checks cover pointer picking, GSAP route movement and termination, view switching, cue retrieval, desktop/mobile overflow, visible playback, reduced motion, Canvas fallback and explicit observed-graph recovery. The updated evidence is `docs/evidence/observatory-redesign-browser.json`; earlier milestone evidence is retained separately.
+The earlier source/topology suite had 16 passing tests, including atlas membership, exact edges, source fields, portrait identity, finite branch geometry and replay cache invalidation. That milestone's locked Python suite passed 439 tests; lint, formatting, strict typing, JS syntax and existing routing contracts pass. Browser checks cover pointer picking, GSAP route movement and termination, view switching, cue retrieval, desktop/mobile overflow, visible playback, reduced motion, Canvas fallback and explicit observed-graph recovery. The updated evidence is `docs/evidence/observatory-redesign-browser.json`; earlier milestone evidence is retained separately.
 
 The current unified-entry verification is `docs/evidence/unified-dashboard-browser.json`; earlier visual milestones remain separately recorded.
+
+Current verification (13 November 2026): 452 Python tests, 27 visual/motion mapping tests, routing contracts, JS syntax, Ruff/format and strict core plus gateway/solver typing pass. The current browser evidence includes a fresh 95-action Key Corridor solve, four field projections, exact first/final cursor behavior, source keyboard inspection, a 390px control drawer without page overflow and the forced Canvas map. The numerical core, planner and frozen experiment artifacts are unchanged.

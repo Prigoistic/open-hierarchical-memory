@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="color-scheme" content="dark" />
     <meta name="robots" content="noindex" />
-    <title>Somna / Memory laboratory</title>
+    <title>Memory instrument</title>
     <meta
       name="description"
       content="One task, its retrieval hierarchy and its observed memory."
@@ -17,35 +17,19 @@
   </head>
   <body>
     <a class="skip" href="#workspace">Skip to visual workspace</a>
-    <header class="mast">
-      <a class="brand" href="/"
-        ><span class="brand-mark" aria-hidden="true">◇</span> somna
-        <span class="brand-note">/ memory studies</span></a
-      >
-      <div class="mast-right">
-        <span class="connection" id="connection">Connecting</span
-        ><label class="layout-control"
-          ><span class="sr-only">Workspace layout</span
-          ><select id="layout">
-            <option value="both">Both structures</option>
-            <option value="hierarchy">Hierarchy focus</option>
-            <option value="memory">Memory focus</option>
-          </select></label
-        ><button
-          class="rail-toggle"
-          id="rail-toggle"
-          aria-expanded="false"
-          aria-controls="controls"
-        >
-          Controls
-        </button>
-      </div>
-    </header>
+    <button
+      class="rail-toggle"
+      id="rail-toggle"
+      aria-expanded="false"
+      aria-controls="controls"
+    >
+      Controls
+    </button>
     <div class="laboratory">
       <aside id="controls" aria-label="Experiment controls">
         <section class="navigation-card" aria-label="Maze navigation">
           <div class="navigation-heading">
-            <h1>Navigation</h1>
+            <h1>OBSERVATION / NAVIGATION</h1>
             <span id="navigation-step">Decision 0</span>
           </div>
           <canvas
@@ -63,7 +47,7 @@
         <section class="control-section">
           <div class="section-heading">
             <i class="signal recorded"></i>
-            <h2>Experiment</h2>
+            <h2>RUN CONFIGURATION</h2>
           </div>
           <label>Task<select id="task-suite" disabled></select></label
           ><label>Method<select id="task-config" disabled></select></label>
@@ -75,6 +59,13 @@
           </p>
           <details class="advanced">
             <summary>Run &amp; query</summary>
+            <label
+              >Workspace layout<select id="layout">
+                <option value="both">Instrument view</option>
+                <option value="hierarchy">Hierarchy view</option>
+                <option value="memory">Field view</option>
+              </select></label
+            >
             <button id="solve-retry" hidden>Retry evidence</button>
             <div>
               <label
@@ -120,10 +111,31 @@
           </details>
           <p class="source-note" id="task-status">Loading recorded evidence.</p>
         </section>
+        <section class="control-section instrument-metrics">
+          <h2>MEMORY TELEMETRY</h2>
+          <dl>
+            <div>
+              <dt>OBSERVED CELLS</dt>
+              <dd id="telemetry-cells">—</dd>
+            </div>
+            <div>
+              <dt>RETURNED NOW</dt>
+              <dd id="telemetry-returned">—</dd>
+            </div>
+            <div>
+              <dt>PEAK RETURNS</dt>
+              <dd id="telemetry-peak">—</dd>
+            </div>
+            <div>
+              <dt>DISPLAY SAMPLES</dt>
+              <dd id="telemetry-samples">—</dd>
+            </div>
+          </dl>
+        </section>
         <section class="control-section episode-receipt">
           <div class="section-heading">
             <i class="signal live"></i>
-            <h2>Decision</h2>
+            <h2>DECISION TELEMETRY</h2>
           </div>
           <dl class="decision-receipt">
             <div>
@@ -318,15 +330,17 @@
             <div>
               <span class="eyebrow" id="memory-source-label">Task memory</span>
               <h2>
-                Memory field <span id="memory-state">Observed → retrieved</span>
+                MEMORY ACTIVITY <span id="memory-state">OBSERVED DOMAIN</span>
               </h2>
             </div>
             <div class="view-tools">
               <label
                 ><span class="sr-only">Memory projection</span
                 ><select id="memory-view">
-                  <option value="layers">Layers</option>
-                  <option value="plane">Plane</option>
+                  <option value="activity" selected>HEIGHT FIELD</option>
+                  <option value="cloud">POINT CLOUD</option>
+                  <option value="layers">MEMORY LAYERS</option>
+                  <option value="plane">PLAN VIEW</option>
                 </select></label
               >
               <details class="view-menu">
@@ -360,6 +374,20 @@
               ></canvas>
               <div id="episode-readout" class="spatial-status"></div>
             </div>
+            <div
+              class="instrument-legend"
+              id="activity-legend"
+              aria-label="Retrieval count colour scale"
+            >
+              <h3>RETURNS</h3>
+              <div class="scale-wrap">
+                <div class="spectrum"></div>
+                <div class="scale-values">
+                  <b id="legend-high">—</b><span>LOG SCALE</span><b>0</b>
+                </div>
+              </div>
+              <p id="legend-caption">HEIGHT / COLOUR</p>
+            </div>
             <iframe
               id="memory-frame"
               title="Live observed memory structure"
@@ -384,6 +412,49 @@
             >
           </div>
         </article>
+        <section class="diagnostic-strip" aria-label="Linked task diagnostics">
+          <figure>
+            <figcaption>01 / RETRIEVAL DENSITY</figcaption>
+            <canvas
+              id="diagnostic-density"
+              aria-label="Retrieval counts per observed cell"
+            ></canvas>
+          </figure>
+          <figure>
+            <figcaption>02 / CURRENT READ</figcaption>
+            <canvas
+              id="diagnostic-read"
+              aria-label="Current returned memory mask"
+            ></canvas>
+          </figure>
+          <figure>
+            <figcaption>03 / READ HISTORY</figcaption>
+            <canvas
+              id="diagnostic-history"
+              aria-label="Actual returned fact counts over decisions"
+            ></canvas>
+          </figure>
+          <figure>
+            <figcaption>04 / TREE OCCUPANCY</figcaption>
+            <canvas
+              id="diagnostic-tree"
+              aria-label="Expanded and retained nodes per hierarchy level"
+            ></canvas>
+          </figure>
+          <figure>
+            <figcaption>05 / OBSERVED DOMAIN</figcaption>
+            <canvas
+              id="diagnostic-domain"
+              aria-label="Observed cell object classes"
+            ></canvas>
+            <div class="diagnostic-key">
+              <span style="--key: #1356a0">Wall</span
+              ><span style="--key: #ffb926">Door</span
+              ><span style="--key: #fff05c">Key</span
+              ><span style="--key: #55ffad">Target</span>
+            </div>
+          </figure>
+        </section>
         <div
           id="dashboard-error"
           class="dashboard-error"
@@ -392,5 +463,11 @@
         ></div>
       </main>
     </div>
+    <footer class="instrument-footer">
+      <span>SOLVER / CPU FLOAT64</span
+      ><span id="renderer-status">RENDER / THREE.JS · WEBGL</span
+      ><span>INPUT / OBSERVED EVIDENCE</span
+      ><span id="instrument-clock">FRAME / —</span>
+    </footer>
   </body>
 </html>

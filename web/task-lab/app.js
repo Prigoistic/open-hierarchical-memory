@@ -53,6 +53,7 @@
     panelRouting = null;
   const navigationMotion = new SomnaVisuals.PoseTween();
   let navigationRevision = 0;
+  let activityCache = { key: null, value: null };
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const signature = (s) => s.player + "|" + s.boxes.join(",");
   function fail(e) {
@@ -1785,7 +1786,30 @@
     evidence() {
       if (!run || !isMaze() || !run.trajectory[cursor]) return null;
       const row = run.trajectory[cursor];
+      const sourceKey =
+        (run.live?.id ||
+          run.dataset + run.environment_id + run.seed + run.reader) +
+        ":" +
+        cursor;
+      if (activityCache.key !== sourceKey) {
+        const counts = {},
+          history = [];
+        for (let i = 0; i <= cursor; i++) {
+          const d = run.trajectory[i].decision;
+          for (const f of d.memory_facts || []) {
+            const k = `${f.x},${f.y}`;
+            counts[k] = (counts[k] || 0) + 1;
+          }
+          history.push({
+            step: i,
+            returned: d.memory_ids.length,
+            fallback: !!d.repair?.fallback_active,
+          });
+        }
+        activityCache = { key: sourceKey, value: { counts, history } };
+      }
       return structuredClone({
+        activity: activityCache.value,
         key:
           (run.live?.id ||
             run.dataset + run.environment_id + run.seed + run.reader) +

@@ -46,3 +46,12 @@ The official [Drei Grid](https://github.com/pmndrs/drei/blob/master/src/core/Gri
 Verification:452 Python tests,21 visual/motion tests, routing contracts, lint/format and strict typing pass. Browser checks cover actual intermediate poses, exact reduced-motion samples, mobile navigation/primary-action fit, focus layouts, source inspection, Canvas fallback and a fresh95-action solve. No FPS or numerical speedup claim is made. Source-bound evidence: `docs/evidence/refined-observatory-ui.json`.
 
 The next proposed research milestone is persistent task memory across episodes, followed by a controlled wake/replay/forget/retest experiment against exact and graph controls. This requires implementation and evaluation; the UI refinement does not connect maze decisions to the independent continuous-learning engine.
+
+
+## 13 November 2026 — cybernetics instrument
+
+Rebuilt the shell around the user's fluid-simulation and LIDAR references. The primary field uses a blue/cyan/green/yellow/orange retrieval-frequency map inside a wireframe volume. A secondary hierarchy retains real source spans and node selection; bottom diagnostics expose density, the current read, history, occupancy and object classes. The maze stays at the top of the scrolling control rail. The user subsequently requested removal of SOMNA and the entire top strip: the masthead and connection badge are gone, the layout selector is under Run & query, and the workspace begins at the top edge. On narrow screens a small Controls button opens the rail.
+
+Activity is derived only from published observations and reads up to the selected decision. Interpolated surface and interior cloud samples are explicitly display geometry, with a separate count. This does not connect the independent continuous-learning archive to the maze or implement new forgetting, replay or consolidation dynamics. Canvas remains a flat-map fallback. Existing CPU float64 solving and numerical policies are unchanged.
+
+Verification and source hashes: `evidence/cybernetics-instrument-ui.json`. The local service remains on8792; there is no public push/release.

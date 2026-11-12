@@ -42,6 +42,12 @@
   if (!episodeView) {
     $("episode-spatial").hidden = true;
     $("episode-flat").hidden = false;
+    $("renderer-status").textContent = "RENDER / CANVAS 2D";
+    $("memory-view").querySelector('[value="activity"]').textContent =
+      "ACTIVITY MAP";
+    $("memory-view").querySelector('[value="cloud"]').disabled = true;
+    $("memory-view").querySelector('[value="layers"]').textContent = "MEMORY MAP";
+    $("legend-caption").textContent = "COLOUR / RETURNS";
   }
   const requestedSolve = new URLSearchParams(location.search).get("solve");
   const keys = ["cohort", "suite", "level", "config", "cue", "routing-pass"];
@@ -59,8 +65,10 @@
     try {
       if (panel === "memory" && episodeMode) {
         if (name === "view") {
-          episodeView?.setMode(payload);
-          drawEpisodeFlat();
+          if (!["activity", "cloud", "layers", "plane"].includes(payload))
+            throw Error("Unknown field view");
+          evidenceKey = "";
+          renderEpisode();
           return;
         }
         if (name === "camera") {
@@ -189,7 +197,7 @@
       solveRequest ||
       (!solving &&
         (!s.solveConfig || !supported.includes(s.solveConfig.reader)));
-    text("solve", solving ? "Stop solve □" : "Solve maze ↗");
+    text("solve", solving ? "STOP SOLVER □" : "RUN SOLVER ↗");
     if (!solveJob)
       text(
         "solve-status",
@@ -346,11 +354,6 @@
         resumeAttempted = true;
         resumeSolve(requestedSolve);
       }
-      const ready =
-        !!states.tasks?.ready &&
-        (episodeMode ? !!episodeModel : !!states.memory?.ready);
-      $("connection").className = "connection " + (ready ? "ready" : "partial");
-      text("connection", ready ? "Connected" : "Connecting");
       selection();
     }
   }
@@ -366,19 +369,59 @@
         $("memory-loading").querySelector("span").textContent =
           "Task memory is available for maze episodes. Choose a maze to solve.";
         text("memory-counts", "No maze decision selected");
+        $("activity-legend").hidden = true;
+        for (const id of [
+          "telemetry-cells",
+          "telemetry-returned",
+          "telemetry-peak",
+          "telemetry-samples",
+        ])
+          text(id, "—");
+        document
+          .querySelectorAll(".diagnostic-strip canvas")
+          .forEach((c) =>
+            c.getContext("2d").clearRect(0, 0, c.width, c.height),
+          );
       }
       return;
     }
     if (evidence.key === evidenceKey) return;
     episodeEvidence = evidence;
-    episodeModel = SomnaVisuals.taskMemoryModel(evidence);
+    const projection = $("memory-view").value;
+    episodeModel = ["activity", "cloud"].includes(projection)
+      ? SomnaVisuals.activityModel(evidence, {
+          cloudOnly: projection === "cloud",
+        })
+      : SomnaVisuals.taskMemoryModel(evidence);
     evidenceKey = evidence.key;
     if (episodeView) {
       episodeView.setVisible(true);
       episodeView.setData(episodeModel);
-      episodeView.setMode($("memory-view").value);
+      episodeView.setMode(projection === "plane" ? "plane" : "layers");
     } else drawEpisodeFlat();
-    text("memory-state", `Decision ${evidence.step} · observed → retrieved`);
+    text(
+      "memory-state",
+      `${evidence.source.toUpperCase()} / DECISION ${evidence.step}`,
+    );
+    text(
+      "instrument-clock",
+      `FRAME / ${String(evidence.step).padStart(4, "0")}`,
+    );
+    text("telemetry-cells", evidence.facts.length);
+    text("telemetry-returned", evidence.decision.memory_ids.length);
+    text(
+      "telemetry-peak",
+      Math.max(0, ...Object.values(evidence.activity?.counts || {})),
+    );
+    text(
+      "telemetry-samples",
+      episodeView
+        ? episodeModel.stats?.displaySamples ?? evidence.facts.length
+        : evidence.facts.length,
+    );
+    text("legend-high", episodeModel.stats?.maximum ?? "—");
+    $("activity-legend").hidden = !episodeModel.stats;
+    drawDiagnostics(evidence);
     text(
       "memory-counts",
       `${episodeModel.sourceCount} observed · ${episodeModel.readCount} returned`,
@@ -426,6 +469,111 @@
     if (selectedEpisode)
       selectedEpisode =
         evidence.facts.find((f) => f.id === selectedEpisode.id) || null;
+  }
+  function drawDiagnostics(evidence) {
+    const colour = SomnaVisuals.activityColor,
+      counts = evidence.activity?.counts || {},
+      max = Math.max(1, ...Object.values(counts)),
+      facts = evidence.facts,
+      read = new Set(evidence.decision.memory_ids),
+      xs = facts.map((f) => f.x),
+      ys = facts.map((f) => f.y),
+      loX = Math.min(...xs),
+      loY = Math.min(...ys),
+      nx = Math.max(...xs) - loX + 1,
+      ny = Math.max(...ys) - loY + 1;
+    const prepare = (id) => {
+      const canvas = $(id),
+        b = canvas.getBoundingClientRect(),
+        ratio = Math.min(devicePixelRatio || 1, 2);
+      if (!b.width || !b.height) return null;
+      canvas.width = Math.round(b.width * ratio);
+      canvas.height = Math.round(b.height * ratio);
+      const c = canvas.getContext("2d");
+      c.setTransform(ratio, 0, 0, ratio, 0, 0);
+      c.fillStyle = "#010912";
+      c.fillRect(0, 0, b.width, b.height);
+      c.font = "10px monospace";
+      return { c, w: b.width, h: b.height };
+    };
+    for (const type of ["density", "read", "domain"]) {
+      const ctx = prepare("diagnostic-" + type);
+      if (!ctx) continue;
+      const { c, w, h } = ctx,
+        unit = Math.min((w - 16) / nx, (h - 12) / ny),
+        ox = (w - nx * unit) / 2,
+        oy = (h - ny * unit) / 2;
+      for (const f of facts) {
+        c.fillStyle =
+          type === "density"
+            ? colour(Math.log1p(counts[`${f.x},${f.y}`] || 0) / Math.log1p(max))
+            : type === "read"
+              ? read.has(f.id)
+                ? "#86edff"
+                : "#0a2b55"
+              : f.object === 2
+                ? "#1356a0"
+                : f.object === 4
+                  ? "#ffb926"
+                  : f.object === 5
+                    ? "#fff05c"
+                    : [6, 7, 8].includes(f.object)
+                      ? "#55ffad"
+                      : "#052139";
+        c.fillRect(
+          ox + (f.x - loX) * unit,
+          oy + (f.y - loY) * unit,
+          Math.max(1, unit - 0.6),
+          Math.max(1, unit - 0.6),
+        );
+      }
+    }
+    const hist = prepare("diagnostic-history");
+    if (hist) {
+      const { c, w, h } = hist,
+        history = evidence.activity?.history || [],
+        peak = Math.max(1, ...history.map((r) => r.returned));
+      c.strokeStyle = "#124363";
+      c.beginPath();
+      c.moveTo(12, h - 16);
+      c.lineTo(w - 8, h - 16);
+      c.stroke();
+      c.strokeStyle = "#2dcefc";
+      c.lineWidth = 1;
+      c.beginPath();
+      history.forEach((r, i) => {
+        const x = 12 + (i / Math.max(1, history.length - 1)) * (w - 24),
+          y = h - 18 - (r.returned / peak) * (h - 34);
+        i ? c.lineTo(x, y) : c.moveTo(x, y);
+      });
+      c.stroke();
+      c.fillStyle = "#5796b6";
+      c.fillText(String(peak), 8, 12);
+      c.fillText("0", 4, h - 12);
+      c.fillText(String(evidence.step), w - 30, h - 3);
+    }
+    const tree = prepare("diagnostic-tree");
+    if (tree) {
+      const { c, w, h } = tree,
+        pop = states.tasks?.population || [];
+      if (!pop.length) {
+        c.fillStyle = "#5796b6";
+        c.fillText("NO HIERARCHY PASS", 12, h / 2);
+      }
+      for (const [i, row] of pop.entries()) {
+        const y = 12 + i * Math.min(22, (h - 18) / pop.length),
+          bar = w - 88,
+          ratio = row.kept / Math.max(1, row.count);
+        c.fillStyle = "#37748e";
+        c.fillText("L" + row.level, 8, y + 8);
+        c.fillStyle = "#092b44";
+        c.fillRect(32, y, bar, 8);
+        c.fillStyle = "#42d3fa";
+        c.fillRect(32, y, bar * ratio, 8);
+        c.fillStyle = "#82bbcc";
+        c.fillText(row.kept + "/" + row.count, w - 48, y + 8);
+      }
+    }
   }
   function drawEpisodeFlat() {
     if (episodeView || !episodeModel) return;
@@ -487,7 +635,10 @@
       selection();
     }
   };
-  addEventListener("resize", drawEpisodeFlat);
+  addEventListener("resize", () => {
+    drawEpisodeFlat();
+    if (episodeEvidence) drawDiagnostics(episodeEvidence);
+  });
   $("episode-spatial").onkeydown = (e) => {
     if (
       !["ArrowLeft", "ArrowRight", "Home"].includes(e.key) ||
@@ -667,6 +818,13 @@
   $("play").onclick = () => command("tasks", "play");
   $("timeline").oninput = (e) =>
     command("tasks", "step", Number(e.target.value));
+  $("timeline").onkeydown = (e) => {
+    if (!["Home", "End"].includes(e.key)) return;
+    e.preventDefault();
+    const step = e.key === "Home" ? 0 : Number($("timeline").max);
+    e.target.value = String(step);
+    command("tasks", "step", step);
+  };
   $("recovery").onclick = () => command("tasks", "recovery");
   $("hierarchy-view").onchange = (e) =>
     command("tasks", "view", e.target.value);
@@ -680,6 +838,7 @@
   $("memory-source").onchange = (e) => {
     episodeMode = e.target.value === "episode";
     $("archive-actions").hidden = episodeMode;
+    $("activity-legend").hidden = !episodeMode;
     $("episode-field").hidden = !episodeMode;
     frames.memory.hidden = episodeMode;
     episodeView?.setVisible(episodeMode);
@@ -700,6 +859,12 @@
         "/live/?embed=1" +
         (params.get("renderer") === "canvas" ? "&renderer=canvas" : "");
     if (episodeMode) {
+      if (
+        !["activity", "cloud", "layers", "plane"].includes(
+          $("memory-view").value,
+        )
+      )
+        $("memory-view").value = "activity";
       evidenceKey = "";
       poll();
     }
@@ -759,7 +924,7 @@
       reader: "progress_zha",
       seed: "3002",
       env: "MiniGrid-KeyCorridorS6R3-v0",
-      step: "0",
+      step: "51",
       view: "layers",
     };
   const taskParams = new URLSearchParams(

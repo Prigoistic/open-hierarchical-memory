@@ -1,0 +1,86 @@
+{
+  "milestone": "cybernetics-instrument-ui",
+  "date_local": "2026-11-13",
+  "base_commit": "5fe379576ff827838a48864fdaa72ce579909ece",
+  "url": "http://127.0.0.1:8792/",
+  "changes": [
+    "Removed branded masthead, badge and full top strip",
+    "Dominant retrieval-frequency surface and point-cloud projection in wireframe bounds",
+    "Secondary source-preserving hierarchy and five linked diagnostics",
+    "Sticky maze, compact rail, mobile control drawer and disclosed layout selector"
+  ],
+  "source_semantics": {
+    "field": "cumulative returned-fact counts by observed location through the selected decision",
+    "height_and_colour": "log1p(count) / log1p(max(1, peak)); legend peak remains zero for zero history",
+    "interpolation": "6 by 6 surface subdivisions per observed cell, observed neighbours only, own-cell fallback",
+    "cloud": "interpolated surface and vertical display samples; not additional memories",
+    "current_source_identity": "current observed heads, exact original IDs and observed timestamps",
+    "limits": [
+      "No new learned spatial representation, attractor dynamics or fluid model",
+      "No numerical/planner/solver/frozen-evidence changes",
+      "Independent continuous-learning archive remains a separate optional experiment"
+    ]
+  },
+  "checks": {
+    "python": "452 passed",
+    "visual_and_motion_js": "27 passed",
+    "routing_contracts": "passed",
+    "javascript_syntax": "dashboard and task app passed",
+    "ruff": "passed",
+    "ruff_format": "154 files formatted",
+    "strict_mypy": "7 core files and 2 gateway/solver files passed",
+    "shared_asset_manifest": "both apps match all four manifest hashes",
+    "git_diff_check": "passed",
+    "browser": [
+      "Fresh MiniGrid-KeyCorridorS6R3-v0 seed3002 progress_zha solve completed in95 actions; views followed shared decisions",
+      "First selected prefix:35 observed, zero historical returns and legend peak0; Home range value and FRAME0000 agree",
+      "Final selected prefix:231 observed,45 returned,peak42; cursor94 and linked field/diagnostics agree",
+      "Height field, point cloud, memory layers and plan projection switched without changing source counts",
+      "Keyboard source selection exposed Task original1 and actual location/observed step",
+      "390x844:document width390, mobile drawer works, disclosed layout control switches focus view",
+      "Canvas fallback renders flat activity map with correct renderer label, disabled point cloud and179 source points",
+      "No header.mast in final DOM; viewport override reset; temporary QA tabs closed; final preview retained"
+    ]
+  },
+  "console": {
+    "status": "unattributed_console_error",
+    "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+    "source_url": null,
+    "notes": "Reported on some browser reloads. No MutationObserver exists in served app source. Origin unresolved; do not claim a clean console. Verified application flows complete."
+  },
+  "screenshot": {
+    "path": "/Users/priyamghosh/.codex/visualizations/2026/10/10/01a12626-4b13-78d1-88ac-13c983708110/artifacts/cybernetics-instrument/desktop.jpg",
+    "sha256": "fe8e2f484c247b3d9bce0f970fff833b1be55fab55ca571eda3b35d7b67671c8",
+    "format": "JPEG"
+  },
+  "source_sha256": {
+    "web/dashboard/index.html": "eb0d17ec05c914da1c40be92054db8b9afd03161d353d7466be22bf36c781b28",
+    "web/dashboard/app.js": "f8900b44c6ef097eba802dfb5776901ad867cfa9d282ef9e280e4e5ebefdb096",
+    "web/dashboard/style.css": "b736728f06dd646446c75ed02d94a252ca87e81cca023867dfff156ca0593917",
+    "web/task-lab/app.js": "d4c04cedffc11f8d733ddb22e4bb15e11fff1a3b04183d1770d7900eb6bba4ff",
+    "web/visuals/src/activity.mjs": "98cb878d8a3b06e271024a8912bf12dae8763d8508a173ea00d1e6e0a694ffef",
+    "web/visuals/src/scene.mjs": "a1a6ecd94adcfc3b55cdb7ba2c3418a54d6f87bfdf3b31922d9aac407c9858e0",
+    "web/visuals/src/models.mjs": "f4a2dc22df3eed6efecea2985bdbfcc1fd134def8d9ac13fa752669f28350259",
+    "web/visuals/scene.css": "147d4e01a58c9ef3c90e40bbcf80575d928f5753bc43465622cb34dabaaa0a16",
+    "web/visuals/embedded.css": "e52651c9c8ffa3a5421c8ca4136d36cec99cc0853d5f8131619e33c7e9608608",
+    "web/visuals/test/activity.test.mjs": "0bb420e788e0ad80972ab83ccd535c4b3d4468e4a136c3a0885af6182bd75a63",
+    "tests/test_dashboard_gateway.py": "b63bca9bc678b5d4643c6c77c3396114abdff7d0cae4dae40825d4fc47a760c1"
+  },
+  "build_manifest": {
+    "libraries": {
+      "three": "0.187.0",
+      "gsap": "3.15.1",
+      "esbuild": "0.28.2"
+    },
+    "bundle_bytes": 709735,
+    "bundle_sha256": "62781a5b837d4ed61ea1390f3b039d38ea4b52c85e726cdf95abb88fca12b3f2",
+    "css_sha256": "147d4e01a58c9ef3c90e40bbcf80575d928f5753bc43465622cb34dabaaa0a16",
+    "embedded_sha256": "e52651c9c8ffa3a5421c8ca4136d36cec99cc0853d5f8131619e33c7e9608608",
+    "panel_boot_sha256": "06c36cae4dad5892d4c0f6b5f6115b0ff2fa1abdad36df27cc7bbc5ba186795b"
+  },
+  "operations": {
+    "public_push": false,
+    "continuous_archive_started_or_reset": false,
+    "local_service": "8792 started for this session"
+  }
+}

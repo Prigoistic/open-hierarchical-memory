@@ -55,7 +55,9 @@ def test_one_origin_serves_dashboard_and_both_embeddable_panels(dashboard):
     _, base = dashboard
     with urlopen(base + "/") as response:
         body = response.read().decode()
-        assert "Somna / Memory laboratory" in body
+        assert "Memory instrument" in body
+        assert '<header class="mast">' not in body
+        assert 'id="layout"' in body and 'id="rail-toggle"' in body
         assert 'id="task-frame"' in body and 'id="memory-frame"' in body
         assert "frame-ancestors 'none'" in response.headers["Content-Security-Policy"]
     for path in ["/task/", "/live/"]:

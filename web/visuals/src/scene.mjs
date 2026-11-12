@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import { createContextGrid } from "./grid.mjs";
 import navigation from "./navigation.cjs";
 export const PoseTween = navigation.PoseTween;
+export { activityModel, activityColor } from "./activity.mjs";
 import { CustomEase } from "gsap/CustomEase";
 export {
   memoryModel,
@@ -255,7 +256,9 @@ export class SpatialView {
           : Math.abs(up.x) * size.x +
             Math.abs(up.y) * size.y +
             Math.abs(up.z) * size.z;
-    this.span = Math.max(2, height, width / aspect) * 1.35;
+    this.span =
+      Math.max(2, height, width / aspect) *
+      (this.model?.kind === "activity" ? 1.12 : 1.22);
   }
   clear() {
     this.group.traverse((o) => {
@@ -337,7 +340,11 @@ export class SpatialView {
   label(text, position, color) {
     const el = document.createElement("span");
     el.className = "spatial-label";
-    el.textContent = text;
+    el.dataset.fullLabel = text;
+    el.textContent =
+      this.width < 500
+        ? text.replace(" / SUMMARIES", "").replace(" / ORIGINALS", "")
+        : text;
     el.style.color = color;
     this.overlay.append(el);
     this.labels.push({ el, position: V(position) });
@@ -349,6 +356,9 @@ export class SpatialView {
       previousSpan = this.span;
     this.model = model;
     this.clear();
+    this.contextGrid.visible = model.kind !== "activity";
+    this.bloom.strength = model.kind === "activity" ? 0.48 : 0.24;
+    this.bloom.threshold = model.kind === "activity" ? 0.62 : 0.8;
     this.group.rotation.x = model.layout === "ordinal" ? Math.PI / 2 : 0;
     this.group.updateMatrixWorld(true);
     this.glowTexture ??= this.texture("glow");
@@ -367,7 +377,7 @@ export class SpatialView {
           { from: [a, y, z], to: [b, y, z] },
         );
       }
-      this.line(grid, "#8e9683", 0.045);
+      this.line(grid, "#149cd6", 0.085);
       this.line(
         [
           { from: [a, y, c], to: [b, y, c] },
@@ -375,8 +385,8 @@ export class SpatialView {
           { from: [b, y, d], to: [a, y, d] },
           { from: [a, y, d], to: [a, y, c] },
         ],
-        "#8d9581",
-        0.15,
+        "#43a9db",
+        0.23,
       );
       const mesh = new THREE.Mesh(
         new THREE.PlaneGeometry(b - a, d - c),
@@ -400,7 +410,7 @@ export class SpatialView {
             ? " · " + plane.kept + " / " + plane.count
             : ""),
         [a - 0.02, y, d + 0.06],
-        "#a2aa96",
+        "#4b91b5",
       );
       this.line(
         [
@@ -493,6 +503,13 @@ export class SpatialView {
           kind === "prediction" ? 1 : 0.25,
         );
     }
+    if (model.kind === "activity") {
+      this.renderActivity(model);
+      for (const p of model.points) box.expandByPoint(V(p.position));
+      const [x0, x1, z0, z1, y0, y1] = model.volumeBounds;
+      box.expandByPoint(V([x0, y0, z0]));
+      box.expandByPoint(V([x1, y1, z1]));
+    }
     const selected = model.points.filter((p) => p.selected);
     this.points(
       model.points.filter((p) => p.dim),
@@ -530,7 +547,7 @@ export class SpatialView {
       1,
       this.ringTexture,
     );
-    this.glyphs(model.points);
+    if (model.kind !== "activity") this.glyphs(model.points);
     if (model.layout === "ordinal") this.spanContours(model.points);
     for (const a of model.anchors) {
       this.points(
@@ -557,6 +574,8 @@ export class SpatialView {
       model.readCount +
       " IN READ";
     this.caption.textContent = model.heightLabel;
+    if (model.kind === "activity" && !this.reduced && model.readCount)
+      this.replay(0.24);
     this.updateReadout(model);
     this.canvas.dataset.sourceCount = model.sourceCount;
     this.canvas.dataset.readCount = model.readCount;
@@ -606,6 +625,102 @@ export class SpatialView {
       this.replay();
     }
   }
+  renderActivity(model) {
+    const surface = new THREE.BufferGeometry(),
+      vertices = [],
+      colours = [];
+    for (const p of model.triangles) {
+      vertices.push(...p.position);
+      colours.push(...new THREE.Color(p.color).toArray());
+    }
+    if (vertices.length) {
+      surface.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(vertices, 3),
+      );
+      surface.setAttribute(
+        "color",
+        new THREE.Float32BufferAttribute(colours, 3),
+      );
+      const mesh = new THREE.Mesh(
+        surface,
+        new THREE.MeshBasicMaterial({
+          vertexColors: true,
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.26,
+          depthWrite: false,
+        }),
+      );
+      this.group.add(mesh);
+    } else surface.dispose();
+    if (!model.cloudOnly) {
+      const geometry = new THREE.BufferGeometry().setFromPoints(
+        model.wire.flatMap((s) => [V(s.from), V(s.to)]),
+      );
+      geometry.setAttribute(
+        "color",
+        new THREE.Float32BufferAttribute(
+          model.wire.flatMap((s) => {
+            const c = new THREE.Color(s.color).toArray();
+            return [...c, ...c];
+          }),
+          3,
+        ),
+      );
+      this.group.add(
+        new THREE.LineSegments(
+          geometry,
+          new THREE.LineBasicMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.47,
+            depthWrite: false,
+          }),
+        ),
+      );
+    }
+    this.points(
+      model.samples,
+      model.cloudOnly ? 1.5 : 1.25,
+      model.cloudOnly ? 0.9 : 0.75,
+    );
+    const [a, b, c, d, y0, y1] = model.volumeBounds;
+    const corners = [
+        [a, y0, c],
+        [b, y0, c],
+        [b, y0, d],
+        [a, y0, d],
+        [a, y1, c],
+        [b, y1, c],
+        [b, y1, d],
+        [a, y1, d],
+      ],
+      edges = [
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [3, 0],
+        [4, 5],
+        [5, 6],
+        [6, 7],
+        [7, 4],
+        [0, 4],
+        [1, 5],
+        [2, 6],
+        [3, 7],
+      ];
+    this.line(
+      edges.map(([i, j]) => ({ from: corners[i], to: corners[j] })),
+      "#a9e6ff",
+      0.36,
+    );
+    this.bloom.strength = 0.48;
+    this.bloom.threshold = 0.62;
+    this.contextGrid.visible = false;
+    this.canvas.dataset.displaySamples = String(model.samples.length);
+    this.canvas.dataset.surfaceTriangles = String(model.triangles.length / 3);
+  }
   curveLinks(segments) {
     const lines = [];
     for (const s of segments) {
@@ -633,7 +748,7 @@ export class SpatialView {
       for (let i = 1; i < pts.length; i++)
         lines.push({ from: pts[i - 1].toArray(), to: pts[i].toArray() });
     }
-    this.line(lines, "#a8b59f", 0.25);
+    this.line(lines, "#4edcff", 0.44);
     if (this.traceCurves.length) {
       this.traceHeads = this.points(
         this.traceCurves.map(({ curve }) => ({
@@ -646,7 +761,7 @@ export class SpatialView {
       this.traceHeads.visible = false;
     }
   }
-  replay() {
+  replay(duration = 2.2) {
     if (this.reduced || !this.model) return;
     this.canvas.dataset.traceReplay = String(
       Number(this.canvas.dataset.traceReplay || 0) + 1,
@@ -677,7 +792,7 @@ export class SpatialView {
       { progress: 0 },
       {
         progress: 1,
-        duration: 2.2,
+        duration,
         ease: "somna",
         overwrite: true,
         onUpdate: () => (this.dirty = true),
@@ -759,7 +874,7 @@ export class SpatialView {
   updateReadout(model) {
     if (!this.readout) return;
     this.readout.replaceChildren();
-    if (model.kind === "task-memory") return;
+    if (["task-memory", "activity"].includes(model.kind)) return;
     const heading = document.createElement("p");
     heading.className = "console-kicker";
     heading.textContent = "Routing population";
@@ -1033,10 +1148,19 @@ export class SpatialView {
       l.el.hidden =
         p.z > 1 || p.x < 0 || p.x > this.width || p.y < 0 || p.y > this.height;
       if (l.el.hidden) continue;
+      const full = l.el.dataset.fullLabel;
+      const label =
+        this.width < 500
+          ? full.replace(" / SUMMARIES", "").replace(" / ORIGINALS", "")
+          : full;
+      if (l.el.textContent !== label) {
+        l.el.textContent = label;
+        l.width = null;
+      }
       const width = l.width ?? (l.width = l.el.offsetWidth);
       const x = Math.max(8, Math.min(this.width - width - 8, p.x));
-      let y = p.y;
-      for (const offset of [0, -20, 20, -40, 40]) {
+      let y = null;
+      for (const offset of [0, -20, 20, -40, 40, -60, 60, -80, 80]) {
         const candidate = { x, y: p.y + offset, w: width, h: 16 };
         if (
           candidate.y >= 8 &&
@@ -1052,6 +1176,10 @@ export class SpatialView {
           y = candidate.y;
           break;
         }
+      }
+      if (y === null) {
+        l.el.hidden = true;
+        continue;
       }
       occupied.push({ x, y, w: width, h: 16 });
       l.el.style.transform = `translate(${x}px,${y}px)`;
