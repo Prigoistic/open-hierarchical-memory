@@ -34,6 +34,18 @@
       "zha-p50": "ZHA / p = 0.50",
       "random-values": "Shuffled case targets",
     };
+  for (const schedule of ["uniform", "priority", "recent"])
+    for (const seed of [7, 19, 31])
+      labels[`persistent_replay_${schedule}-${seed}`] =
+        `${{ uniform: "Uniform replay", priority: "Error priority replay", recent: "Recent only replay" }[schedule]} · ${seed}`;
+  Object.assign(labels, {
+    persistent_replay_parent: "Unchanged parent · 64 slots",
+    persistent_replay_random: "Frozen random · 64 slots",
+    persistent_replay_exact: "Exact recovery · 64 slots",
+    persistent_replay_no_recovery: "No cold recovery · 64 slots",
+    "persistent_replay_parent-cap96": "Unchanged parent · 96 slots",
+    "persistent_replay_exact-cap96": "Exact recovery · 96 slots",
+  });
   const initialView = new URLSearchParams(location.search);
   let pendingStep = initialView.has("step")
     ? Number(initialView.get("step"))
@@ -121,6 +133,11 @@
     const rows = suiteRows().filter(
       (r) => String(r.level_id) === $("level").value,
     );
+    if (
+      rows.some((r) => r.config === "persistent_replay_uniform-7") &&
+      !rows.some((r) => r.config === (preferred ?? $("config").value))
+    )
+      preferred = "persistent_replay_uniform-7";
     opts(
       $("config"),
       unique(rows.map((r) => r.config))
@@ -143,6 +160,7 @@
     );
   }
   function datasetLabel(name) {
+    if (name === "task-replay-v1") return "Routing replay · fresh seed study";
     if (name === "persistent-task-v2") return "Persistent memory · development";
     if (/(?:progress|repair).*evaluation/.test(name))
       return "Retrieval repair · evaluation";
@@ -219,6 +237,7 @@
           $("show-development").checked ||
           n.includes("evaluation") ||
           n === "persistent-task-v2" ||
+          n === "task-replay-v1" ||
           n === "boxoban-search-v1",
       );
     opts(
@@ -293,6 +312,12 @@
       $("run-notice").dataset.warning = String(
         !!row?.decision.repair?.fallback_active,
       );
+      return;
+    }
+    if (run.replay) {
+      $("run-notice").textContent =
+        `Fresh seed comparison · ${statusLabel(run)} · ${run.capacity} active slots`;
+      $("run-notice").dataset.warning = "false";
       return;
     }
     const historical = !/(?:progress|repair).*evaluation/.test(run.dataset),
@@ -1908,6 +1933,7 @@
           row.decision.dependency?.evicted_ids ||
           [],
         memory: run.memory || run.live?.memory || null,
+        replay: run.replay || null,
         source: run.live ? "fresh" : "recorded",
         action: row.action,
       });

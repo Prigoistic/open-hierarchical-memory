@@ -104,3 +104,12 @@ The [operating guide](docs/PROGRESS_RETRIEVAL.md) records the unchanged planner/
 The [persistent task adapter](docs/PERSISTENT_TASK_MEMORY.md) combines task-fitted routing references, immutable versioned observations, a96-fact active workspace and explicit reversible retirement/recovery. Graph support can use only current/active/explicitly recovered evidence; archive builds and graph work are metered separately. The dashboard now selects this reader by default and shows real active, dormant and recovered evidence. Press Run solver for a fresh solve; each run retains its own local archive.
 
 The [first comparison](experiments/persistent-task-v1/SUMMARY.md) preserves a6/8 ZHA regression. After a frontier fix and recovery gating, the [development refinement](experiments/persistent-task-v2/SUMMARY.md) solves8/8 in every condition, including exact and no-recovery. A separate delayed-clue diagnostic demonstrates source recovery after retirement/restart. Fitted KL improves over fixed references, but random references score better; no learned-reference or hierarchy advantage is demonstrated. This adapter does not implement sleep or neural consolidation. Source-bound independent audits and all failed outcomes are included.
+
+
+## Offline routing replay
+
+The [new replay study](experiments/task-replay-v1/SUMMARY.md) learns routing references from recorded task experience and tests them on fresh seeds. Uniform, error-prioritized and recent-only schedules use three optimizer seeds, preserved source traces and independent scalar update/gradient checks. Original observations and the default dashboard checkpoint remain unchanged.
+
+Across 240 task runs, every 64-slot condition solves 11/16; unchanged/exact 96-slot controls solve 13/16. Priority replay lowers fresh-prefix pooled KL by 14.9% on average across optimizer seeds, but does not improve task success, and frozen random references still have lower KL. All 71 failures are retained action cutoffs. This is routing-parameter learning, not learned visual dreaming or a demonstrated memory-consolidation advantage.
+
+Inspect it in the existing dashboard: Run & query → Saved study → Routing replay · fresh seed study. Its training curves and source/cost records describe recorded updates on other wake episodes; the retest maze keeps its own observed-memory identity. The [predeclared contract](docs/TASK_REPLAY.md) includes exact reproduction commands and scope.

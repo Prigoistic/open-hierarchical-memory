@@ -74,3 +74,16 @@ Original v2 experimental files did not store egocentric image arrays. The saved-
 The initial UI run and a fresh fitted Key Corridor seed 9001 solve complete in 78 actions. At decision 58, 96 facts are active, 92 dormant, 16 recovered and 31 returned. Those are diagnostic observations, not new benchmark/generalization or superiority claims. The default method's task features remain structured and hand-designed. The paper's approximate router still has no per-query global mass guarantee; graph and index costs remain extra.
 
 Verification covers 482 Python tests, 33 visual/motion tests, the full 21-command local gate and independent scientific audits. Browser checks cover the real Run solver action, source inspection, exact-reader selection, next memory event, temporal rewind, same-job refresh, 390px controls, reduced motion and Canvas fallback. See `evidence/persistent-dashboard.json`. No public push or release.
+
+
+## 13 November 2026 — recorded routing-replay study
+
+Run & query → Saved study now includes Routing replay · fresh seed study. The study is published to the local catalog only when its complete 240-run cohort and successful independent-audit marker exist. Its 15 methods include three replay schedules with three optimizer seeds each, unchanged/random/exact/no-cold controls, and parent/exact controls at 96 rather than 64 active/support slots.
+
+The usual views show the selected retest's actual maze, current/active/dormant/recovered source IDs and routing passes. The new Recorded offline replay section shows real validation checkpoints through 64 SGD updates, the selected checkpoint, training-source world count, parent/child hashes and all extra priority/validation scoring costs. Training-world sources are never projected into the retest memory field. Task outcomes and the unchanged parent comparison are shown alongside KL. Fixed controls clear the learning curves and captions; capacity remains true to the selected run.
+
+This is recorded experimental evidence, so Run solver is disabled and labelled Recorded study while viewing it. Return Saved study to Persistent memory · development for the existing fresh-solve workflow. There is no new live learning endpoint or automatic checkpoint replacement. The default model hash is unchanged.
+
+The replay runner is `python -m research.run_task_replay --output experiments/task-replay-local`; the independent auditor uses `python -m scripts.audit_task_replay --results experiments/task-replay-local`. Run from the repository with the locked research/benchmark extras and a new output directory. See `TASK_REPLAY.md` for the frozen contract and the experiment SUMMARY for all outcomes.
+
+The local verification gate passes 491 Python tests and 23 commands, including the new audit. The existing 33 renderer/motion tests remain green. Browser checks verify schedule/control switching, sampled training/validation values, 64/96 capacity, failed-run visibility, disabled replay-run action, unchanged ordinary live-solve state and 390px no-overflow controls. Evidence: `evidence/task-replay-dashboard.json`. No public push or release.

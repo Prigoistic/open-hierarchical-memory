@@ -1,0 +1,651 @@
+{
+  "sources": [
+    {
+      "role": "anchor",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-training-MiniGrid-MemoryS17Random-v0-0.json.gz",
+      "file": "anchor-collected-training-MiniGrid-MemoryS17Random-v0-0.json.gz",
+      "sha256": "0376009e83404ad3fa23a92f882ab6442a4325e5a6346b58d9b1bfc18b1b6cea",
+      "samples": 6
+    },
+    {
+      "role": "anchor",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-training-MiniGrid-MemoryS17Random-v0-1.json.gz",
+      "file": "anchor-collected-training-MiniGrid-MemoryS17Random-v0-1.json.gz",
+      "sha256": "70a1524df50b49e2eab994668cdb758feb905e0c669906c826539a21049be6b8",
+      "samples": 6
+    },
+    {
+      "role": "anchor",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-training-MiniGrid-MultiRoom-N6-v0-0.json.gz",
+      "file": "anchor-collected-training-MiniGrid-MultiRoom-N6-v0-0.json.gz",
+      "sha256": "3c000c85618949ba85f271fa5137f3ae2b2fb85b41ce8934ce544d27b6b35b9e",
+      "samples": 6
+    },
+    {
+      "role": "anchor",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-training-MiniGrid-MultiRoom-N6-v0-1.json.gz",
+      "file": "anchor-collected-training-MiniGrid-MultiRoom-N6-v0-1.json.gz",
+      "sha256": "0110733bdfc1c420ce9529ee0ff43de832979af8e60de19440b1dd58946b1803",
+      "samples": 6
+    },
+    {
+      "role": "anchor",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-training-MiniGrid-DoorKey-16x16-v0-0.json.gz",
+      "file": "anchor-collected-training-MiniGrid-DoorKey-16x16-v0-0.json.gz",
+      "sha256": "237c0c0aad9ec37921c1a1b886538555aa757ee7fe78416633594fcac7311def",
+      "samples": 6
+    },
+    {
+      "role": "anchor",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-training-MiniGrid-DoorKey-16x16-v0-1.json.gz",
+      "file": "anchor-collected-training-MiniGrid-DoorKey-16x16-v0-1.json.gz",
+      "sha256": "b7bf788a50216600c5fa279854964b1f6106c0b3f3c5f92888d555f83bac0a28",
+      "samples": 6
+    },
+    {
+      "role": "anchor",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-training-MiniGrid-KeyCorridorS6R3-v0-0.json.gz",
+      "file": "anchor-collected-training-MiniGrid-KeyCorridorS6R3-v0-0.json.gz",
+      "sha256": "44c582927e390bffee77c93056f23cdd3537f65f443c670ce3a8718c617abb16",
+      "samples": 6
+    },
+    {
+      "role": "anchor",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-training-MiniGrid-KeyCorridorS6R3-v0-1.json.gz",
+      "file": "anchor-collected-training-MiniGrid-KeyCorridorS6R3-v0-1.json.gz",
+      "sha256": "2ed7619c91adcb35e0e818ef55472ca11680ad082600315e5942b4bdedc7e5c2",
+      "samples": 6
+    },
+    {
+      "role": "validation_old",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-validation-MiniGrid-MemoryS17Random-v0-2.json.gz",
+      "file": "anchor-collected-validation-MiniGrid-MemoryS17Random-v0-2.json.gz",
+      "sha256": "b543141ed55901d472b6b2169a53a3841c7c8e8a808ba5795ba3188f926b56f8",
+      "samples": 6
+    },
+    {
+      "role": "validation_old",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-validation-MiniGrid-MultiRoom-N6-v0-2.json.gz",
+      "file": "anchor-collected-validation-MiniGrid-MultiRoom-N6-v0-2.json.gz",
+      "sha256": "d2f362b37ad6be11f969ed45c7a66f77e2371e88d4337680f452d53770fb9032",
+      "samples": 6
+    },
+    {
+      "role": "validation_old",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-validation-MiniGrid-DoorKey-16x16-v0-2.json.gz",
+      "file": "anchor-collected-validation-MiniGrid-DoorKey-16x16-v0-2.json.gz",
+      "sha256": "1d5149628a9fc12a410c571a40fdc100b82ec00c6b780a0dc03ff55941819f0b",
+      "samples": 6
+    },
+    {
+      "role": "validation_old",
+      "root": "experiment",
+      "repository_source": "experiments/persistent-task-v2/collected-validation-MiniGrid-KeyCorridorS6R3-v0-2.json.gz",
+      "file": "anchor-collected-validation-MiniGrid-KeyCorridorS6R3-v0-2.json.gz",
+      "sha256": "bd173498d0bac4a0422ff24822ccd8a63ba63890bfd4c82891ced8b8561f5780",
+      "samples": 6
+    },
+    {
+      "role": "wake",
+      "root": "experiment",
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 17001,
+      "result": {
+        "success": true,
+        "steps": 9,
+        "return": 0.99439446366782,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-wake-MiniGrid-MemoryS17Random-v0-17001.json.gz",
+      "sha256": "651f10aed55a391f64f93f0186c1f6b064450d5c1001fc3a02ae3bb681665246",
+      "expanded_bytes": 137596
+    },
+    {
+      "role": "wake",
+      "root": "experiment",
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 17002,
+      "result": {
+        "success": true,
+        "steps": 7,
+        "return": 0.9956401384083045,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-wake-MiniGrid-MemoryS17Random-v0-17002.json.gz",
+      "sha256": "3d3a5f6895581c861aa3713f4f807a06bd5888c2d6e6913f6dbf61c240a03ed4",
+      "expanded_bytes": 113055
+    },
+    {
+      "role": "wake",
+      "root": "experiment",
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 17001,
+      "result": {
+        "success": true,
+        "steps": 47,
+        "return": 0.6475,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-wake-MiniGrid-MultiRoom-N6-v0-17001.json.gz",
+      "sha256": "b8cece5bcc884d3e377dc1a90895805fba2432baee01ae578a1963e7240e1f7b",
+      "expanded_bytes": 652285
+    },
+    {
+      "role": "wake",
+      "root": "experiment",
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 17002,
+      "result": {
+        "success": true,
+        "steps": 50,
+        "return": 0.625,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-wake-MiniGrid-MultiRoom-N6-v0-17002.json.gz",
+      "sha256": "4197e832df8d289bb3f98fc4d29b562c9a2fd19b2c059316fb7c6894442bfe86",
+      "expanded_bytes": 683408
+    },
+    {
+      "role": "wake",
+      "root": "experiment",
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 17001,
+      "result": {
+        "success": true,
+        "steps": 63,
+        "return": 0.9778515625,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-wake-MiniGrid-DoorKey-16x16-v0-17001.json.gz",
+      "sha256": "1a57e6774af29b81efd6bd41a5a98a7ff8549e07fbb2b4b6924b68bad2630f64",
+      "expanded_bytes": 1081204
+    },
+    {
+      "role": "wake",
+      "root": "experiment",
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 17002,
+      "result": {
+        "success": true,
+        "steps": 41,
+        "return": 0.9855859375,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-wake-MiniGrid-DoorKey-16x16-v0-17002.json.gz",
+      "sha256": "ae9b5f9a84a121734732fbe027ee8810e2f7104ae8d956f55af9c69b91ea63c4",
+      "expanded_bytes": 811404
+    },
+    {
+      "role": "wake",
+      "root": "experiment",
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 17001,
+      "result": {
+        "success": true,
+        "steps": 78,
+        "return": 0.935,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-wake-MiniGrid-KeyCorridorS6R3-v0-17001.json.gz",
+      "sha256": "43cfb40c5feb4a88f32e856d719180840cac65d9cf8b3bbfd227930f076a3a05",
+      "expanded_bytes": 1570666
+    },
+    {
+      "role": "wake",
+      "root": "experiment",
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 17002,
+      "result": {
+        "success": true,
+        "steps": 66,
+        "return": 0.945,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-wake-MiniGrid-KeyCorridorS6R3-v0-17002.json.gz",
+      "sha256": "7df163512854db5f2cc4ae1984333d70a227a4e6166a592dae0662c1681b9130",
+      "expanded_bytes": 1414185
+    },
+    {
+      "role": "validation_new",
+      "root": "experiment",
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 17003,
+      "result": {
+        "success": true,
+        "steps": 12,
+        "return": 0.9925259515570934,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-validation_new-MiniGrid-MemoryS17Random-v0-17003.json.gz",
+      "sha256": "3e8de52fb6f9ace6f1b8d345392e933d96dde0ab4ac1ff2642578b75f29283b6",
+      "expanded_bytes": 194618
+    },
+    {
+      "role": "validation_new",
+      "root": "experiment",
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 17003,
+      "result": {
+        "success": true,
+        "steps": 55,
+        "return": 0.5875,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-validation_new-MiniGrid-MultiRoom-N6-v0-17003.json.gz",
+      "sha256": "6ad8d095921886f840bb9fb6736f4192029e76983bf151e0214c306e06cbe487",
+      "expanded_bytes": 797226
+    },
+    {
+      "role": "validation_new",
+      "root": "experiment",
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 17003,
+      "result": {
+        "success": true,
+        "steps": 43,
+        "return": 0.9848828125,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-validation_new-MiniGrid-DoorKey-16x16-v0-17003.json.gz",
+      "sha256": "e2c3b4a87f4b8aaa3705f9ad9bb69a32bb1a56e4607ddcce464289e6bf74f0e7",
+      "expanded_bytes": 773010
+    },
+    {
+      "role": "validation_new",
+      "root": "experiment",
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 17003,
+      "result": {
+        "success": false,
+        "steps": 256,
+        "return": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "external_cutoff": true,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-validation_new-MiniGrid-KeyCorridorS6R3-v0-17003.json.gz",
+      "sha256": "8855040be657c7a38cdaa6152e5e5cb7cc66b4d37389921722eb4941ae2664d7",
+      "expanded_bytes": 3765341
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 19001,
+      "result": {
+        "success": true,
+        "steps": 9,
+        "return": 0.99439446366782,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-MemoryS17Random-v0-19001.json.gz",
+      "sha256": "a7235957ac9ba048d44df37eccf13f25d21e481ff516895627f8d0f44bc361b4",
+      "expanded_bytes": 151476
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 19002,
+      "result": {
+        "success": true,
+        "steps": 19,
+        "return": 0.9881660899653979,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-MemoryS17Random-v0-19002.json.gz",
+      "sha256": "7efc281cd1781f8938d86929e975c8f1247c6dd1a429562ec83c770607d19ed2",
+      "expanded_bytes": 314822
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 19003,
+      "result": {
+        "success": true,
+        "steps": 8,
+        "return": 0.9950173010380623,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-MemoryS17Random-v0-19003.json.gz",
+      "sha256": "5d46482a14b6a914d6a065239f658a4f51be30b8791a179035b2c382bbd4672b",
+      "expanded_bytes": 135635
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 19004,
+      "result": {
+        "success": true,
+        "steps": 12,
+        "return": 0.9925259515570934,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-MemoryS17Random-v0-19004.json.gz",
+      "sha256": "c46fd7d5802756cce4546a7b848344e54dd5876565c4dcc590526e93fd10af9f",
+      "expanded_bytes": 206810
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 19001,
+      "result": {
+        "success": true,
+        "steps": 56,
+        "return": 0.58,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-MultiRoom-N6-v0-19001.json.gz",
+      "sha256": "d9a4d37e864e30334264de32a35776398879c42e9771c1bc5a00bc39d61bdf6b",
+      "expanded_bytes": 755983
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 19002,
+      "result": {
+        "success": true,
+        "steps": 52,
+        "return": 0.61,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-MultiRoom-N6-v0-19002.json.gz",
+      "sha256": "cdcaeefbee08fe8eccf5b4a588d760dc4d3bba904a752473012d8506f8b5e659",
+      "expanded_bytes": 717807
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 19003,
+      "result": {
+        "success": true,
+        "steps": 44,
+        "return": 0.67,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-MultiRoom-N6-v0-19003.json.gz",
+      "sha256": "0cd13f2f1b8c06a4be640fb357091b0f6aba63ef019c0aff2c1eabbfc69edb18",
+      "expanded_bytes": 603366
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 19004,
+      "result": {
+        "success": true,
+        "steps": 58,
+        "return": 0.565,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-MultiRoom-N6-v0-19004.json.gz",
+      "sha256": "5450e0af3bd12846c30e8d35e35b3423562e5e17010813ce4385725c47f4f099",
+      "expanded_bytes": 806528
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 19001,
+      "result": {
+        "success": true,
+        "steps": 64,
+        "return": 0.9775,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-DoorKey-16x16-v0-19001.json.gz",
+      "sha256": "85ef0ac2a56aabce3c1d7a261714565dd32b6cab89ef933edaee0309f1078d15",
+      "expanded_bytes": 1171524
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 19002,
+      "result": {
+        "success": false,
+        "steps": 256,
+        "return": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "external_cutoff": true,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-DoorKey-16x16-v0-19002.json.gz",
+      "sha256": "d065641cd9b3a6b1f11767e2fe279a1a61ef6944abb966f8b27aedfe7f8b6cdc",
+      "expanded_bytes": 3907801
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 19003,
+      "result": {
+        "success": true,
+        "steps": 60,
+        "return": 0.97890625,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-DoorKey-16x16-v0-19003.json.gz",
+      "sha256": "2f4e5d8fc171ed6e59b594357056b8a123b144174400e3aa17f1d232db54514f",
+      "expanded_bytes": 1086183
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 19004,
+      "result": {
+        "success": false,
+        "steps": 256,
+        "return": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "external_cutoff": true,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-DoorKey-16x16-v0-19004.json.gz",
+      "sha256": "23733123474467024dfd93bb638460dded33460f24e3fad7574d281270d80d1f",
+      "expanded_bytes": 3833432
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19001,
+      "result": {
+        "success": true,
+        "steps": 38,
+        "return": 0.9683333333333334,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-KeyCorridorS6R3-v0-19001.json.gz",
+      "sha256": "dfd3237dafda01a846a0fdb2b17167f8cec189d7d051b1d7ff2a49dd9e73038b",
+      "expanded_bytes": 951765
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19002,
+      "result": {
+        "success": true,
+        "steps": 52,
+        "return": 0.9566666666666667,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-KeyCorridorS6R3-v0-19002.json.gz",
+      "sha256": "70577797b4e00ccbb869b4a6565bf88d50112f3802619277c742862b639ab98e",
+      "expanded_bytes": 1127593
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19003,
+      "result": {
+        "success": false,
+        "steps": 256,
+        "return": 0.0,
+        "terminated": false,
+        "truncated": false,
+        "external_cutoff": true,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-KeyCorridorS6R3-v0-19003.json.gz",
+      "sha256": "89260551f5ec967e6bd148aacf1e656b0ad55c7c0e2a8e1b69ca3bf03e9cd203",
+      "expanded_bytes": 3776516
+    },
+    {
+      "role": "comparison",
+      "root": "experiment",
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19004,
+      "result": {
+        "success": true,
+        "steps": 73,
+        "return": 0.9391666666666667,
+        "terminated": true,
+        "truncated": false,
+        "external_cutoff": false,
+        "error": null
+      },
+      "samples": 6,
+      "file": "collect-comparison-MiniGrid-KeyCorridorS6R3-v0-19004.json.gz",
+      "sha256": "e955e6b957241de66ad9cd401c5af7f801564c365558b03c47089799d5a815c9",
+      "expanded_bytes": 1570776
+    }
+  ],
+  "dropped": {
+    "anchor": 0,
+    "wake": 2,
+    "validation_old": 0,
+    "validation_new": 4,
+    "comparison": 12
+  },
+  "retained": {
+    "anchor": 48,
+    "wake": 46,
+    "validation_old": 24,
+    "validation_new": 20,
+    "comparison": 84
+  },
+  "original_inputs": {
+    "parent": "528d661f889ba823b099060dded0fb27ef884121603270b8b63961839313b365",
+    "random_control": "725234cb1d34a96b23a679c0b314adbce8bce337402b8829527aec9ac6be1b04",
+    "anchors": "6d635a36ddbdd8b8e388aad5fefc82c5acc6af094017a7e84e16ad98812f3dac"
+  }
+}

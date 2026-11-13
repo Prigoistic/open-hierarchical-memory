@@ -1,0 +1,40 @@
+{
+  "protocol_hash": "27cab1eb66dddfe625c6b2c19e710c93d5bb9c617d407caa221315d4dab49280",
+  "sources": {
+    "src/open_hierarchical_memory/__init__.py": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+    "src/open_hierarchical_memory/attention.py": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+    "src/open_hierarchical_memory/contracts.py": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+    "src/open_hierarchical_memory/routing.py": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+    "src/open_hierarchical_memory/summaries.py": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+    "src/open_hierarchical_memory/training.py": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e",
+    "src/open_hierarchical_memory/tree.py": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+    "research/task_references.py": "28f84cb5d144376b4b082b5f5e3962c93c853ce39b7881fff7eb2a660f1e2730",
+    "research/task_store.py": "c2eb76d419636d1b738e1629b0179bd27fd02a09503d533c06c137675bc022e1",
+    "research/persistent_task_memory.py": "4e089456416aa95c531dce60ceca10eb556c249dcb4a14449a3c99b512d81120",
+    "research/run_persistent_tasks.py": "affbf0e89e71e7c009de466c94fd6eb7dadbdbf8b471bcb38db7de9206dc1423",
+    "research/dependency_memory.py": "36e91daaefff4d0d8334d260bbdb712b35e1d2e19409ff70981418dc39f10534",
+    "research/minigrid_benchmark.py": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d",
+    "research/run_minigrid_benchmark.py": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b",
+    "research/run_progress_benchmark.py": "24ae5c8e6c560997aedc9ce2215dafdf8630e865d98d95a76ea6eee857b5ed0d",
+    "research/persistent_task_protocol.json": "483ccb2a5c96f5d3123de8ccef374c29656002596411c4124f22c08bf768e2f9",
+    "research/task_replay.py": "9773380a1dbc76f6d2aec82afdd42774dd41146be64be65dabf92ff3b3c71c00",
+    "research/run_task_replay.py": "7a2eefbce920b782adb4d9c5e422470c62f2bf74596a227023612c0a3e766d53",
+    "research/task_replay_protocol.json": "f69d6137a35a2ae62e8de6f485d459c93bb526aae054951cd4a7f081f58c1948",
+    "scripts/audit_task_replay.py": "1d0e87b782469d283cf16d6d5e44e6a87b6c1947d9748490382c9a9fb9a9157e",
+    "scripts/audit_persistent_tasks.py": "c26ac4bb1d545c9db41623d71732688a0b323cf36a6a951318effc4c9aa37b4f",
+    "tests/oracle.py": "d6d20dcd6ad0ba555161bae36b95dfba4a6b295946b9a1378fb36ebe5f5ce0e7",
+    "docs/TASK_REPLAY.md": "ae7721b3bf25bc19e1d268120fc530c7bd35340a2369f592e2da6270a9ac0406",
+    "uv.lock": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796"
+  },
+  "git_status": " M .gitignore\n M research/run_persistent_tasks.py\n?? docs/TASK_REPLAY.md\n?? experiments/task-replay-v1/\n?? research/run_task_replay.py\n?? research/task_replay.py\n?? research/task_replay_protocol.json\n?? scripts/audit_task_replay.py\n?? tests/test_task_replay.py\n",
+  "git_commit": "73bb10514416681eb86ae2ff789e8e4c804374a2",
+  "python": "3.12.14",
+  "versions": {
+    "minigrid": "3.1.0",
+    "gymnasium": "1.4.0",
+    "pygame-ce": "2.5.8",
+    "torch": "2.15.0",
+    "numpy": "2.5.4"
+  },
+  "scope": "frozen protocol; routing-parameter replay on observed prefixes; no biological dreaming or hierarchy-superiority claim"
+}

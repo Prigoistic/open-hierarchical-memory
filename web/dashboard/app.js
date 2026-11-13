@@ -191,9 +191,11 @@
       "task-source",
       s.live
         ? "Fresh solve"
-        : s.address?.dataset === "persistent-task-v2"
-          ? "Saved development"
-          : "Saved example",
+        : s.address?.dataset === "task-replay-v1"
+          ? "Recorded replay retest"
+          : s.address?.dataset === "persistent-task-v2"
+            ? "Saved development"
+            : "Saved example",
     );
     text("task-status", s.error || s.status || "Opening task evidence.");
     const supported = [
@@ -215,13 +217,23 @@
       solveRequest ||
       (!solving &&
         (!s.solveConfig || !supported.includes(s.solveConfig.reader)));
-    text("solve", solving ? "STOP SOLVER □" : "RUN SOLVER ↗");
+    const replayStudy = s.solveConfig?.reader?.startsWith("persistent_replay_");
+    text(
+      "solve",
+      solving
+        ? "STOP SOLVER □"
+        : replayStudy
+          ? "RECORDED STUDY"
+          : "RUN SOLVER ↗",
+    );
     if (!solveJob)
       text(
         "solve-status",
-        s.solveConfig
-          ? "Run a fresh maze. Both structures follow each decision."
-          : "Saved puzzle example. Choose a maze for a fresh solve.",
+        replayStudy
+          ? "Recorded replay study. Choose Persistent memory under Saved study for a fresh solve."
+          : s.solveConfig
+            ? "Run a fresh maze. Both structures follow each decision."
+            : "Saved puzzle example. Choose a maze for a fresh solve.",
       );
     for (const key of keys)
       options(
@@ -389,6 +401,7 @@
         text("memory-counts", "No maze decision selected");
         $("activity-legend").hidden = true;
         $("lifecycle-section").hidden = true;
+        $("replay-section").hidden = true;
         for (const id of [
           "telemetry-cells",
           "telemetry-returned",
@@ -406,6 +419,8 @@
     }
     if (evidence.key === evidenceKey) return;
     episodeEvidence = evidence;
+    $("replay-section").hidden = !evidence.replay;
+    if (evidence.replay) drawReplayStudy(evidence.replay);
     const lifecycle = SomnaVisuals.persistentState(evidence),
       session = evidence.key.slice(0, evidence.key.lastIndexOf(":"));
     if (lifecycle && session !== lifecycleSession) {
@@ -468,7 +483,9 @@
       text(
         "lifecycle-archive",
         evidence.source === "recorded"
-          ? "Saved development evidence · 9001 / 9002 cohort. No superiority claim."
+          ? evidence.replay
+            ? "Saved fresh seed retest · replay trained only on other observed worlds."
+            : "Saved development evidence · 9001 / 9002 cohort. No superiority claim."
           : evidence.memory?.restart_state_equal
             ? `Local archive ${evidence.memory.archive_id} · completion reopen check passed. A server restart does not resume the simulator.`
             : "One local archive for this solve. Originals persist; retirement only changes active membership.",
@@ -538,6 +555,88 @@
     if (selectedEpisode)
       selectedEpisode =
         evidence.facts.find((f) => f.id === selectedEpisode.id) || null;
+  }
+  function drawReplayStudy(study) {
+    const learning = study.learning,
+      canvas = $("replay-curve"),
+      c = canvas.getContext("2d");
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    text(
+      "replay-condition",
+      `${study.condition.replaceAll("-", " ")} · ${study.outcome.successes}/${study.outcome.episodes} solved at ${study.outcome.capacity} slots`,
+    );
+    canvas.hidden = !learning;
+    if (!learning) {
+      text(
+        "replay-summary",
+        "Unchanged reference/control. No gradient updates in this condition.",
+      );
+      text("replay-kl", "");
+      text("replay-work", "A fixed comparator for the same fresh task seeds.");
+      text("replay-source", study.scope);
+      return;
+    }
+    const rows = learning.history,
+      maximum =
+        Math.max(
+          ...rows.flatMap((r) => [r.old_validation_kl, r.new_validation_kl]),
+        ) * 1.15 || 1,
+      w = canvas.width,
+      h = canvas.height,
+      x = (step) => 48 + (step / learning.steps) * (w - 64),
+      y = (value) => h - 40 - (value / maximum) * (h - 80);
+    c.strokeStyle = "#23414e";
+    c.lineWidth = 1;
+    c.beginPath();
+    c.moveTo(48, 24);
+    c.lineTo(48, h - 40);
+    c.lineTo(w - 16, h - 40);
+    c.stroke();
+    c.font = "24px Geist";
+    c.fillStyle = "#7aafbf";
+    c.fillText("KL", 8, 30);
+    c.fillText("0", 42, h - 8);
+    c.fillText(String(learning.steps), w - 44, h - 8);
+    for (const [key, color, label, tx] of [
+      ["old_validation_kl", "#50ccdf", "Old validation", 64],
+      ["new_validation_kl", "#f1c86d", "New validation", 328],
+    ]) {
+      c.strokeStyle = color;
+      c.lineWidth = 3;
+      c.beginPath();
+      rows.forEach((r, i) => {
+        i ? c.lineTo(x(r.step), y(r[key])) : c.moveTo(x(r.step), y(r[key]));
+      });
+      c.stroke();
+      c.fillStyle = color;
+      c.fillText(label, tx, 28);
+    }
+    c.strokeStyle = "#c5d5dc";
+    c.setLineDash([4, 6]);
+    c.beginPath();
+    c.moveTo(x(learning.selected_step), 42);
+    c.lineTo(x(learning.selected_step), h - 40);
+    c.stroke();
+    c.setLineDash([]);
+    text(
+      "replay-summary",
+      `${learning.steps} real gradient updates · selected ${learning.selected_step}. ${learning.parameters_changed ? "Selected references changed." : "Unchanged parent retained."} Lower KL is not a task success result. Parent: ${study.parent_outcome.successes}/${study.parent_outcome.episodes} solved.`,
+    );
+    text(
+      "replay-work",
+      `${learning.work.gradient_calls} gradient losses · ${learning.work.priority_calls} priority losses · ${learning.work.validation_calls} validation losses · ${learning.work.dense_teacher_pairs.toLocaleString()} dense teacher pairs. Equal updates do not mean equal compute.`,
+    );
+    const chosen = rows.find((r) => r.step === learning.selected_step),
+      initial = rows[0];
+    text(
+      "replay-kl",
+      `Validation KL: old ${initial.old_validation_kl.toPrecision(3)} → ${chosen.old_validation_kl.toPrecision(3)} · new ${initial.new_validation_kl.toPrecision(3)} → ${chosen.new_validation_kl.toPrecision(3)}.`,
+    );
+    const sources = new Set(learning.sources.map((s) => s.context));
+    text(
+      "replay-source",
+      `${sources.size} source worlds · parent ${study.parent_hash.slice(0, 12)} → ${learning.child_hash.slice(0, 12)}. Recorded training on other episodes; no training-source point is projected into this maze.`,
+    );
   }
   function drawDiagnostics(evidence) {
     const colour = SomnaVisuals.activityColor,

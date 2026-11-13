@@ -1,0 +1,274 @@
+{
+  "runs": [
+    {
+      "condition": "uniform-7",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.003215382488440596,
+        "new_validation_kl": 0.004277913754433941,
+        "selection_kl": 0.0037466481214372682,
+        "reference_hash": "d5afab5c94b541c50a7745d0680178391daa522cf98d8bbd8df60bf613059dd3"
+      },
+      "work": {
+        "loss_calls": 460,
+        "dense_teacher_pairs": 108557,
+        "reference_key_pairs": 2235648,
+        "gradient_calls": 64,
+        "priority_calls": 0,
+        "validation_calls": 396
+      },
+      "child_hash": "5fc79e2f3b44d2b95cc3be15bf57f98ca8c2818f3fd8f7d0560a18a08532315d",
+      "file": "uniform-7-learning.json.gz",
+      "sha256": "61953178a271d9f9b3fc3e6a7af4c6cecfcd9ac994a6af5245a403ee8c26ee07",
+      "expanded_bytes": 503933
+    },
+    {
+      "condition": "uniform-19",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.003220802732930723,
+        "new_validation_kl": 0.004292666259143719,
+        "selection_kl": 0.003756734496037221,
+        "reference_hash": "7b86af2f770526f52cad2ed84deaddc37b49be1239a9adbd9d7d2722ac490a9b"
+      },
+      "work": {
+        "loss_calls": 460,
+        "dense_teacher_pairs": 108846,
+        "reference_key_pairs": 2239648,
+        "gradient_calls": 64,
+        "priority_calls": 0,
+        "validation_calls": 396
+      },
+      "child_hash": "cf4548612c3fe49802f5e0f0a0f22e4a1d4790576b034bea784835207d9dfc7a",
+      "file": "uniform-19-learning.json.gz",
+      "sha256": "46e00d59eb8ff3f21cd8e805ed569116eca03f72d3107e0680da5cf89091f41d",
+      "expanded_bytes": 502303
+    },
+    {
+      "condition": "uniform-31",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.0031035848896178602,
+        "new_validation_kl": 0.004159884087600809,
+        "selection_kl": 0.0036317344886093346,
+        "reference_hash": "7268a9571af0ddaf5fe286e65195a48182a7c5c5adbee8b645f2e2add8fb8d56"
+      },
+      "work": {
+        "loss_calls": 460,
+        "dense_teacher_pairs": 107662,
+        "reference_key_pairs": 2212736,
+        "gradient_calls": 64,
+        "priority_calls": 0,
+        "validation_calls": 396
+      },
+      "child_hash": "efee7250f152bd4049df8d279f9902969b22043202eee8b22aeb375488b35b3d",
+      "file": "uniform-31-learning.json.gz",
+      "sha256": "106a8f92ffed564fdbffd3ca2afab00bd783852176fb34e08662668792d24109",
+      "expanded_bytes": 501844
+    },
+    {
+      "condition": "priority-7",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.002872965155670983,
+        "new_validation_kl": 0.003866335869102551,
+        "selection_kl": 0.0033696505123867668,
+        "reference_hash": "79fd5cdc57a0bafbc773193e050a084ee823a36ac6e0a3b8060da6b1f267897b"
+      },
+      "work": {
+        "loss_calls": 1212,
+        "dense_teacher_pairs": 296519,
+        "reference_key_pairs": 6147136,
+        "gradient_calls": 64,
+        "priority_calls": 752,
+        "validation_calls": 396
+      },
+      "child_hash": "bb93a09ff3ab7547bda954530facf80b61473fa543291c1157de7776f6fbfca6",
+      "file": "priority-7-learning.json.gz",
+      "sha256": "f8e8c6b3395c82953a045de92b72226ab8a7c50339f2cdaa72fadd32b91273f4",
+      "expanded_bytes": 544044
+    },
+    {
+      "condition": "priority-19",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.0029663524157647375,
+        "new_validation_kl": 0.003986533313114863,
+        "selection_kl": 0.0034764428644398,
+        "reference_hash": "ea5deae8bc91ac31b5aba82f9d768df34ba76c82dda24297f9260e75f4923f58"
+      },
+      "work": {
+        "loss_calls": 1212,
+        "dense_teacher_pairs": 298112,
+        "reference_key_pairs": 6176512,
+        "gradient_calls": 64,
+        "priority_calls": 752,
+        "validation_calls": 396
+      },
+      "child_hash": "44d21211def4e7fd97b1e4eb2443f6704df98e78e4c5df5550d1dbc643bd2d11",
+      "file": "priority-19-learning.json.gz",
+      "sha256": "db360295ac2568aa580691f74fd20ae7bae0bcd1b964e7ad6426d7ac5a373399",
+      "expanded_bytes": 546924
+    },
+    {
+      "condition": "priority-31",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.0029417853782288603,
+        "new_validation_kl": 0.003947160942668676,
+        "selection_kl": 0.003444473160448768,
+        "reference_hash": "312f821f05919693228078493442bba9d72fc8eb108342959df20932cccc3708"
+      },
+      "work": {
+        "loss_calls": 1212,
+        "dense_teacher_pairs": 297510,
+        "reference_key_pairs": 6168800,
+        "gradient_calls": 64,
+        "priority_calls": 752,
+        "validation_calls": 396
+      },
+      "child_hash": "3b1ddfd9f6a8b29b5b8ca94fb2192e2aaaac37286402a2ffec21f6631f3d9437",
+      "file": "priority-31-learning.json.gz",
+      "sha256": "329a4f4d018fc704258754c04a48a6490d64e8f0c90576bee55101fd55971413",
+      "expanded_bytes": 545979
+    },
+    {
+      "condition": "recent-7",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.0031852956428150715,
+        "new_validation_kl": 0.004243811937167191,
+        "selection_kl": 0.0037145537899911313,
+        "reference_hash": "0c8c9211a58a507ae3b57edeffa88b4bf377fc2bb534597926226ff2db8c6642"
+      },
+      "work": {
+        "loss_calls": 460,
+        "dense_teacher_pairs": 108483,
+        "reference_key_pairs": 2234976,
+        "gradient_calls": 64,
+        "priority_calls": 0,
+        "validation_calls": 396
+      },
+      "child_hash": "0c292afdce80cc23ebf20cd177e98bd0990b4f9ed65757bdfb07bc32b46b1e47",
+      "file": "recent-7-learning.json.gz",
+      "sha256": "1d09b60ae803217c59d02d3d39296a38f7b694f59bb5c0949c5abb3a71b91d4a",
+      "expanded_bytes": 495676
+    },
+    {
+      "condition": "recent-19",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.003202467853582283,
+        "new_validation_kl": 0.0042721691039945536,
+        "selection_kl": 0.0037373184787884185,
+        "reference_hash": "a8b44d1b4dacbf57f6bec2e765385df30caae323d9ecc1ba277d47f061b69cc3"
+      },
+      "work": {
+        "loss_calls": 460,
+        "dense_teacher_pairs": 107574,
+        "reference_key_pairs": 2216928,
+        "gradient_calls": 64,
+        "priority_calls": 0,
+        "validation_calls": 396
+      },
+      "child_hash": "7c8de89dc981912b3ffbc641e359540959ebf61b2095123cafa6c729d5bef305",
+      "file": "recent-19-learning.json.gz",
+      "sha256": "eb9dcd297dc14351cc0ba568a14a19fcecfd06aa954ccb1f320f0a4af3a1627b",
+      "expanded_bytes": 489849
+    },
+    {
+      "condition": "recent-31",
+      "selected_step": 64,
+      "initial": {
+        "step": 0,
+        "old_validation_kl": 0.003543907828721566,
+        "new_validation_kl": 0.0046676294526098484,
+        "selection_kl": 0.004105768640665707,
+        "reference_hash": "fed524a1fcba07b305c889a81fb4650fc79a655fc15b6439896d10b34db91910"
+      },
+      "selected": {
+        "step": 64,
+        "old_validation_kl": 0.0032179917638249724,
+        "new_validation_kl": 0.004280741478594788,
+        "selection_kl": 0.00374936662120988,
+        "reference_hash": "1beb3bb0a16586147cfc40e10be3a5d032fb29da04175437c510c0f906f869b5"
+      },
+      "work": {
+        "loss_calls": 460,
+        "dense_teacher_pairs": 109017,
+        "reference_key_pairs": 2253888,
+        "gradient_calls": 64,
+        "priority_calls": 0,
+        "validation_calls": 396
+      },
+      "child_hash": "6c4a5a555767ef5ad960887d2fb51561a8af819a96b812a30dd0d0f6dfdde5da",
+      "file": "recent-31-learning.json.gz",
+      "sha256": "92a9633dee52fa5570d66e5ae3d14d7f8359aefbed653a216a551bf521fb0c8a",
+      "expanded_bytes": 498454
+    }
+  ]
+}

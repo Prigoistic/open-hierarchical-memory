@@ -111,6 +111,27 @@
           </details>
           <p class="source-note" id="task-status">Loading recorded evidence.</p>
         </section>
+        <section
+          class="control-section instrument-metrics"
+          id="replay-section"
+          hidden
+        >
+          <h2>RECORDED OFFLINE REPLAY</h2>
+          <p class="source-note" id="replay-condition"></p>
+          <canvas
+            id="replay-curve"
+            width="640"
+            height="256"
+            aria-label="Old and new validation KL over actual gradient updates"
+          ></canvas>
+          <p class="source-note" id="replay-summary"></p>
+          <p class="source-note" id="replay-kl"></p>
+          <details class="advanced">
+            <summary>Replay sources &amp; costs</summary>
+            <p class="source-note" id="replay-work"></p>
+            <p class="source-note" id="replay-source"></p>
+          </details>
+        </section>
         <section class="control-section instrument-metrics">
           <h2>MEMORY TELEMETRY</h2>
           <dl>
@@ -170,6 +191,7 @@
             ><span><i class="retired"></i>Retired</span>
           </div>
         </section>
+
         <section class="control-section episode-receipt">
           <div class="section-heading">
             <i class="signal live"></i>

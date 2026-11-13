@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlsplit
 
+from research import replay_dashboard
 from research.dashboard_gateway import MAX_BODY, MEMORY_WRITES, MemoryGateway
 from research.live_solver import LiveSolver, SolverBusyError
 from research.persistent_dashboard import DATASET, METHODS, adapt_recorded
@@ -164,6 +165,9 @@ class TaskCatalog:
                                 "successes": sum(r["success"] for r in rows),
                             }
                         )
+        replay_rows, replay_summary = replay_dashboard.catalog(self.root)
+        runs.extend(replay_rows)
+        summaries.extend(replay_summary)
         return {"schema": "task-catalog-v1", "runs": runs, "summary": summaries}
 
     def run(self, uid: str) -> dict[str, Any]:
@@ -187,8 +191,10 @@ class TaskCatalog:
         if len(decoded) > MAX_EXPANDED_TRACE_BYTES:
             raise TraceTooLargeError("expanded artifact too large")
         result: dict[str, Any] = json.loads(decoded)
-        if row["dataset"] == DATASET:
+        if row["dataset"] in (DATASET, replay_dashboard.DATASET):
             result = adapt_recorded(result, row["reader"])
+        if row["dataset"] == replay_dashboard.DATASET:
+            result["replay"] = replay_dashboard.metadata(self.root, row["condition"])
         result["task"] = row["task"]
         result["dataset"] = row["dataset"]
         result["catalog_split"] = row.get("split")

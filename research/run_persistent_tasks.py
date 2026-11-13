@@ -143,14 +143,18 @@ def persistent_episode(
     step_cap: int,
     *,
     recovery_policy: RecoveryPolicy = "on_stall",
+    workspace: WorkspaceConfig | None = None,
     on_step: Callable[[dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
+    if workspace is not None and not isinstance(workspace, WorkspaceConfig):
+        raise ValueError("workspace must be a validated WorkspaceConfig")
     if path.exists():
         raise ValueError("a simulator reset requires a fresh episode archive/context")
     # An explicit reset epoch prevents stale post-interaction facts crossing a reset.
     checkpoint.require_evaluation_context(world_id(env_id, seed))
     namespace = world_id(env_id, seed) + "/reset=0/frame=episode-origin"
-    store = TaskStore(path, config=WorkspaceConfig(**PROTOCOL["workspace"]), router=checkpoint)
+    config = workspace if workspace is not None else WorkspaceConfig(**PROTOCOL["workspace"])
+    store = TaskStore(path, config=config, router=checkpoint)
     reader = PersistentTaskReader(
         store,
         namespace,
@@ -211,12 +215,13 @@ def persistent_episode(
         costs = reader.costs.copy()
         store.close()
     # Restart verifies the stored observation/current-head/controller state, not simulator state.
-    reopened = TaskStore(path, config=WorkspaceConfig(**PROTOCOL["workspace"]), router=checkpoint)
+    reopened = TaskStore(path, config=config, router=checkpoint)
     restart_state = reopened.state(namespace)
     reopened.close()
     return {
         "environment_id": env_id,
         "seed": seed,
+        "workspace": asdict(config),
         "context": namespace,
         "backend": backend,
         "recovery_policy": recovery_policy,

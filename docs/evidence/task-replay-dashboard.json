@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-13",
+  "scope": "observed routing-parameter replay, controlled fresh-seed retest and read-only study dashboard; no world-model or biological-dreaming claim",
+  "entry": "http://127.0.0.1:8792/?dataset=task-replay-v1&reader=persistent_replay_priority-7&seed=19002&step=39",
+  "source_hashes": {
+    "research/task_replay.py": "9773380a1dbc76f6d2aec82afdd42774dd41146be64be65dabf92ff3b3c71c00",
+    "research/run_task_replay.py": "7a2eefbce920b782adb4d9c5e422470c62f2bf74596a227023612c0a3e766d53",
+    "research/task_replay_protocol.json": "f69d6137a35a2ae62e8de6f485d459c93bb526aae054951cd4a7f081f58c1948",
+    "scripts/audit_task_replay.py": "1d0e87b782469d283cf16d6d5e44e6a87b6c1947d9748490382c9a9fb9a9157e",
+    "research/replay_dashboard.py": "c63108aeacea9a0c37d1f3334c9862204c2d6b547ac10411a8246889371e2ec3",
+    "research/serve_task_benchmark.py": "df811879e68dde7cf89dbcb4332bd1b2bb17d83288ab16543c2a8c19e9d0eea5",
+    "research/persistent_dashboard.py": "f6f569438b1bf13345a4decc377afc5b0afb279a72a29be49a628ca8dd1d9463",
+    "research/run_persistent_tasks.py": "affbf0e89e71e7c009de466c94fd6eb7dadbdbf8b471bcb38db7de9206dc1423",
+    "web/dashboard/app.js": "9541b7b63605821d830f9c03e00a733e8ef39b2e006684074132f46d2c115fb9",
+    "web/dashboard/index.html": "a3adb5eeca20112334df6e49e6e3be395e65c4f26a2098d10e010968db3a9644",
+    "web/dashboard/style.css": "abe0644aa3ec1d19e463566e10a0dfe76ea5405abedb5d874e0ecfa8ba0a6c42",
+    "web/task-lab/app.js": "b7e0a5db151b45a281090c806ac455ca92f97f47478fce70b60884d40178d653"
+  },
+  "experiment_report_sha256": "66842c3c7a74fa3ee831e2ead6031414a91349180557e24eefc90f9a317eb4a6",
+  "protocol_sha256": "27cab1eb66dddfe625c6b2c19e710c93d5bb9c617d407caa221315d4dab49280",
+  "independent_audit": {
+    "all_passed": true,
+    "updates": 576,
+    "smooth_gradient_coordinates": 54,
+    "nonsmooth_coordinates_skipped": 0,
+    "task_runs": 240,
+    "decisions": 25028,
+    "routes": 3728,
+    "numerical_route_cases": 180,
+    "offline_mass_cases": 2090,
+    "scope": "all recorded SGD update algebra and work/sampling/selection checks, sampled scalar objectives and smooth gradient coordinates, official task replay and source/graph/selected-route audit; not exhaustive gradient or semantic correctness proof"
+  },
+  "verification": {
+    "python_tests": 491,
+    "new_tests": 9,
+    "visual_motion_tests": 33,
+    "core_commands": 23,
+    "core_all_passed": true,
+    "js_syntax": true,
+    "diff_check": true
+  },
+  "browser": {
+    "tool": "agent-browser 0.43.0, isolated Chromium session",
+    "page_errors": [],
+    "uniform": {
+      "updates": 64,
+      "selected": 64,
+      "old_validation": "0.00354 -> 0.00322",
+      "new_validation": "0.00467 -> 0.00428"
+    },
+    "priority": {
+      "gradient_calls": 64,
+      "priority_calls": 752,
+      "validation_calls": 396,
+      "dense_teacher_pairs": 296519,
+      "actual_source_worlds": 13,
+      "cohort": "11/16 at64 slots"
+    },
+    "fixed_control": {
+      "condition": "exact-cap96",
+      "cohort": "13/16 at96 slots",
+      "curve_hidden": true,
+      "validation_caption_cleared": true,
+      "visible_active": "42 / 96"
+    },
+    "failed_case": {
+      "condition": "priority-7",
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19002,
+      "decision": 39,
+      "recovered": 15,
+      "capacity": 64,
+      "status": "Action limit retained"
+    },
+    "mobile": {
+      "viewport": 390,
+      "document_width": 390,
+      "controls_open": true,
+      "recorded_run_action_disabled": true
+    },
+    "ordinary_workflow": {
+      "replay_section_hidden": true,
+      "method": "persistent_zha",
+      "run_action_enabled": true,
+      "unchanged_reference_hash": "4c5622ce69e8af3978aa119b113185fc86eebc2ca39c5f87e19029a41b8db7c3"
+    }
+  },
+  "outcome": "replay lowers measured KL but not task success; random-reference and 96-slot controls remain visible",
+  "scope_limits": [
+    "three optimizer seeds reuse the same16 task cases",
+    "equal gradient steps are not equal compute",
+    "common offline corpus follows parent-policy states",
+    "old validation is exposed retention data",
+    "future seed IDs do not guarantee unique layouts",
+    "read-only study does not refit in the browser or replace the default live checkpoint",
+    "sampled numerical audit is not a semantic-correctness proof",
+    "no public push or release"
+  ]
+}

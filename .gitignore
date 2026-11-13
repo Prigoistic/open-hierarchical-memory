@@ -17,3 +17,6 @@ experiments/persistent-task-*/archives/
 
 # User-owned local persistent solve archives.
 var/task-solves/
+
+# Mutable local archives for the offline replay study.
+experiments/task-replay-*/archives/

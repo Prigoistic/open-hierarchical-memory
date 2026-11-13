@@ -947,3 +947,13 @@ iframe {
 #lifecycle-archive {
   overflow-wrap: anywhere;
 }
+
+#replay-curve {
+  width: 100%;
+  height: 128px;
+  display: block;
+  margin: 8px 0;
+}
+#replay-source {
+  overflow-wrap: anywhere;
+}

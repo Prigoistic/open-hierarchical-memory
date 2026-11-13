@@ -1,0 +1,12 @@
+{
+  "all_passed": true,
+  "updates": 576,
+  "smooth_gradient_coordinates": 54,
+  "nonsmooth_coordinates_skipped": 0,
+  "task_runs": 240,
+  "decisions": 25028,
+  "routes": 3728,
+  "numerical_route_cases": 180,
+  "offline_mass_cases": 2090,
+  "scope": "all recorded SGD update algebra and work/sampling/selection checks, sampled scalar objectives and smooth gradient coordinates, official task replay and source/graph/selected-route audit; not exhaustive gradient or semantic correctness proof"
+}

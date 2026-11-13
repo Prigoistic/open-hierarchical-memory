@@ -1,0 +1,62 @@
+{
+  "version": "task-routing-replay-v1",
+  "scope": "frozen protocol; routing-parameter replay on observed prefixes; no biological dreaming or hierarchy-superiority claim",
+  "parent": "experiments/persistent-task-v2/fitted-references.json",
+  "random_control": "experiments/persistent-task-v2/random-references.json",
+  "anchors": "experiments/persistent-task-v2/observed-prefix-corpus.json.gz",
+  "wake_seeds": [
+    17001,
+    17002
+  ],
+  "validation_seeds": [
+    17003
+  ],
+  "comparison_seeds": [
+    19001,
+    19002,
+    19003,
+    19004
+  ],
+  "environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "samples_per_episode": 6,
+  "step_cap": 256,
+  "optimizer_seeds": [
+    7,
+    19,
+    31
+  ],
+  "schedules": [
+    "uniform",
+    "priority",
+    "recent"
+  ],
+  "steps": 64,
+  "learning_rate": 1.0,
+  "clip_norm": 1.0,
+  "validation_every": 8,
+  "priority": {
+    "alpha": 0.6,
+    "epsilon": 1e-06,
+    "uniform_floor": 0.1,
+    "refresh_every": 8,
+    "importance_correction": false
+  },
+  "primary_capacity": 64,
+  "reference_capacity": 96,
+  "threshold": 0.8,
+  "dataset_order": [
+    "anchor",
+    "wake",
+    "validation_old",
+    "validation_new",
+    "comparison"
+  ],
+  "cost_contract": "equal gradient updates; all priority/teacher/validation/index/graph work additional and counted",
+  "selection": "minimum equally weighted old/new validation KL; unchanged parent eligible",
+  "sleep_scope": "only routing references learned; canonical observations and active controller state never modified by replay"
+}

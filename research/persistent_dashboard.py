@@ -165,7 +165,7 @@ def adapt_recorded(value: dict[str, Any], method: str) -> dict[str, Any]:
     result["trajectory"] = [trace.row(row) for row in rows]
     result.update(
         reader=method,
-        capacity=96,
+        capacity=value.get("workspace", {}).get("capacity", 96),
         split="diagnostic",
         routing_snapshots=trace.snapshots,
         routing_events=trace.events,
