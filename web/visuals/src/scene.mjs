@@ -7,9 +7,11 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { gsap } from "gsap";
 import { createContextGrid } from "./grid.mjs";
 import navigation from "./navigation.cjs";
+import { viewTransition } from "./models.mjs";
 export { persistentState, persistentMemoryModel } from "./persistent.mjs";
 export const PoseTween = navigation.PoseTween;
 export { activityModel, activityColor } from "./activity.mjs";
+export { lifecycleCloudModel } from "./lifecycle-cloud.mjs";
 import { CustomEase } from "gsap/CustomEase";
 export {
   memoryModel,
@@ -353,7 +355,7 @@ export class SpatialView {
   setData(model) {
     if (this.model?.key === model.key) return;
     const first = !this.model,
-      layoutChanged = this.model?.layout !== model.layout,
+      transition = viewTransition(this.model, model, this.reduced),
       previousSpan = this.span;
     this.model = model;
     this.clear();
@@ -411,7 +413,7 @@ export class SpatialView {
             ? " · " + plane.kept + " / " + plane.count
             : ""),
         [a - 0.02, y, d + 0.06],
-        "#4b91b5",
+        plane.labelColor || "#4b91b5",
       );
       this.line(
         [
@@ -568,7 +570,7 @@ export class SpatialView {
       " " +
       (model.kind === "memory"
         ? "OBSERVATIONS"
-        : model.kind === "task-memory"
+        : model.kind === "task-memory" || model.lifecycleCloud
           ? "OBSERVED FACTS"
           : "INDEXED ORIGINALS") +
       " / " +
@@ -582,6 +584,7 @@ export class SpatialView {
     this.canvas.dataset.readCount = model.readCount;
     this.canvas.dataset.modelKey = model.key;
     this.canvas.dataset.geometryPoints = model.points.length;
+    this.canvas.dataset.lifecycleCloud = String(!!model.lifecycleCloud);
     this.contextGrid.position.set(
       this.center.x,
       box.min.y - 0.3,
@@ -591,13 +594,12 @@ export class SpatialView {
       8,
       box.getSize(new THREE.Vector3()).length() * 1.3,
     );
-    if (first || layoutChanged)
-      this.reset(layoutChanged && !first && !this.reduced ? 0.65 : 0);
+    if (transition.reset) this.reset(transition.duration);
     else if (changedBounds && !this.userCamera) this.reframe(previousSpan);
     else if (!gsap.isTweening(this.framing)) this.resize();
     this.highlight(this.focused);
     this.render();
-    if ((first || layoutChanged) && !this.reduced) {
+    if (transition.fadeIn) {
       if (first)
         gsap.from(this.camera.position, {
           x: this.camera.position.x + 2.5,

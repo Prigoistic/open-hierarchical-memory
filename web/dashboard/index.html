@@ -111,7 +111,11 @@
           </details>
           <p class="source-note" id="task-status">Loading recorded evidence.</p>
         </section>
-        <section class="control-section instrument-metrics" id="support-section" hidden>
+        <section
+          class="control-section instrument-metrics"
+          id="support-section"
+          hidden
+        >
           <h2>OBSERVED PATH RECOVERY</h2>
           <p class="source-note" id="support-outcome"></p>
           <p class="source-note" id="support-control"></p>
@@ -121,7 +125,7 @@
             <p class="source-note" id="support-cache"></p>
           </details>
         </section>
-      <section
+        <section
           class="control-section instrument-metrics"
           id="replay-section"
           hidden
@@ -447,6 +451,37 @@
               ></canvas>
               <div id="episode-readout" class="spatial-status"></div>
             </div>
+            <aside
+              class="memory-state-legend"
+              id="memory-state-legend"
+              aria-label="Memory point cloud legend"
+              hidden
+            >
+              <h3>MEMORY STATE / THIS DECISION</h3>
+              <dl>
+                <div>
+                  <dt><i class="cloud-dormant"></i>Dormant archive</dt>
+                  <dd id="cloud-dormant">—</dd>
+                  <small>Stored, outside the active workspace</small>
+                </div>
+                <div>
+                  <dt><i class="cloud-active"></i>Active workspace</dt>
+                  <dd id="cloud-active">—</dd>
+                  <small>Available to the planner</small>
+                </div>
+                <div>
+                  <dt><i class="cloud-recovered"></i>Recovered now</dt>
+                  <dd id="cloud-recovered">—</dd>
+                  <small>Read from archive; part of active</small>
+                </div>
+                <div>
+                  <dt><i class="cloud-returned"></i>Returned to planner</dt>
+                  <dd id="cloud-returned">—</dd>
+                  <small>White ring marks selected evidence</small>
+                </div>
+              </dl>
+              <p id="cloud-sampling"></p>
+            </aside>
             <div
               class="instrument-legend"
               id="activity-legend"

@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-14",
+  "scope": "source-bound categorical memory cloud, short-read visibility, technical thread and continuous demo; numerical core/solver unchanged",
+  "current_source_hashes": {
+    "web/visuals/src/lifecycle-cloud.mjs": "da60e0ed322650b3a5141df26e100b210bef5359b7185782ad33064b8a2e4b42",
+    "web/visuals/src/models.mjs": "bc5669c782a0a1a502b7472a90012e0d5efd06870d0179d973fa4a06105ac8ea",
+    "web/visuals/src/scene.mjs": "6bafce673215e152c50029872e9ee6499f99b9d4e6ecc605246a23363e752f51",
+    "web/visuals/test/lifecycle-cloud.test.mjs": "cd606eec8a1a2ec670e7052a538abe851071e1c159511626f7d76a89ec05aee9",
+    "web/visuals/test/models.test.mjs": "fddbcf1d1dc8c19a3faad47343e30703290c6e21b2b3123b72dbaecb228417ee",
+    "web/visuals/build-manifest.json": "3487cb0af365824ee483f0a9794e33e373dc53724c3ab4e89f95d4afbaabfde3",
+    "web/dashboard/app.js": "587dfff2170b570e1f62bfcc0e8df59f631872218cf54e300a1b0349bd03a794",
+    "web/dashboard/index.html": "6e0f5ed1705ff6f1061bc7a2a6d77d4a3ed47c4615b538a2e0e0a6c130c42400",
+    "web/dashboard/style.css": "78033a0a31ca4292615b5dee342898cc40006818a7e1a21ca0026225ba68c9bb",
+    "docs/X_THREAD.md": "52c0f484c2ca6d4c40697ac4717a349e2ce5b2c76ec68783aa657390dbe8e8f2",
+    "docs/LAUNCH.md": "31f1cdb4aaee189c85fd80dc693abb1e0f6863814e47cde1ef84238af0cbd236"
+  },
+  "raw_report_sha256": "2b4207f4658a4b36ca71e75bf53206f06f4391d423db3322d3f0bf117b7dd2f1",
+  "outcome_counts_checked_from_report": {
+    "runs": 120,
+    "successes": 97,
+    "unsuccessful": 23,
+    "failed_external_cutoffs": 22,
+    "failed_official_truncations": 1,
+    "runtime_errors": 0
+  },
+  "validation": {
+    "python_tests": 504,
+    "visual_tests": 41,
+    "strict_core_types": true,
+    "ruff": true,
+    "js_syntax": true,
+    "pinned_renderer_build": true
+  },
+  "browser": {
+    "desktop": [
+      1920,
+      1080
+    ],
+    "event": {
+      "seed": 23004,
+      "decision": 58,
+      "sources": 229,
+      "dormant": 165,
+      "active": 64,
+      "capacity": 64,
+      "recovered": 9,
+      "returned": 14,
+      "display_samples": 18336,
+      "unrelated_heat_legend_hidden": true
+    },
+    "fresh_run": {
+      "actions": 81,
+      "success": true,
+      "projection": "cloud",
+      "legend_visible": true
+    },
+    "mobile": {
+      "viewport": 390,
+      "document_width": 390,
+      "legend_width": 373
+    },
+    "reduced_motion": {
+      "same_active": 64,
+      "same_recovered": 9
+    },
+    "canvas": {
+      "projection": "layers",
+      "cloud_disabled": true,
+      "cloud_legend_hidden": true
+    },
+    "application_errors": []
+  },
+  "media": {
+    "sha256": "131c809f38269c104670a4b5ee833c8457bcf3cb0c8c8e48afbbc4887bf6f879",
+    "seconds": 27.5,
+    "width": 1920,
+    "height": 1080,
+    "codec": "h264",
+    "continuous": true,
+    "local_path": "release-assets/task-memory-cloud.mp4"
+  },
+  "thread": {
+    "posts": 11,
+    "max_weighted_length": 266,
+    "all_under280": true,
+    "posted_to_x": false
+  }
+}

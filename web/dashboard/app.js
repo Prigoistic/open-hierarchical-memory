@@ -407,6 +407,7 @@
           "Task memory is available for maze episodes. Choose a maze to solve.";
         text("memory-counts", "No maze decision selected");
         $("activity-legend").hidden = true;
+        $("memory-state-legend").hidden = true;
         $("lifecycle-section").hidden = true;
         $("replay-section").hidden = true;
         $("support-section").hidden = true;
@@ -462,16 +463,35 @@
       session = evidence.key.slice(0, evidence.key.lastIndexOf(":"));
     if (lifecycle && session !== lifecycleSession) {
       lifecycleSession = session;
-      $("memory-view").value = "layers";
+      if (!["cloud", "layers", "plane"].includes($("memory-view").value))
+        $("memory-view").value = "layers";
     }
     const projection = $("memory-view").value;
-    episodeModel = ["activity", "cloud"].includes(projection)
-      ? SomnaVisuals.activityModel(evidence, {
-          cloudOnly: projection === "cloud",
-        })
-      : lifecycle
-        ? SomnaVisuals.persistentMemoryModel(evidence)
-        : SomnaVisuals.taskMemoryModel(evidence);
+    episodeModel =
+      lifecycle && projection === "cloud"
+        ? SomnaVisuals.lifecycleCloudModel(evidence)
+        : ["activity", "cloud"].includes(projection)
+          ? SomnaVisuals.activityModel(evidence, {
+              cloudOnly: projection === "cloud",
+            })
+          : lifecycle
+            ? SomnaVisuals.persistentMemoryModel(evidence)
+            : SomnaVisuals.taskMemoryModel(evidence);
+    $("memory-view").querySelector('[value="cloud"]').textContent = lifecycle
+      ? "MEMORY CLOUD"
+      : "POINT CLOUD";
+    $("memory-state-legend").hidden = !episodeModel.lifecycleCloud;
+    if (episodeModel.lifecycleCloud) {
+      const counts = episodeModel.stateCounts;
+      text("cloud-dormant", counts.dormant);
+      text("cloud-active", `${counts.active} / ${counts.capacity}`);
+      text("cloud-recovered", counts.recovered);
+      text("cloud-returned", counts.returned);
+      text(
+        "cloud-sampling",
+        `${episodeModel.sourceCount} original sources · ${episodeModel.samples.length.toLocaleString()} display samples`,
+      );
+    }
     evidenceKey = evidence.key;
     if (episodeView) {
       episodeView.setVisible(true);
@@ -505,10 +525,10 @@
         r.connector?.attempted
           ? "Observed graph connector · cold path support explicitly admitted"
           : r.recovery_status === "deferred_active_progress"
-          ? "Archive idle · active memory serves this decision"
-          : r.recovery_status === "budget_exhausted"
-            ? "Archive budget reached · no exact fallback"
-            : `Archive ${r.recovery_status === "disabled" ? "disabled" : "read"} · ${{ new_mission: "new mission", exploration_stall: "exploration stalled", always: "always recover control" }[r.recovery_reason] || r.recovery_reason}`,
+            ? "Archive idle · active memory serves this decision"
+            : r.recovery_status === "budget_exhausted"
+              ? "Archive budget reached · no exact fallback"
+              : `Archive ${r.recovery_status === "disabled" ? "disabled" : "read"} · ${{ new_mission: "new mission", exploration_stall: "exploration stalled", always: "always recover control" }[r.recovery_reason] || r.recovery_reason}`,
       );
       text(
         "lifecycle-reference",
@@ -545,7 +565,8 @@
         : evidence.facts.length,
     );
     text("legend-high", episodeModel.stats?.maximum ?? "—");
-    $("activity-legend").hidden = !episodeModel.stats;
+    $("activity-legend").hidden =
+      !episodeModel.stats || !!episodeModel.lifecycleCloud;
     drawDiagnostics(evidence);
     text(
       "memory-counts",
@@ -1052,7 +1073,12 @@
   $("recovery").onclick = () => command("tasks", "recovery");
   $("hierarchy-view").onchange = (e) =>
     command("tasks", "view", e.target.value);
-  $("memory-view").onchange = (e) => command("memory", "view", e.target.value);
+  $("memory-view").onchange = (e) => {
+    const address = new URL(location.href);
+    address.searchParams.set("memory_view", e.target.value);
+    history.replaceState(null, "", address);
+    command("memory", "view", e.target.value);
+  };
   $("show-map").onchange = (e) => {
     navigationDirty = true;
     command("tasks", "map", e.target.checked);
@@ -1078,6 +1104,7 @@
     );
     text("field-key-a", episodeMode ? "Observed" : "World A");
     text("field-key-b", episodeMode ? "Retrieved" : "World B");
+    if (!episodeMode) $("memory-state-legend").hidden = true;
     if (!episodeMode && !frames.memory.getAttribute("src"))
       frames.memory.src =
         "/live/?embed=1" +
@@ -1157,6 +1184,12 @@
       params.get(key) || value,
     ]),
   );
+  const requestedMemoryView = params.get("memory_view");
+  if (["activity", "cloud", "layers", "plane"].includes(requestedMemoryView))
+    $("memory-view").value =
+      requestedMemoryView === "cloud" && !episodeView
+        ? "layers"
+        : requestedMemoryView;
   taskParams.set("embed", "1");
   if (params.get("renderer") === "canvas") taskParams.set("renderer", "canvas");
   frames.tasks.src = "/task/?" + taskParams;

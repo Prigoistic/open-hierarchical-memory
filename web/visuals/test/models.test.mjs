@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   memoryModel,
+  viewTransition,
   hierarchyModel,
   COLORS,
   indexHierarchyModel,
@@ -371,4 +372,42 @@ test("task memory follows current observed heads, exact returned ids and plan", 
   invalid.facts[1].observed_step = 3;
   invalid.decision.memory_ids = [999];
   assert.throws(() => taskMemoryModel(invalid), /missing from observed/);
+});
+
+test("brief archive reads are visible immediately across coordinate changes", () => {
+  const idle = { kind: "task-memory" },
+    read = { kind: "hierarchy", layout: "ordinal" };
+  for (const [a, b] of [
+    [idle, read],
+    [read, idle],
+  ]) {
+    const t = viewTransition(a, b);
+    assert.equal(t.fadeIn, false);
+    assert.equal(t.reset, true);
+    assert.equal(t.duration, 0);
+  }
+});
+
+test("successive decisions keep framing while explicit same-space views may ease", () => {
+  const read = { kind: "hierarchy", layout: "ordinal" };
+  assert.deepEqual(viewTransition(read, { ...read }), {
+    fadeIn: false,
+    reset: false,
+    duration: 0,
+  });
+  const t = viewTransition(read, { ...read, layout: "branches" });
+  assert.equal(t.fadeIn, false);
+  assert.equal(t.duration, 0.65);
+});
+
+test("reduced motion suppresses entrance fades and animated frame transitions", () => {
+  assert.equal(viewTransition(null, { kind: "activity" }, true).fadeIn, false);
+  assert.equal(
+    viewTransition(
+      { kind: "hierarchy", layout: "ordinal" },
+      { kind: "hierarchy", layout: "branches" },
+      true,
+    ).duration,
+    0,
+  );
 });

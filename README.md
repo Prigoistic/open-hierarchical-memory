@@ -4,7 +4,7 @@ Inspectable experiments in hierarchical retrieval, bounded working memory, rever
 
 A maze-solving agent can retain a landmark and still lose the observed path needed to use it. This project makes that failure visible, connects retrieved evidence to planning, and compares repairs against exact search and ordinary graph recovery.
 
-![Observed path recovery and its actual source trail](docs/media/task-support-desktop.png)
+![Memory cloud with dormant, active, recovered and returned evidence labelled](docs/media/memory-cloud-demo.png)
 
 **Development research reference.** The installed attention library supports CPU float64 and the no-positional-encoding ZHA construction. The task demos use a shared symbolic planner. This is not a converted language model or a production agent-memory service.
 

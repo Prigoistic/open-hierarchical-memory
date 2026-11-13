@@ -35,3 +35,14 @@ The earlier source/topology suite had 16 passing tests, including atlas membersh
 The current unified-entry verification is `docs/evidence/unified-dashboard-browser.json`; earlier visual milestones remain separately recorded.
 
 Current verification (13 November 2026): 452 Python tests, 27 visual/motion mapping tests, routing contracts, JS syntax, Ruff/format and strict core plus gateway/solver typing pass. The current browser evidence includes a fresh 95-action Key Corridor solve, four field projections, exact first/final cursor behavior, source keyboard inspection, a 390px control drawer without page overflow and the forced Canvas map. The numerical core, planner and frozen experiment artifacts are unchanged.
+
+
+## Memory state cloud, 14 November 2026
+
+For persistent task evidence, Memory cloud separates current observed heads into dormant (blue), retained active (cyan), and newly recovered (gold) bands. Recovered heads are a subset of the active workspace, not additional capacity. White rings mark facts actually returned to the planner. The live legend reports dormant, active/capacity, newly recovered and returned counts from the selected read receipt. It never displays the retrieval-frequency colour scale as a lifecycle legend.
+
+X/Z remain observed map coordinates. Height inside each band uses the selected prefix's existing log-scaled location-return field. Dense cloud samples are display interpolation with an original source ID; primary source points, display samples and raw stored versions are distinct. The scene is not an energy landscape, learned embedding or biological salience model. The layer labels and legend state those semantics.
+
+`memory_view=cloud` selects the shareable cloud projection. It survives a fresh solve. Mobile uses a compact two-column legend without horizontal overflow; reduced motion preserves the same data. Canvas disables cloud and hides its categorical legend.
+
+A renderer correction prevents short reads from fading away: entrance opacity animates only on initial load, and transitions between active-world and ordinal-hierarchy coordinate systems snap framing. Same-space explicit projection changes may still ease. Tests cover both directions, consecutive decisions and reduced motion. The live task, numerical router and frozen experimental traces are unchanged.

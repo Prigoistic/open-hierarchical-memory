@@ -96,3 +96,12 @@ Run & query → Saved study → Path recovery · fresh seed study exposes all fi
 Observed path recovery reports full-cohort outcome and parent/graph controls. At a connector event it discloses the full observed-head scan, newly admitted cold facts and cache/graph costs. In the Key Corridor23004 decision58 view,229 observed heads are inspected and nine cold facts admitted;14 historical facts are returned. The left memory field and right hierarchy use the same original sources. A connector can use path facts outside routed seed candidates; it is explicitly extra graph work.
 
 The recorded comparison remains separate from fresh execution. A browser-started fresh Key Corridor23004 solve completes81 actions with64 active slots and a persistent completion record. Desktop/control switching, retained parent failure,390px drawer/no-overflow and source/work counts were checked. Source label and fixed-control views clear stale replay-learning content. No independent continuous-memory backend was started/reset.
+
+
+## 14 November 2026 — labelled memory cloud
+
+Persistent task views now offer Memory cloud with a fixed, source-bound state key. Blue is dormant, cyan retained active, gold recovered this read, and white rings mark returned facts. Gold is included in active/capacity. Within-band height remains past location returns, not salience or energy. Dense render samples remain separate from original-source counts.
+
+Use `memory_view=cloud` with a saved task URL. At Key Corridor 23004 decision 58, the legend reports 165 dormant, 64/ 64 active, nine newly recovered and 14 returned, from 229 current original sources and 18,336 display samples. Fresh solves preserve the projection and update the same legend. The recorded demonstration is one 81-action fresh solve with readable display pacing; the 27.5s MP4 is not a timing benchmark.
+
+Mobile 390px remains 390px without horizontal overflow. Reduced-motion data/counts agree. The Canvas fallback switches to the memory map, disables cloud and hides the cloud-only legend. A cross-coordinate transition fix makes brief archive reads immediately visible rather than fading across a longer interval than the decision itself.

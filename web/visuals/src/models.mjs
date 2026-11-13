@@ -472,3 +472,17 @@ export function taskMemoryModel(evidence) {
     readCount: read.size,
   };
 }
+
+// A short archive read must not remain invisible behind a longer entrance fade.
+// Unrelated coordinate systems snap framing; same-space view changes can ease.
+export function viewTransition(previous, next, reduced = false) {
+  const first = !previous;
+  const coordinateChange = !!previous && previous.kind !== next.kind;
+  const layoutChange = !!previous && previous.layout !== next.layout;
+  return {
+    fadeIn: first && !reduced,
+    reset: first || coordinateChange || layoutChange,
+    duration:
+      !first && layoutChange && !coordinateChange && !reduced ? 0.65 : 0,
+  };
+}

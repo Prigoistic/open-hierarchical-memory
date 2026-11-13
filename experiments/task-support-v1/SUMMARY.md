@@ -14,7 +14,7 @@
 
 Each condition has the same 64-fact active workspace, including current observations, and a 16-fact cold-admission limit per read. All120 episodes complete without runtime errors. The 24 initial environment/pose/mission identities are distinct. The initial-world hash is an evaluator-only check and never enters a reader. This is24 task cases repeated across five conditions, not 120 independent worlds or a significance result.
 
-Connected recovery improves this cohort from 15/24 to 22/24; compact packing alone reaches 16/24. Exact and ordinary graph recovery also reach 22/24, with the same aggregate 1564 actions. The result supports repairing available path support; it does not demonstrate a ZHA-specific advantage, a new navigation algorithm or a speedup. All 31 unsuccessful runs remain explicit 256-action cutoffs.
+Connected recovery improves this cohort from 15/24 to 22/24; compact packing alone reaches 16/24. Exact and ordinary graph recovery also reach 22/24, with the same aggregate 1564 actions. The result supports repairing available path support; it does not demonstrate a ZHA-specific advantage, a new navigation algorithm or a speedup. All 23 unsuccessful runs remain retained: 22 external 256-action cutoffs and one official environment truncation at 120 actions.
 
 ## Mechanism and costs
 
@@ -52,3 +52,5 @@ make dashboard
 Choose Run & query → Saved study → Path recovery · fresh seed study. Methods include all five controls. Run solver creates a new official episode with its own local archive; recorded cohort results remain labelled. The demonstrated interface can run arbitrary permitted seeds, while the published study remains the frozen cohort above.
 
 Scientific inputs, checkpoints, source snapshots, complete outcomes and failed traces stay intact. Mutable SQLite archives are ignored. See [the contract](../../docs/TASK_SUPPORT.md) and [current roadmap](../../docs/ROADMAP.md).
+
+Failure-accounting correction, 14 November 2026: earlier prose incorrectly stated 31 external cutoffs. The retained report has 23 unsuccessful runs: 22 external cutoffs and one official truncation. The result table, raw report, source snapshots and traces are unchanged.
