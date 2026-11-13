@@ -172,6 +172,28 @@ def audit_episode(
                 assert required == set(b["required_ids"]) <= set(by_id), "compact support union"
                 if b["status"] != "complete":
                     continue
+                if b["kind"] == "waypoint":
+                    assert e.get("progress_repairs") and r["progress_repairs"], (
+                        "undeclared repair policy"
+                    )
+                    assert b["seed_id"] == r["waypoint_id"] and b["seed_id"] in returned, (
+                        "waypoint admission"
+                    )
+                    original = next(
+                        (
+                            x
+                            for x in r["bundles"]
+                            if x["seed_id"] == b["requested_seed_id"]
+                            and x["status"] == "overbudget"
+                        ),
+                        None,
+                    )
+                    assert original is not None and len(b["paths"]) == 1, "waypoint origin"
+                    prefix = b["paths"][0]
+                    assert len(prefix) >= 2 and original["paths"][0][: len(prefix)] == prefix, (
+                        "waypoint prefix"
+                    )
+                    assert b["seed_id"] == prefix[-1], "waypoint endpoint"
                 assert not b["missing"]
                 for path in b["paths"]:
                     if path:
@@ -203,6 +225,16 @@ def audit_episode(
                         ), "locked-door prerequisite"
                 complete.update(b["historical_ids"])
             assert complete == returned, "packed bundle union"
+            if e.get("progress_repairs"):
+                admitted = {(by_id[i]["x"], by_id[i]["y"]): by_id[i] for i in returned}
+                admitted.update(current)
+                assert all(tuple(p) in admitted for p in d["plan"]), "planner used unadmitted path"
+                if row["action"] == 3:
+                    assert d["inventory"] is None, "pickup with occupied hands"
+                if d["objective"] == "follow-observed-waypoint":
+                    assert r["waypoint_id"] in returned and d["goal_sources"] == [
+                        r["waypoint_id"]
+                    ], "planner waypoint source"
             previous = available
             if official:
                 assert obs is not None and env is not None

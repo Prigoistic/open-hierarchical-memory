@@ -195,12 +195,14 @@ class TaskCatalog:
         if len(decoded) > MAX_EXPANDED_TRACE_BYTES:
             raise TraceTooLargeError("expanded artifact too large")
         result: dict[str, Any] = json.loads(decoded)
-        if row["dataset"] in (DATASET, replay_dashboard.DATASET, support_presentation.DATASET):
+        if row["dataset"] in (DATASET, replay_dashboard.DATASET, *support_presentation.DATASETS):
             result = adapt_recorded(result, row["reader"])
         if row["dataset"] == replay_dashboard.DATASET:
             result["replay"] = replay_dashboard.metadata(self.root, row["condition"])
-        if row["dataset"] == support_presentation.DATASET:
-            result["support_study"] = support_presentation.metadata(self.root, row["condition"])
+        if row["dataset"] in support_presentation.DATASETS:
+            result["support_study"] = support_presentation.metadata(
+                self.root, row["condition"], row["dataset"]
+            )
         result["task"] = row["task"]
         result["dataset"] = row["dataset"]
         result["catalog_split"] = row.get("split")

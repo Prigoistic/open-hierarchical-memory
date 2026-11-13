@@ -1,0 +1,132 @@
+{
+  "date": "2026-11-14",
+  "scope": "Explicit inventory/path-prefix repairs and static recorded hosting; not task-learning or speed evidence",
+  "source_sha256": {
+    "research/minigrid_benchmark.py": "47bc9319a6f8769dd73bf00d70c805c6663bd5e57fbcb5eb0ce791a6589076ad",
+    "research/run_persistent_tasks.py": "728f2dfadb0431b758c7fb4b3880ba29e967fe7de57ed15992bb7c6bca1ce8ae",
+    "research/task_memory/support.py": "c27d076c8b1dd6739eee72ebd243cd30371c4edc343bb564c8ec298e3adc24ed",
+    "research/task_memory/run_repairs.py": "8909e251ed08d937f3e243371e23c5d84fa2ddb044580f13774e40e76bdb59ed",
+    "research/task_memory/repair_protocol.json": "08090d8f96b26ddd2facec1e6ce636acc8fc63de10889b0a94a279a9df18f471",
+    "research/task_memory/run_study.py": "49909e0684da98e762dbdf0bfec8c1930b72b5f244d586b54fd6ee55ad03a4eb",
+    "research/task_memory/presentation.py": "4613931473b00f7c795c2f5d06e9bf70eeb94e487c22249d53bf8a247ebea5de",
+    "research/persistent_dashboard.py": "55ff506bf0e351fd76ab9c64d56cbe136e4c53ff807a6849b6c797e748efcf95",
+    "research/serve_task_benchmark.py": "f803496f688285618e46154b4ffdad14897abdfcd5edbc39d6bc6490b4eab8de",
+    "scripts/audit_task_support.py": "ec3e38651dac543b66be3ecdff8731f2b21246ada8930ffb329046c26b604c9b",
+    "scripts/export_dashboard.py": "5c28ac989404b85aa3154e917daf5c6316aed2ed5425275c4d867e69395886d7",
+    "web/dashboard/app.js": "596101d2288097d483f5ae758e641eaa54a7d7212e772b323ec9bf58438fe538",
+    "web/task-lab/app.js": "aa510e6bee9f6c85d64f8d47a0d95a85443558afe765ab07e8456701ea9e19ed",
+    "tests/test_task_progress_repairs.py": "934510c81ee0cc37dce9280632f6c43099b12913029a30416389cd3dd35bcd16",
+    "tests/test_dashboard_export.py": "aa404f634503d683cc1102590edcf0aa2183fa8d1d918254098f7cbdce3c6eff"
+  },
+  "development_diagnostics": {
+    "dataset": "task-support-repair-diagnostics-v1",
+    "cases": 2,
+    "conditions": 2,
+    "original_successes": 0,
+    "repaired_successes": 2,
+    "repaired_actions": [
+      99,
+      151
+    ],
+    "exposed": true,
+    "audit": {
+      "all_passed": true,
+      "runs": 4,
+      "decisions": 762,
+      "routes": 436,
+      "numerical_route_cases": 4,
+      "connector_reads": 185,
+      "scope": "official actions, observed/correction/source/capacity lineage, connector seed origins, packed path edges and sampled scalar routing; not a full policy or semantic proof"
+    }
+  },
+  "fresh_comparison": {
+    "dataset": "task-support-v2",
+    "initial_worlds": 24,
+    "runs": 96,
+    "solved_per_condition": {
+      "connected_zha": 22,
+      "repaired_zha": 22,
+      "repaired_exact": 22,
+      "repaired_graph": 22
+    },
+    "unsuccessful": 8,
+    "external_cutoffs": 8,
+    "runtime_errors": 0,
+    "active_cap": 64,
+    "cold_admission_cap": 16,
+    "audit": {
+      "all_passed": true,
+      "runs": 96,
+      "decisions": 6517,
+      "routes": 1060,
+      "numerical_route_cases": 44,
+      "connector_reads": 432,
+      "scope": "official actions, observed/correction/source/capacity lineage, connector seed origins, packed path edges and sampled scalar routing; not a full policy or semantic proof"
+    },
+    "report_sha256": "4cb16ab4c2ed26425889f181ad8f3d31668553cef4bbffda7ab36ffa2a11e09b"
+  },
+  "verification": {
+    "locked_pytest": {
+      "passed": 509
+    },
+    "renderer_tests": {
+      "passed": 41
+    },
+    "full_local_gate_commands": 26,
+    "full_local_gate_all_passed": true,
+    "clean_wheel_and_sdist_installs": true,
+    "strict_core_research_export_typing": true,
+    "lint_and_format": true,
+    "hosted_ci": "not_assessed"
+  },
+  "browser": {
+    "desktop_width": 1440,
+    "mobile_viewport": 390,
+    "mobile_document_width": 390,
+    "mobile_legend_width": 373,
+    "keyboard_inspection": "Original #1, observed at step0; dormant state shown",
+    "production_playback": "63\u219264, no /api/solve requests",
+    "graph_control": {
+      "has_hierarchy": false,
+      "label": "Active workspace"
+    },
+    "reduced_motion_same_counts": true,
+    "canvas_unsuccessful_run": {
+      "seed": 25004,
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "cursor": "255/255",
+      "status": "Action limit"
+    },
+    "opening": {
+      "seed": 25003,
+      "decision": 63,
+      "sources": 229,
+      "active": 64,
+      "dormant": 165,
+      "recovered": 6,
+      "returned": 11,
+      "display_samples": 18146
+    },
+    "application_errors_observed": []
+  },
+  "deployment": {
+    "name": "Memory Observatory",
+    "url": "https://recall-observatory.vercel.app",
+    "id": "dpl_8kNLLV6xHr7tB8xnBYdokEZkgyP6",
+    "target": "production",
+    "status": "READY",
+    "framework": "static Build Output API",
+    "anonymous_access_verified": true,
+    "public_evidence_endpoints_verified": true,
+    "security_headers_verified": true,
+    "fresh_solver_post_status": 405,
+    "mode": "recorded",
+    "public_runs": 96,
+    "unsuccessful_runs_included": 8,
+    "git_autodeploy": "disconnected",
+    "domain_follows_production": true,
+    "repository_visibility": "PRIVATE",
+    "package_release": false
+  },
+  "upload_manifest_sha256": "721fad07fc3a1f29edddedaef1287b824afe3703e017a5132db4e78aabfebde5"
+}

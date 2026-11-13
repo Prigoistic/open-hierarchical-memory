@@ -8,11 +8,21 @@ from typing import Any
 from research.replay_dashboard import read_json
 
 DATASET = "task-support-v1"
+DATASETS = (DATASET, "task-support-v2")
 PREFIX = "persistent_support_"
 
 
 def catalog(root: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    base = root / "experiments" / DATASET
+    rows, summaries = [], []
+    for dataset in DATASETS:
+        r, s = _catalog(root, dataset)
+        rows.extend(r)
+        summaries.extend(s)
+    return rows, summaries
+
+
+def _catalog(root: Path, dataset: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    base = root / "experiments" / dataset
     if not (base / "report.json").exists() or not (base / "INDEPENDENT_AUDIT.json").exists():
         return [], []
     report = read_json(base / "report.json")
@@ -37,13 +47,13 @@ def catalog(root: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
         rows.append(
             {
                 **r,
-                "uid": "minigrid:" + DATASET + ":" + r["file"],
+                "uid": "minigrid:" + dataset + ":" + r["file"],
                 "task": "minigrid",
-                "dataset": DATASET,
+                "dataset": dataset,
                 "environment_id": r["environment"],
                 "reader": method,
                 "config": method,
-                "split": r["environment"] + "/" + DATASET,
+                "split": r["environment"] + "/" + dataset,
                 "level_id": r["seed"],
                 "expansion_limit": p["step_cap"],
                 "expanded": r["steps"],
@@ -62,7 +72,7 @@ def catalog(root: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
             summary.append(
                 {
                     "task": "minigrid",
-                    "dataset": DATASET,
+                    "dataset": dataset,
                     "environment_id": e,
                     "reader": PREFIX + c,
                     "episodes": len(subset),
@@ -72,12 +82,21 @@ def catalog(root: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     return rows, summary
 
 
-def metadata(root: Path, condition: str) -> dict[str, Any]:
-    report = read_json(root / "experiments" / DATASET / "report.json")
+def metadata(root: Path, condition: str, dataset: str = DATASET) -> dict[str, Any]:
+    report = read_json(root / "experiments" / dataset / "report.json")
     return {
         "condition": condition,
         "outcome": next(r for r in report["summary"] if r["condition"] == condition),
-        "parent": next(r for r in report["summary"] if r["condition"] == "parent"),
-        "graph_control": next(r for r in report["summary"] if r["condition"] == "connected_graph"),
+        "parent": next(
+            r
+            for r in report["summary"]
+            if r["condition"] == ("connected_zha" if dataset == "task-support-v2" else "parent")
+        ),
+        "graph_control": next(
+            r
+            for r in report["summary"]
+            if r["condition"]
+            == ("repaired_graph" if dataset == "task-support-v2" else "connected_graph")
+        ),
         "scope": "fresh 24-case comparison; ordinary graph and exact recovery are equally informed controls; no ZHA-specific success advantage",
     }

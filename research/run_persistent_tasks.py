@@ -146,6 +146,7 @@ def persistent_episode(
     workspace: WorkspaceConfig | None = None,
     on_step: Callable[[dict[str, Any]], None] | None = None,
     reader_factory: Callable[[TaskStore, str], PersistentTaskReader] | None = None,
+    progress_repairs: bool = False,
 ) -> dict[str, Any]:
     if workspace is not None and not isinstance(workspace, WorkspaceConfig):
         raise ValueError("workspace must be a validated WorkspaceConfig")
@@ -167,7 +168,7 @@ def persistent_episode(
             recovery_policy=recovery_policy,
         )
     )
-    actor = ObservationPlanner("none", injected_reader=reader)
+    actor = ObservationPlanner("none", injected_reader=reader, progress_repairs=progress_repairs)
     env = None
     rows = []
     reward_sum = 0.0
@@ -225,6 +226,7 @@ def persistent_episode(
     reopened.close()
     return {
         "environment_id": env_id,
+        "progress_repairs": progress_repairs,
         "seed": seed,
         "workspace": asdict(config),
         "context": namespace,

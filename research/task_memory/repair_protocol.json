@@ -1,0 +1,39 @@
+{
+  "format": "task-support-v2",
+  "environments": [
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-MemoryS17Random-v0"
+  ],
+  "development_seeds": [
+    23003,
+    23005
+  ],
+  "comparison_seeds": [
+    25001,
+    25002,
+    25003,
+    25004,
+    25005,
+    25006
+  ],
+  "conditions": [
+    "connected_zha",
+    "repaired_zha",
+    "repaired_exact",
+    "repaired_graph"
+  ],
+  "step_cap": 256,
+  "workspace": {
+    "capacity": 64,
+    "recovery_limit": 16,
+    "half_life": 32.0,
+    "retire_below": 0.5,
+    "max_records": 8192
+  },
+  "checkpoint": "experiments/persistent-task-v2/fitted-references.json",
+  "threshold": 0.8,
+  "cache_heads": true,
+  "scope": "Frozen fresh-seed comparison of explicit inventory support and bounded observed-path waypoints against original connected recovery; shared symbolic controller, 64 active facts and 16 cold facts per read; no learned salience or ZHA-superiority claim"
+}

@@ -3,6 +3,9 @@
   const $ = (id) => document.getElementById(id),
     labels = {
       persistent_zha: "Fitted ZHA · persistent memory",
+      persistent_support_repaired_zha: "ZHA + bounded path recovery",
+      persistent_support_repaired_exact: "Exact + bounded path recovery",
+      persistent_support_repaired_graph: "Graph + bounded path recovery",
       persistent_support_parent: "Original recovery · 64 slots",
       persistent_support_compact: "Compact path packing · 64 slots",
       persistent_support_connected_zha: "Connected ZHA · 64 slots",
@@ -51,6 +54,7 @@
     "persistent_replay_parent-cap96": "Unchanged parent · 96 slots",
     "persistent_replay_exact-cap96": "Exact recovery · 96 slots",
   });
+  const hosted = document.documentElement.dataset.hosted === "recorded";
   const initialView = new URLSearchParams(location.search);
   let pendingStep = initialView.has("step")
     ? Number(initialView.get("step"))
@@ -94,6 +98,13 @@
     const c = new AbortController(),
       t = setTimeout(() => c.abort(), 15000);
     try {
+      if (hosted && url.startsWith("/api/run?")) {
+        const id = new URL(url, location.origin).searchParams.get("id");
+        const artifact = catalog.runs.find((r) => r.uid === id)?.artifact;
+        if (!artifact || !/^\/recordings\/[a-f0-9]{64}\.json$/.test(artifact))
+          throw Error("This recording is not in the hosted manifest");
+        url = artifact;
+      }
       const r = await fetch(url, { signal: c.signal });
       const v = await r.json();
       if (!r.ok) throw Error(v.error || "Artifact request failed");
@@ -148,6 +159,9 @@
       !rows.some((r) => r.config === (preferred ?? $("config").value))
     )
       preferred = "persistent_support_connected_zha";
+    if (rows.some((r) => r.config === "persistent_support_repaired_zha") &&
+        !rows.some((r) => r.config === (preferred ?? $("config").value)))
+      preferred = "persistent_support_repaired_zha";
     opts(
       $("config"),
       unique(rows.map((r) => r.config))
@@ -170,6 +184,7 @@
     );
   }
   function datasetLabel(name) {
+    if (name === "task-support-v2") return "Progress repairs · fresh seed study";
     if (name === "task-support-v1") return "Path recovery · fresh seed study";
     if (name === "task-replay-v1") return "Routing replay · fresh seed study";
     if (name === "persistent-task-v2") return "Persistent memory · development";
@@ -200,7 +215,9 @@
   function latestCohort() {
     const all = unique(catalog.runs.map((r) => r.dataset));
     const rank = (n) =>
-      n === "persistent-task-v2"
+      n === "task-support-v2"
+        ? 160
+        : n === "persistent-task-v2"
         ? 120
         : /(?:progress|repair).*evaluation/.test(n)
           ? 100
@@ -250,6 +267,7 @@
           n === "persistent-task-v2" ||
           n === "task-replay-v1" ||
           n === "task-support-v1" ||
+          n === "task-support-v2" ||
           n === "boxoban-search-v1",
       );
     opts(

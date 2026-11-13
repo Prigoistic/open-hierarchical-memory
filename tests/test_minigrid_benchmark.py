@@ -214,7 +214,9 @@ def test_controller_has_no_environment_or_persistent_planner_map():
     )
     _, decision, _ = actor.act(observation({(3, 5): [1, 0, 0]}))
     assert decision["memory_ids"] == []
+    assert actor.progress_repairs is False
     assert set(vars(actor)) == {
+        "progress_repairs",  # Immutable policy choice, never an evidence cache.
         "reader",
         "position",
         "direction",

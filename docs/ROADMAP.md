@@ -1,6 +1,6 @@
 # Current roadmap
 
-13 November 2026. This is the current engineering/research sequence. The original engineering plan and earlier next-experiment documents remain dated historical records.
+14 November 2026. This is the current engineering/research sequence. The original engineering plan and earlier next-experiment documents remain dated historical records.
 
 ## Completed most recently
 
@@ -12,9 +12,13 @@
 - Saved study and fresh supported solves in the unified dashboard.
 - Clear package/research/evidence boundaries, contribution/license/security guidance and clean installed-artifact checks.
 
+- Occupied-hand and view-dependent packing failures repaired; exposed Key Corridor seeds23003/23005 solve in99/151 actions at unchanged capacities.
+- Frozen96-run repair comparison: all four conditions22/24; no overall success gain. Independent official/source audit passes.
+- Memory Observatory hosted on Vercel with all96 recorded runs, source inspection and explicit replay controls. Fresh solves remain local.
+
 ## Next gates, in order
 
-1. **Explain the remaining Key Corridor failures.** Retain23003/23005 as exposed diagnostics. Separate route availability, bundle admission, prerequisite handling and controller loops with intervention controls. Freeze any resulting policy before using another evaluation cohort.
+1. **Diagnose the new DoorKey failures.** The old Key Corridor regressions are fixed. Seeds25001–25006 are now exposed evaluation data: do not tune on them and reuse them as a fresh holdout. Separate evidence nomination, capacity/admission, controller loops and external-cutoff effects before another frozen cohort.
 2. **Protect useful rare evidence under delay.** Compare task-aware retention/admission with recency, current utility decay, exact recovery and ordinary graph recovery. Test conflicting corrections, distractions and equal active/return limits; charge extra metadata and archive access. A rare-cue heuristic is not learned salience.
 3. **Make replay improve task behavior.** Define a source-grounded, task-useful learning target and demonstrate fresh-case benefit beyond routing KL and strong untrained controls. Preserve unchanged and no-replay ablations. Do not train/select on the current reported cases.
 4. **Optimize measured end-to-end costs.** Profile index rebuilds, repeated serialization/decoding, graph construction and planner work. Cache parity is established only for its declared scope. Incremental tree updates require snapshot/route equivalence at append/correction boundaries before any throughput claim.
@@ -23,4 +27,4 @@
 
 ## Release position
 
-Prepare the source and demonstration for review. Public repository visibility, a release tag/package publication and an X post remain explicit publishing steps. Local gates cannot establish a successful hosted run. Avoid firstness, speed, general intelligence, biological dreaming or ZHA-superiority claims without new corresponding evidence.
+The public recorded viewer is deployed at https://recall-observatory.vercel.app. The repository remains private. A repository visibility change, release tag/package publication and X post remain separate publishing steps. Local gates cannot establish a successful hosted run. Avoid firstness, speed, general intelligence, biological dreaming or ZHA-superiority claims without new corresponding evidence.

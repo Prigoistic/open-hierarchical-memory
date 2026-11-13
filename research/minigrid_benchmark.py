@@ -511,10 +511,12 @@ class ObservationPlanner:
         capacity: int = 96,
         *,
         injected_reader: ContextualFactReader | None = None,
+        progress_repairs: bool = False,
     ) -> None:
         self.reader: FactReader | ContextualFactReader = (
             injected_reader if injected_reader is not None else FactReader(reader, capacity)
         )
+        self.progress_repairs = progress_repairs
         self.position = (0, 0)
         self.direction: int | None = None
         self.previous_action: int | None = None
@@ -570,8 +572,13 @@ class ObservationPlanner:
             if past is not None and (past.object, past.color) == (cell.object, cell.color):
                 cell = replace(cell, cue=cell.cue or past.cue)
             view[cell.position] = cell
+        waypoint = None
+        if self.progress_repairs and receipt is not None and receipt.get("waypoint_id"):
+            waypoint = next((f for f in recalled if f.id == receipt["waypoint_id"]), None)
+            if waypoint is None:
+                raise ValueError("waypoint is not an explicitly returned fact")
         action, objective, goal, sources, plan = self._plan(
-            view, inventory, obs["mission"], known_coverage=coverage
+            view, inventory, obs["mission"], known_coverage=coverage, waypoint=waypoint
         )
         assert self.direction is not None
         dx, dy = DIRECTIONS[self.direction]
@@ -613,6 +620,7 @@ class ObservationPlanner:
         mission: str,
         *,
         known_coverage: KnownCoverage | None = None,
+        waypoint: Fact | None = None,
     ) -> tuple[int, str, tuple[int, int] | None, list[int], list[tuple[int, int]]]:
         assert self.direction is not None
         matching = "matching" in mission
@@ -724,6 +732,40 @@ class ObservationPlanner:
                             sources,
                             route,
                         )
+                    if self.progress_repairs:
+                        # A pickup with occupied hands cannot succeed. Seek a
+                        # drop site using only this read's admitted raw facts.
+                        staging = []
+                        for standing in parent:
+                            for facing, (dx, dy) in enumerate(DIRECTIONS):
+                                empty = view.get((standing[0] + dx, standing[1] + dy))
+                                if (
+                                    empty is not None
+                                    and empty.object == 1
+                                    and empty.position != self.position
+                                ):
+                                    approach = path(standing)
+                                    staging.append(
+                                        (len(approach), standing, facing, approach, empty)
+                                    )
+                        if staging:
+                            _, standing, facing, approach, empty = min(staging, key=lambda x: x[:3])
+                            if len(approach) > 1:
+                                return (
+                                    self._move(approach[1], view),
+                                    "seek-drop-space",
+                                    standing,
+                                    sources,
+                                    approach,
+                                )
+                            return (
+                                (4 if facing == self.direction else self._turn(facing)),
+                                "drop-for-pickup",
+                                standing,
+                                sources,
+                                approach,
+                            )
+                        return 1, "scan-for-drop-space", None, sources, [self.position]
                 return (
                     (3 if desired == self.direction else self._turn(desired)),
                     "pickup-target",
@@ -731,6 +773,25 @@ class ObservationPlanner:
                     sources,
                     route,
                 )
+        if waypoint is not None:
+            actual = view.get(waypoint.position)
+            if (
+                not self.progress_repairs
+                or actual is None
+                or (actual.object, actual.color, actual.state)
+                != (waypoint.object, waypoint.color, waypoint.state)
+            ):
+                raise ValueError("invalid admitted waypoint")
+            if waypoint.position in parent:
+                route = path(waypoint.position)
+                if len(route) > 1:
+                    return (
+                        self._move(route[1], view),
+                        "follow-observed-waypoint",
+                        waypoint.position,
+                        [waypoint.id],
+                        route,
+                    )
         visits = Counter(self.recent)
         frontiers = []
         for point in parent:

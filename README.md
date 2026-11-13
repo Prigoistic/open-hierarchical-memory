@@ -8,7 +8,15 @@ A maze-solving agent can retain a landmark and still lose the observed path need
 
 **Development research reference.** The installed attention library supports CPU float64 and the no-positional-encoding ZHA construction. The task demos use a shared symbolic planner. This is not a converted language model or a production agent-memory service.
 
+**[Open Memory Observatory](https://recall-observatory.vercel.app)** to inspect all 96 runs of the latest comparison, including failures. This hosted viewer replays genuine recorded decisions; fresh Python solves run locally.
+
 ## Latest measured result
+
+The original two Key Corridor failures are repaired in exposed development checks: **99 and 151 actions**, within the same 64 active facts and 16 newly recovered facts per read. The fixes add occupied-hand drop support and explicitly admitted observed-path waypoints.
+
+A separately frozen comparison on seeds 25001–25006 contains **96 runs over 24 initial worlds**. Original connected ZHA and all three repaired ZHA/exact/graph conditions each solve **22/24**. This shows no overall success-rate gain or ZHA-specific advantage. Remaining failures are in DoorKey. [Results and limitations](experiments/task-support-v2/SUMMARY.md).
+
+## Earlier path-support comparison
 
 Four official MiniGrid task families, six new seeds and five conditions: **120 runs over 24 initial worlds**.
 
@@ -20,7 +28,7 @@ Four official MiniGrid task families, six new seeds and five conditions: **120 r
 | Connected exact recovery | 22/24 | 64 facts |
 | Connected graph recovery | 22/24 | 64 facts |
 
-The improvement is available path support. Exact and graph controls match ZHA. Connector scans, graph search, archive/index storage and cached heads are additional costs; equal active capacity does not mean equal total memory or compute. Two Key Corridor failures remain. [Full results, costs and limitations](experiments/task-support-v1/SUMMARY.md).
+The improvement is available path support. Exact and graph controls match ZHA. Connector scans, graph search, archive/index storage and cached heads are additional costs; equal active capacity does not mean equal total memory or compute. The two Key Corridor failures in this frozen study were subsequently repaired in exposed development diagnostics. [Full results, costs and limitations](experiments/task-support-v1/SUMMARY.md).
 
 ## What is implemented
 
@@ -36,7 +44,7 @@ Replay reduced fresh-prefix routing KL by 14.9% in its own study but did not imp
 
 ## Run locally
 
-The dashboard runs on your computer. No hosted interactive demo is currently provided; the screenshot and linked experiment reports above can be viewed directly on GitHub.
+The hosted viewer offers recorded experiments. Run the dashboard on your own computer to execute fresh solves and retain local SQLite archives. Repository access is required while this checkout is private.
 
 On macOS or Linux, install Python 3.12 or 3.13 and [uv](https://docs.astral.sh/uv/getting-started/installation/), then run:
 
@@ -49,7 +57,7 @@ make dashboard
 
 Keep that terminal running. The server prints a browser address for your local dashboard; open that address on the same computer.
 
-In the dashboard, choose **Run & query → Saved study → Path recovery · fresh seed study** to inspect the completed comparison. Choose a task and method, then press **Run solver** to start a fresh episode. The maze, memory layers and retrieval hierarchy share one timeline.
+In the dashboard, choose **Run & query → Saved study → Progress repairs · fresh seed study** to inspect the completed comparison. Choose a task and method, then press **Run solver** to start a fresh episode. The maze, memory layers and retrieval hierarchy share one timeline.
 
 Recorded studies and fresh execution are labelled separately. The continuous-world dynamics learner is a separate experiment available through advanced tools; maze runs do not train its networks. Node.js is needed only for renderer tests and rebuilds, not to start the dashboard.
 

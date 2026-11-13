@@ -37,6 +37,7 @@ class SupportTaskReader(PersistentTaskReader):
         budget: QueryBudget | None = None,
         support_mode: SupportMode = "connected",
         cache_heads: bool = True,
+        progress_repairs: bool = False,
     ) -> None:
         if support_mode not in ("compact", "connected") or type(cache_heads) is not bool:
             raise ValueError("invalid support policy")
@@ -48,6 +49,9 @@ class SupportTaskReader(PersistentTaskReader):
             recovery_policy=recovery_policy,
             budget=budget,
         )
+        if type(progress_repairs) is not bool:
+            raise ValueError("progress_repairs must be boolean")
+        self.progress_repairs = progress_repairs
         self.support_mode, self.cache_heads = support_mode, cache_heads
         self._head_version = -1
         self._head_cache: tuple[Fact, ...] = ()
@@ -60,6 +64,8 @@ class SupportTaskReader(PersistentTaskReader):
                     "connector_cache_payload_bytes_peak",
                     "connector_recovered_facts",
                     "compact_attempts",
+                    "drop_space_checks",
+                    "waypoint_path_checks",
                 ),
                 0,
             )
@@ -94,10 +100,26 @@ class SupportTaskReader(PersistentTaskReader):
         self.work["compact_attempts"] += 1
         graph = ObservedGraph(heads, context, self.support.work)
         nominated = self.support._nominate(seeds, graph, context, known_coverage=coverage)
+        if self.progress_repairs and context.inventory is not None:
+            held = context.inventory
+            colors = frozenset([held[1]]) if held[0] == 5 else frozenset()
+            reachable = graph.search(colors)
+            distance = {context.position: 0}
+            for point, previous in reachable.items():
+                self.work["drop_space_checks"] += 1
+                if previous is not None:
+                    distance[point] = distance[previous] + 1
+            choices = []
+            for f in heads:
+                self.work["drop_space_checks"] += 1
+                if f.object == 1 and f.position != context.position and f.position in reachable:
+                    choices.append((distance[f.position], f.id, f))
+            if choices:
+                nominated.insert(0, (min(choices, key=lambda x: x[:2])[2], "drop_space"))
         cues = [f for f in heads if f.cue and f.object in (5, 6)]
         cue = min(cues, key=lambda f: (f.first_seen, f.id)) if cues else None
         packed: set[int] = set()
-        receipts = []
+        receipts: list[dict[str, Any]] = []
         for seed, kind in nominated:
             b = graph.bundle(seed, kind, (cue,) if kind == "matching_landmark" and cue else ())
             # Known-only coverage already suppresses false frontiers. Halos are
@@ -141,6 +163,69 @@ class SupportTaskReader(PersistentTaskReader):
                     "scope": "compact path support; optional halo omitted",
                 }
             )
+        useful = any(
+            b["status"] == "complete" and b["kind"] not in ("cue", "drop_space") for b in receipts
+        )
+        if self.progress_repairs and not useful:
+            for candidate_bundle in receipts.copy():
+                if (
+                    candidate_bundle["status"] != "overbudget"
+                    or candidate_bundle["missing"]
+                    or candidate_bundle["prerequisite_ids"]
+                    or candidate_bundle["semantic_support_ids"]
+                    or candidate_bundle["kind"] == "drop_space"
+                ):
+                    continue
+                # Admit a contiguous observed path prefix, never a shortcut
+                # through omitted cells. The controller sees only its endpoint.
+                prefix: list[int] = []
+                for identifier in candidate_bundle["paths"][0] if candidate_bundle["paths"] else []:
+                    self.work["waypoint_path_checks"] += 1
+                    fact = graph.by_id[identifier]
+                    if (
+                        fact.object == 4
+                        and fact.state == 2
+                        and context.inventory != (5, fact.color)
+                    ):
+                        break
+                    candidate = (set(prefix) | {identifier}) - current
+                    if (
+                        len(candidate | current) > self.store.config.capacity
+                        or len(candidate - active) > self.store.config.recovery_limit
+                    ):
+                        break
+                    prefix.append(identifier)
+                while prefix and prefix[-1] in current:
+                    prefix.pop()
+                if len(prefix) < 2:
+                    continue
+                required = set(prefix)
+                packed = required - current
+                receipts.append(
+                    {
+                        "seed_id": prefix[-1],
+                        "requested_seed_id": candidate_bundle["seed_id"],
+                        "kind": "waypoint",
+                        "status": "complete",
+                        "required_ids": sorted(required),
+                        "historical_ids": sorted(packed),
+                        "path_ids": sorted(required),
+                        "paths": [prefix],
+                        "support_edges": [list(e) for e in zip(prefix, prefix[1:], strict=False)],
+                        "prerequisite_ids": [],
+                        "semantic_support_ids": [],
+                        "missing": [],
+                        "omitted_ids": [],
+                        "candidate_packed_count": len(packed | current),
+                        "cold_count": len(packed - active),
+                        "scope": "bounded observed-path prefix; requested target is not fully admitted",
+                    }
+                )
+                # Earlier complete cue/drop bundles are not part of this read.
+                receipts = [
+                    r for r in receipts if r["status"] != "complete" or r["kind"] == "waypoint"
+                ]
+                break
         return [graph.by_id[i] for i in sorted(packed)], receipts
 
     def select_with_context(
@@ -199,7 +284,9 @@ class SupportTaskReader(PersistentTaskReader):
             "seed_ids": [],
             "recovered_ids": [],
         }
-        progress = any(b["status"] == "complete" and b["kind"] != "cue" for b in bundles)
+        progress = any(
+            b["status"] == "complete" and b["kind"] not in ("cue", "drop_space") for b in bundles
+        )
         if (
             self.support_mode == "connected"
             and not progress
@@ -269,6 +356,15 @@ class SupportTaskReader(PersistentTaskReader):
             "active_capacity": self.store.config.capacity,
             "raw_fact_budget": self.store.config.capacity,
             "support_mode": self.support_mode,
+            "progress_repairs": self.progress_repairs,
+            "waypoint_id": next(
+                (
+                    b["seed_id"]
+                    for b in bundles
+                    if b["kind"] == "waypoint" and b["status"] == "complete"
+                ),
+                None,
+            ),
             "coverage_scope": "observed-known bits only; no cold payload/passability",
             "work_delta": {k: v - before.get(k, 0) for k, v in self.costs.items()},
             "scope": "connector graph can inspect cold observed heads; planner receives only promoted raw facts",

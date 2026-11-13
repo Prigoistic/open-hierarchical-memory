@@ -88,7 +88,9 @@ def layout_identity(env_id: str, seed: int) -> str:
         env.close()
 
 
-def main() -> None:
+def main(
+    *, protocol: dict[str, Any] = PROTOCOL, runner: Callable[..., dict[str, Any]] = run
+) -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args()
@@ -104,7 +106,7 @@ def main() -> None:
         + sorted((ROOT / "research").glob("*.py"))
         + sorted((ROOT / "research/task_memory").glob("*.py"))
         + [
-            ROOT / "research/task_memory/protocol.json",
+            *sorted((ROOT / "research/task_memory").glob("*.json")),
             ROOT / "research/persistent_task_protocol.json",
             ROOT / "scripts/audit_task_support.py",
             ROOT / "scripts/audit_persistent_tasks.py",
@@ -118,13 +120,13 @@ def main() -> None:
         target = out / "source-snapshot" / source.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(source.read_bytes())
-    save_json(out / "protocol.json", PROTOCOL)
-    checkpoint = RouterCheckpoint.load(ROOT / PROTOCOL["checkpoint"])
+    save_json(out / "protocol.json", protocol)
+    checkpoint = RouterCheckpoint.load(ROOT / protocol["checkpoint"])
     checkpoint.save(out / "references.json")
     save_json(
         out / "manifest.json",
         {
-            "protocol_hash": digest(PROTOCOL),
+            "protocol_hash": digest(protocol),
             "sources": hashes,
             "versions": require_versions(),
             "python": platform.python_version(),
@@ -135,21 +137,21 @@ def main() -> None:
     )
     identities = {
         (env, seed): layout_identity(env, seed)
-        for env in PROTOCOL["environments"]
-        for seed in PROTOCOL["comparison_seeds"]
+        for env in protocol["environments"]
+        for seed in protocol["comparison_seeds"]
     }
     rows = []
-    for condition in PROTOCOL["conditions"]:
-        for env in PROTOCOL["environments"]:
-            for seed in PROTOCOL["comparison_seeds"]:
+    for condition in protocol["conditions"]:
+        for env in protocol["environments"]:
+            for seed in protocol["comparison_seeds"]:
                 stem = f"{condition}-{env}-{seed}"
-                e = run(
+                e = runner(
                     condition,
                     out / "archives" / f"{stem}.sqlite",
                     env,
                     seed,
                     checkpoint,
-                    cap=PROTOCOL["step_cap"],
+                    cap=protocol["step_cap"],
                 )
                 e["evaluator_layout_identity"] = identities[env, seed]
                 artifact = save_trace(out / f"{stem}.json.gz", e)
@@ -173,7 +175,7 @@ def main() -> None:
         if hashlib.sha256((ROOT / path).read_bytes()).hexdigest() != checksum:
             raise RuntimeError("source changed during experiment")
     summary = []
-    for c in PROTOCOL["conditions"]:
+    for c in protocol["conditions"]:
         subset = [r for r in rows if r["condition"] == c]
         work: Counter[str] = Counter()
         for r in subset:
@@ -199,12 +201,12 @@ def main() -> None:
         out / "report.json",
         {
             "complete": True,
-            "protocol_hash": digest(PROTOCOL),
+            "protocol_hash": digest(protocol),
             "summary": summary,
             "runs": rows,
             "unique_initial_worlds": len(set(identities.values())),
             "source_hashes_unchanged": True,
-            "scope": PROTOCOL["scope"],
+            "scope": protocol["scope"],
         },
     )
     print(json.dumps(summary, indent=2), flush=True)

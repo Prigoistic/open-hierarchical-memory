@@ -16,6 +16,7 @@ from research.minigrid_benchmark import serial_observation
 from research.persistent_task_memory import Backend, RecoveryPolicy
 from research.run_minigrid_benchmark import environment
 from research.run_persistent_tasks import persistent_episode
+from research.task_memory.run_repairs import run as run_support_repairs
 from research.task_memory.run_study import run as run_support_study
 from research.task_references import GEOMETRY, RouterCheckpoint, digest
 
@@ -37,9 +38,9 @@ METHODS.update(
             "support_" + condition,
             "fitted",
             "exact"
-            if condition == "connected_exact"
+            if condition.endswith("exact")
             else "none"
-            if condition == "connected_graph"
+            if condition.endswith("graph")
             else "zha",
             "on_stall",
         )
@@ -49,6 +50,9 @@ METHODS.update(
             "connected_zha",
             "connected_exact",
             "connected_graph",
+            "repaired_zha",
+            "repaired_exact",
+            "repaired_graph",
         )
     }
 )
@@ -222,7 +226,12 @@ def run_solve(
         on_step(packet, trace.snapshots, trace.events)
 
     if method.startswith("persistent_support_"):
-        result = run_support_study(
+        support_runner = (
+            run_support_repairs
+            if method.startswith("persistent_support_repaired_")
+            else run_support_study
+        )
+        result = support_runner(
             method.removeprefix("persistent_support_"),
             path,
             environment,

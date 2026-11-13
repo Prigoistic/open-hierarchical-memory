@@ -1,0 +1,9 @@
+{
+  "all_passed": true,
+  "runs": 4,
+  "decisions": 762,
+  "routes": 436,
+  "numerical_route_cases": 4,
+  "connector_reads": 185,
+  "scope": "official actions, observed/correction/source/capacity lineage, connector seed origins, packed path edges and sampled scalar routing; not a full policy or semantic proof"
+}

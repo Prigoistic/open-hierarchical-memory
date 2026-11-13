@@ -1,0 +1,30 @@
+{
+  "format": "task-support-repair-diagnostics-v1",
+  "environments": [
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "development_seeds": [
+    23003,
+    23005
+  ],
+  "comparison_seeds": [
+    23003,
+    23005
+  ],
+  "conditions": [
+    "connected_zha",
+    "repaired_zha"
+  ],
+  "step_cap": 256,
+  "workspace": {
+    "capacity": 64,
+    "recovery_limit": 16,
+    "half_life": 32.0,
+    "retire_below": 0.5,
+    "max_records": 8192
+  },
+  "checkpoint": "experiments/persistent-task-v2/fitted-references.json",
+  "threshold": 0.8,
+  "cache_heads": true,
+  "scope": "Exposed development regressions, not a fresh evaluation: original connected policy versus reviewed inventory and path-prefix repairs"
+}

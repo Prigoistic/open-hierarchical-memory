@@ -1,5 +1,6 @@
 "use strict";
 (() => {
+  const hosted = document.documentElement.dataset.hosted === "recorded";
   const $ = (id) => document.getElementById(id),
     frames = { tasks: $("task-frame"), memory: $("memory-frame") },
     controllers = {},
@@ -52,7 +53,7 @@
       "MEMORY MAP";
     $("legend-caption").textContent = "COLOUR / RETURNS";
   }
-  const requestedSolve = new URLSearchParams(location.search).get("solve");
+  const requestedSolve = hosted ? null : new URLSearchParams(location.search).get("solve");
   const keys = ["cohort", "suite", "level", "config", "cue", "routing-pass"];
   const text = (id, value) => {
     const el = $(id);
@@ -193,7 +194,7 @@
         ? "Fresh solve"
         : s.address?.dataset === "task-replay-v1"
           ? "Recorded replay retest"
-          : s.address?.dataset === "task-support-v1"
+          : ["task-support-v1", "task-support-v2"].includes(s.address?.dataset)
             ? "Recorded support study"
             : s.address?.dataset === "persistent-task-v2"
               ? "Saved development"
@@ -207,6 +208,9 @@
       "persistent_always",
       "persistent_exact",
       "persistent_none",
+      "persistent_support_repaired_zha",
+      "persistent_support_repaired_exact",
+      "persistent_support_repaired_graph",
       "persistent_support_parent",
       "persistent_support_compact",
       "persistent_support_connected_zha",
@@ -242,6 +246,11 @@
             ? "Run a fresh maze. Both structures follow each decision."
             : "Saved puzzle example. Choose a maze for a fresh solve.",
       );
+    if (hosted) {
+      $("solve").disabled = !s.ready;
+      text("solve", s.playing ? "PAUSE REPLAY Ⅱ" : "PLAY EXPERIMENT ▷");
+      text("solve-status", "Recorded official experiment. Playback speed is independent of solver timing.");
+    }
     for (const key of keys)
       options(
         "task-" + key,
@@ -988,6 +997,7 @@
     }
   }
   $("solve").onclick = async () => {
+    if (hosted) return command("tasks", "play");
     if (solveRequest) return;
     solveRequest = true;
     $("solve").disabled = true;
@@ -1171,11 +1181,11 @@
   const params = new URLSearchParams(location.search),
     defaults = {
       task: "maze",
-      dataset: "persistent-task-v2",
-      reader: "persistent_zha",
-      seed: "9001",
+      dataset: hosted ? "task-support-v2" : "persistent-task-v2",
+      reader: hosted ? "persistent_support_repaired_zha" : "persistent_zha",
+      seed: hosted ? "25003" : "9001",
       env: "MiniGrid-KeyCorridorS6R3-v0",
-      step: "42",
+      step: hosted ? "63" : "42",
       view: "layers",
     };
   const taskParams = new URLSearchParams(
@@ -1184,7 +1194,12 @@
       params.get(key) || value,
     ]),
   );
-  const requestedMemoryView = params.get("memory_view");
+  if (hosted) {
+    for (const id of ["solve-seed", "solve-cap"]) $(id).closest("label").hidden = true;
+    $("memory-source").closest("details").hidden = true;
+    $("memory-source").disabled = true;
+  }
+  const requestedMemoryView = params.get("memory_view") || (hosted ? "cloud" : null);
   if (["activity", "cloud", "layers", "plane"].includes(requestedMemoryView))
     $("memory-view").value =
       requestedMemoryView === "cloud" && !episodeView

@@ -1,0 +1,67 @@
+{
+  "version": "persistent-task-v2-gated",
+  "scope": "development refinement on the exposed v1 comparison cohort; no fresh policy-generalization claim",
+  "training_seeds": [
+    0,
+    1
+  ],
+  "validation_seeds": [
+    2
+  ],
+  "comparison_seeds": [
+    9001,
+    9002
+  ],
+  "environments": [
+    "MiniGrid-MemoryS17Random-v0",
+    "MiniGrid-MultiRoom-N6-v0",
+    "MiniGrid-DoorKey-16x16-v0",
+    "MiniGrid-KeyCorridorS6R3-v0"
+  ],
+  "collection_reader": "graph",
+  "step_cap": 256,
+  "samples_per_episode": 6,
+  "fitting_steps": 40,
+  "fitting_seed": 7,
+  "fitting_learning_rate": 0.01,
+  "reference_count": 8,
+  "chunk_size": 4,
+  "depth": 3,
+  "threshold": 0.8,
+  "workspace": {
+    "capacity": 96,
+    "recovery_limit": 16,
+    "half_life": 32.0,
+    "retire_below": 0.5,
+    "max_records": 8192
+  },
+  "ageing": {
+    "every_actions": 16,
+    "additional_ticks": 16
+  },
+  "conditions": [
+    "no_recovery",
+    "always_fixed_zha",
+    "fixed_zha",
+    "random_zha",
+    "fitted_zha",
+    "exact"
+  ],
+  "context_contract": "one world revision/reset and relative coordinate frame; namespaces never pool raw maps across resets",
+  "current_observations": "part of the active capacity; current perception is explicitly refreshed before recovery",
+  "graph_scope": "active and explicitly recovered canonical heads only; no all-bank support scan",
+  "archive_index": "growing in-memory owned numerical snapshot rebuilt after canonical-head changes; all build payloads/time/bytes charged",
+  "correction": "append new version; exclude superseded records and rebuild archive index",
+  "sleep": "not included in this slice",
+  "numerical_duplicates": "drop exact Q/K duplicates within/across train, validation and comparison in that order; no label-based filtering",
+  "recovery_gate": {
+    "policy": "on_stall except explicitly always_fixed_zha",
+    "new_mission": true,
+    "repeated_pose_after_stable_coverage_reads": 8,
+    "hard_stable_coverage_reads": 24,
+    "cooldown_reads": 8,
+    "history_limit": 24,
+    "signal": "unchanged observed-coordinate coverage; not a claim of semantic novelty"
+  },
+  "coverage_frontier": "known omitted cells never nominate an unexplored frontier; coverage still adds no traversable payload"
+}
