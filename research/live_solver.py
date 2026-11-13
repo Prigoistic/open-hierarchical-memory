@@ -15,7 +15,13 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
-from research.persistent_dashboard import METHODS, ROOT, checkpoint_for, run_solve
+from research.persistent_dashboard import (
+    METHODS,
+    ROOT,
+    active_capacity_for,
+    checkpoint_for,
+    run_solve,
+)
 from research.run_minigrid_benchmark import ENVIRONMENTS
 from research.run_progress_benchmark import CONDITIONS, run_episode
 from research.task_references import RouterCheckpoint
@@ -92,7 +98,7 @@ class LiveSolver:
                     "archive_id": None,
                     "reference_kind": self.checkpoint.kind,
                     "reference_hash": self.checkpoint.sha256,
-                    "active_capacity": 96,
+                    "active_capacity": active_capacity_for(reader),
                 },
                 "result": None,
                 "reason": None,

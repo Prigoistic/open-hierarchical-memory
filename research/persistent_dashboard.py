@@ -16,6 +16,7 @@ from research.minigrid_benchmark import serial_observation
 from research.persistent_task_memory import Backend, RecoveryPolicy
 from research.run_minigrid_benchmark import environment
 from research.run_persistent_tasks import persistent_episode
+from research.task_memory.run_study import run as run_support_study
 from research.task_references import GEOMETRY, RouterCheckpoint, digest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,6 +30,34 @@ METHODS: dict[str, tuple[str, str, Backend, RecoveryPolicy]] = {
     "persistent_exact": ("exact", "fixed", "exact", "on_stall"),
     "persistent_none": ("no_recovery", "fixed", "none", "on_stall"),
 }
+
+METHODS.update(
+    {
+        "persistent_support_" + condition: (
+            "support_" + condition,
+            "fitted",
+            "exact"
+            if condition == "connected_exact"
+            else "none"
+            if condition == "connected_graph"
+            else "zha",
+            "on_stall",
+        )
+        for condition in (
+            "parent",
+            "compact",
+            "connected_zha",
+            "connected_exact",
+            "connected_graph",
+        )
+    }
+)
+
+
+def active_capacity_for(method: str) -> int:
+    if method not in METHODS:
+        raise ValueError("unsupported persistent method")
+    return 64 if method.startswith("persistent_support_") else 96
 
 
 def checkpoint_for(method: str, root: Path = ROOT) -> RouterCheckpoint:
@@ -192,20 +221,32 @@ def run_solve(
         packet = trace.row(row)
         on_step(packet, trace.snapshots, trace.events)
 
-    result = persistent_episode(
-        path,
-        environment,
-        seed,
-        checkpoint,
-        backend,
-        step_cap,
-        recovery_policy=policy,
-        on_step=publish,
-    )
+    if method.startswith("persistent_support_"):
+        result = run_support_study(
+            method.removeprefix("persistent_support_"),
+            path,
+            environment,
+            seed,
+            checkpoint,
+            cap=step_cap,
+            on_step=publish,
+        )
+    else:
+        result = persistent_episode(
+            path,
+            environment,
+            seed,
+            checkpoint,
+            backend,
+            step_cap,
+            recovery_policy=policy,
+            on_step=publish,
+        )
     result["memory"] = {
         "archive_id": path.parent.name,
         "originals": len(result["archive"]),
         "active": len(result["active_ids"]),
+        "active_capacity": active_capacity_for(method),
         "restart_state_equal": result["restart_state_equal"],
         "reference_kind": checkpoint.kind,
         "reference_hash": checkpoint.sha256,

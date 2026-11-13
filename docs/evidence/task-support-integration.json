@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-13",
+  "scope": "compact observed support, explicit cold graph recovery, same-version head-cache optimization, unified study/live dashboard and local release preparation",
+  "sources": {
+    "research/task_memory/support.py": "67d7b204bfdffa0cc64f31c617e6cb092f5ef8cb702a44383e1d630b732494cf",
+    "research/task_memory/diagnosis.py": "14f0fc469c4669ca95d4411a5c827bbc5571c4cc391440432bd73d9905358880",
+    "research/task_memory/run_study.py": "23755d6ae24f0158b9501958a1f3127e3e5c62d759323fb91d3ecd588b34ce1c",
+    "research/task_memory/protocol.json": "c4926ddbdc6a8fc7ea4a9180e5874694abe826a72230e28bd89f3c62c1b15a02",
+    "research/task_memory/presentation.py": "ef2132fa4739b4821bc5f85cd9fafedb9c159bdcfa36f7eb0c05dd71cfb00575",
+    "research/task_memory/profile_cache.py": "1eb4c20ced868a5e88402966e2d39502e1e5719b3bf96ff31fa281c9ba26a5d7",
+    "research/run_persistent_tasks.py": "2283646427ab2b852901031b700849593299753bfbdaae9bf9889c05944529ab",
+    "research/persistent_dashboard.py": "fb78971a0fc22cfb2882e3b4495ac467ff55e674537b93b7b86f57a8d28502c8",
+    "research/live_solver.py": "b86c234887a6720f23225ca0eb1f48eae231c4acb22d69cfcd66f2eb911f3727",
+    "research/serve_task_benchmark.py": "92637a63ac41b423de68f4d257c6434996f566723ab0f43002ef9e4b4fcbcae6",
+    "scripts/audit_task_support.py": "822525787c8adb535df4dead482d2edcb469e934f664fd27d1b97d8e8334a463",
+    "scripts/check_package.py": "0ab7ef94e57b84373a764214df7c6de837a45979c8a761d2dbacc9326126761d",
+    "scripts/verify.py": "e5e16c415d1644ab9c6081264b628001167e117cdeb500ed94df7891a6df2190",
+    "pyproject.toml": "dbc1640c621893cc0dfbb37819c0700a8f13050beb2f069531d218d3e4f98f7d",
+    ".github/workflows/verify.yml": "c35393351ab1220d3c4b36a77d6fee9e4111a0f33a5816a3c5704b708849d7fe",
+    "web/dashboard/app.js": "f0237d2a5b0b263d6d0054389d577a1286f4b7393d58c186ba32980ea8edfa9b",
+    "web/dashboard/index.html": "fd5e06dbfa1b592fb6d44bcf2e8ffc8b4b6dd4cae609eb275cf410d59990b925",
+    "web/task-lab/app.js": "9ed04fceb4f51d5bf8bc1532a9f0eb91ecea221c1926c136cfbe2469256e29c5"
+  },
+  "report_sha256": "2b4207f4658a4b36ca71e75bf53206f06f4391d423db3322d3f0bf117b7dd2f1",
+  "protocol_sha256": "c791b8285f34a997753631ab2f051aea30e20d115571634118b5b1e4266860df",
+  "independent_audit": {
+    "all_passed": true,
+    "runs": 120,
+    "decisions": 10176,
+    "routes": 1464,
+    "numerical_route_cases": 63,
+    "connector_reads": 561,
+    "scope": "official actions, observed/correction/source/capacity lineage, connector seed origins, packed path edges and sampled scalar routing; not a full policy or semantic proof"
+  },
+  "verification": {
+    "python_tests": 504,
+    "visual_tests": 33,
+    "full_gate_commands": 26,
+    "full_gate_all_passed": true,
+    "two_clean_installs": true,
+    "actionlint": "1.7.12 passed; checksum-verified official binary",
+    "hosted_ci": "not_assessed"
+  },
+  "browser": {
+    "desktop_viewport": [
+      1600,
+      1000
+    ],
+    "recording_viewport": [
+      1920,
+      1080
+    ],
+    "mobile": {
+      "viewport_width": 390,
+      "document_width": 390,
+      "controls_open": true,
+      "live_solve_action_enabled": true
+    },
+    "source_event": {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 23004,
+      "decision": 58,
+      "observed_heads_scanned": 229,
+      "cold_admitted": 9,
+      "historical_returned": 14,
+      "active": "64 / 64"
+    },
+    "parent_control": {
+      "solved": "15/24",
+      "retained_status": "Action limit"
+    },
+    "connected_controls": {
+      "solved": "22/24",
+      "graph": "22/24"
+    },
+    "fresh_solve": {
+      "seed": 23004,
+      "method": "persistent_support_connected_zha",
+      "actions": 81,
+      "success": true,
+      "active_capacity": 64
+    },
+    "application_errors": []
+  },
+  "media": {
+    "duration_seconds": 27.5,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "repeated_sequence": false,
+    "sha256": "a72b7579cad82a7d7fcd12e36e87121c7a5add44625b0f4ca2a2f742335b190f",
+    "local_path": "release-assets/task-memory-demo.mp4"
+  },
+  "limits": [
+    "same active capacity is not equal total memory or compute",
+    "cold connectors can scan every observed head",
+    "exact/graph controls match aggregate ZHA outcomes",
+    "two fresh cases remain failed and are preserved",
+    "cache timing is component-only",
+    "no public publication or hosted-CI success claim"
+  ],
+  "canonical_entry": "http://127.0.0.1:8792/?dataset=task-support-v1&reader=persistent_support_connected_zha&seed=23004&env=MiniGrid-KeyCorridorS6R3-v0&step=58",
+  "screenshots": {
+    "docs/media/task-support-desktop.png": "f02e61b83476a1e3a0a7160a2e6c35b1b2e40c2db3fd8d899467d753eba436c3",
+    "docs/media/task-support-mobile.png": "e38444d6f50c1d4d50428b058a2b3922daaf4fcb358ff898a0c9a38e57ae1710"
+  }
+}

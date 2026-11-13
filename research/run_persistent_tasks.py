@@ -145,6 +145,7 @@ def persistent_episode(
     recovery_policy: RecoveryPolicy = "on_stall",
     workspace: WorkspaceConfig | None = None,
     on_step: Callable[[dict[str, Any]], None] | None = None,
+    reader_factory: Callable[[TaskStore, str], PersistentTaskReader] | None = None,
 ) -> dict[str, Any]:
     if workspace is not None and not isinstance(workspace, WorkspaceConfig):
         raise ValueError("workspace must be a validated WorkspaceConfig")
@@ -155,12 +156,16 @@ def persistent_episode(
     namespace = world_id(env_id, seed) + "/reset=0/frame=episode-origin"
     config = workspace if workspace is not None else WorkspaceConfig(**PROTOCOL["workspace"])
     store = TaskStore(path, config=config, router=checkpoint)
-    reader = PersistentTaskReader(
-        store,
-        namespace,
-        backend=backend,
-        threshold=PROTOCOL["threshold"],
-        recovery_policy=recovery_policy,
+    reader = (
+        reader_factory(store, namespace)
+        if reader_factory is not None
+        else PersistentTaskReader(
+            store,
+            namespace,
+            backend=backend,
+            threshold=PROTOCOL["threshold"],
+            recovery_policy=recovery_policy,
+        )
     )
     actor = ObservationPlanner("none", injected_reader=reader)
     env = None

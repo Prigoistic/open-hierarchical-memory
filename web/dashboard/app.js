@@ -193,9 +193,11 @@
         ? "Fresh solve"
         : s.address?.dataset === "task-replay-v1"
           ? "Recorded replay retest"
-          : s.address?.dataset === "persistent-task-v2"
-            ? "Saved development"
-            : "Saved example",
+          : s.address?.dataset === "task-support-v1"
+            ? "Recorded support study"
+            : s.address?.dataset === "persistent-task-v2"
+              ? "Saved development"
+              : "Saved example",
     );
     text("task-status", s.error || s.status || "Opening task evidence.");
     const supported = [
@@ -205,6 +207,11 @@
       "persistent_always",
       "persistent_exact",
       "persistent_none",
+      "persistent_support_parent",
+      "persistent_support_compact",
+      "persistent_support_connected_zha",
+      "persistent_support_connected_exact",
+      "persistent_support_connected_graph",
       "progress_zha",
       "progress_exact",
       "cues_zha",
@@ -402,6 +409,7 @@
         $("activity-legend").hidden = true;
         $("lifecycle-section").hidden = true;
         $("replay-section").hidden = true;
+        $("support-section").hidden = true;
         for (const id of [
           "telemetry-cells",
           "telemetry-returned",
@@ -421,6 +429,35 @@
     episodeEvidence = evidence;
     $("replay-section").hidden = !evidence.replay;
     if (evidence.replay) drawReplayStudy(evidence.replay);
+    const connector = evidence.decision.dependency?.connector;
+    $("support-section").hidden = !evidence.supportStudy && !connector;
+    if (evidence.supportStudy || connector) {
+      const study = evidence.supportStudy,
+        result = study?.outcome;
+      text(
+        "support-outcome",
+        result
+          ? `${result.successes}/${result.episodes} solved · 64 active slots`
+          : "Fresh live solve · 64 active slots",
+      );
+      text(
+        "support-control",
+        study
+          ? `Original ${study.parent.successes}/${study.parent.episodes} · graph control ${study.graph_control.successes}/${study.graph_control.episodes}. No ZHA specific success advantage.`
+          : "Observed paths and prerequisites stay attached to recovered evidence.",
+      );
+      text(
+        "support-connector",
+        connector?.attempted
+          ? `Connector: ${connector.status.replaceAll("_", " ")} · ${connector.source_ids.length} observed heads inspected · ${connector.recovered_ids.length} cold facts admitted.`
+          : "No cold graph connector on this decision.",
+      );
+      const work = evidence.decision.dependency?.work_delta || {};
+      text(
+        "support-cache",
+        `This read: ${work.connector_head_scans || 0} decoded archive heads · ${work.connector_cache_hits || 0} head cache hits. Graph search and cached storage are additional costs.`,
+      );
+    }
     const lifecycle = SomnaVisuals.persistentState(evidence),
       session = evidence.key.slice(0, evidence.key.lastIndexOf(":"));
     if (lifecycle && session !== lifecycleSession) {
@@ -465,7 +502,9 @@
       );
       text(
         "lifecycle-gate",
-        r.recovery_status === "deferred_active_progress"
+        r.connector?.attempted
+          ? "Observed graph connector · cold path support explicitly admitted"
+          : r.recovery_status === "deferred_active_progress"
           ? "Archive idle · active memory serves this decision"
           : r.recovery_status === "budget_exhausted"
             ? "Archive budget reached · no exact fallback"
@@ -485,7 +524,9 @@
         evidence.source === "recorded"
           ? evidence.replay
             ? "Saved fresh seed retest · replay trained only on other observed worlds."
-            : "Saved development evidence · 9001 / 9002 cohort. No superiority claim."
+            : evidence.supportStudy
+              ? "Saved fresh seed support comparison · observed evidence only."
+              : "Saved development evidence · 9001 / 9002 cohort. No superiority claim."
           : evidence.memory?.restart_state_equal
             ? `Local archive ${evidence.memory.archive_id} · completion reopen check passed. A server restart does not resume the simulator.`
             : "One local archive for this solve. Originals persist; retirement only changes active membership.",

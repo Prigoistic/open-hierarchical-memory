@@ -15,6 +15,7 @@ from research import replay_dashboard
 from research.dashboard_gateway import MAX_BODY, MEMORY_WRITES, MemoryGateway
 from research.live_solver import LiveSolver, SolverBusyError
 from research.persistent_dashboard import DATASET, METHODS, adapt_recorded
+from research.task_memory import presentation as support_presentation
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_EXPANDED_TRACE_BYTES = 128 * 1024 * 1024
@@ -168,6 +169,9 @@ class TaskCatalog:
         replay_rows, replay_summary = replay_dashboard.catalog(self.root)
         runs.extend(replay_rows)
         summaries.extend(replay_summary)
+        support_rows, support_summary = support_presentation.catalog(self.root)
+        runs.extend(support_rows)
+        summaries.extend(support_summary)
         return {"schema": "task-catalog-v1", "runs": runs, "summary": summaries}
 
     def run(self, uid: str) -> dict[str, Any]:
@@ -191,10 +195,12 @@ class TaskCatalog:
         if len(decoded) > MAX_EXPANDED_TRACE_BYTES:
             raise TraceTooLargeError("expanded artifact too large")
         result: dict[str, Any] = json.loads(decoded)
-        if row["dataset"] in (DATASET, replay_dashboard.DATASET):
+        if row["dataset"] in (DATASET, replay_dashboard.DATASET, support_presentation.DATASET):
             result = adapt_recorded(result, row["reader"])
         if row["dataset"] == replay_dashboard.DATASET:
             result["replay"] = replay_dashboard.metadata(self.root, row["condition"])
+        if row["dataset"] == support_presentation.DATASET:
+            result["support_study"] = support_presentation.metadata(self.root, row["condition"])
         result["task"] = row["task"]
         result["dataset"] = row["dataset"]
         result["catalog_split"] = row.get("split")

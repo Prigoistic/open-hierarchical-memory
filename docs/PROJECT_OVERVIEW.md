@@ -62,3 +62,10 @@ This lane is now available in the dashboard as Fitted ZHA · persistent memory, 
 The frozen fresh-seed study contains 240 retest episodes, 576 parameter updates and 71 retained action cutoffs. All 64-slot controls solve 11/16; unchanged and exact 96-slot controls solve 13/16. Better replay KL has no demonstrated task-success benefit; frozen random references remain a stronger KL control. This points to workspace/support-budget headroom rather than evidence that another KL optimization will solve planning. See `../experiments/task-replay-v1/SUMMARY.md`.
 
 The dashboard's new saved study shows recorded learning curves alongside actual retest decisions. It does not refit while the retest plays, project training-world memories into evaluation worlds, or modify the default live-solve checkpoint. Read-only study selection and ordinary fresh solves remain separate and explicitly labelled.
+
+
+## 9. Task-useful support recovery and release preparation
+
+The current grouped research entry is `research/task_memory/`. Observed-prefix interventions localize active-support gaps. Compact path/prerequisite packing and explicit cold observed-graph connectors improve the fresh24-case comparison from15/24 to22/24 at64 active facts. Exact and ordinary graph controls also reach22/24; no ZHA-specific advantage is demonstrated. Extra full-head reads, graph work and cache storage remain explicit. Two Key Corridor cutoffs remain. See `../experiments/task-support-v1/SUMMARY.md`.
+
+The existing dashboard includes this saved study and fresh supported solves. Root README, `REPOSITORY_MAP.md`, `ROADMAP.md`, contribution/license/security guidance and the scoped package distribution are the current public-facing structure. No frozen evidence was moved or reformatted. The X draft and local continuous video provenance are described in `LAUNCH.md`; nothing was published.

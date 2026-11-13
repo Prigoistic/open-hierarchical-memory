@@ -1,0 +1,44 @@
+{
+  "scope": "component-only repeated unchanged-version observed-head materialisation; includes first materialisation separately; excludes router, graph search, planner and whole-task execution; not an end-to-end speed claim",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.14",
+  "support_source_sha256": "67d7b204bfdffa0cc64f31c617e6cb092f5ef8cb702a44383e1d630b732494cf",
+  "records": [
+    {
+      "cache": false,
+      "heads": 1024,
+      "repeated_calls": 125,
+      "trial_calls": 25,
+      "first_materialisation_seconds": 0.006926166999619454,
+      "trial_seconds": [
+        0.1687391250161454,
+        0.1869365419843234,
+        0.17360320902662352,
+        0.17834854201646522,
+        0.17271295899990946
+      ],
+      "median_trial_seconds": 0.17360320902662352,
+      "repeated_decoded_rows": 128000,
+      "serialized_cache_payload_bytes_peak": 0,
+      "source_identity": "c09a71b26612dfb5f050bc32eb13493d25feb96d92f0cf12176b020db5aa3b3f"
+    },
+    {
+      "cache": true,
+      "heads": 1024,
+      "repeated_calls": 125,
+      "trial_calls": 25,
+      "first_materialisation_seconds": 0.008707791974302381,
+      "trial_seconds": [
+        5.34169957973063e-05,
+        2.404197584837675e-05,
+        2.3709028027951717e-05,
+        2.4333014152944088e-05,
+        2.4917011614888906e-05
+      ],
+      "median_trial_seconds": 2.4333014152944088e-05,
+      "repeated_decoded_rows": 0,
+      "serialized_cache_payload_bytes_peak": 120942,
+      "source_identity": "c09a71b26612dfb5f050bc32eb13493d25feb96d92f0cf12176b020db5aa3b3f"
+    }
+  ]
+}

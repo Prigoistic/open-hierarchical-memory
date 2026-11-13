@@ -3,6 +3,11 @@
   const $ = (id) => document.getElementById(id),
     labels = {
       persistent_zha: "Fitted ZHA · persistent memory",
+      persistent_support_parent: "Original recovery · 64 slots",
+      persistent_support_compact: "Compact path packing · 64 slots",
+      persistent_support_connected_zha: "Connected ZHA · 64 slots",
+      persistent_support_connected_exact: "Connected exact · control",
+      persistent_support_connected_graph: "Connected graph · control",
       persistent_fixed: "Fixed ZHA · persistent memory",
       persistent_random: "Random ZHA · control",
       persistent_always: "Always recover · control",
@@ -138,6 +143,11 @@
       !rows.some((r) => r.config === (preferred ?? $("config").value))
     )
       preferred = "persistent_replay_uniform-7";
+    if (
+      rows.some((r) => r.config === "persistent_support_connected_zha") &&
+      !rows.some((r) => r.config === (preferred ?? $("config").value))
+    )
+      preferred = "persistent_support_connected_zha";
     opts(
       $("config"),
       unique(rows.map((r) => r.config))
@@ -160,6 +170,7 @@
     );
   }
   function datasetLabel(name) {
+    if (name === "task-support-v1") return "Path recovery · fresh seed study";
     if (name === "task-replay-v1") return "Routing replay · fresh seed study";
     if (name === "persistent-task-v2") return "Persistent memory · development";
     if (/(?:progress|repair).*evaluation/.test(name))
@@ -238,6 +249,7 @@
           n.includes("evaluation") ||
           n === "persistent-task-v2" ||
           n === "task-replay-v1" ||
+          n === "task-support-v1" ||
           n === "boxoban-search-v1",
       );
     opts(
@@ -314,7 +326,7 @@
       );
       return;
     }
-    if (run.replay) {
+    if (run.replay || run.support_study) {
       $("run-notice").textContent =
         `Fresh seed comparison · ${statusLabel(run)} · ${run.capacity} active slots`;
       $("run-notice").dataset.warning = "false";
@@ -1834,7 +1846,7 @@
       reader: c.reader,
       seed: c.seed,
       level_id: c.seed,
-      capacity: 96,
+      capacity: packet.memory?.active_capacity || 96,
       split: "diagnostic",
       archive: [],
       trajectory: [],
@@ -1934,6 +1946,7 @@
           [],
         memory: run.memory || run.live?.memory || null,
         replay: run.replay || null,
+        supportStudy: run.support_study || null,
         source: run.live ? "fresh" : "recorded",
         action: row.action,
       });

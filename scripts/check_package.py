@@ -4,6 +4,7 @@ import json
 import os
 import subprocess
 import sys
+import tarfile
 import tempfile
 import zipfile
 from pathlib import Path
@@ -48,6 +49,21 @@ def main() -> int:
             names = archive.namelist()
             assert "open_hierarchical_memory/py.typed" in names
             assert any(name.endswith("/LICENSE") for name in names)
+            assert not any(
+                name.startswith(("research/", "web/", "experiments/", "data/")) for name in names
+            )
+        with tarfile.open(sdists[0]) as archive:
+            members = archive.getnames()
+            assert not any(
+                "/experiments/" in name
+                or "/data/" in name
+                or "/web/" in name
+                or "/research/" in name
+                for name in members
+            )
+            assert sum(m.size for m in archive.getmembers()) < 2 * 1024 * 1024, (
+                "core source artifact unexpectedly large"
+            )
         for number, distribution in enumerate([*wheels, *sdists]):
             environment = work / f"environment-{number}"
             install_environment = os.environ.copy()

@@ -1,0 +1,1440 @@
+{
+  "source_report": "0a065c84f14f5d8b666fce6fedab47e59a28b3658ec144057173c7bdb025b521",
+  "counts": {
+    "decisions": 1724,
+    "active_support_gap": 1083
+  },
+  "episodes": [
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 19001,
+      "success": true,
+      "source_sha256": "78a049b4d09b2eb9cf56441511b1202a957f2cc1c393f30b815ea1e57117b32f",
+      "counts": {
+        "decisions": 9
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 19002,
+      "success": true,
+      "source_sha256": "29561952ea4c3bba66bf013d26bf5e80aba7e5b4ce1941139783906513c2669b",
+      "counts": {
+        "decisions": 19
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 19003,
+      "success": true,
+      "source_sha256": "4f68eff691a0f1ba28103cf202c172b4d4d3a8f967b403d2bc0b81aa3de647f8",
+      "counts": {
+        "decisions": 8
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-MemoryS17Random-v0",
+      "seed": 19004,
+      "success": true,
+      "source_sha256": "003e908cc5ba9cfd72bfd6846a1da48a1d4eb9f7fb9426868951e07a71b4d824",
+      "counts": {
+        "decisions": 12
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 19001,
+      "success": true,
+      "source_sha256": "f6f8e65c0be64b5a87b27719e9b227ce886def50663e7fe76c927c5b0d6a18b9",
+      "counts": {
+        "decisions": 56
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 19002,
+      "success": true,
+      "source_sha256": "eb38aa58fe05feb619b10406d2fbfe5e9d510326cd5f84ccd384268b94af1a1e",
+      "counts": {
+        "decisions": 52
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 19003,
+      "success": true,
+      "source_sha256": "8daf423082ceb277e6e362081d51c706de683f8b322fee5d724df43c0e382ea8",
+      "counts": {
+        "decisions": 44
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-MultiRoom-N6-v0",
+      "seed": 19004,
+      "success": true,
+      "source_sha256": "cdbbe0a703432665b5e53f7dd57f0ffa79dfde2c6605a1d5331b03aa4762a60d",
+      "counts": {
+        "decisions": 58
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 19001,
+      "success": true,
+      "source_sha256": "53037c4a7eee0e326fd864f48fd9721bdbb0bd001cbfa25221ff3587c8142fc3",
+      "counts": {
+        "decisions": 86,
+        "active_support_gap": 2
+      },
+      "examples": [
+        {
+          "step": 15,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            58,
+            59,
+            97,
+            99,
+            101,
+            103
+          ],
+          "inactive_path_ids": [
+            99,
+            101,
+            103
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 51,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            174,
+            177,
+            203,
+            202,
+            201,
+            207,
+            214
+          ],
+          "inactive_path_ids": [
+            201,
+            207,
+            214
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        }
+      ]
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 19002,
+      "success": false,
+      "source_sha256": "2c5cc5d87550d3df78ed61b5967e749b393e411567b5c153c3b7cc1a3a6e4615",
+      "counts": {
+        "decisions": 256,
+        "active_support_gap": 229
+      },
+      "examples": [
+        {
+          "step": 27,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "inactive_path_ids": [
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 28,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "inactive_path_ids": [
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 29,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "inactive_path_ids": [
+            71,
+            137
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 30,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "inactive_path_ids": [
+            65,
+            71,
+            137
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 31,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "inactive_path_ids": [
+            59,
+            65,
+            71,
+            137
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 32,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "inactive_path_ids": [
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 33,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "inactive_path_ids": [
+            71,
+            137
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 34,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            59,
+            65,
+            71,
+            137
+          ],
+          "inactive_path_ids": [
+            71,
+            137
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        }
+      ]
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 19003,
+      "success": true,
+      "source_sha256": "c148472f53fd8f2337e2ce4fa8143fa92f2537345e2be188b99694ec2744a2c0",
+      "counts": {
+        "decisions": 58
+      },
+      "examples": []
+    },
+    {
+      "environment": "MiniGrid-DoorKey-16x16-v0",
+      "seed": 19004,
+      "success": false,
+      "source_sha256": "78418680b394794d4e444ba540589526b1e6da653216598810322976ab217b93",
+      "counts": {
+        "decisions": 256,
+        "active_support_gap": 222
+      },
+      "examples": [
+        {
+          "step": 34,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            149,
+            124,
+            123,
+            122,
+            121,
+            126
+          ],
+          "inactive_path_ids": [
+            121,
+            126
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 35,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            149,
+            124,
+            123,
+            122,
+            121,
+            126
+          ],
+          "inactive_path_ids": [
+            121,
+            126
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 36,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            149,
+            175,
+            155,
+            158,
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "inactive_path_ids": [
+            175,
+            155,
+            158,
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 37,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            149,
+            175,
+            155,
+            158,
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "inactive_path_ids": [
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 38,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            149,
+            175,
+            155,
+            158,
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "inactive_path_ids": [
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 39,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            149,
+            175,
+            155,
+            158,
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "inactive_path_ids": [
+            172,
+            174,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 40,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            149,
+            175,
+            155,
+            158,
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "inactive_path_ids": [
+            175,
+            155,
+            158,
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 41,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            149,
+            175,
+            155,
+            158,
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "inactive_path_ids": [
+            172,
+            174,
+            138,
+            139,
+            140,
+            141,
+            142,
+            94,
+            96,
+            51,
+            53,
+            52
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        }
+      ]
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19001,
+      "success": true,
+      "source_sha256": "eb7cd15f66029680dd8b8b15c42be03cb3f280a8b2806533aa328dcbe95498a2",
+      "counts": {
+        "decisions": 42,
+        "active_support_gap": 4
+      },
+      "examples": [
+        {
+          "step": 18,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            130,
+            135,
+            140,
+            143,
+            69,
+            66,
+            63,
+            60,
+            59,
+            58,
+            55
+          ],
+          "inactive_path_ids": [
+            63,
+            60,
+            59,
+            58,
+            55
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 19,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            130,
+            135,
+            140,
+            143,
+            69,
+            66,
+            63,
+            60,
+            59,
+            58,
+            55
+          ],
+          "inactive_path_ids": [
+            63,
+            60,
+            59,
+            58,
+            55
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 20,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            130,
+            135,
+            140,
+            143,
+            69,
+            66,
+            63,
+            60,
+            59,
+            58,
+            55
+          ],
+          "inactive_path_ids": [
+            63,
+            60,
+            59,
+            58,
+            55
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 22,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            130,
+            135,
+            140,
+            143,
+            69,
+            66,
+            63,
+            60,
+            59,
+            58,
+            55
+          ],
+          "inactive_path_ids": [
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        }
+      ]
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19002,
+      "success": false,
+      "source_sha256": "229b8a92b9588d7447277293db3e8c8a60ecac6626af19a3e764369d6e390e9c",
+      "counts": {
+        "decisions": 256,
+        "active_support_gap": 172
+      },
+      "examples": [
+        {
+          "step": 16,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            75,
+            76,
+            77,
+            82,
+            87,
+            93,
+            98
+          ],
+          "inactive_path_ids": [
+            82,
+            87,
+            93,
+            98
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 17,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            75,
+            76,
+            77,
+            82,
+            87,
+            93,
+            98
+          ],
+          "inactive_path_ids": [
+            82,
+            87,
+            93,
+            98
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 29,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            156,
+            160,
+            93,
+            87,
+            101,
+            30,
+            29,
+            28,
+            27,
+            26
+          ],
+          "inactive_path_ids": [
+            101,
+            29,
+            28
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 30,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            156,
+            160,
+            93,
+            87,
+            101,
+            30,
+            29,
+            28,
+            27,
+            26
+          ],
+          "inactive_path_ids": [
+            160,
+            101,
+            29,
+            28
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 32,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            156,
+            160,
+            93,
+            87,
+            101,
+            30,
+            29,
+            28,
+            27,
+            26
+          ],
+          "inactive_path_ids": [
+            28,
+            27,
+            26
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 33,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            156,
+            160,
+            93,
+            87,
+            101,
+            30,
+            29,
+            28,
+            27,
+            26
+          ],
+          "inactive_path_ids": [
+            101,
+            28,
+            27,
+            26
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 34,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            156,
+            160,
+            93,
+            87,
+            101,
+            30,
+            29,
+            28,
+            27,
+            26
+          ],
+          "inactive_path_ids": [
+            160,
+            101,
+            28,
+            27,
+            26
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 36,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            156,
+            160,
+            93,
+            87,
+            101,
+            30,
+            29,
+            28,
+            27,
+            26
+          ],
+          "inactive_path_ids": [
+            28,
+            27,
+            26
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        }
+      ]
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19003,
+      "success": false,
+      "source_sha256": "79c375b01d60773e99f569fbe3e69cb574ad1bb3ed17a3b6d3718c5b4f595144",
+      "counts": {
+        "decisions": 256,
+        "active_support_gap": 236
+      },
+      "examples": [
+        {
+          "step": 13,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "inactive_path_ids": [
+            29,
+            72,
+            80
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 21,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            51,
+            46,
+            41,
+            35,
+            34,
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "inactive_path_ids": [
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 22,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            51,
+            46,
+            41,
+            35,
+            34,
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "inactive_path_ids": [
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 23,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            51,
+            46,
+            41,
+            35,
+            34,
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "inactive_path_ids": [
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 24,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            51,
+            46,
+            41,
+            35,
+            34,
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "inactive_path_ids": [
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 25,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            51,
+            46,
+            41,
+            35,
+            34,
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "inactive_path_ids": [
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 26,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            51,
+            46,
+            41,
+            35,
+            34,
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "inactive_path_ids": [
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 27,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            51,
+            46,
+            41,
+            35,
+            34,
+            33,
+            32,
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "inactive_path_ids": [
+            31,
+            30,
+            29,
+            72,
+            80
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        }
+      ]
+    },
+    {
+      "environment": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 19004,
+      "success": false,
+      "source_sha256": "e905a1bc4bf9d2877334439791c36fbdb8223975cef47c10ef2f9197b3cdc609",
+      "counts": {
+        "decisions": 256,
+        "active_support_gap": 218
+      },
+      "examples": [
+        {
+          "step": 38,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            129,
+            130,
+            131,
+            139,
+            127,
+            122,
+            116,
+            138,
+            38,
+            39,
+            40,
+            41,
+            42,
+            50,
+            52,
+            54,
+            60,
+            59,
+            58
+          ],
+          "inactive_path_ids": [
+            116,
+            138,
+            40,
+            41,
+            42,
+            54,
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 39,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            129,
+            130,
+            131,
+            139,
+            127,
+            122,
+            116,
+            138,
+            38,
+            39,
+            40,
+            41,
+            42,
+            50,
+            52,
+            54,
+            60,
+            59,
+            58
+          ],
+          "inactive_path_ids": [
+            54,
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 40,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            129,
+            130,
+            131,
+            139,
+            127,
+            122,
+            116,
+            138,
+            38,
+            39,
+            40,
+            41,
+            42,
+            50,
+            52,
+            54,
+            60,
+            59,
+            58
+          ],
+          "inactive_path_ids": [
+            54,
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 41,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            129,
+            130,
+            131,
+            139,
+            127,
+            122,
+            116,
+            138,
+            38,
+            39,
+            40,
+            41,
+            42,
+            50,
+            52,
+            54,
+            60,
+            59,
+            58
+          ],
+          "inactive_path_ids": [
+            54,
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 42,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            129,
+            130,
+            131,
+            139,
+            127,
+            122,
+            116,
+            138,
+            38,
+            39,
+            40,
+            41,
+            42,
+            50,
+            52,
+            54,
+            60,
+            59,
+            58
+          ],
+          "inactive_path_ids": [
+            127,
+            116,
+            138,
+            54,
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 43,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            129,
+            130,
+            131,
+            139,
+            127,
+            122,
+            116,
+            138,
+            38,
+            39,
+            40,
+            41,
+            42,
+            50,
+            52,
+            54,
+            60,
+            59,
+            58
+          ],
+          "inactive_path_ids": [
+            54,
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 44,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            129,
+            130,
+            131,
+            139,
+            127,
+            122,
+            116,
+            138,
+            38,
+            39,
+            40,
+            41,
+            42,
+            50,
+            52,
+            54,
+            60,
+            59,
+            58
+          ],
+          "inactive_path_ids": [
+            54,
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        },
+        {
+          "step": 45,
+          "category": "active_support_gap",
+          "counterfactual_objective": "explore",
+          "full_path_ids": [
+            129,
+            130,
+            131,
+            139,
+            127,
+            122,
+            116,
+            138,
+            38,
+            39,
+            40,
+            41,
+            42,
+            50,
+            52,
+            54,
+            60,
+            59,
+            58
+          ],
+          "inactive_path_ids": [
+            54,
+            60,
+            59,
+            58
+          ],
+          "scope": "same-state observed-prefix intervention; not a complete alternate episode"
+        }
+      ]
+    }
+  ],
+  "scope": "post-hoc diagnosis of exposed parent-policy traces; full observed prefixes only; shared planner probes are not fresh evaluation"
+}

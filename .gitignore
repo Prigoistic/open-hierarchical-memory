@@ -20,3 +20,9 @@ var/task-solves/
 
 # Mutable local archives for the offline replay study.
 experiments/task-replay-*/archives/
+
+# Mutable archives for observed-path support experiments.
+experiments/task-support-*/archives/
+
+# Generated local release media and package builds.
+release-assets/

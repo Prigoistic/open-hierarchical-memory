@@ -29,6 +29,6 @@ jobs:
       - name: Install pinned environment manager
         run: python -m pip install uv==0.8.6
       - name: Install locked dependencies
-        run: uv sync --locked
+        run: uv sync --locked --extra research --extra benchmarks
       - name: Tests, lint, types, semantic mutations and clean package installs
-        run: uv run --locked python scripts/verify.py
+        run: uv run --locked --extra research --extra benchmarks python scripts/verify.py

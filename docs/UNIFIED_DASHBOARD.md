@@ -87,3 +87,12 @@ This is recorded experimental evidence, so Run solver is disabled and labelled R
 The replay runner is `python -m research.run_task_replay --output experiments/task-replay-local`; the independent auditor uses `python -m scripts.audit_task_replay --results experiments/task-replay-local`. Run from the repository with the locked research/benchmark extras and a new output directory. See `TASK_REPLAY.md` for the frozen contract and the experiment SUMMARY for all outcomes.
 
 The local verification gate passes 491 Python tests and 23 commands, including the new audit. The existing 33 renderer/motion tests remain green. Browser checks verify schedule/control switching, sampled training/validation values, 64/96 capacity, failed-run visibility, disabled replay-run action, unchanged ordinary live-solve state and 390px no-overflow controls. Evidence: `evidence/task-replay-dashboard.json`. No public push or release.
+
+
+## 13 November 2026 — observed path recovery
+
+Run & query → Saved study → Path recovery · fresh seed study exposes all five controls. Connected ZHA, connected exact and connected graph can also launch fresh solves from the same Run solver action. These methods use64 active slots, including current observations; previous persistent methods retain96. Initial live-job capacity and displayed frames use the actual method capacity.
+
+Observed path recovery reports full-cohort outcome and parent/graph controls. At a connector event it discloses the full observed-head scan, newly admitted cold facts and cache/graph costs. In the Key Corridor23004 decision58 view,229 observed heads are inspected and nine cold facts admitted;14 historical facts are returned. The left memory field and right hierarchy use the same original sources. A connector can use path facts outside routed seed candidates; it is explicitly extra graph work.
+
+The recorded comparison remains separate from fresh execution. A browser-started fresh Key Corridor23004 solve completes81 actions with64 active slots and a persistent completion record. Desktop/control switching, retained parent failure,390px drawer/no-overflow and source/work counts were checked. Source label and fixed-control views clear stale replay-learning content. No independent continuous-memory backend was started/reset.

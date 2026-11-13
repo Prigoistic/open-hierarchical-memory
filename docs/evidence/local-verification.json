@@ -62,6 +62,34 @@
       "exit_code": 0
     },
     {
+      "command": "python -m mypy --strict --follow-imports=silent research/task_references.py research/task_store.py research/persistent_task_memory.py research/run_persistent_tasks.py research/persistent_dashboard.py research/live_solver.py scripts/audit_persistent_tasks.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/audit_persistent_tasks.py --results experiments/persistent-task-v1",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/audit_persistent_tasks.py --results experiments/persistent-task-v2",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m mypy --strict --follow-imports=silent research/task_replay.py research/run_task_replay.py scripts/audit_task_replay.py research/replay_dashboard.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m scripts.audit_task_replay --results experiments/task-replay-v1",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m mypy --strict --follow-imports=silent research/task_memory scripts/audit_task_support.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m scripts.audit_task_support --results experiments/task-support-v1",
+      "exit_code": 0
+    },
+    {
       "command": "python scripts/check_lifecycle_mutations.py",
       "exit_code": 0
     },
