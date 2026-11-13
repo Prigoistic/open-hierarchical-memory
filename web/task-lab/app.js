@@ -2,6 +2,12 @@
 (() => {
   const $ = (id) => document.getElementById(id),
     labels = {
+      persistent_zha: "Fitted ZHA · persistent memory",
+      persistent_fixed: "Fixed ZHA · persistent memory",
+      persistent_random: "Random ZHA · control",
+      persistent_always: "Always recover · control",
+      persistent_exact: "Exact recovery · control",
+      persistent_none: "No cold recovery · control",
       progress_zha: "ZHA + graph recovery",
       progress_exact: "Exact + graph recovery",
       cues_zha: "ZHA cues + widening",
@@ -137,6 +143,7 @@
     );
   }
   function datasetLabel(name) {
+    if (name === "persistent-task-v2") return "Persistent memory · development";
     if (/(?:progress|repair).*evaluation/.test(name))
       return "Retrieval repair · evaluation";
     if (name.startsWith("progress-") && name.includes("development"))
@@ -164,15 +171,17 @@
   function latestCohort() {
     const all = unique(catalog.runs.map((r) => r.dataset));
     const rank = (n) =>
-      /(?:progress|repair).*evaluation/.test(n)
-        ? 100
-        : n === "dependency-evaluation-v1"
-          ? 80
-          : n === "minigrid-evaluation-v2"
-            ? 60
-            : n === "boxoban-search-v1"
-              ? 40
-              : 0;
+      n === "persistent-task-v2"
+        ? 120
+        : /(?:progress|repair).*evaluation/.test(n)
+          ? 100
+          : n === "dependency-evaluation-v1"
+            ? 80
+            : n === "minigrid-evaluation-v2"
+              ? 60
+              : n === "boxoban-search-v1"
+                ? 40
+                : 0;
     return all.sort(
       (a, b) =>
         rank(b) - rank(a) || b.localeCompare(a, undefined, { numeric: true }),
@@ -209,6 +218,7 @@
         (n) =>
           $("show-development").checked ||
           n.includes("evaluation") ||
+          n === "persistent-task-v2" ||
           n === "boxoban-search-v1",
       );
     opts(
@@ -252,13 +262,15 @@
     const available = unique(suiteRows().map((r) => r.config));
     const preferred = first
       ? params.get("reader") ||
-        (available.includes("progress_zha")
-          ? "progress_zha"
-          : available.includes("bundle_zha")
-            ? "bundle_zha"
-            : available.includes("zha_adaptive")
-              ? "zha_adaptive"
-              : "zha-p25")
+        (available.includes("persistent_zha")
+          ? "persistent_zha"
+          : available.includes("progress_zha")
+            ? "progress_zha"
+            : available.includes("bundle_zha")
+              ? "bundle_zha"
+              : available.includes("zha_adaptive")
+                ? "zha_adaptive"
+                : "zha-p25")
       : $("config").value;
     fillConfigs(preferred);
     if (first)
@@ -267,11 +279,15 @@
   }
   function updateRunNotice(row) {
     if (run.live) {
-      const phase = row?.decision.repair?.fallback_active
-        ? "Observed graph recovery"
-        : row?.decision.repair?.stage === 2
-          ? "Wider ZHA search"
-          : "Hierarchical recall";
+      const phase =
+        row?.decision.dependency?.graph_source ===
+        "active_and_explicitly_recovered_only"
+          ? "Persistent observed memory"
+          : row?.decision.repair?.fallback_active
+            ? "Observed graph recovery"
+            : row?.decision.repair?.stage === 2
+              ? "Wider ZHA search"
+              : "Hierarchical recall";
       $("run-notice").textContent =
         `Fresh solve · ${run.live.status} · ${phase}`;
       $("run-notice").dataset.warning = String(
@@ -706,7 +722,9 @@
         statusLabel(row),
         isMaze() ? Number(row.return).toFixed(3) : (row.pushes ?? "—"),
         row.expanded.toLocaleString(),
-        (row.wall_seconds * 1000).toFixed(1) + " ms",
+        row.wall_seconds === null
+          ? "—"
+          : (row.wall_seconds * 1000).toFixed(1) + " ms",
         Number(row.read_work?.raw_key_scores || 0).toLocaleString(),
         Number(row.read_work?.summary_dot_products || 0).toLocaleString(),
       ].entries()) {
@@ -878,6 +896,8 @@
   }
   function renderRouting(row) {
     const d = row.decision,
+      persistent =
+        d.dependency?.graph_source === "active_and_explicitly_recovered_only",
       routes = (d.route || []).map((route) =>
         SomnaRouting.resolveEvent(run, route),
       ),
@@ -918,6 +938,37 @@
       panelRouting = null;
       const { c, w, h } = routingCanvas();
       const fallback = d.repair?.fallback_active;
+      if (persistent && routing3D) {
+        $("routing").hidden = true;
+        routing3D.setVisible(true);
+        const model = SomnaVisuals.persistentMemoryModel(
+          {
+            facts: observedHeads(),
+            decision: d,
+            step: row.step,
+            key:
+              (run.live?.id || run.dataset + run.reader + run.seed) +
+              ":" +
+              row.step,
+            retiredIds: row.retired_ids || [],
+            evictedIds:
+              row.lifecycle?.capacity_evicted_ids ||
+              row.decision.dependency?.evicted_ids ||
+              [],
+          },
+          { activeOnly: true },
+        );
+        routing3D.setData(model);
+        routingHits = model.points.map((p) => ({
+          node: {
+            key: p.id,
+            level: 0,
+            index: Number(p.id),
+            kept: p.selected,
+            facts: observedHeads().filter((f) => String(f.id) === p.id),
+          },
+        }));
+      }
       opts($("cue"), [
         ["none", fallback ? "Graph recovery" : "No hierarchy cue"],
       ]);
@@ -925,7 +976,11 @@
       c.fillStyle = "#e8e8e5";
       c.font = "18px Geist";
       c.fillText(
-        fallback ? "Observed graph recovery" : "Direct fact selection",
+        persistent
+          ? "Active workspace"
+          : fallback
+            ? "Observed graph recovery"
+            : "Direct fact selection",
         16,
         80,
       );
@@ -936,9 +991,15 @@
         16,
         112,
       );
-      $("routing-description").textContent = fallback
-        ? "The progress guard escalated to the observed graph. This step is counted as a fallback."
-        : "This method selects facts without hierarchical routing.";
+      $("routing-description").textContent = persistent
+        ? d.dependency.recovery_status === "deferred_active_progress"
+          ? "Archive idle · active memory serves this decision. No hierarchy pass was run."
+          : d.dependency.recovery_status === "budget_exhausted"
+            ? "Archive budget reached · no hidden exact fallback."
+            : "Direct archive selection · no hierarchical pass."
+        : fallback
+          ? "The progress guard escalated to the observed graph. This step is counted as a fallback."
+          : "This method selects facts without hierarchical routing.";
       $("routing-inspection").textContent = "";
       return;
     }
@@ -1303,12 +1364,19 @@
     updateRunNotice(row);
     if (parent !== window)
       parent.postMessage({ type: "somna-frame" }, location.origin);
-    $("next-event").hidden = !d.repair;
+    const persistent =
+      d.dependency?.graph_source === "active_and_explicitly_recovered_only";
+    $("next-event").hidden = !d.repair && !persistent;
     $("next-event").disabled = !run.trajectory.some(
       (r, i) =>
         i > cursor &&
-        r.decision.repair?.stage !==
-          run.trajectory[i - 1]?.decision.repair?.stage,
+        (persistent
+          ? r.retired_ids?.length ||
+            r.lifecycle?.capacity_evicted_ids?.length ||
+            r.decision.dependency?.recovered_ids?.length ||
+            r.decision.dependency?.evicted_ids?.length
+          : r.decision.repair?.stage !==
+            run.trajectory[i - 1]?.decision.repair?.stage),
     );
   }
   function renderMazeRead(row) {
@@ -1326,12 +1394,20 @@
         "Historical slot limit",
         run.reader === "full" ? "All observed" : run.capacity,
       ],
-      ["Prefix raw attention pairs", w.raw_attention_pairs || 0],
+      [
+        "Prefix raw attention pairs",
+        w.archive_raw_pairs ?? w.raw_attention_pairs ?? 0,
+      ],
       [
         "Prefix exact + rerank scores",
-        (w.exact_score_pairs || 0) + (w.rerank_pairs || 0),
+        (w.exact_score_pairs || 0) +
+          (w.rerank_pairs || 0) +
+          (w.archive_rerank_pairs || 0),
       ],
-      ["Prefix summary channel dots", w.summary_dot_products || 0],
+      [
+        "Prefix summary channel dots",
+        w.archive_summary_dot_products ?? w.summary_dot_products ?? 0,
+      ],
       ["Prefix index rebuilds", w.index_builds || 0],
       ["Full-candidate fallbacks", w.full_candidate_fallbacks || 0],
     ])
@@ -1629,8 +1705,13 @@
     const i = run.trajectory.findIndex(
       (r, i) =>
         i > cursor &&
-        r.decision.repair?.stage !==
-          run.trajectory[i - 1]?.decision.repair?.stage,
+        (run.reader?.startsWith("persistent_")
+          ? r.retired_ids?.length ||
+            r.lifecycle?.capacity_evicted_ids?.length ||
+            r.decision.dependency?.recovered_ids?.length ||
+            r.decision.dependency?.evicted_ids?.length
+          : r.decision.repair?.stage !==
+            run.trajectory[i - 1]?.decision.repair?.stage),
     );
     if (i >= 0) {
       cursor = i;
@@ -1739,7 +1820,7 @@
       expanded: 0,
       expansion_limit: c.step_cap,
       wall_seconds: 0,
-      live: { id: packet.id, status: packet.status },
+      live: { id: packet.id, status: packet.status, memory: packet.memory },
     };
     cursor = 0;
     headCursor = -1;
@@ -1772,6 +1853,7 @@
     run.live.status =
       packet.next < packet.available ? "streaming" : packet.status;
     run.live.reason = packet.reason;
+    run.live.memory = packet.memory;
     run.expanded = run.trajectory.length;
     if (packet.result) {
       run.result = packet.result;
@@ -1820,6 +1902,12 @@
         decision: row.decision,
         objective: objectiveLabel(row.decision.objective),
         newIds: row.new_facts.map((f) => f.id),
+        retiredIds: row.retired_ids || [],
+        evictedIds:
+          row.lifecycle?.capacity_evicted_ids ||
+          row.decision.dependency?.evicted_ids ||
+          [],
+        memory: run.memory || run.live?.memory || null,
         source: run.live ? "fresh" : "recorded",
         action: row.action,
       });
@@ -1881,6 +1969,8 @@
         playing,
         view: routingView,
         hierarchy: !!panelRouting,
+        workspace: !!run?.reader?.startsWith("persistent_") && !panelRouting,
+        memory: run?.live?.memory || null,
         canBranch: !$("structure").disabled,
         originals: panelRouting?.originalCount ?? null,
         read: panelRouting?.rawCount ?? null,

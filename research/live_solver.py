@@ -12,10 +12,13 @@ import secrets
 import threading
 import time
 from collections.abc import Callable
+from pathlib import Path
 from typing import Any
 
+from research.persistent_dashboard import METHODS, ROOT, checkpoint_for, run_solve
 from research.run_minigrid_benchmark import ENVIRONMENTS
 from research.run_progress_benchmark import CONDITIONS, run_episode
+from research.task_references import RouterCheckpoint
 
 MAX_TRACE_BYTES = 64 * 1024 * 1024
 MAX_STEPS = 1024
@@ -31,7 +34,11 @@ class StopEpisode(RuntimeError):
 
 
 class LiveSolver:
-    def __init__(self, runner: Callable[..., dict[str, Any]] = run_episode) -> None:
+    def __init__(
+        self, runner: Callable[..., dict[str, Any]] = run_episode, *, root: Path = ROOT
+    ) -> None:
+        self.root = root
+        self.checkpoint: RouterCheckpoint | None = None
         self.runner = runner
         self.lock = threading.RLock()
         self.stop = threading.Event()
@@ -50,7 +57,7 @@ class LiveSolver:
             value["seed"],
             value["step_cap"],
         )
-        if environment not in ENVIRONMENTS or reader not in CONDITIONS:
+        if environment not in ENVIRONMENTS or reader not in (*CONDITIONS, *METHODS):
             raise ValueError("unsupported live maze or reader")
         if type(seed) is not int or not 0 <= seed < 2**31:
             raise ValueError("seed must be an integer in [0, 2147483647]")
@@ -61,6 +68,14 @@ class LiveSolver:
                 raise ValueError("solver is closed")
             if self.worker and self.worker.is_alive():
                 raise SolverBusyError("A solve is running. Stop it before starting another.")
+            try:
+                self.checkpoint = checkpoint_for(reader, self.root) if reader in METHODS else None
+            except OSError as error:
+                raise ValueError(
+                    "Saved routing checkpoint is unavailable; no fallback was used"
+                ) from error
+            if self.checkpoint is not None:
+                self.checkpoint.require_evaluation_context(f"{environment}/seed={seed}")
             self.stop.clear()
             self.size = 0
             self.started = time.monotonic()
@@ -71,6 +86,14 @@ class LiveSolver:
                 "trajectory": [],
                 "routing_snapshots": {},
                 "routing_events": {},
+                "memory": None
+                if self.checkpoint is None
+                else {
+                    "archive_id": None,
+                    "reference_kind": self.checkpoint.kind,
+                    "reference_hash": self.checkpoint.sha256,
+                    "active_capacity": 96,
+                },
                 "result": None,
                 "reason": None,
             }
@@ -110,16 +133,30 @@ class LiveSolver:
         assert self.job is not None
         config = self.job["config"]
         try:
-            result = self.runner(
-                config["environment"],
-                config["reader"],
-                config["seed"],
-                split="diagnostic",
-                step_cap=config["step_cap"],
-                on_step=self._append,
-            )
+            if config["reader"] in METHODS:
+                assert self.checkpoint is not None
+                result = run_solve(
+                    config["environment"],
+                    config["reader"],
+                    config["seed"],
+                    path=self.root / "var/task-solves" / self.job["id"] / "memory.sqlite",
+                    checkpoint=self.checkpoint,
+                    step_cap=config["step_cap"],
+                    on_step=self._append,
+                )
+            else:
+                result = self.runner(
+                    config["environment"],
+                    config["reader"],
+                    config["seed"],
+                    split="diagnostic",
+                    step_cap=config["step_cap"],
+                    on_step=self._append,
+                )
             with self.lock:
                 assert self.job is not None
+                if result.get("memory") is not None:
+                    self.job["memory"] = result["memory"]
                 outcome = result["result"]
                 err = outcome.get("error")
                 reason: str | None
@@ -183,6 +220,7 @@ class LiveSolver:
                         k: self.job["routing_snapshots"][k] for k in snapshot_ids
                     },
                     "result": self.job["result"],
+                    "memory": self.job["memory"],
                 }
             )
 

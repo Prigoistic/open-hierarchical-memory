@@ -13,12 +13,14 @@
     episodeModel = null,
     episodeEvidence = null,
     evidenceKey = "",
+    lifecycleSession = "",
     solveJob = null,
     solving = false,
     solvePolling = false,
     solveAfter = 0,
     solveRequest = false,
     resumeAttempted = false,
+    resumeCursor = null,
     selectedEpisode = null,
     navigationDirty = true,
     navigationAnimating = false,
@@ -46,7 +48,8 @@
     $("memory-view").querySelector('[value="activity"]').textContent =
       "ACTIVITY MAP";
     $("memory-view").querySelector('[value="cloud"]').disabled = true;
-    $("memory-view").querySelector('[value="layers"]').textContent = "MEMORY MAP";
+    $("memory-view").querySelector('[value="layers"]').textContent =
+      "MEMORY MAP";
     $("legend-caption").textContent = "COLOUR / RETURNS";
   }
   const requestedSolve = new URLSearchParams(location.search).get("solve");
@@ -177,14 +180,29 @@
       "task-view-name",
       s.taskKind === "puzzles"
         ? "Puzzle search"
-        : s.hierarchy
-          ? "Retrieval hierarchy"
-          : "Evidence selection",
+        : s.workspace
+          ? "Active workspace"
+          : s.hierarchy
+            ? "Retrieval hierarchy"
+            : "Evidence selection",
     );
     text("task-title", s.ready ? s.title : "");
-    text("task-source", s.live ? "Fresh solve" : "Saved example");
+    text(
+      "task-source",
+      s.live
+        ? "Fresh solve"
+        : s.address?.dataset === "persistent-task-v2"
+          ? "Saved development"
+          : "Saved example",
+    );
     text("task-status", s.error || s.status || "Opening task evidence.");
     const supported = [
+      "persistent_zha",
+      "persistent_fixed",
+      "persistent_random",
+      "persistent_always",
+      "persistent_exact",
+      "persistent_none",
       "progress_zha",
       "progress_exact",
       "cues_zha",
@@ -370,6 +388,7 @@
           "Task memory is available for maze episodes. Choose a maze to solve.";
         text("memory-counts", "No maze decision selected");
         $("activity-legend").hidden = true;
+        $("lifecycle-section").hidden = true;
         for (const id of [
           "telemetry-cells",
           "telemetry-returned",
@@ -387,12 +406,20 @@
     }
     if (evidence.key === evidenceKey) return;
     episodeEvidence = evidence;
+    const lifecycle = SomnaVisuals.persistentState(evidence),
+      session = evidence.key.slice(0, evidence.key.lastIndexOf(":"));
+    if (lifecycle && session !== lifecycleSession) {
+      lifecycleSession = session;
+      $("memory-view").value = "layers";
+    }
     const projection = $("memory-view").value;
     episodeModel = ["activity", "cloud"].includes(projection)
       ? SomnaVisuals.activityModel(evidence, {
           cloudOnly: projection === "cloud",
         })
-      : SomnaVisuals.taskMemoryModel(evidence);
+      : lifecycle
+        ? SomnaVisuals.persistentMemoryModel(evidence)
+        : SomnaVisuals.taskMemoryModel(evidence);
     evidenceKey = evidence.key;
     if (episodeView) {
       episodeView.setVisible(true);
@@ -407,6 +434,46 @@
       "instrument-clock",
       `FRAME / ${String(evidence.step).padStart(4, "0")}`,
     );
+    text("memory-heading", lifecycle ? "PERSISTENT MEMORY" : "MEMORY ACTIVITY");
+    $("lifecycle-section").hidden = !lifecycle;
+    if (lifecycle) {
+      const r = evidence.decision.dependency;
+      text(
+        "lifecycle-active",
+        `${lifecycle.active.size} / ${lifecycle.capacity}`,
+      );
+      text("lifecycle-cold", lifecycle.cold.size);
+      text("lifecycle-recovered", lifecycle.recovered.size);
+      text(
+        "lifecycle-retired",
+        new Set([...lifecycle.retired, ...lifecycle.evicted]).size,
+      );
+      text(
+        "lifecycle-gate",
+        r.recovery_status === "deferred_active_progress"
+          ? "Archive idle · active memory serves this decision"
+          : r.recovery_status === "budget_exhausted"
+            ? "Archive budget reached · no exact fallback"
+            : `Archive ${r.recovery_status === "disabled" ? "disabled" : "read"} · ${{ new_mission: "new mission", exploration_stall: "exploration stalled", always: "always recover control" }[r.recovery_reason] || r.recovery_reason}`,
+      );
+      text(
+        "lifecycle-reference",
+        `${lifecycle.referenceKind} references · ${lifecycle.referenceHash}`,
+      );
+      const w = lifecycle.work;
+      text(
+        "lifecycle-work",
+        `This read: ${w.archive_raw_pairs || 0} raw pairs · ${w.archive_summary_dot_products || 0} summary dots · ${w.archive_rerank_pairs || 0} rerank pairs. Index and graph work are extra.`,
+      );
+      text(
+        "lifecycle-archive",
+        evidence.source === "recorded"
+          ? "Saved development evidence · 9001 / 9002 cohort. No superiority claim."
+          : evidence.memory?.restart_state_equal
+            ? `Local archive ${evidence.memory.archive_id} · completion reopen check passed. A server restart does not resume the simulator.`
+            : "One local archive for this solve. Originals persist; retirement only changes active membership.",
+      );
+    }
     text("telemetry-cells", evidence.facts.length);
     text("telemetry-returned", evidence.decision.memory_ids.length);
     text(
@@ -416,7 +483,7 @@
     text(
       "telemetry-samples",
       episodeView
-        ? episodeModel.stats?.displaySamples ?? evidence.facts.length
+        ? (episodeModel.stats?.displaySamples ?? evidence.facts.length)
         : evidence.facts.length,
     );
     text("legend-high", episodeModel.stats?.maximum ?? "—");
@@ -456,14 +523,16 @@
     );
     text(
       "receipt-recovery",
-      d.repair?.fallback_active
-        ? "Graph recovery · observed map"
-        : !d.memory_ids.length
-          ? "Current observation only"
-          : states.tasks?.solveConfig?.reader?.includes("exact") ||
-              states.tasks?.solveConfig?.reader === "graph"
-            ? "Exact recall · shared planner"
-            : "Hierarchical recall · memory-supported plan",
+      lifecycle
+        ? `${lifecycle.recovered.size} cold facts recovered · ${lifecycle.returned.size} returned from the available workspace`
+        : d.repair?.fallback_active
+          ? "Graph recovery · observed map"
+          : !d.memory_ids.length
+            ? "Current observation only"
+            : states.tasks?.solveConfig?.reader?.includes("exact") ||
+                states.tasks?.solveConfig?.reader === "graph"
+              ? "Exact recall · shared planner"
+              : "Hierarchical recall · memory-supported plan",
     );
     $("memory-loading").hidden = true;
     if (selectedEpisode)
@@ -690,7 +759,12 @@
       );
       if (requestJob !== solveJob) return;
       controllers.tasks.command("solveAppend", packet);
+      if (packet.status !== "running") evidenceKey = "";
       solveAfter = packet.next;
+      if (resumeCursor !== null && packet.next > resumeCursor) {
+        controllers.tasks.command("step", resumeCursor);
+        resumeCursor = null;
+      }
       const caughtUp = packet.next === packet.available;
       solving = packet.status === "running" || !caughtUp;
       const label =
@@ -727,6 +801,15 @@
         `/api/solve?id=${encodeURIComponent(identifier)}&after=0`,
       );
       solveJob = packet.id;
+      const savedStep = Number(
+        new URLSearchParams(location.search).get("step"),
+      );
+      resumeCursor =
+        packet.status !== "running" &&
+        Number.isInteger(savedStep) &&
+        savedStep >= 0
+          ? Math.min(savedStep, Math.max(0, packet.available - 1))
+          : null;
       solveAfter = 0;
       solving = true;
       controllers.tasks.command("solveStart", packet);
@@ -765,6 +848,7 @@
         step_cap: cap,
       });
       solveJob = packet.id;
+      resumeCursor = null;
       const address = new URL(location.href);
       address.searchParams.set("solve", solveJob);
       history.replaceState(null, "", address);
@@ -920,11 +1004,11 @@
   const params = new URLSearchParams(location.search),
     defaults = {
       task: "maze",
-      dataset: "progress-evaluation-v2",
-      reader: "progress_zha",
-      seed: "3002",
+      dataset: "persistent-task-v2",
+      reader: "persistent_zha",
+      seed: "9001",
       env: "MiniGrid-KeyCorridorS6R3-v0",
-      step: "51",
+      step: "42",
       view: "layers",
     };
   const taskParams = new URLSearchParams(

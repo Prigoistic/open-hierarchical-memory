@@ -14,6 +14,7 @@ import platform
 import subprocess
 import time
 import traceback
+from collections.abc import Callable
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any
@@ -21,7 +22,13 @@ from typing import Any
 import torch
 
 from open_hierarchical_memory import ExecutionMode, HierarchicalIndex
-from research.minigrid_benchmark import Fact, ObservationPlanner, ReadContext, query_vectors
+from research.minigrid_benchmark import (
+    Fact,
+    ObservationPlanner,
+    ReadContext,
+    query_vectors,
+    serial_observation,
+)
 from research.persistent_task_memory import Backend, PersistentTaskReader, RecoveryPolicy
 from research.run_minigrid_benchmark import environment, require_versions
 from research.run_progress_benchmark import run_episode
@@ -136,6 +143,7 @@ def persistent_episode(
     step_cap: int,
     *,
     recovery_policy: RecoveryPolicy = "on_stall",
+    on_step: Callable[[dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     if path.exists():
         raise ValueError("a simulator reset requires a fresh episode archive/context")
@@ -166,12 +174,14 @@ def persistent_episode(
                 if step and step % PROTOCOL["ageing"]["every_actions"] == 0
                 else []
             )
+            before = serial_observation(obs)
             action, decision, added = actor.act(obs)
             obs, reward, terminated, truncated, _ = env.step(action)
             reward_sum += float(reward)
             rows.append(
                 {
                     "step": step,
+                    "observation": before,
                     "action": action,
                     "reward": float(reward),
                     "terminated": bool(terminated),
@@ -181,6 +191,8 @@ def persistent_episode(
                     "decision": decision,
                 }
             )
+            if on_step is not None:
+                on_step(rows[-1])
             if terminated or truncated:
                 break
     except Exception as caught:

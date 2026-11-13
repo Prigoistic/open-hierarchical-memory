@@ -1,0 +1,126 @@
+{
+  "date": "2026-11-13",
+  "scope": "Dashboard integration of the reviewed persistent task-memory reader; no numerical-policy or frozen-experiment change",
+  "entry": "http://127.0.0.1:8792/",
+  "sources": {
+    "research/persistent_dashboard.py": "b841aa1c1e2495ebb7cfa72afd16e568f9b8932f1cbcdd66d161d8e2fad196e5",
+    "research/live_solver.py": "2acd5c96a9cd3e80a78e713686bf3f4dd14fbc32be8a0c52f2f5934ad471e6e4",
+    "research/run_persistent_tasks.py": "33d087855a10dd579102c84481730e18951177a8cd7384a53ec65bc59a02240e",
+    "research/serve_task_benchmark.py": "7d1547f390ab78841bc41227445ac513567482bc1663883731d3359ed830b17b",
+    "web/dashboard/app.js": "7c7c5d5e59e35b762ac36f79a317e45ad4f53f60446fe1d0846abd78473a81ce",
+    "web/dashboard/index.html": "747bd1e9ae19a90a3180b1a45df6f3bec208e7751e4c2da55061e42572e2769a",
+    "web/dashboard/style.css": "1e4e72becf03199c3ec0de03b704ac801cfbfadc8a0bf73673b90236a1232fd4",
+    "web/task-lab/app.js": "7afd8a369e2c68b46b265d9c9b8ba70b647f0aa23a9afcf76e654e1b37a4a8ed",
+    "web/visuals/src/persistent.mjs": "18e27cc683e5f7d8935ccd8313204137765920551d4839a04172b95e64d71201",
+    "web/visuals/src/scene.mjs": "ff2f5823cdc2b0d783c1986c08cac51ce2561cb9e4236f6b7d916d696aa98462",
+    "web/visuals/build-manifest.json": "40988152209a6783cf88c73aec18c620a8b8922b41f79440b1ef90471c0986ea"
+  },
+  "verification": {
+    "python_tests": 482,
+    "new_python_tests": 7,
+    "visual_motion_tests": 33,
+    "standard_gate_commands": 21,
+    "standard_gate_all_passed": true,
+    "js_syntax": true,
+    "renderer_build": {
+      "libraries": {
+        "three": "0.187.0",
+        "gsap": "3.15.1",
+        "esbuild": "0.28.2"
+      },
+      "bundle_bytes": 712672,
+      "bundle_sha256": "2d16bf5e64bf91dae560e4c721e0fb540cf8fb23a8c23e90a6c0cb47cf2291e3",
+      "css_sha256": "147d4e01a58c9ef3c90e40bbcf80575d928f5753bc43465622cb34dabaaa0a16",
+      "embedded_sha256": "e52651c9c8ffa3a5421c8ca4136d36cec99cc0853d5f8131619e33c7e9608608",
+      "panel_boot_sha256": "06c36cae4dad5892d4c0f6b5f6115b0ff2fa1abdad36df27cc7bbc5ba186795b"
+    },
+    "frozen_experiment_diff": []
+  },
+  "browser": {
+    "tool": "agent-browser 0.43.0, Chromium, isolated verification session",
+    "fresh_fitted_run": {
+      "id": "bd9a2bee4ede72d0a5e0f5a8af4fa98d",
+      "task": "MiniGrid-KeyCorridorS6R3-v0",
+      "seed": 9001,
+      "actions": 78,
+      "success": true,
+      "archive_originals": 245,
+      "active_final": 96,
+      "reopen_check": true,
+      "reference_hash": "4c5622ce69e8af3978aa119b113185fc86eebc2ca39c5f87e19029a41b8db7c3"
+    },
+    "decision58": {
+      "active": 96,
+      "dormant": 92,
+      "recovered": 16,
+      "returned": 31,
+      "retired_or_evicted": 18
+    },
+    "rewind0": {
+      "active": 35,
+      "dormant": 0
+    },
+    "same_job_completed_refresh": {
+      "id_unchanged": true,
+      "selected_decision": 58,
+      "playing": false,
+      "no_new_compute": true
+    },
+    "exact_selection": {
+      "source": "Saved development",
+      "method": "persistent_exact",
+      "view": "Active workspace",
+      "summary_dots": 0,
+      "old_solve_url_cleared": true
+    },
+    "source_keyboard_inspection": true,
+    "next_memory_event_button": {
+      "verified": true,
+      "from_decision": 0,
+      "to_decision": 8,
+      "capacity_evicted_ids": [
+        60
+      ],
+      "retired_ids": [],
+      "recovered_ids": []
+    },
+    "mobile": {
+      "viewport": 390,
+      "document_width": 390,
+      "controls_open": true,
+      "solve_button": {
+        "x": 13,
+        "right": 307,
+        "top": 477,
+        "bottom": 511
+      }
+    },
+    "reduced_motion": {
+      "media_match": true,
+      "active": "96 / 96",
+      "recovered": 16,
+      "trace_replay": null
+    },
+    "canvas": {
+      "renderer": "CANVAS 2D",
+      "active": "96 / 96",
+      "recovered": 16,
+      "visible": true
+    },
+    "page_errors": [],
+    "screenshots": [
+      "persistent-dashboard-desktop.png",
+      "persistent-dashboard-mobile.png",
+      "persistent-dashboard-canvas.png"
+    ]
+  },
+  "boundaries": [
+    "initial frame is saved development evidence, not a live run",
+    "checkpoint is loaded; no fitting during solve",
+    "current coordinates/features remain structured and hand-designed",
+    "live task archives grow beyond bounded active membership",
+    "service restart retains SQLite but expires in-memory job playback; no simulator resume",
+    "no sleep or neural consolidation",
+    "no public push/release or benchmark-superiority claim"
+  ]
+}

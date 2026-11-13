@@ -13,6 +13,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from research.dashboard_gateway import MAX_BODY, MEMORY_WRITES, MemoryGateway
 from research.live_solver import LiveSolver, SolverBusyError
+from research.persistent_dashboard import DATASET, METHODS, adapt_recorded
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_EXPANDED_TRACE_BYTES = 128 * 1024 * 1024
@@ -105,6 +106,64 @@ class TaskCatalog:
             summaries.extend(
                 {"task": "minigrid", "dataset": dataset, **r} for r in report["summaries"]
             )
+        path = self.root / "experiments" / DATASET / "report.json"
+        if path.exists():
+            report = json.loads(path.read_text())
+            protocol = json.loads(path.with_name("protocol.json").read_text())
+            persistent_expected = {
+                (c, e, seed)
+                for c in protocol["conditions"]
+                for e in protocol["environments"]
+                for seed in protocol["comparison_seeds"]
+            }
+            actual = {(r["condition"], r["environment"], r["seed"]) for r in report["runs"]}
+            if (
+                report.get("complete")
+                and actual == persistent_expected
+                and len(report["runs"]) == len(persistent_expected)
+            ):
+                method_for = {spec[0]: name for name, spec in METHODS.items()}
+                for r in report["runs"]:
+                    costs = r["costs"]
+                    runs.append(
+                        {
+                            **r,
+                            "uid": "minigrid:" + DATASET + ":" + r["file"],
+                            "task": "minigrid",
+                            "dataset": DATASET,
+                            "environment_id": r["environment"],
+                            "reader": method_for[r["condition"]],
+                            "config": method_for[r["condition"]],
+                            "split": r["environment"] + "/" + DATASET,
+                            "level_id": r["seed"],
+                            "expansion_limit": protocol["step_cap"],
+                            "expanded": r["steps"],
+                            "pushes": None,
+                            "wall_seconds": None,
+                            "read_work": {
+                                "raw_key_scores": costs["archive_raw_pairs"]
+                                + costs["archive_rerank_pairs"],
+                                "summary_dot_products": costs["archive_summary_dot_products"],
+                            },
+                        }
+                    )
+                for env in protocol["environments"]:
+                    for condition in protocol["conditions"]:
+                        rows = [
+                            r
+                            for r in report["runs"]
+                            if r["environment"] == env and r["condition"] == condition
+                        ]
+                        summaries.append(
+                            {
+                                "task": "minigrid",
+                                "dataset": DATASET,
+                                "environment_id": env,
+                                "reader": method_for[condition],
+                                "episodes": len(rows),
+                                "successes": sum(r["success"] for r in rows),
+                            }
+                        )
         return {"schema": "task-catalog-v1", "runs": runs, "summary": summaries}
 
     def run(self, uid: str) -> dict[str, Any]:
@@ -128,6 +187,8 @@ class TaskCatalog:
         if len(decoded) > MAX_EXPANDED_TRACE_BYTES:
             raise TraceTooLargeError("expanded artifact too large")
         result: dict[str, Any] = json.loads(decoded)
+        if row["dataset"] == DATASET:
+            result = adapt_recorded(result, row["reader"])
         result["task"] = row["task"]
         result["dataset"] = row["dataset"]
         result["catalog_split"] = row.get("split")
@@ -140,7 +201,9 @@ class TaskCatalog:
                 expansion_limit=row["expansion_limit"],
                 expanded=len(result["trajectory"]),
                 pushes=None,
-                wall_seconds=result["costs"]["episode_seconds"],
+                wall_seconds=result["costs"].get(
+                    "episode_seconds", result.get("episode_seconds", 0)
+                ),
             )
         return result
 
@@ -159,7 +222,7 @@ class TaskServer(ThreadingHTTPServer):
 
     def __init__(self, address: tuple[str, int], root: Path = ROOT, *, memory_port: int = 8791):
         self.memory = MemoryGateway(memory_port)
-        self.solver = LiveSolver()
+        self.solver = LiveSolver(root=root)
         self.catalog = TaskCatalog(root)
         self.root = root
         super().__init__(address, TaskHandler)

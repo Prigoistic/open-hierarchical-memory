@@ -7,6 +7,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { gsap } from "gsap";
 import { createContextGrid } from "./grid.mjs";
 import navigation from "./navigation.cjs";
+export { persistentState, persistentMemoryModel } from "./persistent.mjs";
 export const PoseTween = navigation.PoseTween;
 export { activityModel, activityColor } from "./activity.mjs";
 import { CustomEase } from "gsap/CustomEase";

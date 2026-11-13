@@ -4,8 +4,8 @@
     "gsap": "3.15.1",
     "esbuild": "0.28.2"
   },
-  "bundle_bytes": 709735,
-  "bundle_sha256": "62781a5b837d4ed61ea1390f3b039d38ea4b52c85e726cdf95abb88fca12b3f2",
+  "bundle_bytes": 712672,
+  "bundle_sha256": "2d16bf5e64bf91dae560e4c721e0fb540cf8fb23a8c23e90a6c0cb47cf2291e3",
   "css_sha256": "147d4e01a58c9ef3c90e40bbcf80575d928f5753bc43465622cb34dabaaa0a16",
   "embedded_sha256": "e52651c9c8ffa3a5421c8ca4136d36cec99cc0853d5f8131619e33c7e9608608",
   "panel_boot_sha256": "06c36cae4dad5892d4c0f6b5f6115b0ff2fa1abdad36df27cc7bbc5ba186795b"

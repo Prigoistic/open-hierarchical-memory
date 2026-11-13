@@ -910,3 +910,40 @@ iframe {
   background: var(--key);
   margin-right: 3px;
 }
+
+/* Lifecycle channels match the source-bound 3D planes. */
+.lifecycle-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 12px;
+  color: var(--muted, #8b969d);
+  font-size: 12px;
+  line-height: 16px;
+}
+.lifecycle-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.lifecycle-key i {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+}
+.lifecycle-key .cold {
+  background: #27529a;
+}
+.lifecycle-key .hot {
+  background: #50ccdf;
+}
+.lifecycle-key .recovered {
+  background: #f1c86d;
+}
+.lifecycle-key .retired {
+  background: #a58ac9;
+}
+#lifecycle-reference,
+#lifecycle-archive {
+  overflow-wrap: anywhere;
+}

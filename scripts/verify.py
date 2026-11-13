@@ -106,6 +106,8 @@ def main() -> int:
             "research/task_store.py",
             "research/persistent_task_memory.py",
             "research/run_persistent_tasks.py",
+            "research/persistent_dashboard.py",
+            "research/live_solver.py",
             "scripts/audit_persistent_tasks.py",
         ],
         [

@@ -62,7 +62,7 @@
       "exit_code": 0
     },
     {
-      "command": "python -m mypy --strict --follow-imports=silent research/task_references.py research/task_store.py research/persistent_task_memory.py research/run_persistent_tasks.py scripts/audit_persistent_tasks.py",
+      "command": "python -m mypy --strict --follow-imports=silent research/task_references.py research/task_store.py research/persistent_task_memory.py research/run_persistent_tasks.py research/persistent_dashboard.py research/live_solver.py scripts/audit_persistent_tasks.py",
       "exit_code": 0
     },
     {

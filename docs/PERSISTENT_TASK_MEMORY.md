@@ -34,7 +34,7 @@ The scoped graph also uses the known-only coverage mask to avoid nominating unav
 
 ## Completed implementation and results
 
-The new lane is command-line only. The existing 8792 dashboard still launches the earlier task readers; it does not select this persistent reader or run its reference fitting. Neither the separate continuous neural learner nor the portfolio application was modified.
+The lane now runs through both the CLI and the existing dashboard on port 8792. The default method loads the fitted checkpoint; it does not refit during a solve. Each fresh run retains a separate local SQLite archive. Neither the separate continuous neural learner nor the portfolio application was modified.
 
 | Comparison | No recovery | Always fixed ZHA | Gated fixed ZHA | Gated random ZHA | Gated fitted ZHA | Exact |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -76,4 +76,5 @@ Only active payload capacity is bounded. The canonical archive, key cache, cover
 3. Test whether fitting helps source retrieval at matched quality and budgets, including random references. The current pilot does not show an advantage.
 4. Add incremental indexing only after correctness parity and profiling show it matters.
 5. Design a separate observed-transition replay/consolidation experiment, with a learned target, held-out outcomes and no writeback of imagined facts. Sleep, latent visual dreaming and neural consolidation are not implemented in this task adapter.
-6. Wire this reader and its hot/cold receipts into the dashboard with end-to-end UI checks. Until then, use the CLI artifacts above.
+
+Dashboard wiring is now complete: see `UNIFIED_DASHBOARD.md` for source-bound lifecycle views, live solves, archive locations and browser checks. Sleep and neural consolidation remain separate research gates.

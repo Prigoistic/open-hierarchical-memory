@@ -74,7 +74,7 @@
                   type="number"
                   min="0"
                   max="2147483647"
-                  value="3002" /></label
+                  value="9001" /></label
               ><label
                 >Action limit<select id="solve-cap">
                   <option value="128">128</option>
@@ -105,7 +105,7 @@
                 ><input type="checkbox" id="show-map" checked /> Show navigation
                 inset</label
               ><button id="recovery" class="quiet" disabled>
-                Jump to next recovery
+                Next memory event
               </button>
             </div>
           </details>
@@ -131,6 +131,44 @@
               <dd id="telemetry-samples">—</dd>
             </div>
           </dl>
+        </section>
+        <section
+          class="control-section instrument-metrics"
+          id="lifecycle-section"
+          hidden
+        >
+          <h2>MEMORY LIFECYCLE</h2>
+          <dl>
+            <div>
+              <dt>ACTIVE / CAPACITY</dt>
+              <dd id="lifecycle-active">—</dd>
+            </div>
+            <div>
+              <dt>DORMANT</dt>
+              <dd id="lifecycle-cold">—</dd>
+            </div>
+            <div>
+              <dt>RECOVERED NOW</dt>
+              <dd id="lifecycle-recovered">—</dd>
+            </div>
+            <div>
+              <dt>RETIRED / EVICTED</dt>
+              <dd id="lifecycle-retired">—</dd>
+            </div>
+          </dl>
+          <p class="source-note" id="lifecycle-gate"></p>
+          <details class="advanced">
+            <summary>Source &amp; work</summary>
+            <p class="source-note" id="lifecycle-reference"></p>
+            <p class="source-note" id="lifecycle-work"></p>
+            <p class="source-note" id="lifecycle-archive"></p>
+          </details>
+          <div class="lifecycle-key" aria-label="Memory state colours">
+            <span><i class="cold"></i>Dormant</span
+            ><span><i class="hot"></i>Active</span>
+            <span><i class="recovered"></i>Recovered</span
+            ><span><i class="retired"></i>Retired</span>
+          </div>
         </section>
         <section class="control-section episode-receipt">
           <div class="section-heading">
@@ -239,9 +277,11 @@
           <summary>About this workspace</summary>
           <p>
             Solve runs the observation-only MiniGrid controller with ZHA
-            retrieval. Both structures follow the same decision. Only observed
-            facts enter memory. Graph recovery is labelled when used. The
-            planner is symbolic, not a trained policy.
+            retrieval and persistent observed memory. Both structures follow the
+            same decision. Active payloads are bounded; dormant evidence stays
+            recoverable. Fitted references are loaded from the recorded
+            development experiment. Archive recovery is explicit. The planner is
+            symbolic; this solve does not run sleep or neural consolidation.
           </p>
           <p>
             Drag to orbit. Scroll to zoom. Use each view menu for focus and
@@ -330,7 +370,8 @@
             <div>
               <span class="eyebrow" id="memory-source-label">Task memory</span>
               <h2>
-                MEMORY ACTIVITY <span id="memory-state">OBSERVED DOMAIN</span>
+                <span id="memory-heading">MEMORY ACTIVITY</span>
+                <span id="memory-state">OBSERVED DOMAIN</span>
               </h2>
             </div>
             <div class="view-tools">
