@@ -1,0 +1,347 @@
+{
+  "date": "2026-11-13",
+  "scope": "CLI persistent task-memory integration; fitted references, immutable observations, reversible active retirement, explicit cold access and active-only graph support",
+  "changes": [
+    "research/task_references.py",
+    "research/task_store.py",
+    "research/persistent_task_memory.py",
+    "research/run_persistent_tasks.py",
+    "scripts/audit_persistent_tasks.py",
+    "research/dependency_memory.py"
+  ],
+  "verified": {
+    "python_tests": 475,
+    "new_python_cases": 23,
+    "visual_motion_tests": 27,
+    "standard_verification_commands": 21,
+    "standard_verification_all_passed": true,
+    "diff_check": true
+  },
+  "commands": [
+    ".venv/bin/python -m research.run_persistent_tasks --output experiments/persistent-task-v1",
+    ".venv/bin/python -m research.run_persistent_tasks --output experiments/persistent-task-v2",
+    ".venv/bin/python scripts/audit_persistent_tasks.py --results experiments/persistent-task-v1",
+    ".venv/bin/python scripts/audit_persistent_tasks.py --results experiments/persistent-task-v2",
+    ".venv/bin/python scripts/verify.py --profile core",
+    "node --test web/visuals/test/*.test.mjs",
+    "git diff --check"
+  ],
+  "experiments": {
+    "v1": {
+      "directory": "experiments/persistent-task-v1",
+      "protocol_sha256": "450e69e4cfae9dfe8f0cb0e916b5b8d3827e1389feace24ee4876fbdec02f8ad",
+      "source_hashes_unchanged": true,
+      "report_sha256": "8ce5c4d3caa0d322ec63b0bb2a68aac4384ef3d95805d8c12adc040d371e217a",
+      "sources": {
+        "src/open_hierarchical_memory/__init__.py": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+        "src/open_hierarchical_memory/attention.py": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+        "src/open_hierarchical_memory/contracts.py": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+        "src/open_hierarchical_memory/routing.py": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+        "src/open_hierarchical_memory/summaries.py": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+        "src/open_hierarchical_memory/training.py": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e",
+        "src/open_hierarchical_memory/tree.py": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+        "research/task_references.py": "28f84cb5d144376b4b082b5f5e3962c93c853ce39b7881fff7eb2a660f1e2730",
+        "research/task_store.py": "613bb85a2b0668b662966cfd95398209841961bb1c3c7f48b64a51f40ac3ff1d",
+        "research/persistent_task_memory.py": "c4f8581fa5518ecd013c1c7acee1db1a73c4b47e830cfb239c8e7bbd62b8e7db",
+        "research/run_persistent_tasks.py": "899d58a428502733eb0d03e0223d0eaaab4093a4d257fd91c9bdbb8fe62679ea",
+        "research/persistent_task_protocol.json": "7e86a670806911c382ba433367d8febb6c7dac6fab6b46e9a247de581d3af90a",
+        "research/dependency_memory.py": "c34472630f6b4374a93f7501f919720a3e918cae99a5790d8f0ea8f5a4d7ba61",
+        "research/minigrid_benchmark.py": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d",
+        "research/run_progress_benchmark.py": "24ae5c8e6c560997aedc9ce2215dafdf8630e865d98d95a76ea6eee857b5ed0d",
+        "research/run_minigrid_benchmark.py": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b",
+        "uv.lock": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796",
+        "scripts/audit_persistent_tasks.py": "b8d72d31c63942ddf2e515625c88f9674644ed6cafa3a9eeb4ee4d832ef3736b",
+        "tests/oracle.py": "d6d20dcd6ad0ba555161bae36b95dfba4a6b295946b9a1378fb36ebe5f5ce0e7"
+      },
+      "outcomes": [
+        {
+          "condition": "no_recovery",
+          "successes": 8,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 397
+        },
+        {
+          "condition": "fixed_zha",
+          "successes": 6,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 645
+        },
+        {
+          "condition": "random_zha",
+          "successes": 6,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 645
+        },
+        {
+          "condition": "fitted_zha",
+          "successes": 6,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 645
+        },
+        {
+          "condition": "exact",
+          "successes": 8,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 387
+        }
+      ],
+      "delayed_clue": [
+        {
+          "condition": "no_recovery",
+          "clue_recovered": false,
+          "clue_returned_with_support": false,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-no_recovery.json.gz",
+          "sha256": "0fb140f72d2ae847cb546f11719ac6ae979e5a2f996ae82f1f6c8e0e72e1f5c7",
+          "expanded_bytes": 7289
+        },
+        {
+          "condition": "fixed_zha",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-fixed_zha.json.gz",
+          "sha256": "4a6ba24447a7162476fdee94cfa721f4242ef79c811bc42442a0272ea713a108",
+          "expanded_bytes": 9570
+        },
+        {
+          "condition": "random_zha",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-random_zha.json.gz",
+          "sha256": "e61c444c7dc5f8429ea551c2ac2f03836b15519dd99e4993fe45528cc713df05",
+          "expanded_bytes": 9569
+        },
+        {
+          "condition": "fitted_zha",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-fitted_zha.json.gz",
+          "sha256": "d92f400a6aaf72c7d9f1a549511ca304424e4415ff6f544542cb438bbdb8a368",
+          "expanded_bytes": 9569
+        },
+        {
+          "condition": "exact",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-exact.json.gz",
+          "sha256": "83d1033e4cef9c141ace7afdfe495a1e9f89878d31b6d5cc24797028518e486c",
+          "expanded_bytes": 7765
+        }
+      ],
+      "independent_audits": {
+        "INDEPENDENT_AUDIT-c26ac4bb1d54.json": {
+          "all_passed": true,
+          "auditor_sha256": "c26ac4bb1d545c9db41623d71732688a0b323cf36a6a951318effc4c9aa37b4f",
+          "top_p_roundoff_band": 1e-12,
+          "runs": 40,
+          "decisions": 2719,
+          "routes": 3930,
+          "numerical_route_cases": 24,
+          "offline_mass_cases": 315,
+          "scope": "source/current-head/cold-access lineage, official action replay, up to one independently recomputed affine route case per ZHA episode with a sufficiently large archive read, recorded top-p/leaf ownership, mass and aggregates; not optimizer-trajectory audit or performance certification"
+        },
+        "INDEPENDENT_AUDIT.json": {
+          "all_passed": true,
+          "auditor_sha256": "deda4bee162dc9717b4a4b40558106535666b6a745603f03380c6857629d722b",
+          "top_p_roundoff_band": 1e-12,
+          "runs": 40,
+          "decisions": 2719,
+          "routes": 3930,
+          "numerical_route_cases": 24,
+          "offline_mass_cases": 315,
+          "scope": "source/current-head/cold-access lineage, official action replay, one independently recomputed affine route case per ZHA episode, recorded top-p/leaf ownership, mass and aggregates; not optimizer-trajectory audit or performance certification"
+        }
+      }
+    },
+    "v2": {
+      "directory": "experiments/persistent-task-v2",
+      "protocol_sha256": "d94e9b4db84248b8175c4f6f67b36023eae8b0777b6b59a05d28f3f714230f5c",
+      "source_hashes_unchanged": true,
+      "report_sha256": "03a8f05623e0e4d244ee4ac955ef7e2f7f0dfc6cf644034f1ef26465c7ebf429",
+      "sources": {
+        "src/open_hierarchical_memory/__init__.py": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+        "src/open_hierarchical_memory/attention.py": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+        "src/open_hierarchical_memory/contracts.py": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+        "src/open_hierarchical_memory/routing.py": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+        "src/open_hierarchical_memory/summaries.py": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+        "src/open_hierarchical_memory/training.py": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e",
+        "src/open_hierarchical_memory/tree.py": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+        "research/task_references.py": "28f84cb5d144376b4b082b5f5e3962c93c853ce39b7881fff7eb2a660f1e2730",
+        "research/task_store.py": "c2eb76d419636d1b738e1629b0179bd27fd02a09503d533c06c137675bc022e1",
+        "research/persistent_task_memory.py": "4e089456416aa95c531dce60ceca10eb556c249dcb4a14449a3c99b512d81120",
+        "research/run_persistent_tasks.py": "4fbcbd15b66e982ef417b79a4773d5391a650c125473ceb17d80d741ffefa9c0",
+        "research/persistent_task_protocol.json": "483ccb2a5c96f5d3123de8ccef374c29656002596411c4124f22c08bf768e2f9",
+        "research/dependency_memory.py": "36e91daaefff4d0d8334d260bbdb712b35e1d2e19409ff70981418dc39f10534",
+        "research/minigrid_benchmark.py": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d",
+        "research/run_progress_benchmark.py": "24ae5c8e6c560997aedc9ce2215dafdf8630e865d98d95a76ea6eee857b5ed0d",
+        "research/run_minigrid_benchmark.py": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b",
+        "uv.lock": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796",
+        "scripts/audit_persistent_tasks.py": "c26ac4bb1d545c9db41623d71732688a0b323cf36a6a951318effc4c9aa37b4f",
+        "tests/oracle.py": "d6d20dcd6ad0ba555161bae36b95dfba4a6b295946b9a1378fb36ebe5f5ce0e7"
+      },
+      "outcomes": [
+        {
+          "condition": "no_recovery",
+          "successes": 8,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 395
+        },
+        {
+          "condition": "always_fixed_zha",
+          "successes": 8,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 389
+        },
+        {
+          "condition": "fixed_zha",
+          "successes": 8,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 393
+        },
+        {
+          "condition": "random_zha",
+          "successes": 8,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 393
+        },
+        {
+          "condition": "fitted_zha",
+          "successes": 8,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 393
+        },
+        {
+          "condition": "exact",
+          "successes": 8,
+          "episodes": 8,
+          "errors": 0,
+          "actions": 393
+        }
+      ],
+      "delayed_clue": [
+        {
+          "condition": "no_recovery",
+          "clue_recovered": false,
+          "clue_returned_with_support": false,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-no_recovery.json.gz",
+          "sha256": "2545e204eb369dd6862d32e9a8674d82683d8918a4954aba6c5bd46f20e3eda4",
+          "expanded_bytes": 9728
+        },
+        {
+          "condition": "always_fixed_zha",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-always_fixed_zha.json.gz",
+          "sha256": "898654abbaaed03b0ba692fdd207fe6f01dc07e684861678731e4d57d7a1a0c1",
+          "expanded_bytes": 11045
+        },
+        {
+          "condition": "fixed_zha",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-fixed_zha.json.gz",
+          "sha256": "1ca56900254ee8249e0602d5668ed7fb1110bd07dcbe94839ae937a464f24164",
+          "expanded_bytes": 11043
+        },
+        {
+          "condition": "random_zha",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-random_zha.json.gz",
+          "sha256": "5c3e750112292641795f6a33714b159064b5d45a151659f4aa2b9faf77b588a8",
+          "expanded_bytes": 11046
+        },
+        {
+          "condition": "fitted_zha",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-fitted_zha.json.gz",
+          "sha256": "f5fb22e905ea6f16ca64dcd8d3cd7cb807e4c5d276a072dd11afd5afb6e76be5",
+          "expanded_bytes": 11048
+        },
+        {
+          "condition": "exact",
+          "clue_recovered": true,
+          "clue_returned_with_support": true,
+          "superseded_not_returned": true,
+          "original_prefix_unchanged": true,
+          "restored_state_equal": true,
+          "file": "delayed-exact.json.gz",
+          "sha256": "defbda168ac974bd107126740634d1f6522558de0be44dd2bda82a88b0e43482",
+          "expanded_bytes": 10162
+        }
+      ],
+      "independent_audits": {
+        "INDEPENDENT_AUDIT.json": {
+          "all_passed": true,
+          "auditor_sha256": "c26ac4bb1d545c9db41623d71732688a0b323cf36a6a951318effc4c9aa37b4f",
+          "top_p_roundoff_band": 1e-12,
+          "runs": 48,
+          "decisions": 2356,
+          "routes": 864,
+          "numerical_route_cases": 20,
+          "offline_mass_cases": 315,
+          "scope": "source/current-head/cold-access lineage, official action replay, up to one independently recomputed affine route case per ZHA episode with a sufficiently large archive read, recorded top-p/leaf ownership, mass and aggregates; not optimizer-trajectory audit or performance certification"
+        }
+      }
+    }
+  },
+  "interpretation": [
+    "v1 negative results retained",
+    "v2 is same exposed cohort development",
+    "always-recover also recovers success after frontier repair; do not attribute recovery to gating alone",
+    "fitted pooled KL improves over fixed; random has lower KL; no fitted-reference task advantage",
+    "archive gate reduces route work on these executed paths; no speed or energy claim",
+    "independent auditor does not reproduce optimizer trajectory or every numerical route"
+  ],
+  "boundaries": [
+    "CLI only; current dashboard still runs baseline readers",
+    "structured features remain hand-designed; references are trainable",
+    "active capacity excludes separately metered archive/key/index/coverage memory",
+    "world resets require new namespaces; no automatic cross-layout transfer",
+    "restoration checks memory state, not automatic simulator/planner resumption",
+    "POSIX single-writer reference storage; no distributed serving claim",
+    "no sleep, neural consolidation, latent visual dreaming or imagined-evidence writeback",
+    "untouched-seed policy validation remains open",
+    "no public push or release"
+  ]
+}

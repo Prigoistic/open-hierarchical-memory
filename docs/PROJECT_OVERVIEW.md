@@ -46,3 +46,10 @@ The inspector exposes actual cues, routing passes, node spans, original facts an
 The entry is `http://127.0.0.1:8792/`. Solve maze launches the existing observation-only MiniGrid controller with a bounded worker. Its navigation, hierarchical reads, observed facts, returned memories and planner actions share one cursor. The side rail has one primary start/stop action. Pause/scrub controls affect both structures. Source inspection reports actual original IDs and observation steps; graph recovery is explicit.
 
 Saved examples retain separate labels. The default task memory field now belongs to the maze itself. The independent archive and its continuous neural-learning loop remain available under advanced tools. Solving a maze does not train those separate weights. The numerical controller, ZHA core and frozen experimental artifacts are unchanged; a step observer and bounded incremental transport provide fresh execution evidence. See `docs/UNIFIED_DASHBOARD.md`.
+
+
+## 7. Persistent task-memory adapter,13 November2026
+
+`research/task_references.py`, `task_store.py` and `persistent_task_memory.py` now connect actual fitted task reference parameters to versioned observed facts, a bounded active workspace and reversible forgetting. Read receipts identify current, active, recovered, evicted and returned sources. Support graphs are restricted to those available payloads; a known-only mask prevents phantom frontier nominations. Original evidence and correction chains remain immutable. The numerical core is unchanged.
+
+This is a separate CLI lane, not yet a selectable dashboard method. The preserved first comparison has6/8 successes for ZHA versus8/8 exact/no-recovery; the repaired same-cohort development run has8/8 across all six conditions. A delayed-clue diagnostic verifies recovery after restart and correction isolation. Reference fitting improves KL over fixed, but the random control has lower KL; there is no demonstrated ZHA advantage. See `PERSISTENT_TASK_MEMORY.md` and the two versioned experiment summaries. Sleep/consolidation and fresh-seed policy evaluation remain future gates.

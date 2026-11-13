@@ -407,11 +407,45 @@ class DependencyReader:
             raise AssertionError("structural adapter exceeded raw fact capacity")
         return selected, routes, receipt, coverage
 
+    def pack_available_support(
+        self,
+        available: list[Fact],
+        seeds: list[Fact],
+        context: ReadContext,
+        *,
+        known_coverage: KnownCoverage | None = None,
+    ) -> tuple[list[Fact], list[dict[str, Any]]]:
+        """Pack only caller-authorized evidence; never consult this reader's archive.
+
+        This public boundary lets lifecycle adapters withhold dormant content.
+        Known-only coverage is not sufficient evidence to add an available cell.
+        """
+        by_id = {f.id: f for f in available}
+        by_position = {f.position: f for f in available}
+        if (
+            len(by_id) != len(available)
+            or len(by_position) != len(available)
+            or any(f.id <= 0 or f.observed_step > context.step for f in available)
+            or any(by_id.get(f.id) != f for f in seeds)
+            or any(
+                (head := by_position.get(f.position)) is None
+                or (head.object, head.color, head.state) != (f.object, f.color, f.state)
+                for f in context.current_facts
+            )
+        ):
+            raise ValueError("support contains missing, future or conflicting evidence")
+        return self._structural(available, seeds, context, known_coverage=known_coverage)
+
     def _structural(
-        self, heads: list[Fact], seeds: list[Fact], context: ReadContext
+        self,
+        heads: list[Fact],
+        seeds: list[Fact],
+        context: ReadContext,
+        *,
+        known_coverage: KnownCoverage | None = None,
     ) -> tuple[list[Fact], list[dict[str, Any]]]:
         graph = ObservedGraph(heads, context, self.work)
-        nominated = self._nominate(seeds, graph, context)
+        nominated = self._nominate(seeds, graph, context, known_coverage=known_coverage)
         self.work["seed_role_scan_items"] += len(seeds)
         cues = [f for f in seeds if f.cue and f.object in (5, 6)]
         cue = min(cues, key=lambda f: (f.first_seen, f.id)) if cues else None
@@ -444,7 +478,12 @@ class DependencyReader:
         return [graph.by_id[i] for i in sorted(packed)], receipts
 
     def _nominate(
-        self, seeds: list[Fact], graph: ObservedGraph, context: ReadContext
+        self,
+        seeds: list[Fact],
+        graph: ObservedGraph,
+        context: ReadContext,
+        *,
+        known_coverage: KnownCoverage | None = None,
     ) -> list[tuple[Fact, str]]:
         parent = graph.search(None)
         matching = "matching" in context.mission
@@ -481,7 +520,11 @@ class DependencyReader:
             elif seed.object == 4 and seed.state != 0:
                 priority, role = 2, "door_landmark"
             elif seed.position in parent and walkable(seed):
-                if any(point not in graph.cells for point in neighbors(seed.position)):
+                if any(
+                    point not in graph.cells
+                    and (known_coverage is None or not known_coverage.contains(point))
+                    for point in neighbors(seed.position)
+                ):
                     priority, role = 3, "true_observed_frontier"
             if role is not None:
                 route = graph.path(seed, None)

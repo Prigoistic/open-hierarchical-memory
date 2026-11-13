@@ -1,0 +1,36 @@
+{
+  "protocol_hash": "450e69e4cfae9dfe8f0cb0e916b5b8d3827e1389feace24ee4876fbdec02f8ad",
+  "sources": {
+    "src/open_hierarchical_memory/__init__.py": "a3121e2becf86d9a6f1b888c21daff1d4a4d05a2baacb4d5b09ca6b04f79fa0a",
+    "src/open_hierarchical_memory/attention.py": "1cb189f230c5f488ac9743048b9d6137245756a953393fc08a10c15c393ad420",
+    "src/open_hierarchical_memory/contracts.py": "88fa95aa789ee1cfb9f0b03729fc0426c4d8690309e43439555cde281ecd6075",
+    "src/open_hierarchical_memory/routing.py": "74686aa30107643fca440df95fbe498b8d83516b634edafd24e0caa6fb498a83",
+    "src/open_hierarchical_memory/summaries.py": "cb2e087e269d16454c042586d0d7e817ab4451c278eae5b12e66049cf7eb66d0",
+    "src/open_hierarchical_memory/training.py": "3485455543b3465be382ec4357adb6ce947b3cd04fcd750221a479a22c16ed5e",
+    "src/open_hierarchical_memory/tree.py": "d7cbbda943f196be6a945fde857bd5c5f7f10fb8e53fb667c9c1fcebd0810e38",
+    "research/task_references.py": "28f84cb5d144376b4b082b5f5e3962c93c853ce39b7881fff7eb2a660f1e2730",
+    "research/task_store.py": "613bb85a2b0668b662966cfd95398209841961bb1c3c7f48b64a51f40ac3ff1d",
+    "research/persistent_task_memory.py": "c4f8581fa5518ecd013c1c7acee1db1a73c4b47e830cfb239c8e7bbd62b8e7db",
+    "research/run_persistent_tasks.py": "899d58a428502733eb0d03e0223d0eaaab4093a4d257fd91c9bdbb8fe62679ea",
+    "research/persistent_task_protocol.json": "7e86a670806911c382ba433367d8febb6c7dac6fab6b46e9a247de581d3af90a",
+    "research/dependency_memory.py": "c34472630f6b4374a93f7501f919720a3e918cae99a5790d8f0ea8f5a4d7ba61",
+    "research/minigrid_benchmark.py": "1e881c90b510c03d659ae9e921313ce363af8914d31aa30b55f6d3d02f8ada1d",
+    "research/run_progress_benchmark.py": "24ae5c8e6c560997aedc9ce2215dafdf8630e865d98d95a76ea6eee857b5ed0d",
+    "research/run_minigrid_benchmark.py": "578f3f6face21eaa042655383f014b17d7898d43cc111aee656c71f600e7b45b",
+    "uv.lock": "596487067f4627e0fed7e3d9d59aa9a8c6510061f33e9aa63110aaafc7c77796",
+    "scripts/audit_persistent_tasks.py": "b8d72d31c63942ddf2e515625c88f9674644ed6cafa3a9eeb4ee4d832ef3736b",
+    "tests/oracle.py": "d6d20dcd6ad0ba555161bae36b95dfba4a6b295946b9a1378fb36ebe5f5ce0e7"
+  },
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "git_commit": "208cde8f664bf2a4282e2b47ac3e6453b22c4d7b",
+  "git_status": " M .gitignore\n M research/dependency_memory.py\n M scripts/verify.py\n?? docs/PERSISTENT_TASK_MEMORY.md\n?? experiments/persistent-task-v1/\n?? research/persistent_task_memory.py\n?? research/persistent_task_protocol.json\n?? research/run_persistent_tasks.py\n?? research/task_references.py\n?? research/task_store.py\n?? scripts/audit_persistent_tasks.py\n?? tests/test_persistent_task_memory.py\n",
+  "versions": {
+    "minigrid": "3.1.0",
+    "gymnasium": "1.4.0",
+    "pygame-ce": "2.5.8",
+    "torch": "2.15.0",
+    "numpy": "2.5.4"
+  },
+  "scope": "developmental integration comparison, not a generalization or novelty claim"
+}

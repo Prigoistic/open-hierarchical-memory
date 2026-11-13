@@ -11,3 +11,6 @@ dist/
 .DS_Store
 
 node_modules/
+
+# Mutable task archives stay local; immutable traces/checkpoints are retained.
+experiments/persistent-task-*/archives/

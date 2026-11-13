@@ -20,7 +20,7 @@ This runs tests, lint, formatting, strict typing, semantic mutation checks and t
 
 The example uses synthetic data and reports offline attention-error measurements. It does not reproduce model-quality or speed results from the paper.
 
-See [progress](PROGRESS.md), the [engineering plan](docs/ENGINEERING_PLAN.md), and [method mapping](docs/METHOD.md). RoPE adapters, persistence, the inspector, conservative runtime bounds and closed-loop model conversion remain separate gates.
+See [progress](PROGRESS.md), the [engineering plan](docs/ENGINEERING_PLAN.md), and [method mapping](docs/METHOD.md). RoPE adapters, conservative runtime bounds and closed-loop model conversion remain separate gates. Persistence and inspectors are scoped research adapters described below.
 
 This project is independent and is not affiliated with Zyphra. The paper's authors retain credit for ZHA. No code has been copied from their implementation.
 
@@ -97,3 +97,10 @@ The [fresh six-seed comparison](experiments/dependency-evaluation-v1/SUMMARY.md)
 The [fixed-cohort comparison](experiments/progress-evaluation-v2/ANALYSIS.md) addresses repeated retrieval without useful new evidence. Bounded directional queries and candidate widening raise ZHA bundles from 19/24 to 23/24. Explicit full-bank seed recovery reaches 24/24, using 16 fallback reads in one case; matched exact reaches 24/24 without fallback. All methods still use observed-graph dependency closure. This is an operational repair, not a demonstrated hierarchy advantage.
 
 The [operating guide](docs/PROGRESS_RETRIEVAL.md) records the unchanged planner/core, budgets, stages and serialization recovery. The first incomplete run remains; the complete same-cohort rerun preserves all 167 retained cases without policy tuning. Open `http://127.0.0.1:8792/?task=maze` for the cleaned maze/hierarchy view, named cues, pass selection, node inspection and recovery-stage playback. Detailed counters remain under the inspector.
+
+
+## Persistent task-memory integration
+
+The [new CLI adapter](docs/PERSISTENT_TASK_MEMORY.md) combines task-fitted routing references, immutable versioned observations, a96-fact active workspace and explicit reversible retirement/recovery. Graph support can use only current/active/explicitly recovered evidence; archive builds and graph work are metered separately. The existing dashboard does not select this new reader yet.
+
+The [first comparison](experiments/persistent-task-v1/SUMMARY.md) preserves a6/8 ZHA regression. After a frontier fix and recovery gating, the [development refinement](experiments/persistent-task-v2/SUMMARY.md) solves8/8 in every condition, including exact and no-recovery. A separate delayed-clue diagnostic demonstrates source recovery after retirement/restart. Fitted KL improves over fixed references, but random references score better; no learned-reference or hierarchy advantage is demonstrated. This adapter does not implement sleep or neural consolidation. Source-bound independent audits and all failed outcomes are included.

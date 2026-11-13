@@ -1,0 +1,11 @@
+{
+  "all_passed": true,
+  "auditor_sha256": "deda4bee162dc9717b4a4b40558106535666b6a745603f03380c6857629d722b",
+  "top_p_roundoff_band": 1e-12,
+  "runs": 40,
+  "decisions": 2719,
+  "routes": 3930,
+  "numerical_route_cases": 24,
+  "offline_mass_cases": 315,
+  "scope": "source/current-head/cold-access lineage, official action replay, one independently recomputed affine route case per ZHA episode, recorded top-p/leaf ownership, mass and aggregates; not optimizer-trajectory audit or performance certification"
+}
