@@ -6,22 +6,7 @@ A maze-solving agent can retain a landmark and still lose the observed path need
 
 ![Observed path recovery and its actual source trail](docs/media/task-support-desktop.png)
 
-**Development research reference.** The installed attention library supports CPU float 64 and the no-positional-encoding ZHA construction. The task demos use a shared symbolic planner. This is not a converted language model or a production agent-memory service.
-
-## Try the dashboard
-
-Python 3.12 or 3.13, uv, and a modern browser are required. Node.js is used for renderer tests and rebuilds.
-
-```sh
-git clone https://github.com/Prigoistic/open-hierarchical-memory.git
-cd open-hierarchical-memory
-make setup
-make dashboard
-```
-
-Open [localhost:8792](http://127.0.0.1:8792/). Run & query → Saved study → **Path recovery · fresh seed study** opens the latest comparison. Choose a task/method and press **Run solver** for a fresh episode. The maze, memory layers and retrieval hierarchy share one timeline.
-
-Originals, active memory, recovered sources, paths, checkpoints and work counters remain inspectable. Recordings and fresh execution have distinct labels. The separate continuous-world dynamics learner is available through advanced tools; a maze run does not train those separate neural networks.
+**Development research reference.** The installed attention library supports CPU float64 and the no-positional-encoding ZHA construction. The task demos use a shared symbolic planner. This is not a converted language model or a production agent-memory service.
 
 ## Latest measured result
 
@@ -48,6 +33,25 @@ The improvement is available path support. Exact and graph controls match ZHA. C
 - **One visual debugger:** fresh solves, recorded studies, source inspection and shared memory/retrieval playback.
 
 Replay reduced fresh-prefix routing KL by 14.9% in its own study but did not improve task success; random references were a stronger KL control. The new path-support study makes no learning or biological-dreaming claim. [Replay evidence](experiments/task-replay-v1/SUMMARY.md).
+
+## Run locally
+
+The dashboard runs on your computer. No hosted interactive demo is currently provided; the screenshot and linked experiment reports above can be viewed directly on GitHub.
+
+On macOS or Linux, install Python 3.12 or 3.13 and [uv](https://docs.astral.sh/uv/getting-started/installation/), then run:
+
+```sh
+git clone https://github.com/Prigoistic/open-hierarchical-memory.git
+cd open-hierarchical-memory
+make setup
+make dashboard
+```
+
+Keep that terminal running. The server prints a browser address for your local dashboard; open that address on the same computer.
+
+In the dashboard, choose **Run & query → Saved study → Path recovery · fresh seed study** to inspect the completed comparison. Choose a task and method, then press **Run solver** to start a fresh episode. The maze, memory layers and retrieval hierarchy share one timeline.
+
+Recorded studies and fresh execution are labelled separately. The continuous-world dynamics learner is a separate experiment available through advanced tools; maze runs do not train its networks. Node.js is needed only for renderer tests and rebuilds, not to start the dashboard.
 
 ## Numerical library
 
